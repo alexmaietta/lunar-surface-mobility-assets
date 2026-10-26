@@ -1,0 +1,129 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "mapp"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "mapp"
+{
+    over "Geometry"
+    {
+        over "chassis"
+        {
+            over "rocker_l" (
+                delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                over "fl_wheel" (
+                    delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                }
+
+                over "rl_wheel" (
+                    delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                }
+            }
+
+            over "rocker_r" (
+                delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                over "fr_wheel" (
+                    delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                }
+
+                over "rr_wheel" (
+                    delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                }
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "rocker_l" (
+            active = false
+        )
+        {
+        }
+
+        over "rocker_l_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "fl_wheel" (
+            active = false
+        )
+        {
+        }
+
+        over "fl_wheel_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "rl_wheel" (
+            active = false
+        )
+        {
+        }
+
+        over "rl_wheel_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "rocker_r" (
+            active = false
+        )
+        {
+        }
+
+        over "rocker_r_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "fr_wheel" (
+            active = false
+        )
+        {
+        }
+
+        over "fr_wheel_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "rr_wheel" (
+            active = false
+        )
+        {
+        }
+
+        over "rr_wheel_actuator" (
+            active = false
+        )
+        {
+        }
+    }
+}
+

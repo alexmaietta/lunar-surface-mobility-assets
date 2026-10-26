@@ -1,0 +1,233 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "mapp"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "mapp"
+{
+    over "Geometry"
+    {
+        over "chassis" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI"]
+        )
+        {
+            bool newton:selfCollisionEnabled = 0
+            point3f physics:centerOfMass = (0, 0, 0.15)
+            float3 physics:diagonalInertia = (0.056225, 0.085345, 0.104)
+            float physics:mass = 7.8
+            quatf physics:principalAxes = (1, 0, 0, 0)
+
+            over "rocker_l" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (-0.00013000518, -0.022930004, 0)
+                float3 physics:diagonalInertia = (0.00013409463, 0.002749349, 0.0028053522)
+                float physics:mass = 0.3
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "fl_wheel" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0, 0, 0)
+                    float3 physics:diagonalInertia = (0.0007377624, 0.0009536108, 0.0007377625)
+                    float physics:mass = 0.4
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+                }
+
+                over "rl_wheel" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0, 0, 0)
+                    float3 physics:diagonalInertia = (0.0007349388, 0.0009536108, 0.00073493883)
+                    float physics:mass = 0.4
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+                }
+            }
+
+            over "rocker_r" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0, 0.022930004, 0)
+                float3 physics:diagonalInertia = (0.00013409463, 0.0027536312, 0.0028096344)
+                float physics:mass = 0.3
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "fr_wheel" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0, 0, 0)
+                    float3 physics:diagonalInertia = (0.0007250904, 0.00092826673, 0.00072509045)
+                    float physics:mass = 0.4
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+                }
+
+                over "rr_wheel" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0, 0, 0)
+                    float3 physics:diagonalInertia = (0.00070949044, 0.0008970668, 0.0007094905)
+                    float physics:mass = 0.4
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+                }
+            }
+        }
+    }
+
+    def "Physics"
+    {
+        def PhysicsRevoluteJoint "rocker_l" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0.0052359877
+            float drive:angular:physics:maxForce = 1000000
+            float drive:angular:physics:stiffness = 0.05235988
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "suspension"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </mapp/Geometry/chassis>
+            rel physics:body1 = </mapp/Geometry/chassis/rocker_l>
+            point3f physics:localPos0 = (0, 0.125, 0.0575)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, 0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, 0.70710677)
+            float physics:lowerLimit = -17.188734
+            float physics:upperLimit = 17.188734
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "fl_wheel" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0.2617994
+            float drive:angular:physics:maxForce = 0.2803125
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "velocity"
+            custom uniform token joint:role = "drive"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </mapp/Geometry/chassis/rocker_l>
+            rel physics:body1 = </mapp/Geometry/chassis/rocker_l/fl_wheel>
+            point3f physics:localPos0 = (0.145, 0.025000006, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, 0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, 0.70710677)
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "rl_wheel" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0.2617994
+            float drive:angular:physics:maxForce = 0.2803125
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "velocity"
+            custom uniform token joint:role = "drive"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </mapp/Geometry/chassis/rocker_l>
+            rel physics:body1 = </mapp/Geometry/chassis/rocker_l/rl_wheel>
+            point3f physics:localPos0 = (-0.145, 0.025000006, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, 0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, 0.70710677)
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "rocker_r" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0.0052359877
+            float drive:angular:physics:maxForce = 1000000
+            float drive:angular:physics:stiffness = 0.05235988
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "suspension"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </mapp/Geometry/chassis>
+            rel physics:body1 = </mapp/Geometry/chassis/rocker_r>
+            point3f physics:localPos0 = (0, -0.125, 0.0575)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, 0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, 0.70710677)
+            float physics:lowerLimit = -17.188734
+            float physics:upperLimit = 17.188734
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "fr_wheel" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0.2617994
+            float drive:angular:physics:maxForce = 0.2803125
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "velocity"
+            custom uniform token joint:role = "drive"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </mapp/Geometry/chassis/rocker_r>
+            rel physics:body1 = </mapp/Geometry/chassis/rocker_r/fr_wheel>
+            point3f physics:localPos0 = (0.145, -0.025000006, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, 0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, 0.70710677)
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "rr_wheel" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0.2617994
+            float drive:angular:physics:maxForce = 0.2803125
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "velocity"
+            custom uniform token joint:role = "drive"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </mapp/Geometry/chassis/rocker_r>
+            rel physics:body1 = </mapp/Geometry/chassis/rocker_r/rr_wheel>
+            point3f physics:localPos0 = (-0.145, -0.025000006, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, 0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, 0.70710677)
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+    }
+}
+

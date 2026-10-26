@@ -1,0 +1,231 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "mapp"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "mapp" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    string isaac:description = "Lunar Outpost MAPP"
+    token isaac:license = "Other"
+    string isaac:namespace = "mapp"
+    prepend rel isaac:physics:robotJoints = [
+        </mapp/Physics/rocker_l>,
+        </mapp/Physics/fl_wheel>,
+        </mapp/Physics/rl_wheel>,
+        </mapp/Physics/rocker_r>,
+        </mapp/Physics/fr_wheel>,
+        </mapp/Physics/rr_wheel>,
+    ]
+    prepend rel isaac:physics:robotLinks = [
+        </mapp/Geometry/chassis>,
+        </mapp/Geometry/chassis/front_cameras>,
+        </mapp/Geometry/chassis/payload_rail>,
+        </mapp/Geometry/chassis/vehicle_origin>,
+        </mapp/Geometry/chassis/imu>,
+        </mapp/Geometry/chassis/rocker_l>,
+        </mapp/Geometry/chassis/rocker_l/fl_wheel>,
+        </mapp/Geometry/chassis/rocker_l/fl_wheel/fl_contact>,
+        </mapp/Geometry/chassis/rocker_l/fl_wheel/fl_hub>,
+        </mapp/Geometry/chassis/rocker_l/rl_wheel>,
+        </mapp/Geometry/chassis/rocker_l/rl_wheel/rl_contact>,
+        </mapp/Geometry/chassis/rocker_l/rl_wheel/rl_hub>,
+        </mapp/Geometry/chassis/rocker_r>,
+        </mapp/Geometry/chassis/rocker_r/fr_wheel>,
+        </mapp/Geometry/chassis/rocker_r/fr_wheel/fr_contact>,
+        </mapp/Geometry/chassis/rocker_r/fr_wheel/fr_hub>,
+        </mapp/Geometry/chassis/rocker_r/rr_wheel>,
+        </mapp/Geometry/chassis/rocker_r/rr_wheel/rr_contact>,
+        </mapp/Geometry/chassis/rocker_r/rr_wheel/rr_hub>,
+    ]
+    token isaac:robotType = "Wheeled"
+    string isaac:source = "lunar-surface-mobility-assets pipeline"
+    string isaac:version = "0.1.0"
+
+    over "Geometry"
+    {
+        over "chassis" (
+            prepend apiSchemas = ["IsaacLinkAPI"]
+        )
+        {
+            over "rocker_l" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "fl_wheel" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "fl_contact" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "Nominal tyre contact point"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+
+                    over "fl_hub" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "Wheel centre; +Z = outboard axle"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+                }
+
+                over "rl_wheel" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "rl_contact" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "Nominal tyre contact point"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+
+                    over "rl_hub" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "Wheel centre; +Z = outboard axle"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+                }
+            }
+
+            over "rocker_r" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "fr_wheel" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "fr_contact" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "Nominal tyre contact point"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+
+                    over "fr_hub" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "Wheel centre; +Z = outboard axle"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+                }
+
+                over "rr_wheel" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "rr_contact" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "Nominal tyre contact point"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+
+                    over "rr_hub" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "Wheel centre; +Z = outboard axle"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+                }
+            }
+
+            over "front_cameras" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Three-lens front camera bracket"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "payload_rail" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Top rail (15 kg payload capacity)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "vehicle_origin" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Ground point under the chassis centre at nominal ride height"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "imu" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "IMU / navigation reference (estimated)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "rocker_l" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "fl_wheel" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "rl_wheel" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "rocker_r" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "fr_wheel" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "rr_wheel" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+    }
+}
+

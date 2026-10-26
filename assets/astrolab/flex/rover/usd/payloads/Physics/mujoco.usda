@@ -1,0 +1,400 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "flex"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./physics.usda@
+    ]
+    upAxis = "Z"
+)
+
+over "flex"
+{
+    over "Physics"
+    {
+        over "arm_yaw" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "arm_yaw_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -9000, -900, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 600
+            uniform double mjc:forceRange:min = -600
+            uniform double[] mjc:gainPrm = [9000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </flex/Physics/arm_yaw>
+        }
+
+        over "arm_shoulder" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "arm_shoulder_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -9000, -900, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 600
+            uniform double mjc:forceRange:min = -600
+            uniform double[] mjc:gainPrm = [9000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </flex/Physics/arm_shoulder>
+        }
+
+        over "arm_elbow" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "arm_elbow_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -5400, -540, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 360
+            uniform double mjc:forceRange:min = -360
+            uniform double[] mjc:gainPrm = [5400, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </flex/Physics/arm_elbow>
+        }
+
+        over "arm_wrist_pitch" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "arm_wrist_pitch_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -2700, -270, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 180
+            uniform double mjc:forceRange:min = -180
+            uniform double[] mjc:gainPrm = [2700, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </flex/Physics/arm_wrist_pitch>
+        }
+
+        over "arm_wrist_roll" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "arm_wrist_roll_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -1800, -180, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 120
+            uniform double mjc:forceRange:min = -120
+            uniform double[] mjc:gainPrm = [1800, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </flex/Physics/arm_wrist_roll>
+        }
+
+        over "fl_arm" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "fl_arm_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -13710.9375, -547.5930999610935, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 1828.125
+            uniform double mjc:forceRange:min = -1828.125
+            uniform double[] mjc:gainPrm = [13710.9375, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </flex/Physics/fl_arm>
+        }
+
+        over "fl_steer" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "fl_steer_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -5000, -500, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 375
+            uniform double mjc:forceRange:min = -375
+            uniform double[] mjc:gainPrm = [5000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </flex/Physics/fl_steer>
+        }
+
+        over "fl_wheel" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "fl_wheel_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -750, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 81.65625
+            uniform double mjc:forceRange:min = -81.65625
+            uniform double[] mjc:gainPrm = [750, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </flex/Physics/fl_wheel>
+        }
+
+        over "fr_arm" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "fr_arm_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -13710.9375, -547.5930999610935, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 1828.125
+            uniform double mjc:forceRange:min = -1828.125
+            uniform double[] mjc:gainPrm = [13710.9375, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </flex/Physics/fr_arm>
+        }
+
+        over "fr_steer" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "fr_steer_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -5000, -500, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 375
+            uniform double mjc:forceRange:min = -375
+            uniform double[] mjc:gainPrm = [5000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </flex/Physics/fr_steer>
+        }
+
+        over "fr_wheel" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "fr_wheel_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -750, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 81.65625
+            uniform double mjc:forceRange:min = -81.65625
+            uniform double[] mjc:gainPrm = [750, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </flex/Physics/fr_wheel>
+        }
+
+        over "nav_mast_pan" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "nav_mast_pan_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -30, -3, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 20
+            uniform double mjc:forceRange:min = -20
+            uniform double[] mjc:gainPrm = [30, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </flex/Physics/nav_mast_pan>
+        }
+
+        over "nav_mast_tilt" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "nav_mast_tilt_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -30, -3, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 20
+            uniform double mjc:forceRange:min = -20
+            uniform double[] mjc:gainPrm = [30, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </flex/Physics/nav_mast_tilt>
+        }
+
+        over "rl_arm" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "rl_arm_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -13710.9375, -547.5930999610935, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 1828.125
+            uniform double mjc:forceRange:min = -1828.125
+            uniform double[] mjc:gainPrm = [13710.9375, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </flex/Physics/rl_arm>
+        }
+
+        over "rl_steer" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "rl_steer_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -5000, -500, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 375
+            uniform double mjc:forceRange:min = -375
+            uniform double[] mjc:gainPrm = [5000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </flex/Physics/rl_steer>
+        }
+
+        over "rl_wheel" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "rl_wheel_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -750, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 81.65625
+            uniform double mjc:forceRange:min = -81.65625
+            uniform double[] mjc:gainPrm = [750, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </flex/Physics/rl_wheel>
+        }
+
+        over "rr_arm" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "rr_arm_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -13710.9375, -547.5930999610935, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 1828.125
+            uniform double mjc:forceRange:min = -1828.125
+            uniform double[] mjc:gainPrm = [13710.9375, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </flex/Physics/rr_arm>
+        }
+
+        over "rr_steer" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "rr_steer_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -5000, -500, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 375
+            uniform double mjc:forceRange:min = -375
+            uniform double[] mjc:gainPrm = [5000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </flex/Physics/rr_steer>
+        }
+
+        over "rr_wheel" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "rr_wheel_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -750, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 81.65625
+            uniform double mjc:forceRange:min = -81.65625
+            uniform double[] mjc:gainPrm = [750, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </flex/Physics/rr_wheel>
+        }
+
+        over "solar_array" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "solar_array_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -3000, -300, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 800
+            uniform double mjc:forceRange:min = -800
+            uniform double[] mjc:gainPrm = [3000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </flex/Physics/solar_array>
+        }
+    }
+}
+

@@ -1,0 +1,610 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "nova_c"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "nova_c" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    string isaac:description = "Intuitive Machines Nova-C"
+    token isaac:license = "Other"
+    string isaac:namespace = "nova_c"
+    prepend rel isaac:physics:robotJoints = [
+        </nova_c/Physics/leg_0_piston>,
+        </nova_c/Physics/leg_1_piston>,
+        </nova_c/Physics/leg_2_piston>,
+        </nova_c/Physics/leg_3_piston>,
+        </nova_c/Physics/leg_4_piston>,
+        </nova_c/Physics/leg_5_piston>,
+        </nova_c/Physics/vr900_gimbal_x>,
+        </nova_c/Physics/vr900>,
+    ]
+    prepend rel isaac:physics:robotLinks = [
+        </nova_c/Geometry/body>,
+        </nova_c/Geometry/body/top_array_normal>,
+        </nova_c/Geometry/body/vr900_gimbal_center>,
+        </nova_c/Geometry/body/rcs_0_0>,
+        </nova_c/Geometry/body/rcs_0_1>,
+        </nova_c/Geometry/body/rcs_0_2>,
+        </nova_c/Geometry/body/rcs_1_0>,
+        </nova_c/Geometry/body/rcs_1_1>,
+        </nova_c/Geometry/body/rcs_1_2>,
+        </nova_c/Geometry/body/rcs_2_0>,
+        </nova_c/Geometry/body/rcs_2_1>,
+        </nova_c/Geometry/body/rcs_2_2>,
+        </nova_c/Geometry/body/rcs_3_0>,
+        </nova_c/Geometry/body/rcs_3_1>,
+        </nova_c/Geometry/body/rcs_3_2>,
+        </nova_c/Geometry/body/rcs_4_0>,
+        </nova_c/Geometry/body/rcs_4_1>,
+        </nova_c/Geometry/body/rcs_4_2>,
+        </nova_c/Geometry/body/rcs_5_0>,
+        </nova_c/Geometry/body/rcs_5_1>,
+        </nova_c/Geometry/body/rcs_5_2>,
+        </nova_c/Geometry/body/side_array_0_normal>,
+        </nova_c/Geometry/body/side_array_1_normal>,
+        </nova_c/Geometry/body/hga_boresight>,
+        </nova_c/Geometry/body/lga_0>,
+        </nova_c/Geometry/body/lga_1>,
+        </nova_c/Geometry/body/lga_2>,
+        </nova_c/Geometry/body/lga_3>,
+        </nova_c/Geometry/body/ndl>,
+        </nova_c/Geometry/body/lra>,
+        </nova_c/Geometry/body/vehicle_origin>,
+        </nova_c/Geometry/body/deck_center>,
+        </nova_c/Geometry/body/imu>,
+        </nova_c/Geometry/body/lift_point_0>,
+        </nova_c/Geometry/body/lift_point_1>,
+        </nova_c/Geometry/body/lift_point_2>,
+        </nova_c/Geometry/body/lift_point_3>,
+        </nova_c/Geometry/body/lift_point_4>,
+        </nova_c/Geometry/body/lift_point_5>,
+        </nova_c/Geometry/body/leg_0_piston>,
+        </nova_c/Geometry/body/leg_0_piston/leg_0_foot_contact>,
+        </nova_c/Geometry/body/leg_0_piston/leg_0_touchdown_sensor>,
+        </nova_c/Geometry/body/leg_1_piston>,
+        </nova_c/Geometry/body/leg_1_piston/leg_1_foot_contact>,
+        </nova_c/Geometry/body/leg_1_piston/leg_1_touchdown_sensor>,
+        </nova_c/Geometry/body/leg_2_piston>,
+        </nova_c/Geometry/body/leg_2_piston/leg_2_foot_contact>,
+        </nova_c/Geometry/body/leg_2_piston/leg_2_touchdown_sensor>,
+        </nova_c/Geometry/body/leg_3_piston>,
+        </nova_c/Geometry/body/leg_3_piston/leg_3_foot_contact>,
+        </nova_c/Geometry/body/leg_3_piston/leg_3_touchdown_sensor>,
+        </nova_c/Geometry/body/leg_4_piston>,
+        </nova_c/Geometry/body/leg_4_piston/leg_4_foot_contact>,
+        </nova_c/Geometry/body/leg_4_piston/leg_4_touchdown_sensor>,
+        </nova_c/Geometry/body/leg_5_piston>,
+        </nova_c/Geometry/body/leg_5_piston/leg_5_foot_contact>,
+        </nova_c/Geometry/body/leg_5_piston/leg_5_touchdown_sensor>,
+        </nova_c/Geometry/body/vr900_gimbal_x>,
+        </nova_c/Geometry/body/vr900_gimbal_x/vr900>,
+        </nova_c/Geometry/body/vr900_gimbal_x/vr900/vr900_exit>,
+    ]
+    token isaac:robotType = "Aerial"
+    string isaac:source = "lunar-surface-mobility-assets pipeline"
+    string isaac:version = "0.1.0"
+
+    over "Geometry"
+    {
+        over "body" (
+            prepend apiSchemas = ["IsaacLinkAPI"]
+        )
+        {
+            over "leg_0_piston" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_0_foot_contact" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Footpad contact point (touchdown sensing)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+
+                over "leg_0_touchdown_sensor" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Crush-core stroke / touchdown switch (estimated)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "leg_1_piston" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_1_foot_contact" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Footpad contact point (touchdown sensing)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+
+                over "leg_1_touchdown_sensor" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Crush-core stroke / touchdown switch (estimated)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "leg_2_piston" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_2_foot_contact" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Footpad contact point (touchdown sensing)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+
+                over "leg_2_touchdown_sensor" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Crush-core stroke / touchdown switch (estimated)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "leg_3_piston" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_3_foot_contact" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Footpad contact point (touchdown sensing)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+
+                over "leg_3_touchdown_sensor" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Crush-core stroke / touchdown switch (estimated)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "leg_4_piston" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_4_foot_contact" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Footpad contact point (touchdown sensing)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+
+                over "leg_4_touchdown_sensor" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Crush-core stroke / touchdown switch (estimated)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "leg_5_piston" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_5_foot_contact" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Footpad contact point (touchdown sensing)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+
+                over "leg_5_touchdown_sensor" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Crush-core stroke / touchdown switch (estimated)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "vr900_gimbal_x" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "vr900" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "vr900_exit" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "Intuitive Machines VR900, helium pressure-fed, throttleable, 2-axis gimbal (IM). Throttle floor, gimbal range and exit size estimated."
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+                }
+            }
+
+            over "top_array_normal" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Top-deck solar array centre; +Z = cell normal"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "vr900_gimbal_center" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "VR900 gimbal pivot"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_0_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Helium cold-gas RCS, 4.45 N (1 lbf) per thruster (IM / press). Thruster count and pod layout assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_0_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Helium cold-gas RCS, 4.45 N (1 lbf) per thruster (IM / press). Thruster count and pod layout assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_0_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Helium cold-gas RCS, 4.45 N (1 lbf) per thruster (IM / press). Thruster count and pod layout assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_1_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Helium cold-gas RCS, 4.45 N (1 lbf) per thruster (IM / press). Thruster count and pod layout assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_1_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Helium cold-gas RCS, 4.45 N (1 lbf) per thruster (IM / press). Thruster count and pod layout assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_1_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Helium cold-gas RCS, 4.45 N (1 lbf) per thruster (IM / press). Thruster count and pod layout assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_2_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Helium cold-gas RCS, 4.45 N (1 lbf) per thruster (IM / press). Thruster count and pod layout assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_2_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Helium cold-gas RCS, 4.45 N (1 lbf) per thruster (IM / press). Thruster count and pod layout assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_2_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Helium cold-gas RCS, 4.45 N (1 lbf) per thruster (IM / press). Thruster count and pod layout assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_3_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Helium cold-gas RCS, 4.45 N (1 lbf) per thruster (IM / press). Thruster count and pod layout assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_3_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Helium cold-gas RCS, 4.45 N (1 lbf) per thruster (IM / press). Thruster count and pod layout assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_3_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Helium cold-gas RCS, 4.45 N (1 lbf) per thruster (IM / press). Thruster count and pod layout assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_4_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Helium cold-gas RCS, 4.45 N (1 lbf) per thruster (IM / press). Thruster count and pod layout assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_4_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Helium cold-gas RCS, 4.45 N (1 lbf) per thruster (IM / press). Thruster count and pod layout assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_4_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Helium cold-gas RCS, 4.45 N (1 lbf) per thruster (IM / press). Thruster count and pod layout assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_5_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Helium cold-gas RCS, 4.45 N (1 lbf) per thruster (IM / press). Thruster count and pod layout assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_5_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Helium cold-gas RCS, 4.45 N (1 lbf) per thruster (IM / press). Thruster count and pod layout assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_5_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Helium cold-gas RCS, 4.45 N (1 lbf) per thruster (IM / press). Thruster count and pod layout assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "side_array_0_normal" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Body-mounted side array centre; +Z = cell normal"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "side_array_1_normal" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Body-mounted side array centre; +Z = cell normal"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "hga_boresight" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Fixed 16 dBi S-band high-gain antenna boresight (+Z); pointing estimated"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lga_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "5 dBi low-gain antenna (estimated location)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lga_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "5 dBi low-gain antenna (estimated location)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lga_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "5 dBi low-gain antenna (estimated location)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lga_3" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "5 dBi low-gain antenna (estimated location)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "ndl" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "NASA Navigation Doppler Lidar optical head (location estimated)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lra" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "NASA GSFC Laser Retroreflector Array"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "vehicle_origin" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Ground point under the centreline, legs at nominal stroke"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "deck_center" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Top deck centre (above the array)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "imu" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "IMU / navigation reference (estimated location)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lift_point_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "GSE lift point (deck corner)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lift_point_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "GSE lift point (deck corner)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lift_point_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "GSE lift point (deck corner)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lift_point_3" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "GSE lift point (deck corner)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lift_point_4" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "GSE lift point (deck corner)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lift_point_5" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "GSE lift point (deck corner)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "leg_0_piston" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_1_piston" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_2_piston" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_3_piston" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_4_piston" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_5_piston" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "vr900_gimbal_x" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "vr900" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+    }
+}
+

@@ -1,0 +1,144 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "mk1_offloader"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "mk1_offloader" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    string isaac:description = "Blue Moon MK1 payload offloader"
+    token isaac:license = "Other"
+    string isaac:namespace = "mk1_offloader"
+    prepend rel isaac:physics:robotJoints = [
+        </mk1_offloader/Physics/crane_slew>,
+        </mk1_offloader/Physics/crane_luff>,
+        </mk1_offloader/Physics/crane_hoist>,
+    ]
+    prepend rel isaac:physics:robotLinks = [
+        </mk1_offloader/Geometry/base>,
+        </mk1_offloader/Geometry/base/mount>,
+        </mk1_offloader/Geometry/base/crane_slew>,
+        </mk1_offloader/Geometry/base/crane_slew/crane_luff>,
+        </mk1_offloader/Geometry/base/crane_slew/crane_luff/cable_anchor>,
+        </mk1_offloader/Geometry/base/crane_slew/crane_luff/crane_hoist>,
+        </mk1_offloader/Geometry/base/crane_slew/crane_luff/crane_hoist/spreader_pick_nn>,
+        </mk1_offloader/Geometry/base/crane_slew/crane_luff/crane_hoist/spreader_pick_np>,
+        </mk1_offloader/Geometry/base/crane_slew/crane_luff/crane_hoist/spreader_pick_pn>,
+        </mk1_offloader/Geometry/base/crane_slew/crane_luff/crane_hoist/spreader_pick_pp>,
+        </mk1_offloader/Geometry/base/crane_slew/crane_luff/crane_hoist/cable_hook>,
+    ]
+    token isaac:robotType = "Manipulator"
+    string isaac:source = "lunar-surface-mobility-assets pipeline"
+    string isaac:version = "0.1.0"
+
+    over "Geometry"
+    {
+        over "base" (
+            prepend apiSchemas = ["IsaacLinkAPI"]
+        )
+        {
+            over "crane_slew" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "crane_luff" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "crane_hoist" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "spreader_pick_nn" (
+                            prepend apiSchemas = ["IsaacSiteAPI"]
+                        )
+                        {
+                            string isaac:Description = "Spreader pick point (payload sling / latch attach)"
+                            uniform token isaac:forwardAxis = "Z"
+                        }
+
+                        over "spreader_pick_np" (
+                            prepend apiSchemas = ["IsaacSiteAPI"]
+                        )
+                        {
+                            string isaac:Description = "Spreader pick point (payload sling / latch attach)"
+                            uniform token isaac:forwardAxis = "Z"
+                        }
+
+                        over "spreader_pick_pn" (
+                            prepend apiSchemas = ["IsaacSiteAPI"]
+                        )
+                        {
+                            string isaac:Description = "Spreader pick point (payload sling / latch attach)"
+                            uniform token isaac:forwardAxis = "Z"
+                        }
+
+                        over "spreader_pick_pp" (
+                            prepend apiSchemas = ["IsaacSiteAPI"]
+                        )
+                        {
+                            string isaac:Description = "Spreader pick point (payload sling / latch attach)"
+                            uniform token isaac:forwardAxis = "Z"
+                        }
+
+                        over "cable_hook" (
+                            prepend apiSchemas = ["IsaacSiteAPI"]
+                        )
+                        {
+                            string isaac:Description = "Lower end of the hoist line (hook block); attach point for a simulated cable"
+                            uniform token isaac:forwardAxis = "Z"
+                        }
+                    }
+
+                    over "cable_anchor" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "Hoist line leaves the sheave here (+Z = down the line); attach point for a simulated cable"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+                }
+            }
+
+            over "mount" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Mounting interface: mates with a lander's offloader_mount site"
+                uniform token isaac:forwardAxis = "Z"
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "crane_slew" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "crane_luff" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "crane_hoist" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+    }
+}
+

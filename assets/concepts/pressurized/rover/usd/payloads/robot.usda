@@ -1,0 +1,1204 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "pr_concept"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "pr_concept" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    string isaac:description = "Generic Pressurised Rover (concept)"
+    token isaac:license = "Other"
+    string isaac:namespace = "pr_concept"
+    prepend rel isaac:physics:robotJoints = [
+        </pr_concept/Physics/airlock_door>,
+        </pr_concept/Physics/arm_yaw>,
+        </pr_concept/Physics/arm_shoulder>,
+        </pr_concept/Physics/arm_elbow>,
+        </pr_concept/Physics/arm_wrist_pitch>,
+        </pr_concept/Physics/arm_wrist_roll>,
+        </pr_concept/Physics/dock_hatch>,
+        </pr_concept/Physics/fl_lower_arm>,
+        </pr_concept/Physics/fl_upright>,
+        </pr_concept/Physics/fl_steer>,
+        </pr_concept/Physics/fl_wheel>,
+        </pr_concept/Physics/fl_strut>,
+        </pr_concept/Physics/fl_strut_rod>,
+        </pr_concept/Physics/fl_upper_arm>,
+        </pr_concept/Physics/fr_lower_arm>,
+        </pr_concept/Physics/fr_upright>,
+        </pr_concept/Physics/fr_steer>,
+        </pr_concept/Physics/fr_wheel>,
+        </pr_concept/Physics/fr_strut>,
+        </pr_concept/Physics/fr_strut_rod>,
+        </pr_concept/Physics/fr_upper_arm>,
+        </pr_concept/Physics/hga_azimuth>,
+        </pr_concept/Physics/hga_elevation>,
+        </pr_concept/Physics/ml_lower_arm>,
+        </pr_concept/Physics/ml_upright>,
+        </pr_concept/Physics/ml_steer>,
+        </pr_concept/Physics/ml_wheel>,
+        </pr_concept/Physics/ml_strut>,
+        </pr_concept/Physics/ml_strut_rod>,
+        </pr_concept/Physics/ml_upper_arm>,
+        </pr_concept/Physics/mr_lower_arm>,
+        </pr_concept/Physics/mr_upright>,
+        </pr_concept/Physics/mr_steer>,
+        </pr_concept/Physics/mr_wheel>,
+        </pr_concept/Physics/mr_strut>,
+        </pr_concept/Physics/mr_strut_rod>,
+        </pr_concept/Physics/mr_upper_arm>,
+        </pr_concept/Physics/nav_mast_pan>,
+        </pr_concept/Physics/nav_mast_tilt>,
+        </pr_concept/Physics/rl_lower_arm>,
+        </pr_concept/Physics/rl_upright>,
+        </pr_concept/Physics/rl_steer>,
+        </pr_concept/Physics/rl_wheel>,
+        </pr_concept/Physics/rl_strut>,
+        </pr_concept/Physics/rl_strut_rod>,
+        </pr_concept/Physics/rl_upper_arm>,
+        </pr_concept/Physics/rr_lower_arm>,
+        </pr_concept/Physics/rr_upright>,
+        </pr_concept/Physics/rr_steer>,
+        </pr_concept/Physics/rr_wheel>,
+        </pr_concept/Physics/rr_strut>,
+        </pr_concept/Physics/rr_strut_rod>,
+        </pr_concept/Physics/rr_upper_arm>,
+        </pr_concept/Physics/solar_wing_l>,
+        </pr_concept/Physics/solar_wing_r>,
+        </pr_concept/Physics/suitport_hatch_l>,
+        </pr_concept/Physics/suitport_hatch_r>,
+    ]
+    prepend rel isaac:physics:robotLinks = [
+        </pr_concept/Geometry/chassis>,
+        </pr_concept/Geometry/chassis/brow_lamp_r0>,
+        </pr_concept/Geometry/chassis/brow_lamp_r1>,
+        </pr_concept/Geometry/chassis/brow_lamp_r2>,
+        </pr_concept/Geometry/chassis/brow_lamp_l0>,
+        </pr_concept/Geometry/chassis/brow_lamp_l1>,
+        </pr_concept/Geometry/chassis/brow_lamp_l2>,
+        </pr_concept/Geometry/chassis/bumper_lamp_l>,
+        </pr_concept/Geometry/chassis/bumper_lamp_r>,
+        </pr_concept/Geometry/chassis/dock_work_light>,
+        </pr_concept/Geometry/chassis/work_light_r>,
+        </pr_concept/Geometry/chassis/porch_lamp_l>,
+        </pr_concept/Geometry/chassis/porch_lamp_r>,
+        </pr_concept/Geometry/chassis/docking_port>,
+        </pr_concept/Geometry/chassis/porch_deck>,
+        </pr_concept/Geometry/chassis/driver_left>,
+        </pr_concept/Geometry/chassis/driver_right>,
+        </pr_concept/Geometry/chassis/tow_hitch>,
+        </pr_concept/Geometry/chassis/tow_point_l>,
+        </pr_concept/Geometry/chassis/tow_point_r>,
+        </pr_concept/Geometry/chassis/star_tracker>,
+        </pr_concept/Geometry/chassis/vehicle_origin>,
+        </pr_concept/Geometry/chassis/imu>,
+        </pr_concept/Geometry/chassis/airlock_door>,
+        </pr_concept/Geometry/chassis/airlock_door/airlock_door>,
+        </pr_concept/Geometry/chassis/arm_yaw>,
+        </pr_concept/Geometry/chassis/arm_yaw/arm_shoulder>,
+        </pr_concept/Geometry/chassis/arm_yaw/arm_shoulder/arm_elbow>,
+        </pr_concept/Geometry/chassis/arm_yaw/arm_shoulder/arm_elbow/arm_wrist_pitch>,
+        </pr_concept/Geometry/chassis/arm_yaw/arm_shoulder/arm_elbow/arm_wrist_pitch/arm_wrist_roll>,
+        </pr_concept/Geometry/chassis/arm_yaw/arm_shoulder/arm_elbow/arm_wrist_pitch/arm_wrist_roll/arm_tool_point>,
+        </pr_concept/Geometry/chassis/dock_hatch>,
+        </pr_concept/Geometry/chassis/fl_lower_arm>,
+        </pr_concept/Geometry/chassis/fl_lower_arm/fl_upright>,
+        </pr_concept/Geometry/chassis/fl_lower_arm/fl_upright/fl_steer>,
+        </pr_concept/Geometry/chassis/fl_lower_arm/fl_upright/fl_steer/fl_wheel>,
+        </pr_concept/Geometry/chassis/fl_lower_arm/fl_upright/fl_steer/fl_wheel/fl_contact>,
+        </pr_concept/Geometry/chassis/fl_lower_arm/fl_upright/fl_steer/fl_wheel/fl_hub>,
+        </pr_concept/Geometry/chassis/fl_strut>,
+        </pr_concept/Geometry/chassis/fl_strut/fl_strut_rod>,
+        </pr_concept/Geometry/chassis/fl_upper_arm>,
+        </pr_concept/Geometry/chassis/fr_lower_arm>,
+        </pr_concept/Geometry/chassis/fr_lower_arm/fr_upright>,
+        </pr_concept/Geometry/chassis/fr_lower_arm/fr_upright/fr_steer>,
+        </pr_concept/Geometry/chassis/fr_lower_arm/fr_upright/fr_steer/fr_wheel>,
+        </pr_concept/Geometry/chassis/fr_lower_arm/fr_upright/fr_steer/fr_wheel/fr_contact>,
+        </pr_concept/Geometry/chassis/fr_lower_arm/fr_upright/fr_steer/fr_wheel/fr_hub>,
+        </pr_concept/Geometry/chassis/fr_strut>,
+        </pr_concept/Geometry/chassis/fr_strut/fr_strut_rod>,
+        </pr_concept/Geometry/chassis/fr_upper_arm>,
+        </pr_concept/Geometry/chassis/hga_azimuth>,
+        </pr_concept/Geometry/chassis/hga_azimuth/hga_elevation>,
+        </pr_concept/Geometry/chassis/hga_azimuth/hga_elevation/hga_boresight>,
+        </pr_concept/Geometry/chassis/ml_lower_arm>,
+        </pr_concept/Geometry/chassis/ml_lower_arm/ml_upright>,
+        </pr_concept/Geometry/chassis/ml_lower_arm/ml_upright/ml_steer>,
+        </pr_concept/Geometry/chassis/ml_lower_arm/ml_upright/ml_steer/ml_wheel>,
+        </pr_concept/Geometry/chassis/ml_lower_arm/ml_upright/ml_steer/ml_wheel/ml_contact>,
+        </pr_concept/Geometry/chassis/ml_lower_arm/ml_upright/ml_steer/ml_wheel/ml_hub>,
+        </pr_concept/Geometry/chassis/ml_strut>,
+        </pr_concept/Geometry/chassis/ml_strut/ml_strut_rod>,
+        </pr_concept/Geometry/chassis/ml_upper_arm>,
+        </pr_concept/Geometry/chassis/mr_lower_arm>,
+        </pr_concept/Geometry/chassis/mr_lower_arm/mr_upright>,
+        </pr_concept/Geometry/chassis/mr_lower_arm/mr_upright/mr_steer>,
+        </pr_concept/Geometry/chassis/mr_lower_arm/mr_upright/mr_steer/mr_wheel>,
+        </pr_concept/Geometry/chassis/mr_lower_arm/mr_upright/mr_steer/mr_wheel/mr_contact>,
+        </pr_concept/Geometry/chassis/mr_lower_arm/mr_upright/mr_steer/mr_wheel/mr_hub>,
+        </pr_concept/Geometry/chassis/mr_strut>,
+        </pr_concept/Geometry/chassis/mr_strut/mr_strut_rod>,
+        </pr_concept/Geometry/chassis/mr_upper_arm>,
+        </pr_concept/Geometry/chassis/nav_mast_pan>,
+        </pr_concept/Geometry/chassis/nav_mast_pan/nav_mast_tilt>,
+        </pr_concept/Geometry/chassis/rl_lower_arm>,
+        </pr_concept/Geometry/chassis/rl_lower_arm/rl_upright>,
+        </pr_concept/Geometry/chassis/rl_lower_arm/rl_upright/rl_steer>,
+        </pr_concept/Geometry/chassis/rl_lower_arm/rl_upright/rl_steer/rl_wheel>,
+        </pr_concept/Geometry/chassis/rl_lower_arm/rl_upright/rl_steer/rl_wheel/rl_contact>,
+        </pr_concept/Geometry/chassis/rl_lower_arm/rl_upright/rl_steer/rl_wheel/rl_hub>,
+        </pr_concept/Geometry/chassis/rl_strut>,
+        </pr_concept/Geometry/chassis/rl_strut/rl_strut_rod>,
+        </pr_concept/Geometry/chassis/rl_upper_arm>,
+        </pr_concept/Geometry/chassis/rr_lower_arm>,
+        </pr_concept/Geometry/chassis/rr_lower_arm/rr_upright>,
+        </pr_concept/Geometry/chassis/rr_lower_arm/rr_upright/rr_steer>,
+        </pr_concept/Geometry/chassis/rr_lower_arm/rr_upright/rr_steer/rr_wheel>,
+        </pr_concept/Geometry/chassis/rr_lower_arm/rr_upright/rr_steer/rr_wheel/rr_contact>,
+        </pr_concept/Geometry/chassis/rr_lower_arm/rr_upright/rr_steer/rr_wheel/rr_hub>,
+        </pr_concept/Geometry/chassis/rr_strut>,
+        </pr_concept/Geometry/chassis/rr_strut/rr_strut_rod>,
+        </pr_concept/Geometry/chassis/rr_upper_arm>,
+        </pr_concept/Geometry/chassis/solar_wing_l>,
+        </pr_concept/Geometry/chassis/solar_wing_r>,
+        </pr_concept/Geometry/chassis/suitport_hatch_l>,
+        </pr_concept/Geometry/chassis/suitport_hatch_l/suitport_l>,
+        </pr_concept/Geometry/chassis/suitport_hatch_r>,
+        </pr_concept/Geometry/chassis/suitport_hatch_r/suitport_r>,
+    ]
+    token isaac:robotType = "Wheeled"
+    string isaac:source = "lunar-surface-mobility-assets pipeline"
+    string isaac:version = "0.1.0"
+
+    over "Geometry"
+    {
+        over "chassis" (
+            prepend apiSchemas = ["IsaacLinkAPI"]
+        )
+        {
+            over "airlock_door" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "airlock_door" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Walk-in airlock door (1.0 x 1.5 m), Ports=airlock"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "arm_yaw" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "arm_shoulder" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "arm_elbow" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "arm_wrist_pitch" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                            over "arm_wrist_roll" (
+                                prepend apiSchemas = ["IsaacLinkAPI"]
+                            )
+                            {
+                                over "arm_tool_point" (
+                                    prepend apiSchemas = ["IsaacSiteAPI"]
+                                )
+                                {
+                                    string isaac:Description = "End-effector tool centre point (+Z = approach)"
+                                    uniform token isaac:forwardAxis = "Z"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            over "dock_hatch" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+            }
+
+            over "fl_lower_arm" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "fl_upright" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "fl_steer" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "fl_wheel" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                            over "fl_contact" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Nominal tyre contact point"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
+
+                            over "fl_hub" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Wheel centre; +Z = outboard axle"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
+                        }
+                    }
+                }
+            }
+
+            over "fl_strut" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "fl_strut_rod" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                }
+            }
+
+            over "fl_upper_arm" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+            }
+
+            over "fr_lower_arm" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "fr_upright" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "fr_steer" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "fr_wheel" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                            over "fr_contact" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Nominal tyre contact point"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
+
+                            over "fr_hub" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Wheel centre; +Z = outboard axle"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
+                        }
+                    }
+                }
+            }
+
+            over "fr_strut" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "fr_strut_rod" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                }
+            }
+
+            over "fr_upper_arm" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+            }
+
+            over "hga_azimuth" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "hga_elevation" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "hga_boresight" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "High-gain antenna boresight (+Z), 2-axis gimbal"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+                }
+            }
+
+            over "ml_lower_arm" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "ml_upright" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "ml_steer" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "ml_wheel" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                            over "ml_contact" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Nominal tyre contact point"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
+
+                            over "ml_hub" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Wheel centre; +Z = outboard axle"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
+                        }
+                    }
+                }
+            }
+
+            over "ml_strut" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "ml_strut_rod" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                }
+            }
+
+            over "ml_upper_arm" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+            }
+
+            over "mr_lower_arm" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "mr_upright" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "mr_steer" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "mr_wheel" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                            over "mr_contact" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Nominal tyre contact point"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
+
+                            over "mr_hub" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Wheel centre; +Z = outboard axle"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
+                        }
+                    }
+                }
+            }
+
+            over "mr_strut" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "mr_strut_rod" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                }
+            }
+
+            over "mr_upper_arm" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+            }
+
+            over "nav_mast_pan" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "nav_mast_tilt" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                }
+            }
+
+            over "rl_lower_arm" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "rl_upright" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "rl_steer" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "rl_wheel" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                            over "rl_contact" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Nominal tyre contact point"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
+
+                            over "rl_hub" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Wheel centre; +Z = outboard axle"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
+                        }
+                    }
+                }
+            }
+
+            over "rl_strut" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "rl_strut_rod" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                }
+            }
+
+            over "rl_upper_arm" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+            }
+
+            over "rr_lower_arm" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "rr_upright" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "rr_steer" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "rr_wheel" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                            over "rr_contact" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Nominal tyre contact point"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
+
+                            over "rr_hub" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Wheel centre; +Z = outboard axle"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
+                        }
+                    }
+                }
+            }
+
+            over "rr_strut" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "rr_strut_rod" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                }
+            }
+
+            over "rr_upper_arm" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+            }
+
+            over "solar_wing_l" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+            }
+
+            over "solar_wing_r" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+            }
+
+            over "suitport_hatch_l" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "suitport_l" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Suitport hatch (0.6 x 0.9 m); +Z points aft"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "suitport_hatch_r" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "suitport_r" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Suitport hatch (0.6 x 0.9 m); +Z points aft"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "brow_lamp_r0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Floodlight (+Z = beam axis)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "brow_lamp_r1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Floodlight (+Z = beam axis)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "brow_lamp_r2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Floodlight (+Z = beam axis)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "brow_lamp_l0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Floodlight (+Z = beam axis)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "brow_lamp_l1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Floodlight (+Z = beam axis)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "brow_lamp_l2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Floodlight (+Z = beam axis)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "bumper_lamp_l" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Floodlight (+Z = beam axis)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "bumper_lamp_r" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Floodlight (+Z = beam axis)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "dock_work_light" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Floodlight (+Z = beam axis)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "work_light_r" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Floodlight (+Z = beam axis)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "porch_lamp_l" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Floodlight (+Z = beam axis)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "porch_lamp_r" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Floodlight (+Z = beam axis)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "docking_port" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "IDSS-style side docking port (0.8 m clear, 1.3 m collar)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "porch_deck" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Aft porch grating deck"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "driver_left" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Cab driver station (estimated)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "driver_right" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Cab co-driver station (estimated)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "tow_hitch" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Rear tow hitch"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "tow_point_l" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Front tow stub"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "tow_point_r" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Front tow stub"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "star_tracker" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Star tracker"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "vehicle_origin" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Ground point under the chassis centre at nominal ride height"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "imu" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "IMU / navigation reference (estimated)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "airlock_door" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "arm_yaw" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "arm_shoulder" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "arm_elbow" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "arm_wrist_pitch" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "arm_wrist_roll" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "dock_hatch" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "fl_lower_arm" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "fl_upright" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "fl_steer" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "fl_wheel" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "fl_strut" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "fl_strut_rod" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "fl_upper_arm" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "fr_lower_arm" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "fr_upright" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "fr_steer" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "fr_wheel" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "fr_strut" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "fr_strut_rod" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "fr_upper_arm" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "hga_azimuth" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "hga_elevation" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "ml_lower_arm" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "ml_upright" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "ml_steer" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "ml_wheel" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "ml_strut" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "ml_strut_rod" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "ml_upper_arm" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "mr_lower_arm" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "mr_upright" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "mr_steer" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "mr_wheel" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "mr_strut" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "mr_strut_rod" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "mr_upper_arm" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "nav_mast_pan" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "nav_mast_tilt" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "rl_lower_arm" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "rl_upright" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "rl_steer" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "rl_wheel" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "rl_strut" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "rl_strut_rod" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "rl_upper_arm" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "rr_lower_arm" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "rr_upright" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "rr_steer" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "rr_wheel" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "rr_strut" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "rr_strut_rod" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "rr_upper_arm" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "solar_wing_l" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "solar_wing_r" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "suitport_hatch_l" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "suitport_hatch_r" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+    }
+}
+

@@ -1,0 +1,755 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "mk1"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "mk1" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    string isaac:description = "Blue Moon MK1"
+    token isaac:license = "Other"
+    string isaac:namespace = "mk1"
+    prepend rel isaac:physics:robotJoints = [
+        </mk1/Physics/be7_gimbal_x>,
+        </mk1/Physics/be7>,
+        </mk1/Physics/hga_azimuth>,
+        </mk1/Physics/hga_elevation>,
+        </mk1/Physics/leg_0_piston>,
+        </mk1/Physics/leg_1_piston>,
+        </mk1/Physics/leg_2_piston>,
+        </mk1/Physics/leg_3_piston>,
+        </mk1/Physics/solar_array_0>,
+        </mk1/Physics/solar_array_1>,
+    ]
+    prepend rel isaac:physics:robotLinks = [
+        </mk1/Geometry/body>,
+        </mk1/Geometry/body/be7_gimbal_center>,
+        </mk1/Geometry/body/rcs_0_hot_gas_0>,
+        </mk1/Geometry/body/rcs_0_hot_gas_1>,
+        </mk1/Geometry/body/rcs_0_hot_gas_2>,
+        </mk1/Geometry/body/rcs_0_hot_gas_3>,
+        </mk1/Geometry/body/rcs_0_cold_gas_4>,
+        </mk1/Geometry/body/rcs_0_cold_gas_5>,
+        </mk1/Geometry/body/rcs_1_hot_gas_0>,
+        </mk1/Geometry/body/rcs_1_hot_gas_1>,
+        </mk1/Geometry/body/rcs_1_hot_gas_2>,
+        </mk1/Geometry/body/rcs_1_hot_gas_3>,
+        </mk1/Geometry/body/rcs_1_cold_gas_4>,
+        </mk1/Geometry/body/rcs_1_cold_gas_5>,
+        </mk1/Geometry/body/rcs_2_hot_gas_0>,
+        </mk1/Geometry/body/rcs_2_hot_gas_1>,
+        </mk1/Geometry/body/rcs_2_hot_gas_2>,
+        </mk1/Geometry/body/rcs_2_hot_gas_3>,
+        </mk1/Geometry/body/rcs_2_cold_gas_4>,
+        </mk1/Geometry/body/rcs_2_cold_gas_5>,
+        </mk1/Geometry/body/rcs_3_hot_gas_0>,
+        </mk1/Geometry/body/rcs_3_hot_gas_1>,
+        </mk1/Geometry/body/rcs_3_hot_gas_2>,
+        </mk1/Geometry/body/rcs_3_hot_gas_3>,
+        </mk1/Geometry/body/rcs_3_cold_gas_4>,
+        </mk1/Geometry/body/rcs_3_cold_gas_5>,
+        </mk1/Geometry/body/rcs_low_0_hot_gas_0>,
+        </mk1/Geometry/body/rcs_low_0_hot_gas_1>,
+        </mk1/Geometry/body/rcs_low_0_hot_gas_2>,
+        </mk1/Geometry/body/rcs_low_1_hot_gas_0>,
+        </mk1/Geometry/body/rcs_low_1_hot_gas_1>,
+        </mk1/Geometry/body/rcs_low_1_hot_gas_2>,
+        </mk1/Geometry/body/rcs_low_2_hot_gas_0>,
+        </mk1/Geometry/body/rcs_low_2_hot_gas_1>,
+        </mk1/Geometry/body/rcs_low_2_hot_gas_2>,
+        </mk1/Geometry/body/rcs_low_3_hot_gas_0>,
+        </mk1/Geometry/body/rcs_low_3_hot_gas_1>,
+        </mk1/Geometry/body/rcs_low_3_hot_gas_2>,
+        </mk1/Geometry/body/star_tracker_0>,
+        </mk1/Geometry/body/star_tracker_1>,
+        </mk1/Geometry/body/omni_antenna_0>,
+        </mk1/Geometry/body/omni_antenna_1>,
+        </mk1/Geometry/body/omni_antenna_2>,
+        </mk1/Geometry/body/omni_antenna_3>,
+        </mk1/Geometry/body/lra>,
+        </mk1/Geometry/body/offloader_mount>,
+        </mk1/Geometry/body/vehicle_origin>,
+        </mk1/Geometry/body/deck_center>,
+        </mk1/Geometry/body/imu>,
+        </mk1/Geometry/body/lift_point_0>,
+        </mk1/Geometry/body/lift_point_1>,
+        </mk1/Geometry/body/lift_point_2>,
+        </mk1/Geometry/body/lift_point_3>,
+        </mk1/Geometry/body/be7_gimbal_x>,
+        </mk1/Geometry/body/be7_gimbal_x/be7>,
+        </mk1/Geometry/body/be7_gimbal_x/be7/be7_exit>,
+        </mk1/Geometry/body/hga_azimuth>,
+        </mk1/Geometry/body/hga_azimuth/hga_elevation>,
+        </mk1/Geometry/body/hga_azimuth/hga_elevation/hga_boresight>,
+        </mk1/Geometry/body/leg_0_piston>,
+        </mk1/Geometry/body/leg_0_piston/leg_0_foot_contact>,
+        </mk1/Geometry/body/leg_0_piston/leg_0_touchdown_sensor>,
+        </mk1/Geometry/body/leg_1_piston>,
+        </mk1/Geometry/body/leg_1_piston/leg_1_foot_contact>,
+        </mk1/Geometry/body/leg_1_piston/leg_1_touchdown_sensor>,
+        </mk1/Geometry/body/leg_2_piston>,
+        </mk1/Geometry/body/leg_2_piston/leg_2_foot_contact>,
+        </mk1/Geometry/body/leg_2_piston/leg_2_touchdown_sensor>,
+        </mk1/Geometry/body/leg_3_piston>,
+        </mk1/Geometry/body/leg_3_piston/leg_3_foot_contact>,
+        </mk1/Geometry/body/leg_3_piston/leg_3_touchdown_sensor>,
+        </mk1/Geometry/body/solar_array_0>,
+        </mk1/Geometry/body/solar_array_0/solar_array_0_normal>,
+        </mk1/Geometry/body/solar_array_1>,
+        </mk1/Geometry/body/solar_array_1/solar_array_1_normal>,
+    ]
+    token isaac:robotType = "Aerial"
+    string isaac:source = "lunar-surface-mobility-assets pipeline"
+    string isaac:version = "0.1.0"
+
+    over "Geometry"
+    {
+        over "body" (
+            prepend apiSchemas = ["IsaacLinkAPI"]
+        )
+        {
+            over "be7_gimbal_x" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "be7" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "be7_exit" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "BE-7 dual-expander; 10,000 lbf, 20-100% throttle (Blue Origin). Exit radius estimated from photos."
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+                }
+            }
+
+            over "hga_azimuth" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "hga_elevation" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "hga_boresight" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "High-gain antenna boresight (+Z); steerable (estimated configuration)"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+                }
+            }
+
+            over "leg_0_piston" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_0_foot_contact" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Footpad contact point (touchdown sensing)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+
+                over "leg_0_touchdown_sensor" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Stroke / touchdown switch (estimated)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "leg_1_piston" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_1_foot_contact" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Footpad contact point (touchdown sensing)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+
+                over "leg_1_touchdown_sensor" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Stroke / touchdown switch (estimated)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "leg_2_piston" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_2_foot_contact" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Footpad contact point (touchdown sensing)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+
+                over "leg_2_touchdown_sensor" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Stroke / touchdown switch (estimated)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "leg_3_piston" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_3_foot_contact" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Footpad contact point (touchdown sensing)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+
+                over "leg_3_touchdown_sensor" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Stroke / touchdown switch (estimated)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "solar_array_0" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "solar_array_0_normal" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Solar array centre; +Z = cell normal"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "solar_array_1" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "solar_array_1_normal" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Solar array centre; +Z = cell normal"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "be7_gimbal_center" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "BE-7 gimbal pivot"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_0_hot_gas_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_0_hot_gas_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_0_hot_gas_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_0_hot_gas_3" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_0_cold_gas_4" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Cold-gas fine attitude thrusters (Gunter's Space Page: hot and cold gas thrusters). Values assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_0_cold_gas_5" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Cold-gas fine attitude thrusters (Gunter's Space Page: hot and cold gas thrusters). Values assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_1_hot_gas_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_1_hot_gas_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_1_hot_gas_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_1_hot_gas_3" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_1_cold_gas_4" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Cold-gas fine attitude thrusters (Gunter's Space Page: hot and cold gas thrusters). Values assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_1_cold_gas_5" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Cold-gas fine attitude thrusters (Gunter's Space Page: hot and cold gas thrusters). Values assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_2_hot_gas_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_2_hot_gas_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_2_hot_gas_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_2_hot_gas_3" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_2_cold_gas_4" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Cold-gas fine attitude thrusters (Gunter's Space Page: hot and cold gas thrusters). Values assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_2_cold_gas_5" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Cold-gas fine attitude thrusters (Gunter's Space Page: hot and cold gas thrusters). Values assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_3_hot_gas_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_3_hot_gas_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_3_hot_gas_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_3_hot_gas_3" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_3_cold_gas_4" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Cold-gas fine attitude thrusters (Gunter's Space Page: hot and cold gas thrusters). Values assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_3_cold_gas_5" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Cold-gas fine attitude thrusters (Gunter's Space Page: hot and cold gas thrusters). Values assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_low_0_hot_gas_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_low_0_hot_gas_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_low_0_hot_gas_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_low_1_hot_gas_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_low_1_hot_gas_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_low_1_hot_gas_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_low_2_hot_gas_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_low_2_hot_gas_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_low_2_hot_gas_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_low_3_hot_gas_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_low_3_hot_gas_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_low_3_hot_gas_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "star_tracker_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Star tracker boresight (+Z), estimated location"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "star_tracker_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Star tracker boresight (+Z), estimated location"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "omni_antenna_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Low-gain / omni antenna phase centre (estimated)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "omni_antenna_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Low-gain / omni antenna phase centre (estimated)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "omni_antenna_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Low-gain / omni antenna phase centre (estimated)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "omni_antenna_3" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Low-gain / omni antenna phase centre (estimated)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lra" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "NASA GSFC Laser Retroreflector Array (8 reflectors)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "offloader_mount" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Deck mounting interface for the payload offloader (mates with mk1_offloader 'mount')"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "vehicle_origin" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Ground point under the centreline, legs at nominal stroke"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "deck_center" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Top deck centre (payload mounting plane)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "imu" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "IMU / navigation reference (estimated location)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lift_point_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "GSE lift point (deck corner)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lift_point_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "GSE lift point (deck corner)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lift_point_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "GSE lift point (deck corner)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lift_point_3" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "GSE lift point (deck corner)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "be7_gimbal_x" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "be7" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "hga_azimuth" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "hga_elevation" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "leg_0_piston" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_1_piston" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_2_piston" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_3_piston" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "solar_array_0" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "solar_array_1" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+    }
+}
+

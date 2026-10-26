@@ -1,0 +1,172 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "cadre"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./physics.usda@
+    ]
+    upAxis = "Z"
+)
+
+over "cadre"
+{
+    over "Physics"
+    {
+        over "fl_wheel" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "fl_wheel_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -12.899999999999999, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 0.327015
+            uniform double mjc:forceRange:min = -0.327015
+            uniform double[] mjc:gainPrm = [12.899999999999999, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </cadre/Physics/fl_wheel>
+        }
+
+        over "fr_wheel" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "fr_wheel_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -12.899999999999999, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 0.327015
+            uniform double mjc:forceRange:min = -0.327015
+            uniform double[] mjc:gainPrm = [12.899999999999999, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </cadre/Physics/fr_wheel>
+        }
+
+        over "front_camera_cover" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "front_camera_cover_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -0.2, -0.02, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 0.2
+            uniform double mjc:forceRange:min = -0.2
+            uniform double[] mjc:gainPrm = [0.2, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </cadre/Physics/front_camera_cover>
+        }
+
+        over "rear_camera_cover" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "rear_camera_cover_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -0.2, -0.02, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 0.2
+            uniform double mjc:forceRange:min = -0.2
+            uniform double[] mjc:gainPrm = [0.2, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </cadre/Physics/rear_camera_cover>
+        }
+
+        over "rl_wheel" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "rl_wheel_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -12.899999999999999, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 0.327015
+            uniform double mjc:forceRange:min = -0.327015
+            uniform double[] mjc:gainPrm = [12.899999999999999, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </cadre/Physics/rl_wheel>
+        }
+
+        over "rr_wheel" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "rr_wheel_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -12.899999999999999, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 0.327015
+            uniform double mjc:forceRange:min = -0.327015
+            uniform double[] mjc:gainPrm = [12.899999999999999, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </cadre/Physics/rr_wheel>
+        }
+
+        over "solar_wing_l" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "solar_wing_l_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -2, -0.2, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 1
+            uniform double mjc:forceRange:min = -1
+            uniform double[] mjc:gainPrm = [2, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </cadre/Physics/solar_wing_l>
+        }
+
+        over "solar_wing_r" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "solar_wing_r_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -2, -0.2, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 1
+            uniform double mjc:forceRange:min = -1
+            uniform double[] mjc:gainPrm = [2, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </cadre/Physics/solar_wing_r>
+        }
+    }
+}
+

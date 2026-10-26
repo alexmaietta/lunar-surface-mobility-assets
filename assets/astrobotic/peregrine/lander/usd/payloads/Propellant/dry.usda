@@ -1,0 +1,25 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "peregrine"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "peregrine"
+{
+    over "Geometry"
+    {
+        over "body"
+        {
+            point3f physics:centerOfMass = (0, 0, 1.27)
+            float3 physics:diagonalInertia = (220.0625, 220.0625, 251.5)
+            float physics:mass = 503
+            custom string propellant:source = "estimate: ~413 kg dry bus (rocket equation) + 90 kg payload (official)"
+        }
+    }
+}
+

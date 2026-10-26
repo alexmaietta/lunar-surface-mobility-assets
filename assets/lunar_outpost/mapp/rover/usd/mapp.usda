@@ -1,0 +1,116 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary SimReady_Metadata = {
+            float3 asset_extents = (0.45336, 0.38848, 0.44074)
+            string asset_license = "CC-BY-4.0"
+            string asset_name = "mapp"
+            string asset_type = "robot"
+            string asset_version = "0.1.0"
+            string category = "spacecraft"
+            double mass = 10
+            int rigid_body_count = 7
+            string source_file = "build/mapp/mapp.blend (scripts/build.py)"
+            string usd_date_generated = "2026-10-26"
+            string usd_version = "0.26.8"
+        }
+        string asset_name = "mapp"
+        string asset_type = "robot"
+        string asset_version = "0.1.0"
+        string creator = "lunar-surface-mobility-assets pipeline"
+        string usd_date_generated = "2026-10-26"
+    }
+    defaultPrim = "mapp"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "mapp" (
+    prepend references = @./payloads/base.usda@
+    variants = {
+        string Antennas = "flight"
+        string Articulation = "articulated"
+        string Fidelity = "full"
+        string Payload = "flight"
+        string Physics = "physx"
+    }
+    prepend variantSets = ["Articulation", "Payload", "Antennas", "Fidelity", "Physics"]
+)
+{
+    variantSet "Articulation" = {
+        "articulated" (
+            prepend payload = @./payloads/Articulation/articulated.usda@
+        ) {
+
+        }
+        "rigid" (
+            prepend payload = @./payloads/Articulation/rigid.usda@
+        ) {
+
+        }
+    }
+    variantSet "Payload" = {
+        "flight" (
+            prepend payload = @./payloads/Propellant/flight.usda@
+        ) {
+
+        }
+        "none" {
+
+        }
+    }
+    variantSet "Antennas" = {
+        "field_test" (
+            prepend payload = @./payloads/Antennas/field_test.usda@
+        ) {
+
+        }
+        "flight" (
+            prepend payload = @./payloads/Antennas/flight.usda@
+        ) {
+
+        }
+    }
+    variantSet "Fidelity" = {
+        "full" (
+            prepend payload = @./payloads/Fidelity/full.usda@
+        ) {
+
+        }
+        "none" {
+
+        }
+        "proxy" (
+            prepend payload = @./payloads/Fidelity/proxy.usd@
+        ) {
+
+        }
+        "simple" (
+            prepend payload = @./payloads/Fidelity/simple.usd@
+        ) {
+
+        }
+    }
+    variantSet "Physics" = {
+        "mujoco" (
+            prepend payload = @./payloads/Physics/mujoco.usda@
+        ) {
+
+        }
+        "none" {
+
+        }
+        "physics" (
+            prepend payload = @./payloads/Physics/physics.usda@
+        ) {
+
+        }
+        "physx" (
+            prepend payload = @./payloads/Physics/physx.usda@
+        ) {
+
+        }
+    }
+}
+

@@ -1,0 +1,77 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "mk1_offloader"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./physics.usda@
+    ]
+    upAxis = "Z"
+)
+
+over "mk1_offloader"
+{
+    over "Physics"
+    {
+        over "crane_slew" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "crane_slew_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -6000, -2500, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 2000
+            uniform double mjc:forceRange:min = -2000
+            uniform double[] mjc:gainPrm = [6000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </mk1_offloader/Physics/crane_slew>
+        }
+
+        over "crane_luff" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "crane_luff_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -20000, -4500, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 5000
+            uniform double mjc:forceRange:min = -5000
+            uniform double[] mjc:gainPrm = [20000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </mk1_offloader/Physics/crane_luff>
+        }
+
+        over "crane_hoist" (
+            delete apiSchemas = ["PhysicsDriveAPI:linear", "PhysicsJointStateAPI:linear"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "crane_hoist_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -5000, -500, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 6000
+            uniform double mjc:forceRange:min = -6000
+            uniform double[] mjc:gainPrm = [5000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </mk1_offloader/Physics/crane_hoist>
+        }
+    }
+}
+

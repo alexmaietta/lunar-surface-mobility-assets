@@ -1,0 +1,1163 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "apollo_lm"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "apollo_lm" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    string isaac:description = "Apollo Lunar Module"
+    token isaac:license = "Other"
+    string isaac:namespace = "apollo_lm"
+    prepend rel isaac:physics:robotJoints = [
+        </apollo_lm/Physics/dps_gimbal_x>,
+        </apollo_lm/Physics/dps>,
+        </apollo_lm/Physics/leg_0_primary>,
+        </apollo_lm/Physics/leg_0_primary_stage1>,
+        </apollo_lm/Physics/leg_0_primary_inner>,
+        </apollo_lm/Physics/leg_0_footpad>,
+        </apollo_lm/Physics/leg_0_secondary_a_inner>,
+        </apollo_lm/Physics/leg_0_secondary_a_compression>,
+        </apollo_lm/Physics/leg_0_secondary_a_tension1>,
+        </apollo_lm/Physics/leg_0_secondary_a_outer>,
+        </apollo_lm/Physics/leg_0_secondary_b_inner>,
+        </apollo_lm/Physics/leg_0_secondary_b_compression>,
+        </apollo_lm/Physics/leg_0_secondary_b_tension1>,
+        </apollo_lm/Physics/leg_0_secondary_b_outer>,
+        </apollo_lm/Physics/leg_1_primary>,
+        </apollo_lm/Physics/leg_1_primary_stage1>,
+        </apollo_lm/Physics/leg_1_primary_inner>,
+        </apollo_lm/Physics/leg_1_footpad>,
+        </apollo_lm/Physics/leg_1_secondary_a_inner>,
+        </apollo_lm/Physics/leg_1_secondary_a_compression>,
+        </apollo_lm/Physics/leg_1_secondary_a_tension1>,
+        </apollo_lm/Physics/leg_1_secondary_a_outer>,
+        </apollo_lm/Physics/leg_1_secondary_b_inner>,
+        </apollo_lm/Physics/leg_1_secondary_b_compression>,
+        </apollo_lm/Physics/leg_1_secondary_b_tension1>,
+        </apollo_lm/Physics/leg_1_secondary_b_outer>,
+        </apollo_lm/Physics/leg_2_primary>,
+        </apollo_lm/Physics/leg_2_primary_stage1>,
+        </apollo_lm/Physics/leg_2_primary_inner>,
+        </apollo_lm/Physics/leg_2_footpad>,
+        </apollo_lm/Physics/leg_2_secondary_a_inner>,
+        </apollo_lm/Physics/leg_2_secondary_a_compression>,
+        </apollo_lm/Physics/leg_2_secondary_a_tension1>,
+        </apollo_lm/Physics/leg_2_secondary_a_outer>,
+        </apollo_lm/Physics/leg_2_secondary_b_inner>,
+        </apollo_lm/Physics/leg_2_secondary_b_compression>,
+        </apollo_lm/Physics/leg_2_secondary_b_tension1>,
+        </apollo_lm/Physics/leg_2_secondary_b_outer>,
+        </apollo_lm/Physics/leg_3_primary>,
+        </apollo_lm/Physics/leg_3_primary_stage1>,
+        </apollo_lm/Physics/leg_3_primary_inner>,
+        </apollo_lm/Physics/leg_3_footpad>,
+        </apollo_lm/Physics/leg_3_secondary_a_inner>,
+        </apollo_lm/Physics/leg_3_secondary_a_compression>,
+        </apollo_lm/Physics/leg_3_secondary_a_tension1>,
+        </apollo_lm/Physics/leg_3_secondary_a_outer>,
+        </apollo_lm/Physics/leg_3_secondary_b_inner>,
+        </apollo_lm/Physics/leg_3_secondary_b_compression>,
+        </apollo_lm/Physics/leg_3_secondary_b_tension1>,
+        </apollo_lm/Physics/leg_3_secondary_b_outer>,
+        </apollo_lm/Physics/rr_shaft>,
+        </apollo_lm/Physics/rr_trunnion>,
+        </apollo_lm/Physics/sband_azimuth>,
+        </apollo_lm/Physics/sband_elevation>,
+    ]
+    prepend rel isaac:physics:robotLinks = [
+        </apollo_lm/Geometry/body>,
+        </apollo_lm/Geometry/body/dps_gimbal_center>,
+        </apollo_lm/Geometry/body/aps_exit>,
+        </apollo_lm/Geometry/body/rcs_0_0>,
+        </apollo_lm/Geometry/body/rcs_0_1>,
+        </apollo_lm/Geometry/body/rcs_0_2>,
+        </apollo_lm/Geometry/body/rcs_0_3>,
+        </apollo_lm/Geometry/body/rcs_1_0>,
+        </apollo_lm/Geometry/body/rcs_1_1>,
+        </apollo_lm/Geometry/body/rcs_1_2>,
+        </apollo_lm/Geometry/body/rcs_1_3>,
+        </apollo_lm/Geometry/body/rcs_2_0>,
+        </apollo_lm/Geometry/body/rcs_2_1>,
+        </apollo_lm/Geometry/body/rcs_2_2>,
+        </apollo_lm/Geometry/body/rcs_2_3>,
+        </apollo_lm/Geometry/body/rcs_3_0>,
+        </apollo_lm/Geometry/body/rcs_3_1>,
+        </apollo_lm/Geometry/body/rcs_3_2>,
+        </apollo_lm/Geometry/body/rcs_3_3>,
+        </apollo_lm/Geometry/body/vhf_0>,
+        </apollo_lm/Geometry/body/vhf_1>,
+        </apollo_lm/Geometry/body/vehicle_origin>,
+        </apollo_lm/Geometry/body/stage_interface>,
+        </apollo_lm/Geometry/body/docking_port>,
+        </apollo_lm/Geometry/body/forward_hatch>,
+        </apollo_lm/Geometry/body/imu>,
+        </apollo_lm/Geometry/body/lift_point_0>,
+        </apollo_lm/Geometry/body/lift_point_1>,
+        </apollo_lm/Geometry/body/lift_point_2>,
+        </apollo_lm/Geometry/body/lift_point_3>,
+        </apollo_lm/Geometry/body/dps_gimbal_x>,
+        </apollo_lm/Geometry/body/dps_gimbal_x/dps>,
+        </apollo_lm/Geometry/body/dps_gimbal_x/dps/dps_exit>,
+        </apollo_lm/Geometry/body/leg_0_primary>,
+        </apollo_lm/Geometry/body/leg_0_primary/leg_0_primary_stage1>,
+        </apollo_lm/Geometry/body/leg_0_primary/leg_0_primary_stage1/leg_0_primary_inner>,
+        </apollo_lm/Geometry/body/leg_0_primary/leg_0_primary_stage1/leg_0_primary_inner/leg_0_touchdown_sensor>,
+        </apollo_lm/Geometry/body/leg_0_primary/leg_0_primary_stage1/leg_0_primary_inner/leg_0_footpad>,
+        </apollo_lm/Geometry/body/leg_0_primary/leg_0_primary_stage1/leg_0_primary_inner/leg_0_footpad/leg_0_foot_contact>,
+        </apollo_lm/Geometry/body/leg_0_secondary_a_inner>,
+        </apollo_lm/Geometry/body/leg_0_secondary_a_inner/leg_0_secondary_a_compression>,
+        </apollo_lm/Geometry/body/leg_0_secondary_a_inner/leg_0_secondary_a_compression/leg_0_secondary_a_tension1>,
+        </apollo_lm/Geometry/body/leg_0_secondary_a_inner/leg_0_secondary_a_compression/leg_0_secondary_a_tension1/leg_0_secondary_a_outer>,
+        </apollo_lm/Geometry/body/leg_0_secondary_b_inner>,
+        </apollo_lm/Geometry/body/leg_0_secondary_b_inner/leg_0_secondary_b_compression>,
+        </apollo_lm/Geometry/body/leg_0_secondary_b_inner/leg_0_secondary_b_compression/leg_0_secondary_b_tension1>,
+        </apollo_lm/Geometry/body/leg_0_secondary_b_inner/leg_0_secondary_b_compression/leg_0_secondary_b_tension1/leg_0_secondary_b_outer>,
+        </apollo_lm/Geometry/body/leg_1_primary>,
+        </apollo_lm/Geometry/body/leg_1_primary/leg_1_primary_stage1>,
+        </apollo_lm/Geometry/body/leg_1_primary/leg_1_primary_stage1/leg_1_primary_inner>,
+        </apollo_lm/Geometry/body/leg_1_primary/leg_1_primary_stage1/leg_1_primary_inner/leg_1_touchdown_sensor>,
+        </apollo_lm/Geometry/body/leg_1_primary/leg_1_primary_stage1/leg_1_primary_inner/leg_1_footpad>,
+        </apollo_lm/Geometry/body/leg_1_primary/leg_1_primary_stage1/leg_1_primary_inner/leg_1_footpad/leg_1_foot_contact>,
+        </apollo_lm/Geometry/body/leg_1_secondary_a_inner>,
+        </apollo_lm/Geometry/body/leg_1_secondary_a_inner/leg_1_secondary_a_compression>,
+        </apollo_lm/Geometry/body/leg_1_secondary_a_inner/leg_1_secondary_a_compression/leg_1_secondary_a_tension1>,
+        </apollo_lm/Geometry/body/leg_1_secondary_a_inner/leg_1_secondary_a_compression/leg_1_secondary_a_tension1/leg_1_secondary_a_outer>,
+        </apollo_lm/Geometry/body/leg_1_secondary_b_inner>,
+        </apollo_lm/Geometry/body/leg_1_secondary_b_inner/leg_1_secondary_b_compression>,
+        </apollo_lm/Geometry/body/leg_1_secondary_b_inner/leg_1_secondary_b_compression/leg_1_secondary_b_tension1>,
+        </apollo_lm/Geometry/body/leg_1_secondary_b_inner/leg_1_secondary_b_compression/leg_1_secondary_b_tension1/leg_1_secondary_b_outer>,
+        </apollo_lm/Geometry/body/leg_2_primary>,
+        </apollo_lm/Geometry/body/leg_2_primary/leg_2_primary_stage1>,
+        </apollo_lm/Geometry/body/leg_2_primary/leg_2_primary_stage1/leg_2_primary_inner>,
+        </apollo_lm/Geometry/body/leg_2_primary/leg_2_primary_stage1/leg_2_primary_inner/leg_2_touchdown_sensor>,
+        </apollo_lm/Geometry/body/leg_2_primary/leg_2_primary_stage1/leg_2_primary_inner/leg_2_footpad>,
+        </apollo_lm/Geometry/body/leg_2_primary/leg_2_primary_stage1/leg_2_primary_inner/leg_2_footpad/leg_2_foot_contact>,
+        </apollo_lm/Geometry/body/leg_2_secondary_a_inner>,
+        </apollo_lm/Geometry/body/leg_2_secondary_a_inner/leg_2_secondary_a_compression>,
+        </apollo_lm/Geometry/body/leg_2_secondary_a_inner/leg_2_secondary_a_compression/leg_2_secondary_a_tension1>,
+        </apollo_lm/Geometry/body/leg_2_secondary_a_inner/leg_2_secondary_a_compression/leg_2_secondary_a_tension1/leg_2_secondary_a_outer>,
+        </apollo_lm/Geometry/body/leg_2_secondary_b_inner>,
+        </apollo_lm/Geometry/body/leg_2_secondary_b_inner/leg_2_secondary_b_compression>,
+        </apollo_lm/Geometry/body/leg_2_secondary_b_inner/leg_2_secondary_b_compression/leg_2_secondary_b_tension1>,
+        </apollo_lm/Geometry/body/leg_2_secondary_b_inner/leg_2_secondary_b_compression/leg_2_secondary_b_tension1/leg_2_secondary_b_outer>,
+        </apollo_lm/Geometry/body/leg_3_primary>,
+        </apollo_lm/Geometry/body/leg_3_primary/leg_3_primary_stage1>,
+        </apollo_lm/Geometry/body/leg_3_primary/leg_3_primary_stage1/leg_3_primary_inner>,
+        </apollo_lm/Geometry/body/leg_3_primary/leg_3_primary_stage1/leg_3_primary_inner/leg_3_touchdown_sensor>,
+        </apollo_lm/Geometry/body/leg_3_primary/leg_3_primary_stage1/leg_3_primary_inner/leg_3_footpad>,
+        </apollo_lm/Geometry/body/leg_3_primary/leg_3_primary_stage1/leg_3_primary_inner/leg_3_footpad/leg_3_foot_contact>,
+        </apollo_lm/Geometry/body/leg_3_secondary_a_inner>,
+        </apollo_lm/Geometry/body/leg_3_secondary_a_inner/leg_3_secondary_a_compression>,
+        </apollo_lm/Geometry/body/leg_3_secondary_a_inner/leg_3_secondary_a_compression/leg_3_secondary_a_tension1>,
+        </apollo_lm/Geometry/body/leg_3_secondary_a_inner/leg_3_secondary_a_compression/leg_3_secondary_a_tension1/leg_3_secondary_a_outer>,
+        </apollo_lm/Geometry/body/leg_3_secondary_b_inner>,
+        </apollo_lm/Geometry/body/leg_3_secondary_b_inner/leg_3_secondary_b_compression>,
+        </apollo_lm/Geometry/body/leg_3_secondary_b_inner/leg_3_secondary_b_compression/leg_3_secondary_b_tension1>,
+        </apollo_lm/Geometry/body/leg_3_secondary_b_inner/leg_3_secondary_b_compression/leg_3_secondary_b_tension1/leg_3_secondary_b_outer>,
+        </apollo_lm/Geometry/body/rr_shaft>,
+        </apollo_lm/Geometry/body/rr_shaft/rr_trunnion>,
+        </apollo_lm/Geometry/body/rr_shaft/rr_trunnion/rr_boresight>,
+        </apollo_lm/Geometry/body/sband_azimuth>,
+        </apollo_lm/Geometry/body/sband_azimuth/sband_elevation>,
+        </apollo_lm/Geometry/body/sband_azimuth/sband_elevation/sband_boresight>,
+    ]
+    token isaac:robotType = "Aerial"
+    string isaac:source = "lunar-surface-mobility-assets pipeline"
+    string isaac:version = "0.1.0"
+
+    over "Geometry"
+    {
+        over "body" (
+            prepend apiSchemas = ["IsaacLinkAPI"]
+        )
+        {
+            over "dps_gimbal_x" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "dps" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "dps_exit" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "TRW LM Descent Propulsion System (J-mission, 10 in nozzle extension): 9,870 lbf full thrust, ~10-65% throttle, +/-6 deg gimbal (Grumman/NASA News Reference)."
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+                }
+            }
+
+            over "leg_0_primary" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_0_primary_stage1" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "leg_0_primary_inner" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "leg_0_footpad" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                            over "leg_0_foot_contact" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Footpad contact point (touchdown sensing)"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
+                        }
+
+                        over "leg_0_touchdown_sensor" (
+                            prepend apiSchemas = ["IsaacSiteAPI"]
+                        )
+                        {
+                            string isaac:Description = "Primary strut stroke: 4,500 lb stage to 12 in, 9,500 lb stage to 32 in (NASA TN D-6850)"
+                            uniform token isaac:forwardAxis = "Z"
+                        }
+                    }
+                }
+            }
+
+            over "leg_0_secondary_a_inner" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_0_secondary_a_compression" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "leg_0_secondary_a_tension1" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "leg_0_secondary_a_outer" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                        }
+                    }
+                }
+            }
+
+            over "leg_0_secondary_b_inner" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_0_secondary_b_compression" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "leg_0_secondary_b_tension1" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "leg_0_secondary_b_outer" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                        }
+                    }
+                }
+            }
+
+            over "leg_1_primary" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_1_primary_stage1" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "leg_1_primary_inner" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "leg_1_footpad" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                            over "leg_1_foot_contact" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Footpad contact point (touchdown sensing)"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
+                        }
+
+                        over "leg_1_touchdown_sensor" (
+                            prepend apiSchemas = ["IsaacSiteAPI"]
+                        )
+                        {
+                            string isaac:Description = "Primary strut stroke: 4,500 lb stage to 12 in, 9,500 lb stage to 32 in (NASA TN D-6850)"
+                            uniform token isaac:forwardAxis = "Z"
+                        }
+                    }
+                }
+            }
+
+            over "leg_1_secondary_a_inner" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_1_secondary_a_compression" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "leg_1_secondary_a_tension1" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "leg_1_secondary_a_outer" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                        }
+                    }
+                }
+            }
+
+            over "leg_1_secondary_b_inner" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_1_secondary_b_compression" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "leg_1_secondary_b_tension1" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "leg_1_secondary_b_outer" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                        }
+                    }
+                }
+            }
+
+            over "leg_2_primary" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_2_primary_stage1" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "leg_2_primary_inner" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "leg_2_footpad" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                            over "leg_2_foot_contact" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Footpad contact point (touchdown sensing)"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
+                        }
+
+                        over "leg_2_touchdown_sensor" (
+                            prepend apiSchemas = ["IsaacSiteAPI"]
+                        )
+                        {
+                            string isaac:Description = "Primary strut stroke: 4,500 lb stage to 12 in, 9,500 lb stage to 32 in (NASA TN D-6850)"
+                            uniform token isaac:forwardAxis = "Z"
+                        }
+                    }
+                }
+            }
+
+            over "leg_2_secondary_a_inner" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_2_secondary_a_compression" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "leg_2_secondary_a_tension1" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "leg_2_secondary_a_outer" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                        }
+                    }
+                }
+            }
+
+            over "leg_2_secondary_b_inner" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_2_secondary_b_compression" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "leg_2_secondary_b_tension1" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "leg_2_secondary_b_outer" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                        }
+                    }
+                }
+            }
+
+            over "leg_3_primary" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_3_primary_stage1" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "leg_3_primary_inner" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "leg_3_footpad" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                            over "leg_3_foot_contact" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Footpad contact point (touchdown sensing)"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
+                        }
+
+                        over "leg_3_touchdown_sensor" (
+                            prepend apiSchemas = ["IsaacSiteAPI"]
+                        )
+                        {
+                            string isaac:Description = "Primary strut stroke: 4,500 lb stage to 12 in, 9,500 lb stage to 32 in (NASA TN D-6850)"
+                            uniform token isaac:forwardAxis = "Z"
+                        }
+                    }
+                }
+            }
+
+            over "leg_3_secondary_a_inner" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_3_secondary_a_compression" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "leg_3_secondary_a_tension1" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "leg_3_secondary_a_outer" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                        }
+                    }
+                }
+            }
+
+            over "leg_3_secondary_b_inner" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_3_secondary_b_compression" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "leg_3_secondary_b_tension1" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "leg_3_secondary_b_outer" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                        }
+                    }
+                }
+            }
+
+            over "rr_shaft" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "rr_trunnion" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "rr_boresight" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "Rendezvous radar boresight (+Z), shaft/trunnion mount"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+                }
+            }
+
+            over "sband_azimuth" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "sband_elevation" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "sband_boresight" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "Steerable S-band antenna boresight (+Z), 26 in dish"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+                }
+            }
+
+            over "dps_gimbal_center" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "DPS gimbal pivot"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "aps_exit" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Bell LM Ascent Propulsion System: 3,500 lbf fixed, not throttleable or gimballed (NASA News Reference). Exit plane height inferred."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_0_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_0_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_0_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_0_3" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_1_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_1_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_1_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_1_3" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_2_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_2_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_2_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_2_3" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_3_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_3_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_3_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_3_3" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "vhf_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "VHF in-flight antenna"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "vhf_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "VHF in-flight antenna"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "vehicle_origin" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Ground point under the centreline, legs at nominal stroke"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "stage_interface" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Ascent/descent stage interface (LM station X200); ascent separation plane"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "docking_port" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Overhead docking tunnel / drogue interface"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "forward_hatch" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Forward EVA hatch (0.81 m square)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "imu" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Inertial measurement unit (navigation base, approximate)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lift_point_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "GSE lift point"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lift_point_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "GSE lift point"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lift_point_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "GSE lift point"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lift_point_3" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "GSE lift point"
+                uniform token isaac:forwardAxis = "Z"
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "dps_gimbal_x" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "dps" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "leg_0_primary" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_0_primary_stage1" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_0_primary_inner" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_0_footpad" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_0_secondary_a_inner" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_0_secondary_a_compression" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_0_secondary_a_tension1" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_0_secondary_a_outer" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_0_secondary_b_inner" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_0_secondary_b_compression" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_0_secondary_b_tension1" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_0_secondary_b_outer" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_1_primary" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_1_primary_stage1" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_1_primary_inner" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_1_footpad" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_1_secondary_a_inner" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_1_secondary_a_compression" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_1_secondary_a_tension1" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_1_secondary_a_outer" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_1_secondary_b_inner" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_1_secondary_b_compression" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_1_secondary_b_tension1" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_1_secondary_b_outer" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_2_primary" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_2_primary_stage1" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_2_primary_inner" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_2_footpad" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_2_secondary_a_inner" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_2_secondary_a_compression" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_2_secondary_a_tension1" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_2_secondary_a_outer" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_2_secondary_b_inner" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_2_secondary_b_compression" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_2_secondary_b_tension1" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_2_secondary_b_outer" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_3_primary" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_3_primary_stage1" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_3_primary_inner" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_3_footpad" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_3_secondary_a_inner" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_3_secondary_a_compression" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_3_secondary_a_tension1" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_3_secondary_a_outer" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_3_secondary_b_inner" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_3_secondary_b_compression" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_3_secondary_b_tension1" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_3_secondary_b_outer" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "rr_shaft" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "rr_trunnion" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "sband_azimuth" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "sband_elevation" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+    }
+}
+

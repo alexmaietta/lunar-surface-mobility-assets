@@ -1,0 +1,2131 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "apollo_lm"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./robot.usda@
+    ]
+    upAxis = "Z"
+)
+
+def Xform "apollo_lm" (
+    prepend apiSchemas = ["IsaacRobotAPI", "GeomModelAPI", "SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @./apollo_lm.usda@
+        string name = "apollo_lm"
+        string version = "0.1.0"
+    }
+    doc = "Grumman Apollo Lunar Module (J-mission, LM-10 to LM-12): a 7.04 m tall two-stage crewed lander with a 4.2 m octagonal descent stage in amber Kapton, four cantilever legs on a 9.45 m footprint with 0.94 m pads, a gimballed throttleable descent engine with the J-mission nozzle extension, an ascent stage with a forward-leaning crew cabin, triangular windows, forward hatch, docking tunnel, fixed ascent engine, four RCS quads, a steerable S-band dish and the rendezvous radar."
+    kind = "component"
+)
+{
+    float3[] extentsHint = [(-4.7279997, -4.7285, -0.008499995), (4.7285, 4.7255, 6.9323573), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-4.7279997, -4.7285, -0.008499995), (4.7285, 4.7255, 6.244)]
+    token[] semantics:labels:class = ["lunar_lander", "spacecraft", "crewed_spacecraft"]
+
+    def Scope "Geometry"
+    {
+        def Xform "body"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Xform "body__mli_amber" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__mli_amber>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__engine_metal" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__engine_metal>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__ds_deck" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__ds_deck>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__window" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__window>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__mli_black" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__mli_black>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__as_black" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__as_black>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__radiator" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__radiator>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__nozzle_ext" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__nozzle_ext>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__mli_silver" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__mli_silver>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__aluminium" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__aluminium>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__leg_mli" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__leg_mli>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__as_hatch" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__as_hatch>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__as_panel" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__as_panel>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__nozzle_int" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__nozzle_int>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body_hull_col" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body_hull_col>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "dps_gimbal_x"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 2.677999973297119)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "dps_gimbal_x__aluminium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/dps_gimbal_x__aluminium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "dps"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "dps__nozzle_ext" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/dps__nozzle_ext>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "dps__aluminium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/dps__aluminium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "dps__nozzle_int" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/dps__nozzle_int>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "dps__engine_metal" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/dps__engine_metal>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "dps_nozzle_col" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/dps_nozzle_col>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "dps_exit"
+                    {
+                        uniform token purpose = "guide"
+                        custom token site:kind = "thruster"
+                        custom double thruster:areaRatio = 25
+                        custom string thruster:confidence = "official"
+                        custom double thruster:exitRadius = 0.8
+                        custom double thruster:ispVac = 311
+                        custom string thruster:kind = "main"
+                        custom double thruster:massFlow = 14.394064871296159
+                        custom string thruster:notes = "TRW LM Descent Propulsion System (J-mission, 10 in nozzle extension): 9,870 lbf full thrust, ~10-65% throttle, +/-6 deg gimbal (Grumman/NASA News Reference)."
+                        custom string thruster:propellant = "Aerozine 50/N2O4"
+                        custom double thruster:throatRadius = 0.16
+                        custom double thruster:thrustMin = 4700
+                        custom double thruster:thrustVac = 43900
+                        quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, -2.4629999732971193)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+                }
+            }
+
+            def Xform "leg_0_primary"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (2.7200000286102295, 0, 3)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "leg_0_primary__leg_mli" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_0_primary__leg_mli>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_0_primary__aluminium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_0_primary__aluminium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_0_primary_stage1"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0.9522664546966553, 0, -1.7587463855743408)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "leg_0_primary_stage1__aluminium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/leg_0_primary_stage1__aluminium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "leg_0_primary_inner"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "leg_0_primary_inner__polished" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/leg_0_primary_inner__polished>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "leg_0_primary_inner__aluminium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/leg_0_primary_inner__aluminium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "leg_0_footpad"
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0.5827336311340332, 0, -1.0762536525726318)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Xform "leg_0_footpad__footpad" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_0_footpad__footpad>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "leg_0_footpad_foot_col" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_0_footpad_foot_col>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "leg_0_foot_contact"
+                            {
+                                custom string site:description = "Footpad contact point (touchdown sensing)"
+                                custom token site:kind = "contact"
+                                quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, -0.16499996185302734)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+                        }
+
+                        def Xform "leg_0_touchdown_sensor"
+                        {
+                            custom string site:description = "Primary strut stroke: 4,500 lb stage to 12 in, 9,500 lb stage to 32 in (NASA TN D-6850)"
+                            custom token site:kind = "sensor"
+                            quatd xformOp:orient = (0.9693742990493774, 0, -0.24558791518211365, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+                    }
+                }
+            }
+
+            def Xform "leg_0_secondary_a_inner"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (2.056999921798706, -0.6173999905586243, 1.559999942779541)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "leg_0_secondary_a_inner__polished" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_0_secondary_a_inner__polished>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_0_secondary_a_compression"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0.8753030300140381, 0.33956998586654663, -0.15112781524658203)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "leg_0_secondary_a_compression__aluminium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/leg_0_secondary_a_compression__aluminium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "leg_0_secondary_a_tension1"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "leg_0_secondary_a_tension1__aluminium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/leg_0_secondary_a_tension1__aluminium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "leg_0_secondary_a_outer"
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Xform "leg_0_secondary_a_outer__leg_mli" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_0_secondary_a_outer__leg_mli>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "leg_0_secondary_a_outer__aluminium" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_0_secondary_a_outer__aluminium>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+                        }
+                    }
+                }
+            }
+
+            def Xform "leg_0_secondary_b_inner"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (2.056999921798706, 0.6173999905586243, 1.559999942779541)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "leg_0_secondary_b_inner__polished" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_0_secondary_b_inner__polished>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_0_secondary_b_compression"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0.8753030300140381, -0.33956998586654663, -0.15112781524658203)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "leg_0_secondary_b_compression__aluminium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/leg_0_secondary_b_compression__aluminium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "leg_0_secondary_b_tension1"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "leg_0_secondary_b_tension1__aluminium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/leg_0_secondary_b_tension1__aluminium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "leg_0_secondary_b_outer"
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Xform "leg_0_secondary_b_outer__leg_mli" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_0_secondary_b_outer__leg_mli>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "leg_0_secondary_b_outer__aluminium" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_0_secondary_b_outer__aluminium>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+                        }
+                    }
+                }
+            }
+
+            def Xform "leg_1_primary"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.6655196930460487e-16, 2.7200000286102295, 3)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "leg_1_primary__leg_mli" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_1_primary__leg_mli>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_1_primary__aluminium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_1_primary__aluminium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_1_primary_stage1"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (5.830949662607982e-17, 0.9522664546966553, -1.7587463855743408)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "leg_1_primary_stage1__aluminium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/leg_1_primary_stage1__aluminium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "leg_1_primary_inner"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "leg_1_primary_inner__polished" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/leg_1_primary_inner__polished>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "leg_1_primary_inner__aluminium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/leg_1_primary_inner__aluminium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "leg_1_footpad"
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (3.568213640581426e-17, 0.5827336311340332, -1.0762536525726318)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Xform "leg_1_footpad__footpad" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_1_footpad__footpad>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "leg_1_footpad_foot_col" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_1_footpad_foot_col>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "leg_1_foot_contact"
+                            {
+                                custom string site:description = "Footpad contact point (touchdown sensing)"
+                                custom token site:kind = "contact"
+                                quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, -0.16499996185302734)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+                        }
+
+                        def Xform "leg_1_touchdown_sensor"
+                        {
+                            custom string site:description = "Primary strut stroke: 4,500 lb stage to 12 in, 9,500 lb stage to 32 in (NASA TN D-6850)"
+                            custom token site:kind = "sensor"
+                            quatd xformOp:orient = (0.9693742990493774, 0.24558791518211365, -1.503792185180988e-17, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+                    }
+                }
+            }
+
+            def Xform "leg_1_secondary_a_inner"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.6173999905586243, 2.056999921798706, 1.559999942779541)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "leg_1_secondary_a_inner__polished" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_1_secondary_a_inner__polished>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_1_secondary_a_compression"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-0.33956998586654663, 0.8753030300140381, -0.15112781524658203)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "leg_1_secondary_a_compression__aluminium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/leg_1_secondary_a_compression__aluminium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "leg_1_secondary_a_tension1"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "leg_1_secondary_a_tension1__aluminium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/leg_1_secondary_a_tension1__aluminium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "leg_1_secondary_a_outer"
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Xform "leg_1_secondary_a_outer__leg_mli" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_1_secondary_a_outer__leg_mli>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "leg_1_secondary_a_outer__aluminium" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_1_secondary_a_outer__aluminium>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+                        }
+                    }
+                }
+            }
+
+            def Xform "leg_1_secondary_b_inner"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.6173999905586243, 2.056999921798706, 1.559999942779541)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "leg_1_secondary_b_inner__polished" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_1_secondary_b_inner__polished>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_1_secondary_b_compression"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0.33956998586654663, 0.8753030300140381, -0.15112781524658203)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "leg_1_secondary_b_compression__aluminium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/leg_1_secondary_b_compression__aluminium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "leg_1_secondary_b_tension1"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "leg_1_secondary_b_tension1__aluminium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/leg_1_secondary_b_tension1__aluminium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "leg_1_secondary_b_outer"
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Xform "leg_1_secondary_b_outer__leg_mli" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_1_secondary_b_outer__leg_mli>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "leg_1_secondary_b_outer__aluminium" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_1_secondary_b_outer__aluminium>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+                        }
+                    }
+                }
+            }
+
+            def Xform "leg_2_primary"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-2.7200000286102295, 3.3310393860920974e-16, 3)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "leg_2_primary__leg_mli" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_2_primary__leg_mli>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_2_primary__aluminium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_2_primary__aluminium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_2_primary_stage1"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-0.9522664546966553, 1.1661899325215964e-16, -1.7587463855743408)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "leg_2_primary_stage1__aluminium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/leg_2_primary_stage1__aluminium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "leg_2_primary_inner"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "leg_2_primary_inner__polished" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/leg_2_primary_inner__polished>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "leg_2_primary_inner__aluminium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/leg_2_primary_inner__aluminium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "leg_2_footpad"
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (-0.5827336311340332, 7.136427281162852e-17, -1.0762536525726318)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Xform "leg_2_footpad__footpad" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_2_footpad__footpad>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "leg_2_footpad_foot_col" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_2_footpad_foot_col>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "leg_2_foot_contact"
+                            {
+                                custom string site:description = "Footpad contact point (touchdown sensing)"
+                                custom token site:kind = "contact"
+                                quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, -0.16499996185302734)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+                        }
+
+                        def Xform "leg_2_touchdown_sensor"
+                        {
+                            custom string site:description = "Primary strut stroke: 4,500 lb stage to 12 in, 9,500 lb stage to 32 in (NASA TN D-6850)"
+                            custom token site:kind = "sensor"
+                            quatd xformOp:orient = (0.9693742990493774, 3.007584370361976e-17, 0.24558791518211365, -0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+                    }
+                }
+            }
+
+            def Xform "leg_2_secondary_a_inner"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-2.056999921798706, 0.6173999905586243, 1.559999942779541)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "leg_2_secondary_a_inner__polished" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_2_secondary_a_inner__polished>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_2_secondary_a_compression"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-0.8753030300140381, -0.33956998586654663, -0.15112781524658203)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "leg_2_secondary_a_compression__aluminium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/leg_2_secondary_a_compression__aluminium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "leg_2_secondary_a_tension1"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "leg_2_secondary_a_tension1__aluminium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/leg_2_secondary_a_tension1__aluminium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "leg_2_secondary_a_outer"
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Xform "leg_2_secondary_a_outer__leg_mli" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_2_secondary_a_outer__leg_mli>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "leg_2_secondary_a_outer__aluminium" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_2_secondary_a_outer__aluminium>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+                        }
+                    }
+                }
+            }
+
+            def Xform "leg_2_secondary_b_inner"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-2.056999921798706, -0.6173999905586243, 1.559999942779541)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "leg_2_secondary_b_inner__polished" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_2_secondary_b_inner__polished>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_2_secondary_b_compression"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-0.8753030300140381, 0.33956998586654663, -0.15112781524658203)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "leg_2_secondary_b_compression__aluminium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/leg_2_secondary_b_compression__aluminium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "leg_2_secondary_b_tension1"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "leg_2_secondary_b_tension1__aluminium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/leg_2_secondary_b_tension1__aluminium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "leg_2_secondary_b_outer"
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Xform "leg_2_secondary_b_outer__leg_mli" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_2_secondary_b_outer__leg_mli>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "leg_2_secondary_b_outer__aluminium" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_2_secondary_b_outer__aluminium>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+                        }
+                    }
+                }
+            }
+
+            def Xform "leg_3_primary"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-4.996558946789248e-16, -2.7200000286102295, 3)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "leg_3_primary__leg_mli" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_3_primary__leg_mli>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_3_primary__aluminium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_3_primary__aluminium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_3_primary_stage1"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-1.7492855605268846e-16, -0.9522664546966553, -1.7587463855743408)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "leg_3_primary_stage1__aluminium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/leg_3_primary_stage1__aluminium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "leg_3_primary_inner"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "leg_3_primary_inner__polished" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/leg_3_primary_inner__polished>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "leg_3_primary_inner__aluminium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/leg_3_primary_inner__aluminium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "leg_3_footpad"
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (-1.0704638274766317e-16, -0.5827336311340332, -1.0762536525726318)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Xform "leg_3_footpad__footpad" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_3_footpad__footpad>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "leg_3_footpad_foot_col" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_3_footpad_foot_col>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "leg_3_foot_contact"
+                            {
+                                custom string site:description = "Footpad contact point (touchdown sensing)"
+                                custom token site:kind = "contact"
+                                quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, -0.16499996185302734)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+                        }
+
+                        def Xform "leg_3_touchdown_sensor"
+                        {
+                            custom string site:description = "Primary strut stroke: 4,500 lb stage to 12 in, 9,500 lb stage to 32 in (NASA TN D-6850)"
+                            custom token site:kind = "sensor"
+                            quatd xformOp:orient = (0.9693742990493774, -0.24558791518211365, 4.511376886415209e-17, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+                    }
+                }
+            }
+
+            def Xform "leg_3_secondary_a_inner"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.6173999905586243, -2.056999921798706, 1.559999942779541)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "leg_3_secondary_a_inner__polished" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_3_secondary_a_inner__polished>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_3_secondary_a_compression"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0.33956998586654663, -0.8753030300140381, -0.15112781524658203)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "leg_3_secondary_a_compression__aluminium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/leg_3_secondary_a_compression__aluminium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "leg_3_secondary_a_tension1"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "leg_3_secondary_a_tension1__aluminium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/leg_3_secondary_a_tension1__aluminium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "leg_3_secondary_a_outer"
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Xform "leg_3_secondary_a_outer__leg_mli" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_3_secondary_a_outer__leg_mli>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "leg_3_secondary_a_outer__aluminium" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_3_secondary_a_outer__aluminium>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+                        }
+                    }
+                }
+            }
+
+            def Xform "leg_3_secondary_b_inner"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.6173999905586243, -2.056999921798706, 1.559999942779541)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "leg_3_secondary_b_inner__polished" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_3_secondary_b_inner__polished>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_3_secondary_b_compression"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-0.33956998586654663, -0.8753030300140381, -0.15112781524658203)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "leg_3_secondary_b_compression__aluminium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/leg_3_secondary_b_compression__aluminium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "leg_3_secondary_b_tension1"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "leg_3_secondary_b_tension1__aluminium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/leg_3_secondary_b_tension1__aluminium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "leg_3_secondary_b_outer"
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Xform "leg_3_secondary_b_outer__leg_mli" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_3_secondary_b_outer__leg_mli>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "leg_3_secondary_b_outer__aluminium" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/leg_3_secondary_b_outer__aluminium>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+                        }
+                    }
+                }
+            }
+
+            def Xform "rr_shaft"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 1.350000023841858, 6.059999942779541)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "rr_shaft__aluminium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/rr_shaft__aluminium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "rr_trunnion"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "rr_trunnion__dish" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/rr_trunnion__dish>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "rr_trunnion__as_black" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/rr_trunnion__as_black>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "rr_trunnion__aluminium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/rr_trunnion__aluminium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "rr_boresight"
+                    {
+                        custom string site:band = "X"
+                        custom string site:description = "Rendezvous radar boresight (+Z), shaft/trunnion mount"
+                        custom token site:kind = "antenna"
+                        quatd xformOp:orient = (0.9777324795722961, -0.20985530316829681, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0.2431093454360962, 0.37357616424560547)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+                }
+            }
+
+            def Xform "sband_azimuth"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (2.1500000953674316, 2, 6.230000019073486)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "sband_azimuth__as_black" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/sband_azimuth__as_black>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "sband_azimuth__aluminium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/sband_azimuth__aluminium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "sband_elevation"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0.3600001335144043)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "sband_elevation__dish" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/sband_elevation__dish>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "sband_elevation__aluminium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/sband_elevation__aluminium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "sband_elevation__as_black" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/sband_elevation__as_black>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "sband_boresight"
+                    {
+                        custom string site:band = "S"
+                        custom string site:description = "Steerable S-band antenna boresight (+Z), 26 in dish"
+                        custom token site:kind = "antenna"
+                        quatd xformOp:orient = (0.941474437713623, -0.3197864294052124, 0.1065954715013504, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0.05913877487182617, 0.17741680145263672, 0.28768444061279297)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+                }
+            }
+
+            def Xform "dps_gimbal_center"
+            {
+                custom string site:description = "DPS gimbal pivot"
+                custom token site:kind = "reference"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 2.6779999999999995)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "aps_exit"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom double thruster:areaRatio = 12.829421487603307
+                custom string thruster:confidence = "performance official; exit height inferred"
+                custom double thruster:exitRadius = 0.394
+                custom double thruster:ispVac = 311
+                custom string thruster:kind = "ascent"
+                custom double thruster:massFlow = 5.105138725423262
+                custom string thruster:notes = "Bell LM Ascent Propulsion System: 3,500 lbf fixed, not throttleable or gimballed (NASA News Reference). Exit plane height inferred."
+                custom string thruster:propellant = "Aerozine 50/N2O4"
+                custom double thruster:throatRadius = 0.11
+                custom double thruster:thrustVac = 15570
+                quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 3.4)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_0_0"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_quad_0"
+                custom string thruster:confidence = "official; quad positions measured from drawings"
+                custom double thruster:exitRadius = 0.07
+                custom double thruster:ispVac = 290
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.1564736947500614
+                custom string thruster:notes = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                custom string thruster:propellant = "Aerozine 50/N2O4"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.661700963973999, 1.661700963973999, 5)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_0_1"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_quad_0"
+                custom string thruster:confidence = "official; quad positions measured from drawings"
+                custom double thruster:exitRadius = 0.07
+                custom double thruster:ispVac = 290
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.1564736947500614
+                custom string thruster:notes = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                custom string thruster:propellant = "Aerozine 50/N2O4"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.661700963973999, 1.661700963973999, 4.199999809265137)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_0_2"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_quad_0"
+                custom string thruster:confidence = "official; quad positions measured from drawings"
+                custom double thruster:exitRadius = 0.07
+                custom double thruster:ispVac = 290
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.1564736947500614
+                custom string thruster:notes = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                custom string thruster:propellant = "Aerozine 50/N2O4"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071068286895752, 0, 0.7071067690849304, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (2.0617008209228516, 1.661700963973999, 4.599999904632568)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_0_3"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_quad_0"
+                custom string thruster:confidence = "official; quad positions measured from drawings"
+                custom double thruster:exitRadius = 0.07
+                custom double thruster:ispVac = 290
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.1564736947500614
+                custom string thruster:notes = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                custom string thruster:propellant = "Aerozine 50/N2O4"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071068286895752, -0.7071067690849304, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.661700963973999, 2.0617008209228516, 4.599999904632568)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_1_0"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_quad_1"
+                custom string thruster:confidence = "official; quad positions measured from drawings"
+                custom double thruster:exitRadius = 0.07
+                custom double thruster:ispVac = 290
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.1564736947500614
+                custom string thruster:notes = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                custom string thruster:propellant = "Aerozine 50/N2O4"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.661700963973999, 1.661700963973999, 5)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_1_1"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_quad_1"
+                custom string thruster:confidence = "official; quad positions measured from drawings"
+                custom double thruster:exitRadius = 0.07
+                custom double thruster:ispVac = 290
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.1564736947500614
+                custom string thruster:notes = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                custom string thruster:propellant = "Aerozine 50/N2O4"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.661700963973999, 1.661700963973999, 4.199999809265137)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_1_2"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_quad_1"
+                custom string thruster:confidence = "official; quad positions measured from drawings"
+                custom double thruster:exitRadius = 0.07
+                custom double thruster:ispVac = 290
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.1564736947500614
+                custom string thruster:notes = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                custom string thruster:propellant = "Aerozine 50/N2O4"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071068286895752, 0, -0.7071067690849304, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-2.0617008209228516, 1.661700963973999, 4.599999904632568)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_1_3"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_quad_1"
+                custom string thruster:confidence = "official; quad positions measured from drawings"
+                custom double thruster:exitRadius = 0.07
+                custom double thruster:ispVac = 290
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.1564736947500614
+                custom string thruster:notes = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                custom string thruster:propellant = "Aerozine 50/N2O4"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071068286895752, -0.7071067690849304, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.661700963973999, 2.0617008209228516, 4.599999904632568)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_2_0"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_quad_2"
+                custom string thruster:confidence = "official; quad positions measured from drawings"
+                custom double thruster:exitRadius = 0.07
+                custom double thruster:ispVac = 290
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.1564736947500614
+                custom string thruster:notes = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                custom string thruster:propellant = "Aerozine 50/N2O4"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.661700963973999, -1.661700963973999, 5)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_2_1"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_quad_2"
+                custom string thruster:confidence = "official; quad positions measured from drawings"
+                custom double thruster:exitRadius = 0.07
+                custom double thruster:ispVac = 290
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.1564736947500614
+                custom string thruster:notes = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                custom string thruster:propellant = "Aerozine 50/N2O4"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.661700963973999, -1.661700963973999, 4.199999809265137)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_2_2"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_quad_2"
+                custom string thruster:confidence = "official; quad positions measured from drawings"
+                custom double thruster:exitRadius = 0.07
+                custom double thruster:ispVac = 290
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.1564736947500614
+                custom string thruster:notes = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                custom string thruster:propellant = "Aerozine 50/N2O4"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071068286895752, 0, -0.7071067690849304, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-2.0617008209228516, -1.661700963973999, 4.599999904632568)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_2_3"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_quad_2"
+                custom string thruster:confidence = "official; quad positions measured from drawings"
+                custom double thruster:exitRadius = 0.07
+                custom double thruster:ispVac = 290
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.1564736947500614
+                custom string thruster:notes = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                custom string thruster:propellant = "Aerozine 50/N2O4"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071068286895752, 0.7071067690849304, 0, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.661700963973999, -2.0617008209228516, 4.599999904632568)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_3_0"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_quad_3"
+                custom string thruster:confidence = "official; quad positions measured from drawings"
+                custom double thruster:exitRadius = 0.07
+                custom double thruster:ispVac = 290
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.1564736947500614
+                custom string thruster:notes = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                custom string thruster:propellant = "Aerozine 50/N2O4"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.661700963973999, -1.661700963973999, 5)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_3_1"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_quad_3"
+                custom string thruster:confidence = "official; quad positions measured from drawings"
+                custom double thruster:exitRadius = 0.07
+                custom double thruster:ispVac = 290
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.1564736947500614
+                custom string thruster:notes = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                custom string thruster:propellant = "Aerozine 50/N2O4"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.661700963973999, -1.661700963973999, 4.199999809265137)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_3_2"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_quad_3"
+                custom string thruster:confidence = "official; quad positions measured from drawings"
+                custom double thruster:exitRadius = 0.07
+                custom double thruster:ispVac = 290
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.1564736947500614
+                custom string thruster:notes = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                custom string thruster:propellant = "Aerozine 50/N2O4"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071068286895752, 0, 0.7071067690849304, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (2.0617008209228516, -1.661700963973999, 4.599999904632568)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_3_3"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_quad_3"
+                custom string thruster:confidence = "official; quad positions measured from drawings"
+                custom double thruster:exitRadius = 0.07
+                custom double thruster:ispVac = 290
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.1564736947500614
+                custom string thruster:notes = "Marquardt R-4D, 100 lbf; 16 thrusters in four quads (Grumman/NASA). Plume deflectors not modelled."
+                custom string thruster:propellant = "Aerozine 50/N2O4"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071068286895752, 0.7071067690849304, 0, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.661700963973999, -2.0617008209228516, 4.599999904632568)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "vhf_0"
+            {
+                custom string site:band = "VHF"
+                custom string site:description = "VHF in-flight antenna"
+                custom token site:kind = "antenna"
+                quatd xformOp:orient = (0.9799425005912781, 0.14091256260871887, -0.14091256260871887, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.0795120000839233, -0.6795120239257812, 6.333373546600342)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "vhf_1"
+            {
+                custom string site:band = "VHF"
+                custom string site:description = "VHF in-flight antenna"
+                custom token site:kind = "antenna"
+                quatd xformOp:orient = (0.9732489585876465, 0.18380233645439148, 0.137851744890213, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.0744132995605469, -1.832551121711731, 6.03137731552124)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "vehicle_origin"
+            {
+                custom string site:description = "Ground point under the centreline, legs at nominal stroke"
+                custom token site:kind = "reference"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "stage_interface"
+            {
+                custom string site:description = "Ascent/descent stage interface (LM station X200); ascent separation plane"
+                custom token site:kind = "interface"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 3.332)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "docking_port"
+            {
+                custom string site:description = "Overhead docking tunnel / drogue interface"
+                custom token site:kind = "interface"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 6.062)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "forward_hatch"
+            {
+                custom string site:description = "Forward EVA hatch (0.81 m square)"
+                custom token site:kind = "interface"
+                quatd xformOp:orient = (0.7071068286895752, -0.7071067690849304, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 1.74, 3.9)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "imu"
+            {
+                custom string site:description = "Inertial measurement unit (navigation base, approximate)"
+                custom token site:kind = "sensor"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0.8, 5.2)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "lift_point_0"
+            {
+                custom string site:description = "GSE lift point"
+                custom token site:kind = "handling"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (2.056999921798706, 0, 3.2300000190734863)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "lift_point_1"
+            {
+                custom string site:description = "GSE lift point"
+                custom token site:kind = "handling"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.2595492422234753e-16, 2.056999921798706, 3.2300000190734863)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "lift_point_2"
+            {
+                custom string site:description = "GSE lift point"
+                custom token site:kind = "handling"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-2.056999921798706, 2.5190984844469507e-16, 3.2300000190734863)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "lift_point_3"
+            {
+                custom string site:description = "GSE lift point"
+                custom token site:kind = "handling"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-3.778647594321528e-16, -2.056999921798706, 3.2300000190734863)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+    }
+
+    def Scope "Physics"
+    {
+    }
+
+    def Scope "Materials"
+    {
+    }
+
+    def Scope "VisualMaterials"
+    {
+    }
+}
+

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+command -v git-lfs >/dev/null 2>&1 || { echo "git-lfs is required: https://git-lfs.com"; exit 1; }
+python3 "$(git rev-parse --show-toplevel)/scripts/check_large_files.py"

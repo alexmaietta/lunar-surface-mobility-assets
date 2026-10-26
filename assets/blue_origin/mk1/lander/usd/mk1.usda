@@ -1,0 +1,124 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary SimReady_Metadata = {
+            float3 asset_extents = (4.6805515, 5.0463037, 8.9992)
+            string asset_license = "CC-BY-4.0"
+            string asset_name = "mk1"
+            string asset_type = "robot"
+            string asset_version = "0.1.0"
+            string category = "spacecraft"
+            double mass = 7900
+            int rigid_body_count = 11
+            string source_file = "build/mk1/mk1.blend (scripts/build.py)"
+            string usd_date_generated = "2026-10-26"
+            string usd_version = "0.26.8"
+        }
+        string asset_name = "mk1"
+        string asset_type = "robot"
+        string asset_version = "0.1.0"
+        string creator = "lunar-surface-mobility-assets pipeline"
+        string usd_date_generated = "2026-10-26"
+    }
+    defaultPrim = "mk1"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "mk1" (
+    prepend references = @./payloads/base.usda@
+    variants = {
+        string Articulation = "articulated"
+        string Fidelity = "full"
+        string Offloader = "none"
+        string Physics = "physx"
+        string Propellant = "touchdown"
+    }
+    prepend variantSets = ["Articulation", "Propellant", "Offloader", "Fidelity", "Physics"]
+)
+{
+    variantSet "Articulation" = {
+        "articulated" (
+            prepend payload = @./payloads/Articulation/articulated.usda@
+        ) {
+
+        }
+        "rigid" (
+            prepend payload = @./payloads/Articulation/rigid.usda@
+        ) {
+
+        }
+    }
+    variantSet "Propellant" = {
+        "dry" (
+            prepend payload = @./payloads/Propellant/dry.usda@
+        ) {
+
+        }
+        "launch" (
+            prepend payload = @./payloads/Propellant/launch.usda@
+        ) {
+
+        }
+        "none" {
+
+        }
+        "touchdown" (
+            prepend payload = @./payloads/Propellant/touchdown.usda@
+        ) {
+
+        }
+    }
+    variantSet "Offloader" = {
+        "crane" (
+            prepend payload = @./payloads/Offloader/crane.usda@
+        ) {
+
+        }
+        "none" {
+
+        }
+    }
+    variantSet "Fidelity" = {
+        "full" (
+            prepend payload = @./payloads/Fidelity/full.usda@
+        ) {
+
+        }
+        "none" {
+
+        }
+        "proxy" (
+            prepend payload = @./payloads/Fidelity/proxy.usd@
+        ) {
+
+        }
+        "simple" (
+            prepend payload = @./payloads/Fidelity/simple.usd@
+        ) {
+
+        }
+    }
+    variantSet "Physics" = {
+        "mujoco" (
+            prepend payload = @./payloads/Physics/mujoco.usda@
+        ) {
+
+        }
+        "none" {
+
+        }
+        "physics" (
+            prepend payload = @./payloads/Physics/physics.usda@
+        ) {
+
+        }
+        "physx" (
+            prepend payload = @./payloads/Physics/physx.usda@
+        ) {
+
+        }
+    }
+}
+

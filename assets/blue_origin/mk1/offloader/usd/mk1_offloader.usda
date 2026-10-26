@@ -1,0 +1,92 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary SimReady_Metadata = {
+            float3 asset_extents = (5.2025, 0.78199995, 1.3845)
+            string asset_license = "CC-BY-4.0"
+            string asset_name = "mk1_offloader"
+            string asset_type = "robot"
+            string asset_version = "0.1.0"
+            string category = "spacecraft"
+            double mass = 60
+            int rigid_body_count = 4
+            string source_file = "build/mk1_offloader/mk1_offloader.blend (scripts/build.py)"
+            string usd_date_generated = "2026-10-26"
+            string usd_version = "0.26.8"
+        }
+        string asset_name = "mk1_offloader"
+        string asset_type = "robot"
+        string asset_version = "0.1.0"
+        string creator = "lunar-surface-mobility-assets pipeline"
+        string usd_date_generated = "2026-10-26"
+    }
+    defaultPrim = "mk1_offloader"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "mk1_offloader" (
+    prepend references = @./payloads/base.usda@
+    variants = {
+        string Articulation = "articulated"
+        string Fidelity = "full"
+        string Physics = "physx"
+    }
+    prepend variantSets = ["Articulation", "Fidelity", "Physics"]
+)
+{
+    variantSet "Articulation" = {
+        "articulated" (
+            prepend payload = @./payloads/Articulation/articulated.usda@
+        ) {
+
+        }
+        "rigid" (
+            prepend payload = @./payloads/Articulation/rigid.usda@
+        ) {
+
+        }
+    }
+    variantSet "Fidelity" = {
+        "full" (
+            prepend payload = @./payloads/Fidelity/full.usda@
+        ) {
+
+        }
+        "none" {
+
+        }
+        "proxy" (
+            prepend payload = @./payloads/Fidelity/proxy.usd@
+        ) {
+
+        }
+        "simple" (
+            prepend payload = @./payloads/Fidelity/simple.usd@
+        ) {
+
+        }
+    }
+    variantSet "Physics" = {
+        "mujoco" (
+            prepend payload = @./payloads/Physics/mujoco.usda@
+        ) {
+
+        }
+        "none" {
+
+        }
+        "physics" (
+            prepend payload = @./payloads/Physics/physics.usda@
+        ) {
+
+        }
+        "physx" (
+            prepend payload = @./payloads/Physics/physx.usda@
+        ) {
+
+        }
+    }
+}
+

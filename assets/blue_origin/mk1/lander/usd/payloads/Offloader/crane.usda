@@ -1,0 +1,54 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "mk1"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "mk1"
+{
+    def "Geometry"
+    {
+        def "body"
+        {
+            def Xform "mk1_offloader" (
+                delete apiSchemas = ["IsaacRobotAPI"]
+                kind = "subcomponent"
+                prepend references = @../attachments/mk1_offloader/mk1_offloader.usda@
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.9, 1, 8.05)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                over "Geometry"
+                {
+                    over "base" (
+                        delete apiSchemas = ["PhysicsArticulationRootAPI", "NewtonArticulationRootAPI", "PhysxArticulationAPI"]
+                    )
+                    {
+                    }
+                }
+            }
+        }
+    }
+
+    def "Physics"
+    {
+        def PhysicsFixedJoint "mk1_offloader_mount"
+        {
+            rel physics:body0 = </mk1/Geometry/body>
+            rel physics:body1 = </mk1/Geometry/body/mk1_offloader/Geometry/base>
+            point3f physics:localPos0 = (-0.9, 1, 8.05)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+    }
+}
+

@@ -1,0 +1,1833 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "apollo_lm"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "apollo_lm"
+{
+    over "Geometry"
+    {
+        over "body" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI"]
+        )
+        {
+            bool newton:selfCollisionEnabled = 0
+            point3f physics:centerOfMass = (0, 0, 3.69)
+            float3 physics:diagonalInertia = (23916.05, 23916.05, 16552.936)
+            float physics:mass = 7507
+            quatf physics:principalAxes = (1, 0, 0, 0)
+
+            over "dps_gimbal_x" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.40000662, 0.40000662, 0.7752066)
+                float physics:mass = 10
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "dps" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0, 0, -1.174655)
+                    float3 physics:diagonalInertia = (139.70404, 139.70404, 79.60922)
+                    float physics:mass = 180
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+                }
+            }
+
+            over "leg_0_primary" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0.47978002, 0, -0.8810038)
+                float3 physics:diagonalInertia = (5.1201353, 6.88189, 1.8515412)
+                float physics:mass = 18
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "leg_0_primary_stage1" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (-0.13807857, 0, 0.25501823)
+                    float3 physics:diagonalInertia = (0.0046184827, 0.004301879, 0.006351821)
+                    float physics:mass = 2
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+
+                    over "leg_0_primary_inner" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0.09299715, 0, -0.17604154)
+                        float3 physics:diagonalInertia = (4.272175, 5.668798, 1.4443372)
+                        float physics:mass = 14
+                        quatf physics:principalAxes = (1, 0, 0, 0)
+
+                        over "leg_0_footpad" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                            point3f physics:centerOfMass = (-1.1920929e-7, 0, -0.05749996)
+                            float3 physics:diagonalInertia = (0.95063305, 0.9506327, 1.7936177)
+                            float physics:mass = 12
+                            quatf physics:principalAxes = (1, 0, 0, 0)
+                        }
+                    }
+                }
+            }
+
+            over "leg_0_secondary_a_inner" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0.57571936, 0.22334784, -0.09940237)
+                float3 physics:diagonalInertia = (0.13748915, 0.61108696, 0.69003665)
+                float physics:mass = 5
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "leg_0_secondary_a_compression" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0, 0, 0)
+                    float3 physics:diagonalInertia = (0.0017100569, 0.0013913604, 0.0014733636)
+                    float physics:mass = 1.5
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+
+                    over "leg_0_secondary_a_tension1" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0, 0, 0)
+                        float3 physics:diagonalInertia = (0.00096440077, 0.001428833, 0.0016689335)
+                        float physics:mass = 1.5
+                        quatf physics:principalAxes = (1, 0, 0, 0)
+
+                        over "leg_0_secondary_a_outer" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                            point3f physics:centerOfMass = (0.3280116, 0.12483394, -0.056414768)
+                            float3 physics:diagonalInertia = (0.07901215, 0.2795298, 0.31725782)
+                            float physics:mass = 5
+                            quatf physics:principalAxes = (1, 0, 0, 0)
+                        }
+                    }
+                }
+            }
+
+            over "leg_0_secondary_b_inner" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0.57571936, -0.22334783, -0.09940237)
+                float3 physics:diagonalInertia = (0.13428217, 0.6050799, 0.6830104)
+                float physics:mass = 5
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "leg_0_secondary_b_compression" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0, 0, 0)
+                    float3 physics:diagonalInertia = (0.0017100569, 0.0013913604, 0.0014733636)
+                    float physics:mass = 1.5
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+
+                    over "leg_0_secondary_b_tension1" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0, 0, 0)
+                        float3 physics:diagonalInertia = (0.00096440077, 0.001428833, 0.0016689335)
+                        float physics:mass = 1.5
+                        quatf physics:principalAxes = (1, 0, 0, 0)
+
+                        over "leg_0_secondary_b_outer" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                            point3f physics:centerOfMass = (0.3277616, -0.124583945, -0.056164768)
+                            float3 physics:diagonalInertia = (0.07926105, 0.2799512, 0.3177424)
+                            float physics:mass = 5
+                            quatf physics:principalAxes = (1, 0, 0, 0)
+                        }
+                    }
+                }
+            }
+
+            over "leg_1_primary" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0.00024999678, 0.66262823, -1.1086549)
+                float3 physics:diagonalInertia = (11.064898, 8.216045, 3.5386133)
+                float physics:mass = 18
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "leg_1_primary_stage1" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0, -0.13807857, 0.25501823)
+                    float3 physics:diagonalInertia = (0.004050875, 0.0043595866, 0.0060392898)
+                    float physics:mass = 2
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+
+                    over "leg_1_primary_inner" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0, 0.09374714, -0.17679158)
+                        float3 physics:diagonalInertia = (5.6723123, 4.2750735, 1.4462968)
+                        float physics:mass = 14
+                        quatf physics:principalAxes = (1, 0, 0, 0)
+
+                        over "leg_1_footpad" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                            point3f physics:centerOfMass = (0, -1.1920929e-7, -0.057499956)
+                            float3 physics:diagonalInertia = (0.93655664, 0.936557, 1.7709616)
+                            float physics:mass = 12
+                            quatf physics:principalAxes = (1, 0, 0, 0)
+                        }
+                    }
+                }
+            }
+
+            over "leg_1_secondary_a_inner" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (-0.22334783, 0.57571936, -0.09940237)
+                float3 physics:diagonalInertia = (0.6086792, 0.13620135, 0.6872212)
+                float physics:mass = 5
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "leg_1_secondary_a_compression" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0, 0, 0)
+                    float3 physics:diagonalInertia = (0.001308776, 0.0016180496, 0.0013885413)
+                    float physics:mass = 1.5
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+
+                    over "leg_1_secondary_a_tension1" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0, 0, 0)
+                        float3 physics:diagonalInertia = (0.0014086987, 0.0009474411, 0.0016466447)
+                        float physics:mass = 1.5
+                        quatf physics:principalAxes = (1, 0, 0, 0)
+
+                        over "leg_1_secondary_a_outer" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                            point3f physics:centerOfMass = (-0.12483394, 0.3280116, -0.056414768)
+                            float3 physics:diagonalInertia = (0.2795298, 0.07901215, 0.31725782)
+                            float physics:mass = 5
+                            quatf physics:principalAxes = (1, 0, 0, 0)
+                        }
+                    }
+                }
+            }
+
+            over "leg_1_secondary_b_inner" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0.22334783, 0.57571936, -0.09940237)
+                float3 physics:diagonalInertia = (0.6050799, 0.13428217, 0.6830104)
+                float physics:mass = 5
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "leg_1_secondary_b_compression" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0, 0, 0)
+                    float3 physics:diagonalInertia = (0.0013913604, 0.0017100569, 0.0014733636)
+                    float physics:mass = 1.5
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+
+                    over "leg_1_secondary_b_tension1" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0, 0, 0)
+                        float3 physics:diagonalInertia = (0.0014086987, 0.0009474411, 0.0016466447)
+                        float physics:mass = 1.5
+                        quatf physics:principalAxes = (1, 0, 0, 0)
+
+                        over "leg_1_secondary_b_outer" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                            point3f physics:centerOfMass = (0.124083936, 0.3272616, -0.055664767)
+                            float3 physics:diagonalInertia = (0.28079522, 0.0797601, 0.31871286)
+                            float physics:mass = 5
+                            quatf physics:principalAxes = (1, 0, 0, 0)
+                        }
+                    }
+                }
+            }
+
+            over "leg_2_primary" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (-0.47878, 0, -0.8800038)
+                float3 physics:diagonalInertia = (5.1191034, 6.8818893, 1.850509)
+                float physics:mass = 18
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "leg_2_primary_stage1" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0.13807857, 0, 0.25501823)
+                    float3 physics:diagonalInertia = (0.0046184827, 0.004301879, 0.006351821)
+                    float physics:mass = 2
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+
+                    over "leg_2_primary_inner" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (-0.09174715, 0, -0.17479154)
+                        float3 physics:diagonalInertia = (4.2737384, 5.672312, 1.4449623)
+                        float physics:mass = 14
+                        quatf physics:principalAxes = (1, 0, 0, 0)
+
+                        over "leg_2_footpad" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                            point3f physics:centerOfMass = (1.1920929e-7, 0, -0.057499964)
+                            float3 physics:diagonalInertia = (0.94827694, 0.94827664, 1.7898316)
+                            float physics:mass = 12
+                            quatf physics:principalAxes = (1, 0, 0, 0)
+                        }
+                    }
+                }
+            }
+
+            over "leg_2_secondary_a_inner" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (-0.57571936, -0.22334784, -0.09940237)
+                float3 physics:diagonalInertia = (0.13748915, 0.61108696, 0.69003665)
+                float physics:mass = 5
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "leg_2_secondary_a_compression" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0, 0, 0)
+                    float3 physics:diagonalInertia = (0.0017100569, 0.0013913604, 0.0014733636)
+                    float physics:mass = 1.5
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+
+                    over "leg_2_secondary_a_tension1" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0, 0, 0)
+                        float3 physics:diagonalInertia = (0.0009171582, 0.0013726746, 0.0016067239)
+                        float physics:mass = 1.5
+                        quatf physics:principalAxes = (1, 0, 0, 0)
+
+                        over "leg_2_secondary_a_outer" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                            point3f physics:centerOfMass = (-0.3270116, -0.12383394, -0.055414766)
+                            float3 physics:diagonalInertia = (0.08001025, 0.28121787, 0.3191987)
+                            float physics:mass = 5
+                            quatf physics:principalAxes = (1, 0, 0, 0)
+                        }
+                    }
+                }
+            }
+
+            over "leg_2_secondary_b_inner" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (-0.57571936, 0.22334783, -0.09940237)
+                float3 physics:diagonalInertia = (0.13492024, 0.60627794, 0.6844123)
+                float physics:mass = 5
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "leg_2_secondary_b_compression" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0, 0, 0)
+                    float3 physics:diagonalInertia = (0.0016180496, 0.001308776, 0.0013885413)
+                    float physics:mass = 1.5
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+
+                    over "leg_2_secondary_b_tension1" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0, 0, 0)
+                        float3 physics:diagonalInertia = (0.00096440077, 0.001428833, 0.0016689335)
+                        float physics:mass = 1.5
+                        quatf physics:principalAxes = (1, 0, 0, 0)
+
+                        over "leg_2_secondary_b_outer" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                            point3f physics:centerOfMass = (-0.3270116, 0.12383394, -0.055414766)
+                            float3 physics:diagonalInertia = (0.08001025, 0.28121787, 0.3191987)
+                            float physics:mass = 5
+                            quatf physics:principalAxes = (1, 0, 0, 0)
+                        }
+                    }
+                }
+            }
+
+            over "leg_3_primary" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0, -0.48028, -0.88150376)
+                float3 physics:diagonalInertia = (6.8818893, 5.120656, 1.8520616)
+                float physics:mass = 18
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "leg_3_primary_stage1" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0, 0.13807857, 0.25501823)
+                    float3 physics:diagonalInertia = (0.004301879, 0.0046184827, 0.006351821)
+                    float physics:mass = 2
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+
+                    over "leg_3_primary_inner" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0, -0.09249714, -0.17554155)
+                        float3 physics:diagonalInertia = (5.6758275, 4.2766285, 1.4469131)
+                        float physics:mass = 14
+                        quatf physics:principalAxes = (1, 0, 0, 0)
+
+                        over "leg_3_footpad" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                            point3f physics:centerOfMass = (0, 1.1920929e-7, -0.05749996)
+                            float3 physics:diagonalInertia = (0.9506327, 0.95063305, 1.7936177)
+                            float physics:mass = 12
+                            quatf physics:principalAxes = (1, 0, 0, 0)
+                        }
+                    }
+                }
+            }
+
+            over "leg_3_secondary_a_inner" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0.22334783, -0.57571936, -0.09940237)
+                float3 physics:diagonalInertia = (0.6050799, 0.13428217, 0.6830104)
+                float physics:mass = 5
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "leg_3_secondary_a_compression" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0, 0, 0)
+                    float3 physics:diagonalInertia = (0.0013913604, 0.0017100569, 0.0014733636)
+                    float physics:mass = 1.5
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+
+                    over "leg_3_secondary_a_tension1" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0, 0, 0)
+                        float3 physics:diagonalInertia = (0.0013371506, 0.0008873753, 0.0015673034)
+                        float physics:mass = 1.5
+                        quatf physics:principalAxes = (1, 0, 0, 0)
+
+                        over "leg_3_secondary_a_outer" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                            point3f physics:centerOfMass = (0.123083934, -0.32626164, -0.05466476)
+                            float3 physics:diagonalInertia = (0.27995124, 0.07926104, 0.31774244)
+                            float physics:mass = 5
+                            quatf physics:principalAxes = (1, 0, 0, 0)
+                        }
+                    }
+                }
+            }
+
+            over "leg_3_secondary_b_inner" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (-0.22334783, -0.57571936, -0.09940237)
+                float3 physics:diagonalInertia = (0.6050799, 0.13428217, 0.6830104)
+                float physics:mass = 5
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "leg_3_secondary_b_compression" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0, 0, 0)
+                    float3 physics:diagonalInertia = (0.0013913604, 0.0017100569, 0.0014733636)
+                    float physics:mass = 1.5
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+
+                    over "leg_3_secondary_b_tension1" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0, 0, 0)
+                        float3 physics:diagonalInertia = (0.001428833, 0.00096440077, 0.0016689335)
+                        float physics:mass = 1.5
+                        quatf physics:principalAxes = (1, 0, 0, 0)
+
+                        over "leg_3_secondary_b_outer" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                            point3f physics:centerOfMass = (-0.12508394, -0.3282616, -0.056664765)
+                            float3 physics:diagonalInertia = (0.27910885, 0.078763664, 0.31677365)
+                            float physics:mass = 5
+                            quatf physics:principalAxes = (1, 0, 0, 0)
+                        }
+                    }
+                }
+            }
+
+            over "rr_shaft" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.0028166827, 0.05608335, 0.056083333)
+                float physics:mass = 4
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "rr_trunnion" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0, 0.14913589, 0.20863241)
+                    float3 physics:diagonalInertia = (0.21197279, 0.24058208, 0.3337947)
+                    float physics:mass = 6
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+                }
+            }
+
+            over "sband_azimuth" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0, 0, 0.18050008)
+                float3 physics:diagonalInertia = (0.024930181, 0.024930181, 0.005208324)
+                float physics:mass = 2
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "sband_elevation" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0.01774311, 0.05322928, 0.12831092)
+                    float3 physics:diagonalInertia = (0.11701813, 0.15141807, 0.17680472)
+                    float physics:mass = 3
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+                }
+            }
+        }
+    }
+
+    def "Physics"
+    {
+        def PhysicsRevoluteJoint "dps_gimbal_x" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 13.962634
+            float drive:angular:physics:maxForce = 8000
+            float drive:angular:physics:stiffness = 698.1317
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "gimbal"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body>
+            rel physics:body1 = </apollo_lm/Geometry/body/dps_gimbal_x>
+            point3f physics:localPos0 = (0, 0, 2.678)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -6
+            float physics:upperLimit = 6
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "dps" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 13.962634
+            float drive:angular:physics:maxForce = 8000
+            float drive:angular:physics:stiffness = 698.1317
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "gimbal"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/dps_gimbal_x>
+            rel physics:body1 = </apollo_lm/Geometry/body/dps_gimbal_x/dps>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, 0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, 0.70710677)
+            float physics:lowerLimit = -6
+            float physics:upperLimit = 6
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsSphericalJoint "leg_0_primary"
+        {
+            custom uniform token joint:driveKind = "none"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_0_primary>
+            float physics:coneAngle0Limit = 20
+            float physics:coneAngle1Limit = 20
+            point3f physics:localPos0 = (2.72, 0, 3)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsPrismaticJoint "leg_0_primary_stage1" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_0_primary>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_0_primary/leg_0_primary_stage1>
+            point3f physics:localPos0 = (0.95226645, 0, -1.7587464)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.51179427, 0, -0.85910803, 0)
+            quatf physics:localRot1 = (0.51179427, 0, -0.85910803, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.813
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_0_primary_inner" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_0_primary/leg_0_primary_stage1>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_0_primary/leg_0_primary_stage1/leg_0_primary_inner>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.51179427, 0, -0.85910803, 0)
+            quatf physics:localRot1 = (0.51179427, 0, -0.85910803, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsSphericalJoint "leg_0_footpad"
+        {
+            custom uniform token joint:driveKind = "none"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_0_primary/leg_0_primary_stage1/leg_0_primary_inner>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_0_primary/leg_0_primary_stage1/leg_0_primary_inner/leg_0_footpad>
+            float physics:coneAngle0Limit = 30
+            float physics:coneAngle1Limit = 30
+            point3f physics:localPos0 = (0.58273363, 0, -1.0762537)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsSphericalJoint "leg_0_secondary_a_inner"
+        {
+            custom uniform token joint:driveKind = "none"
+            custom uniform token joint:role = "landing_gear"
+            rel physics:body0 = </apollo_lm/Geometry/body>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_0_secondary_a_inner>
+            point3f physics:localPos0 = (2.057, -0.6174, 1.56)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsPrismaticJoint "leg_0_secondary_a_compression" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_0_secondary_a_inner>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_0_secondary_a_inner/leg_0_secondary_a_compression>
+            point3f physics:localPos0 = (0.87530303, 0.33957, -0.15112782)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.9799114, -0, 0.08109061, 0.18220302)
+            quatf physics:localRot1 = (0.9799114, -0, 0.08109061, 0.18220302)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_0_secondary_a_tension1" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_0_secondary_a_inner/leg_0_secondary_a_compression>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_0_secondary_a_inner/leg_0_secondary_a_compression/leg_0_secondary_a_tension1>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.9799114, -0, 0.08109061, 0.18220302)
+            quatf physics:localRot1 = (0.9799114, -0, 0.08109061, 0.18220302)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_0_secondary_a_outer" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_0_secondary_a_inner/leg_0_secondary_a_compression/leg_0_secondary_a_tension1>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_0_secondary_a_inner/leg_0_secondary_a_compression/leg_0_secondary_a_tension1/leg_0_secondary_a_outer>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.9799114, -0, 0.08109061, 0.18220302)
+            quatf physics:localRot1 = (0.9799114, -0, 0.08109061, 0.18220302)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsSphericalJoint "leg_0_secondary_b_inner"
+        {
+            custom uniform token joint:driveKind = "none"
+            custom uniform token joint:role = "landing_gear"
+            rel physics:body0 = </apollo_lm/Geometry/body>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_0_secondary_b_inner>
+            point3f physics:localPos0 = (2.057, 0.6174, 1.56)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsPrismaticJoint "leg_0_secondary_b_compression" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_0_secondary_b_inner>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_0_secondary_b_inner/leg_0_secondary_b_compression>
+            point3f physics:localPos0 = (0.87530303, -0.33957, -0.15112782)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.9799114, 0, 0.08109061, -0.18220302)
+            quatf physics:localRot1 = (0.9799114, 0, 0.08109061, -0.18220302)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_0_secondary_b_tension1" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_0_secondary_b_inner/leg_0_secondary_b_compression>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_0_secondary_b_inner/leg_0_secondary_b_compression/leg_0_secondary_b_tension1>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.9799114, 0, 0.08109061, -0.18220302)
+            quatf physics:localRot1 = (0.9799114, 0, 0.08109061, -0.18220302)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_0_secondary_b_outer" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_0_secondary_b_inner/leg_0_secondary_b_compression/leg_0_secondary_b_tension1>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_0_secondary_b_inner/leg_0_secondary_b_compression/leg_0_secondary_b_tension1/leg_0_secondary_b_outer>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.9799114, 0, 0.08109061, -0.18220302)
+            quatf physics:localRot1 = (0.9799114, 0, 0.08109061, -0.18220302)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsSphericalJoint "leg_1_primary"
+        {
+            custom uniform token joint:driveKind = "none"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_1_primary>
+            float physics:coneAngle0Limit = 20
+            float physics:coneAngle1Limit = 20
+            point3f physics:localPos0 = (1.6655197e-16, 2.72, 3)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsPrismaticJoint "leg_1_primary_stage1" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_1_primary>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_1_primary/leg_1_primary_stage1>
+            point3f physics:localPos0 = (5.8309497e-17, 0.95226645, -1.7587464)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, -0.62181073, -0.33667704)
+            quatf physics:localRot1 = (0.70710677, 0, -0.62181073, -0.33667704)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.813
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_1_primary_inner" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_1_primary/leg_1_primary_stage1>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_1_primary/leg_1_primary_stage1/leg_1_primary_inner>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, -0.62181073, -0.33667704)
+            quatf physics:localRot1 = (0.70710677, 0, -0.62181073, -0.33667704)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsSphericalJoint "leg_1_footpad"
+        {
+            custom uniform token joint:driveKind = "none"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_1_primary/leg_1_primary_stage1/leg_1_primary_inner>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_1_primary/leg_1_primary_stage1/leg_1_primary_inner/leg_1_footpad>
+            float physics:coneAngle0Limit = 30
+            float physics:coneAngle1Limit = 30
+            point3f physics:localPos0 = (3.5682136e-17, 0.58273363, -1.0762537)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsSphericalJoint "leg_1_secondary_a_inner"
+        {
+            custom uniform token joint:driveKind = "none"
+            custom uniform token joint:role = "landing_gear"
+            rel physics:body0 = </apollo_lm/Geometry/body>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_1_secondary_a_inner>
+            point3f physics:localPos0 = (0.6174, 2.057, 1.56)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsPrismaticJoint "leg_1_secondary_a_compression" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_1_secondary_a_inner>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_1_secondary_a_inner/leg_1_secondary_a_compression>
+            point3f physics:localPos0 = (-0.33957, 0.87530303, -0.15112782)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.56697196, -0, 0.14015087, 0.81172687)
+            quatf physics:localRot1 = (0.56697196, -0, 0.14015087, 0.81172687)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_1_secondary_a_tension1" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_1_secondary_a_inner/leg_1_secondary_a_compression>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_1_secondary_a_inner/leg_1_secondary_a_compression/leg_1_secondary_a_tension1>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.56697196, -0, 0.14015087, 0.81172687)
+            quatf physics:localRot1 = (0.56697196, -0, 0.14015087, 0.81172687)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_1_secondary_a_outer" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_1_secondary_a_inner/leg_1_secondary_a_compression/leg_1_secondary_a_tension1>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_1_secondary_a_inner/leg_1_secondary_a_compression/leg_1_secondary_a_tension1/leg_1_secondary_a_outer>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.56697196, -0, 0.14015087, 0.81172687)
+            quatf physics:localRot1 = (0.56697196, -0, 0.14015087, 0.81172687)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsSphericalJoint "leg_1_secondary_b_inner"
+        {
+            custom uniform token joint:driveKind = "none"
+            custom uniform token joint:role = "landing_gear"
+            rel physics:body0 = </apollo_lm/Geometry/body>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_1_secondary_b_inner>
+            point3f physics:localPos0 = (-0.6174, 2.057, 1.56)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsPrismaticJoint "leg_1_secondary_b_compression" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_1_secondary_b_inner>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_1_secondary_b_inner/leg_1_secondary_b_compression>
+            point3f physics:localPos0 = (0.33957, 0.87530303, -0.15112782)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.8237371, -0, 0.09646477, 0.5587054)
+            quatf physics:localRot1 = (0.8237371, -0, 0.09646477, 0.5587054)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_1_secondary_b_tension1" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_1_secondary_b_inner/leg_1_secondary_b_compression>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_1_secondary_b_inner/leg_1_secondary_b_compression/leg_1_secondary_b_tension1>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.8237371, -0, 0.09646477, 0.5587054)
+            quatf physics:localRot1 = (0.8237371, -0, 0.09646477, 0.5587054)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_1_secondary_b_outer" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_1_secondary_b_inner/leg_1_secondary_b_compression/leg_1_secondary_b_tension1>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_1_secondary_b_inner/leg_1_secondary_b_compression/leg_1_secondary_b_tension1/leg_1_secondary_b_outer>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.8237371, -0, 0.09646477, 0.5587054)
+            quatf physics:localRot1 = (0.8237371, -0, 0.09646477, 0.5587054)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsSphericalJoint "leg_2_primary"
+        {
+            custom uniform token joint:driveKind = "none"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_2_primary>
+            float physics:coneAngle0Limit = 20
+            float physics:coneAngle1Limit = 20
+            point3f physics:localPos0 = (-2.72, 3.3310394e-16, 3)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsPrismaticJoint "leg_2_primary_stage1" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_2_primary>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_2_primary/leg_2_primary_stage1>
+            point3f physics:localPos0 = (-0.95226645, 1.1661899e-16, -1.7587464)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.85910803, 0, -0.51179427, -3.393607e-17)
+            quatf physics:localRot1 = (0.85910803, 0, -0.51179427, -3.393607e-17)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.813
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_2_primary_inner" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_2_primary/leg_2_primary_stage1>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_2_primary/leg_2_primary_stage1/leg_2_primary_inner>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.85910803, 0, -0.51179427, -3.393607e-17)
+            quatf physics:localRot1 = (0.85910803, 0, -0.51179427, -3.393607e-17)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsSphericalJoint "leg_2_footpad"
+        {
+            custom uniform token joint:driveKind = "none"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_2_primary/leg_2_primary_stage1/leg_2_primary_inner>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_2_primary/leg_2_primary_stage1/leg_2_primary_inner/leg_2_footpad>
+            float physics:coneAngle0Limit = 30
+            float physics:coneAngle1Limit = 30
+            point3f physics:localPos0 = (-0.58273363, 7.136427e-17, -1.0762537)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsSphericalJoint "leg_2_secondary_a_inner"
+        {
+            custom uniform token joint:driveKind = "none"
+            custom uniform token joint:role = "landing_gear"
+            rel physics:body0 = </apollo_lm/Geometry/body>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_2_secondary_a_inner>
+            point3f physics:localPos0 = (-2.057, 0.6174, 1.56)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsPrismaticJoint "leg_2_secondary_a_compression" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_2_secondary_a_inner>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_2_secondary_a_inner/leg_2_secondary_a_compression>
+            point3f physics:localPos0 = (-0.87530303, -0.33957, -0.15112782)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.19943327, 0, 0.39843708, -0.8952509)
+            quatf physics:localRot1 = (0.19943327, 0, 0.39843708, -0.8952509)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_2_secondary_a_tension1" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_2_secondary_a_inner/leg_2_secondary_a_compression>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_2_secondary_a_inner/leg_2_secondary_a_compression/leg_2_secondary_a_tension1>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.19943327, 0, 0.39843708, -0.8952509)
+            quatf physics:localRot1 = (0.19943327, 0, 0.39843708, -0.8952509)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_2_secondary_a_outer" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_2_secondary_a_inner/leg_2_secondary_a_compression/leg_2_secondary_a_tension1>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_2_secondary_a_inner/leg_2_secondary_a_compression/leg_2_secondary_a_tension1/leg_2_secondary_a_outer>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.19943327, 0, 0.39843708, -0.8952509)
+            quatf physics:localRot1 = (0.19943327, 0, 0.39843708, -0.8952509)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsSphericalJoint "leg_2_secondary_b_inner"
+        {
+            custom uniform token joint:driveKind = "none"
+            custom uniform token joint:role = "landing_gear"
+            rel physics:body0 = </apollo_lm/Geometry/body>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_2_secondary_b_inner>
+            point3f physics:localPos0 = (-2.057, -0.6174, 1.56)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsPrismaticJoint "leg_2_secondary_b_compression" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_2_secondary_b_inner>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_2_secondary_b_inner/leg_2_secondary_b_compression>
+            point3f physics:localPos0 = (-0.87530303, 0.33957, -0.15112782)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.19943327, -0, 0.39843708, 0.8952509)
+            quatf physics:localRot1 = (0.19943327, -0, 0.39843708, 0.8952509)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_2_secondary_b_tension1" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_2_secondary_b_inner/leg_2_secondary_b_compression>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_2_secondary_b_inner/leg_2_secondary_b_compression/leg_2_secondary_b_tension1>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.19943327, -0, 0.39843708, 0.8952509)
+            quatf physics:localRot1 = (0.19943327, -0, 0.39843708, 0.8952509)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_2_secondary_b_outer" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_2_secondary_b_inner/leg_2_secondary_b_compression/leg_2_secondary_b_tension1>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_2_secondary_b_inner/leg_2_secondary_b_compression/leg_2_secondary_b_tension1/leg_2_secondary_b_outer>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.19943327, -0, 0.39843708, 0.8952509)
+            quatf physics:localRot1 = (0.19943327, -0, 0.39843708, 0.8952509)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsSphericalJoint "leg_3_primary"
+        {
+            custom uniform token joint:driveKind = "none"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_3_primary>
+            float physics:coneAngle0Limit = 20
+            float physics:coneAngle1Limit = 20
+            point3f physics:localPos0 = (-4.996559e-16, -2.72, 3)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsPrismaticJoint "leg_3_primary_stage1" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_3_primary>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_3_primary/leg_3_primary_stage1>
+            point3f physics:localPos0 = (-1.7492856e-16, -0.95226645, -1.7587464)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, -0.62181073, 0.33667704)
+            quatf physics:localRot1 = (0.70710677, 0, -0.62181073, 0.33667704)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.813
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_3_primary_inner" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_3_primary/leg_3_primary_stage1>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_3_primary/leg_3_primary_stage1/leg_3_primary_inner>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, -0.62181073, 0.33667704)
+            quatf physics:localRot1 = (0.70710677, 0, -0.62181073, 0.33667704)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsSphericalJoint "leg_3_footpad"
+        {
+            custom uniform token joint:driveKind = "none"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_3_primary/leg_3_primary_stage1/leg_3_primary_inner>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_3_primary/leg_3_primary_stage1/leg_3_primary_inner/leg_3_footpad>
+            float physics:coneAngle0Limit = 30
+            float physics:coneAngle1Limit = 30
+            point3f physics:localPos0 = (-1.0704638e-16, -0.58273363, -1.0762537)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsSphericalJoint "leg_3_secondary_a_inner"
+        {
+            custom uniform token joint:driveKind = "none"
+            custom uniform token joint:role = "landing_gear"
+            rel physics:body0 = </apollo_lm/Geometry/body>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_3_secondary_a_inner>
+            point3f physics:localPos0 = (-0.6174, -2.057, 1.56)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsPrismaticJoint "leg_3_secondary_a_compression" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_3_secondary_a_inner>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_3_secondary_a_inner/leg_3_secondary_a_compression>
+            point3f physics:localPos0 = (0.33957, -0.87530303, -0.15112782)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.8237371, 0, 0.09646477, -0.5587054)
+            quatf physics:localRot1 = (0.8237371, 0, 0.09646477, -0.5587054)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_3_secondary_a_tension1" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_3_secondary_a_inner/leg_3_secondary_a_compression>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_3_secondary_a_inner/leg_3_secondary_a_compression/leg_3_secondary_a_tension1>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.8237371, 0, 0.09646477, -0.5587054)
+            quatf physics:localRot1 = (0.8237371, 0, 0.09646477, -0.5587054)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_3_secondary_a_outer" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_3_secondary_a_inner/leg_3_secondary_a_compression/leg_3_secondary_a_tension1>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_3_secondary_a_inner/leg_3_secondary_a_compression/leg_3_secondary_a_tension1/leg_3_secondary_a_outer>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.8237371, 0, 0.09646477, -0.5587054)
+            quatf physics:localRot1 = (0.8237371, 0, 0.09646477, -0.5587054)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsSphericalJoint "leg_3_secondary_b_inner"
+        {
+            custom uniform token joint:driveKind = "none"
+            custom uniform token joint:role = "landing_gear"
+            rel physics:body0 = </apollo_lm/Geometry/body>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_3_secondary_b_inner>
+            point3f physics:localPos0 = (0.6174, -2.057, 1.56)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsPrismaticJoint "leg_3_secondary_b_compression" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_3_secondary_b_inner>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_3_secondary_b_inner/leg_3_secondary_b_compression>
+            point3f physics:localPos0 = (-0.33957, -0.87530303, -0.15112782)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.56697196, 0, 0.14015087, -0.81172687)
+            quatf physics:localRot1 = (0.56697196, 0, 0.14015087, -0.81172687)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_3_secondary_b_tension1" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_3_secondary_b_inner/leg_3_secondary_b_compression>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_3_secondary_b_inner/leg_3_secondary_b_compression/leg_3_secondary_b_tension1>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.56697196, 0, 0.14015087, -0.81172687)
+            quatf physics:localRot1 = (0.56697196, 0, 0.14015087, -0.81172687)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_3_secondary_b_outer" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 15000
+            float drive:linear:physics:maxForce = 400000
+            float drive:linear:physics:stiffness = 90000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_3_secondary_b_inner/leg_3_secondary_b_compression/leg_3_secondary_b_tension1>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_3_secondary_b_inner/leg_3_secondary_b_compression/leg_3_secondary_b_tension1/leg_3_secondary_b_outer>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.56697196, 0, 0.14015087, -0.81172687)
+            quatf physics:localRot1 = (0.56697196, 0, 0.14015087, -0.81172687)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.00001
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "rr_shaft" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0.06981317
+            float drive:angular:physics:maxForce = 20
+            float drive:angular:physics:stiffness = 0.6981317
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "antenna"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body>
+            rel physics:body1 = </apollo_lm/Geometry/body/rr_shaft>
+            point3f physics:localPos0 = (0, 1.35, 6.06)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -70
+            float physics:upperLimit = 70
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "rr_trunnion" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0.06981317
+            float drive:angular:physics:maxForce = 20
+            float drive:angular:physics:stiffness = 0.6981317
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "antenna"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/rr_shaft>
+            rel physics:body1 = </apollo_lm/Geometry/body/rr_shaft/rr_trunnion>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, -0.70710677, 0)
+            quatf physics:localRot1 = (0.70710677, 0, -0.70710677, 0)
+            float physics:lowerLimit = -70
+            float physics:upperLimit = 70
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "sband_azimuth" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0.05235988
+            float drive:angular:physics:maxForce = 15
+            float drive:angular:physics:stiffness = 0.5235988
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "antenna"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body>
+            rel physics:body1 = </apollo_lm/Geometry/body/sband_azimuth>
+            point3f physics:localPos0 = (2.15, 2, 6.23)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, -0.70710677, 0)
+            quatf physics:localRot1 = (0.70710677, 0, -0.70710677, 0)
+            float physics:lowerLimit = -174
+            float physics:upperLimit = 174
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "sband_elevation" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0.05235988
+            float drive:angular:physics:maxForce = 15
+            float drive:angular:physics:stiffness = 0.5235988
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "antenna"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </apollo_lm/Geometry/body/sband_azimuth>
+            rel physics:body1 = </apollo_lm/Geometry/body/sband_azimuth/sband_elevation>
+            point3f physics:localPos0 = (0, 0, 0.36000013)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -75
+            float physics:upperLimit = 75
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsSphericalJoint "leg_0_secondary_a_ball"
+        {
+            custom uniform token joint:role = "loop_closure"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_0_primary>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_0_secondary_a_inner/leg_0_secondary_a_compression/leg_0_secondary_a_tension1/leg_0_secondary_a_outer>
+            uniform bool physics:excludeFromArticulation = 1
+            point3f physics:localPos0 = (0.9284599, 0, -1.7147778)
+            point3f physics:localPos1 = (0.71615696, 0.27783, -0.123649955)
+            quatf physics:localRot0 = (0.9799114, -0, 0.08109061, 0.18220302)
+            quatf physics:localRot1 = (0.9799114, -0, 0.08109061, 0.18220302)
+        }
+
+        def PhysicsSphericalJoint "leg_0_secondary_b_ball"
+        {
+            custom uniform token joint:role = "loop_closure"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_0_primary>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_0_secondary_b_inner/leg_0_secondary_b_compression/leg_0_secondary_b_tension1/leg_0_secondary_b_outer>
+            uniform bool physics:excludeFromArticulation = 1
+            point3f physics:localPos0 = (0.9284599, 0, -1.7147778)
+            point3f physics:localPos1 = (0.71615696, -0.27783, -0.123649955)
+            quatf physics:localRot0 = (0.9799114, 0, 0.08109061, -0.18220302)
+            quatf physics:localRot1 = (0.9799114, 0, 0.08109061, -0.18220302)
+        }
+
+        def PhysicsSphericalJoint "leg_1_secondary_a_ball"
+        {
+            custom uniform token joint:role = "loop_closure"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_1_primary>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_1_secondary_a_inner/leg_1_secondary_a_compression/leg_1_secondary_a_tension1/leg_1_secondary_a_outer>
+            uniform bool physics:excludeFromArticulation = 1
+            point3f physics:localPos0 = (5.685175e-17, 0.9284599, -1.7147778)
+            point3f physics:localPos1 = (-0.27783, 0.71615696, -0.123649955)
+            quatf physics:localRot0 = (0.56697196, -0, 0.14015087, 0.81172687)
+            quatf physics:localRot1 = (0.56697196, -0, 0.14015087, 0.81172687)
+        }
+
+        def PhysicsSphericalJoint "leg_1_secondary_b_ball"
+        {
+            custom uniform token joint:role = "loop_closure"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_1_primary>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_1_secondary_b_inner/leg_1_secondary_b_compression/leg_1_secondary_b_tension1/leg_1_secondary_b_outer>
+            uniform bool physics:excludeFromArticulation = 1
+            point3f physics:localPos0 = (5.685175e-17, 0.9284599, -1.7147778)
+            point3f physics:localPos1 = (0.27783, 0.71615696, -0.123649955)
+            quatf physics:localRot0 = (0.8237371, -0, 0.09646477, 0.5587054)
+            quatf physics:localRot1 = (0.8237371, -0, 0.09646477, 0.5587054)
+        }
+
+        def PhysicsSphericalJoint "leg_2_secondary_a_ball"
+        {
+            custom uniform token joint:role = "loop_closure"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_2_primary>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_2_secondary_a_inner/leg_2_secondary_a_compression/leg_2_secondary_a_tension1/leg_2_secondary_a_outer>
+            uniform bool physics:excludeFromArticulation = 1
+            point3f physics:localPos0 = (-0.9284599, 1.137035e-16, -1.7147778)
+            point3f physics:localPos1 = (-0.71615696, -0.27783, -0.123649955)
+            quatf physics:localRot0 = (0.19943327, 0, 0.39843708, -0.8952509)
+            quatf physics:localRot1 = (0.19943327, 0, 0.39843708, -0.8952509)
+        }
+
+        def PhysicsSphericalJoint "leg_2_secondary_b_ball"
+        {
+            custom uniform token joint:role = "loop_closure"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_2_primary>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_2_secondary_b_inner/leg_2_secondary_b_compression/leg_2_secondary_b_tension1/leg_2_secondary_b_outer>
+            uniform bool physics:excludeFromArticulation = 1
+            point3f physics:localPos0 = (-0.9284599, 1.137035e-16, -1.7147778)
+            point3f physics:localPos1 = (-0.71615696, 0.27783, -0.123649955)
+            quatf physics:localRot0 = (0.19943327, -0, 0.39843708, 0.8952509)
+            quatf physics:localRot1 = (0.19943327, -0, 0.39843708, 0.8952509)
+        }
+
+        def PhysicsSphericalJoint "leg_3_secondary_a_ball"
+        {
+            custom uniform token joint:role = "loop_closure"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_3_primary>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_3_secondary_a_inner/leg_3_secondary_a_compression/leg_3_secondary_a_tension1/leg_3_secondary_a_outer>
+            uniform bool physics:excludeFromArticulation = 1
+            point3f physics:localPos0 = (-1.7055532e-16, -0.9284599, -1.7147778)
+            point3f physics:localPos1 = (0.27783, -0.71615696, -0.123649955)
+            quatf physics:localRot0 = (0.8237371, 0, 0.09646477, -0.5587054)
+            quatf physics:localRot1 = (0.8237371, 0, 0.09646477, -0.5587054)
+        }
+
+        def PhysicsSphericalJoint "leg_3_secondary_b_ball"
+        {
+            custom uniform token joint:role = "loop_closure"
+            rel physics:body0 = </apollo_lm/Geometry/body/leg_3_primary>
+            rel physics:body1 = </apollo_lm/Geometry/body/leg_3_secondary_b_inner/leg_3_secondary_b_compression/leg_3_secondary_b_tension1/leg_3_secondary_b_outer>
+            uniform bool physics:excludeFromArticulation = 1
+            point3f physics:localPos0 = (-1.7055532e-16, -0.9284599, -1.7147778)
+            point3f physics:localPos1 = (-0.27783, -0.71615696, -0.123649955)
+            quatf physics:localRot0 = (0.56697196, 0, 0.14015087, -0.81172687)
+            quatf physics:localRot1 = (0.56697196, 0, 0.14015087, -0.81172687)
+        }
+    }
+}
+

@@ -1,0 +1,241 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "blue_ghost"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "blue_ghost"
+{
+    over "Geometry"
+    {
+        over "body" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI"]
+        )
+        {
+            bool newton:selfCollisionEnabled = 0
+            point3f physics:centerOfMass = (0, 0, 1.15)
+            float3 physics:diagonalInertia = (308.46667, 308.46667, 280)
+            float physics:mass = 560
+            quatf physics:principalAxes = (1, 0, 0, 0)
+
+            over "leg_0_piston" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0.11200571, 0.11200571, -0.18057887)
+                float3 physics:diagonalInertia = (0.089563206, 0.089563206, 0.09328033)
+                float physics:mass = 2
+                quatf physics:principalAxes = (1, 0, 0, 0)
+            }
+
+            over "leg_1_piston" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (-0.1120057, 0.1120057, -0.17857887)
+                float3 physics:diagonalInertia = (0.08783105, 0.08783105, 0.09082799)
+                float physics:mass = 2
+                quatf physics:principalAxes = (1, 0, 0, 0)
+            }
+
+            over "leg_2_piston" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (-0.11200571, -0.11200571, -0.17832887)
+                float3 physics:diagonalInertia = (0.088601165, 0.088601165, 0.09152533)
+                float physics:mass = 2
+                quatf physics:principalAxes = (1, 0, 0, 0)
+            }
+
+            over "leg_3_piston" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0.1120057, -0.1120057, -0.17957887)
+                float3 physics:diagonalInertia = (0.08886671, 0.08886671, 0.09222533)
+                float physics:mass = 2
+                quatf physics:principalAxes = (1, 0, 0, 0)
+            }
+
+            over "xband_azimuth" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0, -1.4901161e-8, 0.06449994)
+                float3 physics:diagonalInertia = (0.008371621, 0.0035631217, 0.007512501)
+                float physics:mass = 1.5
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "xband_elevation" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0.040000007, 0, 0)
+                    float3 physics:diagonalInertia = (0.07636964, 0.034361638, 0.042328335)
+                    float physics:mass = 2
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+                }
+            }
+        }
+    }
+
+    def "Physics"
+    {
+        def PhysicsPrismaticJoint "leg_0_piston" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 1200
+            float drive:linear:physics:maxForce = 20000
+            float drive:linear:physics:stiffness = 8000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </blue_ghost/Geometry/body>
+            rel physics:body1 = </blue_ghost/Geometry/body/leg_0_piston>
+            point3f physics:localPos0 = (1.1961418, 1.1961418, 0.43382)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.61357945, 0, -0.76354057, -0.2013109)
+            quatf physics:localRot1 = (0.61357945, 0, -0.76354057, -0.2013109)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.1
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_1_piston" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 1200
+            float drive:linear:physics:maxForce = 20000
+            float drive:linear:physics:stiffness = 8000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </blue_ghost/Geometry/body>
+            rel physics:body1 = </blue_ghost/Geometry/body/leg_1_piston>
+            point3f physics:localPos0 = (-1.1961418, 1.1961418, 0.43382)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.789633, 0, -0.5933045, -0.1564274)
+            quatf physics:localRot1 = (0.789633, 0, -0.5933045, -0.1564274)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.1
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_2_piston" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 1200
+            float drive:linear:physics:maxForce = 20000
+            float drive:linear:physics:stiffness = 8000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </blue_ghost/Geometry/body>
+            rel physics:body1 = </blue_ghost/Geometry/body/leg_2_piston>
+            point3f physics:localPos0 = (-1.1961418, -1.1961418, 0.43382)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.789633, 0, -0.5933045, 0.1564274)
+            quatf physics:localRot1 = (0.789633, 0, -0.5933045, 0.1564274)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.1
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_3_piston" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 1200
+            float drive:linear:physics:maxForce = 20000
+            float drive:linear:physics:stiffness = 8000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </blue_ghost/Geometry/body>
+            rel physics:body1 = </blue_ghost/Geometry/body/leg_3_piston>
+            point3f physics:localPos0 = (1.1961418, -1.1961418, 0.43382)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.61357945, 0, -0.76354057, 0.2013109)
+            quatf physics:localRot1 = (0.61357945, 0, -0.76354057, 0.2013109)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.1
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "xband_azimuth" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0.034906585
+            float drive:angular:physics:maxForce = 10
+            float drive:angular:physics:stiffness = 0.34906584
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "antenna"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </blue_ghost/Geometry/body>
+            rel physics:body1 = </blue_ghost/Geometry/body/xband_azimuth>
+            point3f physics:localPos0 = (0.45, -0.45, 2.18)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, -0.70710677, 0)
+            quatf physics:localRot1 = (0.70710677, 0, -0.70710677, 0)
+            float physics:lowerLimit = -180
+            float physics:upperLimit = 180
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "xband_elevation" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0.034906585
+            float drive:angular:physics:maxForce = 10
+            float drive:angular:physics:stiffness = 0.34906584
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "antenna"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </blue_ghost/Geometry/body/xband_azimuth>
+            rel physics:body1 = </blue_ghost/Geometry/body/xband_azimuth/xband_elevation>
+            point3f physics:localPos0 = (0, 0, 0.13999987)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, 0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, 0.70710677)
+            float physics:lowerLimit = -10
+            float physics:upperLimit = 100
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+    }
+}
+

@@ -1,0 +1,311 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "nova_c"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "nova_c"
+{
+    over "Geometry"
+    {
+        over "body" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI"]
+        )
+        {
+            bool newton:selfCollisionEnabled = 0
+            point3f physics:centerOfMass = (0, 0, 2.45)
+            float3 physics:diagonalInertia = (1002.61664, 1002.61664, 348.3)
+            float physics:mass = 860
+            quatf physics:principalAxes = (1, 0, 0, 0)
+
+            over "leg_0_piston" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0.12425356, 0.0975492, -0.057074673)
+                float3 physics:diagonalInertia = (0.022004511, 0.029942373, 0.032024894)
+                float physics:mass = 1.5
+                quatf physics:principalAxes = (1, 0, 0, 0)
+            }
+
+            over "leg_1_piston" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0, 0.13195866, -0.05447469)
+                float3 physics:diagonalInertia = (0.033304244, 0.021663165, 0.034988925)
+                float physics:mass = 1.5
+                quatf physics:principalAxes = (1, 0, 0, 0)
+            }
+
+            over "leg_2_piston" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (-0.12165357, 0.095281936, -0.054474678)
+                float3 physics:diagonalInertia = (0.02130654, 0.0291969, 0.031197647)
+                float physics:mass = 1.5
+                quatf physics:principalAxes = (1, 0, 0, 0)
+            }
+
+            over "leg_3_piston" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (-0.12165356, -0.09528193, -0.05447467)
+                float3 physics:diagonalInertia = (0.022130894, 0.030147363, 0.03218653)
+                float physics:mass = 1.5
+                quatf physics:principalAxes = (1, 0, 0, 0)
+            }
+
+            over "leg_4_piston" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0, -0.13195868, -0.05447469)
+                float3 physics:diagonalInertia = (0.03259368, 0.021078872, 0.034255445)
+                float physics:mass = 1.5
+                quatf physics:principalAxes = (1, 0, 0, 0)
+            }
+
+            over "leg_5_piston" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0.121653564, -0.095281936, -0.054474674)
+                float3 physics:diagonalInertia = (0.022249939, 0.030284425, 0.032329082)
+                float physics:mass = 1.5
+                quatf physics:principalAxes = (1, 0, 0, 0)
+            }
+
+            over "vr900_gimbal_x" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.0018417056, 0.0018417056, 0.0025297066)
+                float physics:mass = 1
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "vr900" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0, 0, -0.385)
+                    float3 physics:diagonalInertia = (4.1049366, 4.1049366, 1.0069607)
+                    float physics:mass = 25
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+                }
+            }
+        }
+    }
+
+    def "Physics"
+    {
+        def PhysicsPrismaticJoint "leg_0_piston" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 1800
+            float drive:linear:physics:maxForce = 30000
+            float drive:linear:physics:stiffness = 12000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </nova_c/Geometry/body>
+            rel physics:body1 = </nova_c/Geometry/body/leg_0_piston>
+            point3f physics:localPos0 = (1.8228981, 1.0524508, 0.19501996)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.43383172, 0, -0.7997617, -0.4149352)
+            quatf physics:localRot1 = (0.43383172, 0, -0.7997617, -0.4149352)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.15
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_1_piston" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 1800
+            float drive:linear:physics:maxForce = 30000
+            float drive:linear:physics:stiffness = 12000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </nova_c/Geometry/body>
+            rel physics:body1 = </nova_c/Geometry/body/leg_1_piston>
+            point3f physics:localPos0 = (1.2888805e-16, 2.1049016, 0.19501996)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, -0.4906784, -0.509151)
+            quatf physics:localRot1 = (0.70710677, 0, -0.4906784, -0.509151)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.15
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_2_piston" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 1800
+            float drive:linear:physics:maxForce = 30000
+            float drive:linear:physics:stiffness = 12000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </nova_c/Geometry/body>
+            rel physics:body1 = </nova_c/Geometry/body/leg_2_piston>
+            point3f physics:localPos0 = (-1.8228981, 1.0524508, 0.19501996)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.9009939, 0, -0.3850881, -0.19979276)
+            quatf physics:localRot1 = (0.9009939, 0, -0.3850881, -0.19979276)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.15
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_3_piston" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 1800
+            float drive:linear:physics:maxForce = 30000
+            float drive:linear:physics:stiffness = 12000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </nova_c/Geometry/body>
+            rel physics:body1 = </nova_c/Geometry/body/leg_3_piston>
+            point3f physics:localPos0 = (-1.8228981, -1.0524508, 0.19501996)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.9009939, 0, -0.3850881, 0.19979276)
+            quatf physics:localRot1 = (0.9009939, 0, -0.3850881, 0.19979276)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.15
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_4_piston" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 1800
+            float drive:linear:physics:maxForce = 30000
+            float drive:linear:physics:stiffness = 12000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </nova_c/Geometry/body>
+            rel physics:body1 = </nova_c/Geometry/body/leg_4_piston>
+            point3f physics:localPos0 = (-3.8666413e-16, -2.1049016, 0.19501996)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, -0.4906784, 0.509151)
+            quatf physics:localRot1 = (0.70710677, 0, -0.4906784, 0.509151)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.15
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "leg_5_piston" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 1800
+            float drive:linear:physics:maxForce = 30000
+            float drive:linear:physics:stiffness = 12000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "spring"
+            custom uniform token joint:role = "landing_gear"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </nova_c/Geometry/body>
+            rel physics:body1 = </nova_c/Geometry/body/leg_5_piston>
+            point3f physics:localPos0 = (1.8228981, -1.0524508, 0.19501996)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.43383172, 0, -0.7997617, 0.4149352)
+            quatf physics:localRot1 = (0.43383172, 0, -0.7997617, 0.4149352)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.15
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "vr900_gimbal_x" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 1.0471976
+            float drive:angular:physics:maxForce = 600
+            float drive:angular:physics:stiffness = 52.35988
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "gimbal"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </nova_c/Geometry/body>
+            rel physics:body1 = </nova_c/Geometry/body/vr900_gimbal_x>
+            point3f physics:localPos0 = (0, 0, 1.39)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -5
+            float physics:upperLimit = 5
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "vr900" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 1.0471976
+            float drive:angular:physics:maxForce = 600
+            float drive:angular:physics:stiffness = 52.35988
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "gimbal"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </nova_c/Geometry/body/vr900_gimbal_x>
+            rel physics:body1 = </nova_c/Geometry/body/vr900_gimbal_x/vr900>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, 0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, 0.70710677)
+            float physics:lowerLimit = -5
+            float physics:upperLimit = 5
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+    }
+}
+

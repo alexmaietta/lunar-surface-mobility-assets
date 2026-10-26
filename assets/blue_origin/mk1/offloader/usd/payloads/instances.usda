@@ -1,0 +1,358 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Scope "Instances"
+{
+    def Xform "base__aluminium" (
+        prepend references = @./geometries.usd@</Geometries/base__aluminium>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "aluminium" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/aluminium>
+            )
+            {
+            }
+        }
+
+        over "base__aluminium" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/base__aluminium/VisualMaterials/aluminium>
+        }
+    }
+
+    def Xform "base__steel" (
+        prepend references = @./geometries.usd@</Geometries/base__steel>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "steel" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/steel>
+            )
+            {
+            }
+        }
+
+        over "base__steel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/base__steel/VisualMaterials/steel>
+        }
+    }
+
+    def Xform "crane_hoist__cable" (
+        prepend references = @./geometries.usd@</Geometries/crane_hoist__cable>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "cable" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/cable>
+            )
+            {
+            }
+        }
+
+        over "crane_hoist__cable" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/crane_hoist__cable/VisualMaterials/cable>
+        }
+    }
+
+    def Xform "crane_hoist__housing" (
+        prepend references = @./geometries.usd@</Geometries/crane_hoist__housing>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "housing" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/housing>
+            )
+            {
+            }
+        }
+
+        over "crane_hoist__housing" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/crane_hoist__housing/VisualMaterials/housing>
+        }
+    }
+
+    def Xform "crane_hoist__truss" (
+        prepend references = @./geometries.usd@</Geometries/crane_hoist__truss>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "truss" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/truss>
+            )
+            {
+            }
+        }
+
+        over "crane_hoist__truss" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/crane_hoist__truss/VisualMaterials/truss>
+        }
+    }
+
+    def Xform "crane_slew__housing" (
+        prepend references = @./geometries.usd@</Geometries/crane_slew__housing>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "housing" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/housing>
+            )
+            {
+            }
+        }
+
+        over "crane_slew__housing" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/crane_slew__housing/VisualMaterials/housing>
+        }
+    }
+
+    def Xform "crane_slew__truss" (
+        prepend references = @./geometries.usd@</Geometries/crane_slew__truss>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "truss" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/truss>
+            )
+            {
+            }
+        }
+
+        over "crane_slew__truss" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/crane_slew__truss/VisualMaterials/truss>
+        }
+    }
+
+    def Xform "crane_slew__aluminium" (
+        prepend references = @./geometries.usd@</Geometries/crane_slew__aluminium>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "aluminium" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/aluminium>
+            )
+            {
+            }
+        }
+
+        over "crane_slew__aluminium" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/crane_slew__aluminium/VisualMaterials/aluminium>
+        }
+    }
+
+    def Xform "crane_luff__truss" (
+        prepend references = @./geometries.usd@</Geometries/crane_luff__truss>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "truss" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/truss>
+            )
+            {
+            }
+        }
+
+        over "crane_luff__truss" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/crane_luff__truss/VisualMaterials/truss>
+        }
+    }
+
+    def Xform "crane_luff__steel" (
+        prepend references = @./geometries.usd@</Geometries/crane_luff__steel>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "steel" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/steel>
+            )
+            {
+            }
+        }
+
+        over "crane_luff__steel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/crane_luff__steel/VisualMaterials/steel>
+        }
+    }
+
+    def Xform "crane_luff__aluminium" (
+        prepend references = @./geometries.usd@</Geometries/crane_luff__aluminium>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "aluminium" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/aluminium>
+            )
+            {
+            }
+        }
+
+        over "crane_luff__aluminium" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/crane_luff__aluminium/VisualMaterials/aluminium>
+        }
+    }
+
+    def Xform "crane_luff__housing" (
+        prepend references = @./geometries.usd@</Geometries/crane_luff__housing>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "housing" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/housing>
+            )
+            {
+            }
+        }
+
+        over "crane_luff__housing" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/crane_luff__housing/VisualMaterials/housing>
+        }
+    }
+
+    def Xform "crane_luff_jib_col" (
+        prepend references = @./geometries.usd@</Geometries/crane_luff_jib_col>
+    )
+    {
+        over "crane_luff_jib_col" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonCollisionAPI", "NewtonMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Instances/crane_luff_jib_col/PhysicsMaterials/structure> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform int newton:maxHullVertices = 255
+            uniform token physics:approximation = "convexHull"
+            int physxConvexHullCollision:hullVertexLimit = 255
+            uniform token purpose = "guide"
+        }
+
+        def Scope "PhysicsMaterials"
+        {
+            def Material "structure" (
+                prepend references = @./physics_materials.usda@</PhysicsMaterials/structure>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "crane_slew_mast_col" (
+        prepend references = @./geometries.usd@</Geometries/crane_slew_mast_col>
+    )
+    {
+        over "crane_slew_mast_col" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonCollisionAPI", "NewtonMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Instances/crane_slew_mast_col/PhysicsMaterials/structure> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform int newton:maxHullVertices = 255
+            uniform token physics:approximation = "convexHull"
+            int physxConvexHullCollision:hullVertexLimit = 255
+            uniform token purpose = "guide"
+        }
+
+        def Scope "PhysicsMaterials"
+        {
+            def Material "structure" (
+                prepend references = @./physics_materials.usda@</PhysicsMaterials/structure>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "crane_hoist_spreader_col" (
+        prepend references = @./geometries.usd@</Geometries/crane_hoist_spreader_col>
+    )
+    {
+        over "crane_hoist_spreader_col" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonCollisionAPI", "NewtonMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Instances/crane_hoist_spreader_col/PhysicsMaterials/structure> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform int newton:maxHullVertices = 255
+            uniform token physics:approximation = "convexHull"
+            int physxConvexHullCollision:hullVertexLimit = 255
+            uniform token purpose = "guide"
+        }
+
+        def Scope "PhysicsMaterials"
+        {
+            def Material "structure" (
+                prepend references = @./physics_materials.usda@</PhysicsMaterials/structure>
+            )
+            {
+            }
+        }
+    }
+}
+

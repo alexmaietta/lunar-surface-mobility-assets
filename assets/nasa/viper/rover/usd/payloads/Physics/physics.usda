@@ -1,0 +1,618 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "viper"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "viper"
+{
+    over "Geometry"
+    {
+        over "chassis" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI"]
+        )
+        {
+            bool newton:selfCollisionEnabled = 0
+            point3f physics:centerOfMass = (0, 0, 0.8)
+            float3 physics:diagonalInertia = (108.92532, 108.92532, 156.65665)
+            float physics:mass = 367.164
+            quatf physics:principalAxes = (1, 0, 0, 0)
+
+            over "fl_arm" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0.13682728, 0, -0.090049684)
+                float3 physics:diagonalInertia = (0.035193603, 0.08162243, 0.058032237)
+                float physics:mass = 4.47
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "fl_steer" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0, 0.016074982, 0.079349995)
+                    float3 physics:diagonalInertia = (0.037781626, 0.03330433, 0.021924678)
+                    float physics:mass = 5.364
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+
+                    over "fl_wheel" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0, 0, 0)
+                        float3 physics:diagonalInertia = (0.20142765, 0.34516996, 0.20142765)
+                        float physics:mass = 8
+                        quatf physics:principalAxes = (1, 0, 0, 0)
+                    }
+                }
+            }
+
+            over "fr_arm" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0.13682728, 0, -0.090049684)
+                float3 physics:diagonalInertia = (0.035193603, 0.08162243, 0.058032237)
+                float physics:mass = 4.47
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "fr_steer" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0, -0.016074982, 0.079349995)
+                    float3 physics:diagonalInertia = (0.037781626, 0.03330433, 0.021924678)
+                    float physics:mass = 5.364
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+
+                    over "fr_wheel" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0, 0, 0)
+                        float3 physics:diagonalInertia = (0.20142765, 0.34516996, 0.20142765)
+                        float physics:mass = 8
+                        quatf physics:principalAxes = (1, 0, 0, 0)
+                    }
+                }
+            }
+
+            over "hga_azimuth" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0, 0, 0.07035005)
+                float3 physics:diagonalInertia = (0.002958348, 0.0029583487, 0.0017521927)
+                float physics:mass = 1.2
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "hga_elevation" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0.10298788, 0, 0.040896386)
+                    float3 physics:diagonalInertia = (0.037132565, 0.023947205, 0.027618675)
+                    float physics:mass = 1.8
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+                }
+            }
+
+            over "nav_mast_pan" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0, 0, 0.029999971)
+                float3 physics:diagonalInertia = (0.0020434237, 0.0020434242, 0.0037171845)
+                float physics:mass = 0.6
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "nav_mast_tilt" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0.012839988, 0, 0.003584141)
+                    float3 physics:diagonalInertia = (0.03888678, 0.0028637429, 0.039677184)
+                    float physics:mass = 0.9
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+                }
+            }
+
+            over "rl_arm" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (-0.13642728, 0, -0.089649685)
+                float3 physics:diagonalInertia = (0.035026424, 0.081232324, 0.057809304)
+                float physics:mass = 4.47
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "rl_steer" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0, 0.01647498, 0.077725)
+                    float3 physics:diagonalInertia = (0.03800613, 0.033452775, 0.021603376)
+                    float physics:mass = 5.364
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+
+                    over "rl_wheel" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0, 0, 0)
+                        float3 physics:diagonalInertia = (0.19990188, 0.34300247, 0.19990188)
+                        float physics:mass = 8
+                        quatf physics:principalAxes = (1, 0, 0, 0)
+                    }
+                }
+            }
+
+            over "rr_arm" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (-0.13642728, 0, -0.089649685)
+                float3 physics:diagonalInertia = (0.035026424, 0.081232324, 0.057809304)
+                float physics:mass = 4.47
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "rr_steer" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0, -0.01647498, 0.077725)
+                    float3 physics:diagonalInertia = (0.03800613, 0.033452775, 0.021603376)
+                    float physics:mass = 5.364
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+
+                    over "rr_wheel" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0, 0, 0)
+                        float3 physics:diagonalInertia = (0.19990188, 0.34300247, 0.19990188)
+                        float physics:mass = 8
+                        quatf physics:principalAxes = (1, 0, 0, 0)
+                    }
+                }
+            }
+
+            over "trident_drill" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0, -1.4901161e-8, -0.6496)
+                float3 physics:diagonalInertia = (0.64206934, 0.64206934, 0.010118825)
+                float physics:mass = 4
+                quatf physics:principalAxes = (1, 0, 0, 0)
+            }
+        }
+    }
+
+    def "Physics"
+    {
+        def PhysicsRevoluteJoint "fl_arm" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 4.650889
+            float drive:angular:physics:maxForce = 1089.5625
+            float drive:angular:physics:stiffness = 142.6234
+            float drive:angular:physics:targetPosition = -0.38197187
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "active_suspension"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </viper/Geometry/chassis>
+            rel physics:body1 = </viper/Geometry/chassis/fl_arm>
+            point3f physics:localPos0 = (0.2, 0.51500005, 0.55)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, -0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, -0.70710677)
+            float physics:lowerLimit = -67.94437
+            float physics:upperLimit = 39.296482
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "fl_steer" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 7.801622
+            float drive:angular:physics:maxForce = 335.25
+            float drive:angular:physics:stiffness = 78.01622
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "steer"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </viper/Geometry/chassis/fl_arm>
+            rel physics:body1 = </viper/Geometry/chassis/fl_arm/fl_steer>
+            point3f physics:localPos0 = (0.3, 0, -0.3)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, -0.70710677, 0)
+            quatf physics:localRot1 = (0.70710677, 0, -0.70710677, 0)
+            float physics:lowerLimit = -50
+            float physics:upperLimit = 50
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "fl_wheel" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 11.702433
+            float drive:angular:physics:maxForce = 54.478127
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "velocity"
+            custom uniform token joint:role = "drive"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </viper/Geometry/chassis/fl_arm/fl_steer>
+            rel physics:body1 = </viper/Geometry/chassis/fl_arm/fl_steer/fl_wheel>
+            point3f physics:localPos0 = (0, 0.14999998, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, 0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, 0.70710677)
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "fr_arm" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 4.650889
+            float drive:angular:physics:maxForce = 1089.5625
+            float drive:angular:physics:stiffness = 142.6234
+            float drive:angular:physics:targetPosition = -0.38197187
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "active_suspension"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </viper/Geometry/chassis>
+            rel physics:body1 = </viper/Geometry/chassis/fr_arm>
+            point3f physics:localPos0 = (0.2, -0.51500005, 0.55)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, -0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, -0.70710677)
+            float physics:lowerLimit = -67.94437
+            float physics:upperLimit = 39.296482
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "fr_steer" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 7.801622
+            float drive:angular:physics:maxForce = 335.25
+            float drive:angular:physics:stiffness = 78.01622
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "steer"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </viper/Geometry/chassis/fr_arm>
+            rel physics:body1 = </viper/Geometry/chassis/fr_arm/fr_steer>
+            point3f physics:localPos0 = (0.3, 0, -0.3)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, -0.70710677, 0)
+            quatf physics:localRot1 = (0.70710677, 0, -0.70710677, 0)
+            float physics:lowerLimit = -50
+            float physics:upperLimit = 50
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "fr_wheel" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 11.702433
+            float drive:angular:physics:maxForce = 54.478127
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "velocity"
+            custom uniform token joint:role = "drive"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </viper/Geometry/chassis/fr_arm/fr_steer>
+            rel physics:body1 = </viper/Geometry/chassis/fr_arm/fr_steer/fr_wheel>
+            point3f physics:localPos0 = (0, -0.14999998, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, 0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, 0.70710677)
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "hga_azimuth" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0.06981317
+            float drive:angular:physics:maxForce = 30
+            float drive:angular:physics:stiffness = 0.6981317
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "antenna"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </viper/Geometry/chassis>
+            rel physics:body1 = </viper/Geometry/chassis/hga_azimuth>
+            point3f physics:localPos0 = (0.6, 0, 2.1799998)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, -0.70710677, 0)
+            quatf physics:localRot1 = (0.70710677, 0, -0.70710677, 0)
+            float physics:lowerLimit = -180
+            float physics:upperLimit = 180
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "hga_elevation" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0.06981317
+            float drive:angular:physics:maxForce = 30
+            float drive:angular:physics:stiffness = 0.6981317
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "antenna"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </viper/Geometry/chassis/hga_azimuth>
+            rel physics:body1 = </viper/Geometry/chassis/hga_azimuth/hga_elevation>
+            point3f physics:localPos0 = (0, 0, 0.14300013)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, -0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, -0.70710677)
+            float physics:lowerLimit = -20
+            float physics:upperLimit = 90
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "nav_mast_pan" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0.05235988
+            float drive:angular:physics:maxForce = 20
+            float drive:angular:physics:stiffness = 0.5235988
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "camera"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </viper/Geometry/chassis>
+            rel physics:body1 = </viper/Geometry/chassis/nav_mast_pan>
+            point3f physics:localPos0 = (0.6, 0, 1.88)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, -0.70710677, 0)
+            quatf physics:localRot1 = (0.70710677, 0, -0.70710677, 0)
+            float physics:lowerLimit = -180
+            float physics:upperLimit = 180
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "nav_mast_tilt" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0.05235988
+            float drive:angular:physics:maxForce = 20
+            float drive:angular:physics:stiffness = 0.5235988
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "camera"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </viper/Geometry/chassis/nav_mast_pan>
+            rel physics:body1 = </viper/Geometry/chassis/nav_mast_pan/nav_mast_tilt>
+            point3f physics:localPos0 = (0, 0, 0.120000005)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, -0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, -0.70710677)
+            float physics:lowerLimit = -60
+            float physics:upperLimit = 60
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "rl_arm" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 4.650889
+            float drive:angular:physics:maxForce = 1089.5625
+            float drive:angular:physics:stiffness = 142.6234
+            float drive:angular:physics:targetPosition = -0.38197187
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "active_suspension"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </viper/Geometry/chassis>
+            rel physics:body1 = </viper/Geometry/chassis/rl_arm>
+            point3f physics:localPos0 = (-0.2, 0.51500005, 0.55)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, 0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, 0.70710677)
+            float physics:lowerLimit = -67.94437
+            float physics:upperLimit = 39.296482
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "rl_steer" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 7.801622
+            float drive:angular:physics:maxForce = 335.25
+            float drive:angular:physics:stiffness = 78.01622
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "steer"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </viper/Geometry/chassis/rl_arm>
+            rel physics:body1 = </viper/Geometry/chassis/rl_arm/rl_steer>
+            point3f physics:localPos0 = (-0.3, 0, -0.3)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, -0.70710677, 0)
+            quatf physics:localRot1 = (0.70710677, 0, -0.70710677, 0)
+            float physics:lowerLimit = -50
+            float physics:upperLimit = 50
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "rl_wheel" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 11.702433
+            float drive:angular:physics:maxForce = 54.478127
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "velocity"
+            custom uniform token joint:role = "drive"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </viper/Geometry/chassis/rl_arm/rl_steer>
+            rel physics:body1 = </viper/Geometry/chassis/rl_arm/rl_steer/rl_wheel>
+            point3f physics:localPos0 = (0, 0.14999998, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, 0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, 0.70710677)
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "rr_arm" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 4.650889
+            float drive:angular:physics:maxForce = 1089.5625
+            float drive:angular:physics:stiffness = 142.6234
+            float drive:angular:physics:targetPosition = -0.38197187
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "active_suspension"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </viper/Geometry/chassis>
+            rel physics:body1 = </viper/Geometry/chassis/rr_arm>
+            point3f physics:localPos0 = (-0.2, -0.51500005, 0.55)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, 0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, 0.70710677)
+            float physics:lowerLimit = -67.94437
+            float physics:upperLimit = 39.296482
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "rr_steer" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 7.801622
+            float drive:angular:physics:maxForce = 335.25
+            float drive:angular:physics:stiffness = 78.01622
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "steer"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </viper/Geometry/chassis/rr_arm>
+            rel physics:body1 = </viper/Geometry/chassis/rr_arm/rr_steer>
+            point3f physics:localPos0 = (-0.3, 0, -0.3)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, -0.70710677, 0)
+            quatf physics:localRot1 = (0.70710677, 0, -0.70710677, 0)
+            float physics:lowerLimit = -50
+            float physics:upperLimit = 50
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "rr_wheel" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 11.702433
+            float drive:angular:physics:maxForce = 54.478127
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "velocity"
+            custom uniform token joint:role = "drive"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </viper/Geometry/chassis/rr_arm/rr_steer>
+            rel physics:body1 = </viper/Geometry/chassis/rr_arm/rr_steer/rr_wheel>
+            point3f physics:localPos0 = (0, -0.14999998, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, 0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, 0.70710677)
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "trident_drill" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 300
+            float drive:linear:physics:maxForce = 500
+            float drive:linear:physics:stiffness = 3000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "arm"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </viper/Geometry/chassis>
+            rel physics:body1 = </viper/Geometry/chassis/trident_drill>
+            point3f physics:localPos0 = (0.75, -0.42, 1.46)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, -0, 0.70710677, 0)
+            quatf physics:localRot1 = (0.70710677, -0, 0.70710677, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 1.1
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+    }
+}
+

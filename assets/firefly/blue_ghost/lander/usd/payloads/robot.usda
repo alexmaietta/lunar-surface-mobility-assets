@@ -1,0 +1,537 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "blue_ghost"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "blue_ghost" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    string isaac:description = "Firefly Blue Ghost"
+    token isaac:license = "Other"
+    string isaac:namespace = "blue_ghost"
+    prepend rel isaac:physics:robotJoints = [
+        </blue_ghost/Physics/leg_0_piston>,
+        </blue_ghost/Physics/leg_1_piston>,
+        </blue_ghost/Physics/leg_2_piston>,
+        </blue_ghost/Physics/leg_3_piston>,
+        </blue_ghost/Physics/xband_azimuth>,
+        </blue_ghost/Physics/xband_elevation>,
+    ]
+    prepend rel isaac:physics:robotLinks = [
+        </blue_ghost/Geometry/body>,
+        </blue_ghost/Geometry/body/leros_exit>,
+        </blue_ghost/Geometry/body/rcs_0_0>,
+        </blue_ghost/Geometry/body/rcs_0_1>,
+        </blue_ghost/Geometry/body/rcs_1_0>,
+        </blue_ghost/Geometry/body/rcs_1_1>,
+        </blue_ghost/Geometry/body/rcs_2_0>,
+        </blue_ghost/Geometry/body/rcs_2_1>,
+        </blue_ghost/Geometry/body/rcs_3_0>,
+        </blue_ghost/Geometry/body/rcs_3_1>,
+        </blue_ghost/Geometry/body/acs_0_0>,
+        </blue_ghost/Geometry/body/acs_0_1>,
+        </blue_ghost/Geometry/body/acs_0_2>,
+        </blue_ghost/Geometry/body/acs_1_0>,
+        </blue_ghost/Geometry/body/acs_1_1>,
+        </blue_ghost/Geometry/body/acs_1_2>,
+        </blue_ghost/Geometry/body/acs_2_0>,
+        </blue_ghost/Geometry/body/acs_2_1>,
+        </blue_ghost/Geometry/body/acs_2_2>,
+        </blue_ghost/Geometry/body/acs_3_0>,
+        </blue_ghost/Geometry/body/acs_3_1>,
+        </blue_ghost/Geometry/body/acs_3_2>,
+        </blue_ghost/Geometry/body/solar_0_normal>,
+        </blue_ghost/Geometry/body/solar_1_normal>,
+        </blue_ghost/Geometry/body/lexi_boresight>,
+        </blue_ghost/Geometry/body/star_tracker_0>,
+        </blue_ghost/Geometry/body/star_tracker_1>,
+        </blue_ghost/Geometry/body/omni_antenna_0>,
+        </blue_ghost/Geometry/body/omni_antenna_1>,
+        </blue_ghost/Geometry/body/omni_antenna_2>,
+        </blue_ghost/Geometry/body/nglr>,
+        </blue_ghost/Geometry/body/vehicle_origin>,
+        </blue_ghost/Geometry/body/deck_center>,
+        </blue_ghost/Geometry/body/imu>,
+        </blue_ghost/Geometry/body/lift_point_0>,
+        </blue_ghost/Geometry/body/lift_point_1>,
+        </blue_ghost/Geometry/body/lift_point_2>,
+        </blue_ghost/Geometry/body/lift_point_3>,
+        </blue_ghost/Geometry/body/leg_0_piston>,
+        </blue_ghost/Geometry/body/leg_0_piston/leg_0_foot_contact>,
+        </blue_ghost/Geometry/body/leg_0_piston/leg_0_touchdown_sensor>,
+        </blue_ghost/Geometry/body/leg_1_piston>,
+        </blue_ghost/Geometry/body/leg_1_piston/leg_1_foot_contact>,
+        </blue_ghost/Geometry/body/leg_1_piston/leg_1_touchdown_sensor>,
+        </blue_ghost/Geometry/body/leg_2_piston>,
+        </blue_ghost/Geometry/body/leg_2_piston/leg_2_foot_contact>,
+        </blue_ghost/Geometry/body/leg_2_piston/leg_2_touchdown_sensor>,
+        </blue_ghost/Geometry/body/leg_3_piston>,
+        </blue_ghost/Geometry/body/leg_3_piston/leg_3_foot_contact>,
+        </blue_ghost/Geometry/body/leg_3_piston/leg_3_touchdown_sensor>,
+        </blue_ghost/Geometry/body/xband_azimuth>,
+        </blue_ghost/Geometry/body/xband_azimuth/xband_elevation>,
+        </blue_ghost/Geometry/body/xband_azimuth/xband_elevation/xband_boresight>,
+    ]
+    token isaac:robotType = "Aerial"
+    string isaac:source = "lunar-surface-mobility-assets pipeline"
+    string isaac:version = "0.1.0"
+
+    over "Geometry"
+    {
+        over "body" (
+            prepend apiSchemas = ["IsaacLinkAPI"]
+        )
+        {
+            over "leg_0_piston" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_0_foot_contact" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Footpad contact point (touchdown sensing)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+
+                over "leg_0_touchdown_sensor" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Crush-core stroke / touchdown switch (estimated)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "leg_1_piston" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_1_foot_contact" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Footpad contact point (touchdown sensing)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+
+                over "leg_1_touchdown_sensor" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Crush-core stroke / touchdown switch (estimated)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "leg_2_piston" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_2_foot_contact" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Footpad contact point (touchdown sensing)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+
+                over "leg_2_touchdown_sensor" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Crush-core stroke / touchdown switch (estimated)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "leg_3_piston" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "leg_3_foot_contact" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Footpad contact point (touchdown sensing)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+
+                over "leg_3_touchdown_sensor" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Crush-core stroke / touchdown switch (estimated)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "xband_azimuth" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "xband_elevation" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "xband_boresight" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "X-band flat-panel antenna boresight (+Z); 2-axis gimbal (geometry estimated)"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+                }
+            }
+
+            over "leros_exit" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Nammo LEROS 4-ET; >1,000 N (Firefly), 1,310 N and 321 s used. Fixed, not gimballed. Exit size from renders."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_0_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Firefly Spectre bipropellant RCS; 8 thrusters, ~1,600 N total (Firefly). Pod layout from renders."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_0_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Firefly Spectre bipropellant RCS; 8 thrusters, ~1,600 N total (Firefly). Pod layout from renders."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_1_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Firefly Spectre bipropellant RCS; 8 thrusters, ~1,600 N total (Firefly). Pod layout from renders."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_1_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Firefly Spectre bipropellant RCS; 8 thrusters, ~1,600 N total (Firefly). Pod layout from renders."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_2_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Firefly Spectre bipropellant RCS; 8 thrusters, ~1,600 N total (Firefly). Pod layout from renders."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_2_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Firefly Spectre bipropellant RCS; 8 thrusters, ~1,600 N total (Firefly). Pod layout from renders."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_3_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Firefly Spectre bipropellant RCS; 8 thrusters, ~1,600 N total (Firefly). Pod layout from renders."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "rcs_3_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Firefly Spectre bipropellant RCS; 8 thrusters, ~1,600 N total (Firefly). Pod layout from renders."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "acs_0_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Cold-gas ACS; 12 thrusters (Firefly). Thrust, Isp and clustering assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "acs_0_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Cold-gas ACS; 12 thrusters (Firefly). Thrust, Isp and clustering assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "acs_0_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Cold-gas ACS; 12 thrusters (Firefly). Thrust, Isp and clustering assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "acs_1_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Cold-gas ACS; 12 thrusters (Firefly). Thrust, Isp and clustering assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "acs_1_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Cold-gas ACS; 12 thrusters (Firefly). Thrust, Isp and clustering assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "acs_1_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Cold-gas ACS; 12 thrusters (Firefly). Thrust, Isp and clustering assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "acs_2_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Cold-gas ACS; 12 thrusters (Firefly). Thrust, Isp and clustering assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "acs_2_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Cold-gas ACS; 12 thrusters (Firefly). Thrust, Isp and clustering assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "acs_2_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Cold-gas ACS; 12 thrusters (Firefly). Thrust, Isp and clustering assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "acs_3_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Cold-gas ACS; 12 thrusters (Firefly). Thrust, Isp and clustering assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "acs_3_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Cold-gas ACS; 12 thrusters (Firefly). Thrust, Isp and clustering assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "acs_3_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Cold-gas ACS; 12 thrusters (Firefly). Thrust, Isp and clustering assumed."
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "solar_0_normal" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Body-mounted solar panel centre; +Z = cell normal"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "solar_1_normal" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Body-mounted solar panel centre; +Z = cell normal"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lexi_boresight" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "LEXI soft X-ray imager boresight (stowed pose estimated)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "star_tracker_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Star tracker boresight (+Z), estimated location"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "star_tracker_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Star tracker boresight (+Z), estimated location"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "omni_antenna_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "S-band omni antenna (estimated location)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "omni_antenna_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "S-band omni antenna (estimated location)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "omni_antenna_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "S-band omni antenna (estimated location)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "nglr" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Next Generation Lunar Retroreflector (NGLR-1)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "vehicle_origin" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Ground point under the centreline, legs at nominal stroke"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "deck_center" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Top deck centre"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "imu" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "IMU / navigation reference (estimated location)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lift_point_0" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "GSE lift point (deck corner)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lift_point_1" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "GSE lift point (deck corner)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lift_point_2" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "GSE lift point (deck corner)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "lift_point_3" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "GSE lift point (deck corner)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "leg_0_piston" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_1_piston" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_2_piston" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "leg_3_piston" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "xband_azimuth" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "xband_elevation" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+    }
+}
+

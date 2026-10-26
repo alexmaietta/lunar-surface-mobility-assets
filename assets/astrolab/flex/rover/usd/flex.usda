@@ -1,0 +1,152 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary SimReady_Metadata = {
+            float3 asset_extents = (3.422521, 2.49, 3.9270318)
+            string asset_license = "CC-BY-4.0"
+            string asset_name = "flex"
+            string asset_type = "robot"
+            string asset_version = "0.1.0"
+            string category = "spacecraft"
+            double mass = 500
+            int rigid_body_count = 21
+            string source_file = "build/flex/flex.blend (scripts/build.py)"
+            string usd_date_generated = "2026-10-26"
+            string usd_version = "0.26.8"
+        }
+        string asset_name = "flex"
+        string asset_type = "robot"
+        string asset_version = "0.1.0"
+        string creator = "lunar-surface-mobility-assets pipeline"
+        string usd_date_generated = "2026-10-26"
+    }
+    defaultPrim = "flex"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "flex" (
+    prepend references = @./payloads/base.usda@
+    variants = {
+        string Articulation = "articulated"
+        string Crew = "crewed"
+        string Fidelity = "full"
+        string Lights = "on"
+        string Payload = "empty"
+        string Physics = "physx"
+        string Solar = "stowed"
+    }
+    prepend variantSets = ["Articulation", "Payload", "Crew", "Solar", "Lights", "Fidelity", "Physics"]
+)
+{
+    variantSet "Articulation" = {
+        "articulated" (
+            prepend payload = @./payloads/Articulation/articulated.usda@
+        ) {
+
+        }
+        "rigid" (
+            prepend payload = @./payloads/Articulation/rigid.usda@
+        ) {
+
+        }
+    }
+    variantSet "Payload" = {
+        "cargo" (
+            prepend payload = @./payloads/Propellant/cargo.usda@
+        ) {
+
+        }
+        "crewed" (
+            prepend payload = @./payloads/Propellant/crewed.usda@
+        ) {
+
+        }
+        "empty" (
+            prepend payload = @./payloads/Propellant/empty.usda@
+        ) {
+
+        }
+        "none" {
+
+        }
+    }
+    variantSet "Crew" = {
+        "cargo" (
+            prepend payload = @./payloads/Crew/cargo.usda@
+        ) {
+
+        }
+        "crewed" (
+            prepend payload = @./payloads/Crew/crewed.usda@
+        ) {
+
+        }
+    }
+    variantSet "Solar" = {
+        "deployed" (
+            prepend payload = @./payloads/Solar/deployed.usda@
+        ) {
+
+        }
+        "stowed" (
+            prepend payload = @./payloads/Solar/stowed.usda@
+        ) {
+
+        }
+    }
+    variantSet "Lights" = {
+        "off" (
+            prepend payload = @./payloads/Lights/off.usda@
+        ) {
+
+        }
+        "on" (
+            prepend payload = @./payloads/Lights/on.usda@
+        ) {
+
+        }
+    }
+    variantSet "Fidelity" = {
+        "full" (
+            prepend payload = @./payloads/Fidelity/full.usda@
+        ) {
+
+        }
+        "none" {
+
+        }
+        "proxy" (
+            prepend payload = @./payloads/Fidelity/proxy.usd@
+        ) {
+
+        }
+        "simple" (
+            prepend payload = @./payloads/Fidelity/simple.usd@
+        ) {
+
+        }
+    }
+    variantSet "Physics" = {
+        "mujoco" (
+            prepend payload = @./payloads/Physics/mujoco.usda@
+        ) {
+
+        }
+        "none" {
+
+        }
+        "physics" (
+            prepend payload = @./payloads/Physics/physics.usda@
+        ) {
+
+        }
+        "physx" (
+            prepend payload = @./payloads/Physics/physx.usda@
+        ) {
+
+        }
+    }
+}
+

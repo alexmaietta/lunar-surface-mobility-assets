@@ -1,0 +1,25 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "moon_racer"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "moon_racer"
+{
+    over "Geometry"
+    {
+        over "chassis"
+        {
+            point3f physics:centerOfMass = (0, 0, 0.85)
+            float3 physics:diagonalInertia = (398.5025, 1987.7825, 2194.72)
+            float physics:mass = 1419
+            custom string propellant:source = "estimate: + 2 suited crew (550 kg)"
+        }
+    }
+}
+

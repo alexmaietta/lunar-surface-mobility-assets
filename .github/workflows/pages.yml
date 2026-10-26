@@ -1,0 +1,48 @@
+name: pages
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag whose web-models.zip to deploy (empty = latest release)"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Download the web models from the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          gh release download ${TAG:+"$TAG"} --pattern web-models.zip --dir "$RUNNER_TEMP"
+          mkdir -p web/models
+          unzip -q "$RUNNER_TEMP/web-models.zip" -d web/models
+          test -f web/models/manifest.json
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,1658 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "mk1"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./robot.usda@
+    ]
+    upAxis = "Z"
+)
+
+def Xform "mk1" (
+    prepend apiSchemas = ["IsaacRobotAPI", "GeomModelAPI", "SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @./mk1.usda@
+        string name = "mk1"
+        string version = "0.1.0"
+    }
+    doc = "Blue Origin Blue Moon Mark 1 lunar lander: a single-stage uncrewed cargo lander about 8 m tall with an octagonal avionics ring, an MLI-wrapped LH2 tank, four capsule propellant tanks around one gimballed BE-7 LOX/LH2 engine, four legs with stroking pistons, corner RCS pods, a steerable high-gain antenna and a deck mount for an optional payload offloader."
+    kind = "component"
+)
+{
+    float3[] extentsHint = [(-2.3414757, -2.5227518, -0.004799962), (2.3390756, 2.523552, 8.9944), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-2.3414757, -2.5227518, -0.004799962), (2.3390756, 2.523552, 8.3008)]
+    token[] semantics:labels:class = ["lunar_lander", "spacecraft"]
+
+    def Scope "Geometry"
+    {
+        def Xform "body"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Xform "body__ring_panel" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__ring_panel>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__deck_panel" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__deck_panel>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__lens" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__lens>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__aluminium" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__aluminium>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__radome" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__radome>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__osr" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__osr>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__anodised_dark" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__anodised_dark>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__mli_silver" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__mli_silver>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__mli_amber" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__mli_amber>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__engine_metal" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__engine_metal>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__leg_lattice" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__leg_lattice>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__mli_gold" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__mli_gold>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body_hull_col" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body_hull_col>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "be7_gimbal_x"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 2.619999885559082)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "be7_gimbal_x__aluminium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/be7_gimbal_x__aluminium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "be7"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "be7__nozzle_ext" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/be7__nozzle_ext>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "be7__nozzle_int" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/be7__nozzle_int>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "be7__aluminium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/be7__aluminium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "be7__engine_metal" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/be7__engine_metal>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "be7_nozzle_col" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/be7_nozzle_col>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "be7_exit"
+                    {
+                        uniform token purpose = "guide"
+                        custom token site:kind = "thruster"
+                        custom double thruster:areaRatio = 89.19753086419757
+                        custom string thruster:confidence = "thrust/isp official; geometry estimated"
+                        custom double thruster:exitRadius = 0.34
+                        custom double thruster:ispVac = 460
+                        custom string thruster:kind = "main"
+                        custom double thruster:massFlow = 9.860655779496568
+                        custom string thruster:notes = "BE-7 dual-expander; 10,000 lbf, 20-100% throttle (Blue Origin). Exit radius estimated from photos."
+                        custom string thruster:propellant = "LOX/LH2"
+                        custom double thruster:throatRadius = 0.036
+                        custom double thruster:thrustMin = 8896
+                        custom double thruster:thrustVac = 44482
+                        quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, -1.369999885559082)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+                }
+            }
+
+            def Xform "hga_azimuth"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.8999999761581421, -0.949999988079071, 8.449999809265137)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "hga_azimuth__ring_panel" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/hga_azimuth__ring_panel>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "hga_azimuth__aluminium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/hga_azimuth__aluminium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "hga_elevation"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0.26000022888183594)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "hga_elevation__beta_white" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/hga_elevation__beta_white>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "hga_elevation__ring_panel" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/hga_elevation__ring_panel>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "hga_elevation__aluminium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/hga_elevation__aluminium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "hga_boresight"
+                    {
+                        custom string site:band = "X"
+                        custom string site:description = "High-gain antenna boresight (+Z); steerable (estimated configuration)"
+                        custom token site:kind = "antenna"
+                        quatd xformOp:orient = (0.7071068286895752, 0, 0.7071067690849304, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0.312000036239624, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+                }
+            }
+
+            def Xform "leg_0_piston"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.8002938032150269, 1.8002938032150269, 1.672800064086914)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "leg_0_piston__titanium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_0_piston__titanium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_0_piston__aluminium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_0_piston__aluminium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_0_piston_foot_col" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_0_piston_foot_col>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_0_foot_contact"
+                {
+                    custom string site:description = "Footpad contact point (touchdown sensing)"
+                    custom token site:kind = "contact"
+                    quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0.35638177394866943, 0.35638177394866943, -1.6728000654280186)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_0_touchdown_sensor"
+                {
+                    custom string site:description = "Stroke / touchdown switch (estimated)"
+                    custom token site:kind = "sensor"
+                    quatd xformOp:orient = (0.1508641391992569, -0.6990135908126831, 0.6990135908126831, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0.021091222763061523, 0.021091222763061523, -0.09544801712036133)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "leg_1_piston"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.8002938032150269, 1.8002938032150269, 1.672800064086914)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "leg_1_piston__titanium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_1_piston__titanium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_1_piston__aluminium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_1_piston__aluminium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_1_piston_foot_col" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_1_piston_foot_col>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_1_foot_contact"
+                {
+                    custom string site:description = "Footpad contact point (touchdown sensing)"
+                    custom token site:kind = "contact"
+                    quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-0.35638177394866943, 0.35638177394866943, -1.6728000654280186)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_1_touchdown_sensor"
+                {
+                    custom string site:description = "Stroke / touchdown switch (estimated)"
+                    custom token site:kind = "sensor"
+                    quatd xformOp:orient = (0.1508641391992569, -0.6990135908126831, -0.6990135908126831, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-0.021091222763061523, 0.021091222763061523, -0.09544801712036133)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "leg_2_piston"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.8002938032150269, -1.8002938032150269, 1.672800064086914)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "leg_2_piston__titanium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_2_piston__titanium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_2_piston__aluminium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_2_piston__aluminium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_2_piston_foot_col" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_2_piston_foot_col>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_2_foot_contact"
+                {
+                    custom string site:description = "Footpad contact point (touchdown sensing)"
+                    custom token site:kind = "contact"
+                    quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-0.35638177394866943, -0.35638177394866943, -1.6728000654280186)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_2_touchdown_sensor"
+                {
+                    custom string site:description = "Stroke / touchdown switch (estimated)"
+                    custom token site:kind = "sensor"
+                    quatd xformOp:orient = (0.1508641391992569, 0.6990135908126831, -0.6990135908126831, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-0.021091222763061523, -0.021091222763061523, -0.09544801712036133)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "leg_3_piston"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.8002938032150269, -1.8002938032150269, 1.672800064086914)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "leg_3_piston__titanium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_3_piston__titanium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_3_piston__aluminium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_3_piston__aluminium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_3_piston_foot_col" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/leg_3_piston_foot_col>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_3_foot_contact"
+                {
+                    custom string site:description = "Footpad contact point (touchdown sensing)"
+                    custom token site:kind = "contact"
+                    quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0.35638177394866943, -0.35638177394866943, -1.6728000654280186)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "leg_3_touchdown_sensor"
+                {
+                    custom string site:description = "Stroke / touchdown switch (estimated)"
+                    custom token site:kind = "sensor"
+                    quatd xformOp:orient = (0.1508641391992569, 0.6990135908126831, 0.6990135908126831, -0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0.021091222763061523, -0.021091222763061523, -0.09544801712036133)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "solar_array_0"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.2246468525851679e-16, 2, 4.050000190734863)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "solar_array_0__solar_cells" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/solar_array_0__solar_cells>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "solar_array_0__beta_white" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/solar_array_0__beta_white>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "solar_array_0__aluminium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/solar_array_0__aluminium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "solar_array_0_panel_col" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/solar_array_0_panel_col>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "solar_array_0_normal"
+                {
+                    custom double site:area_m2 = 3.48
+                    custom string site:description = "Solar array centre; +Z = cell normal"
+                    custom token site:kind = "power"
+                    quatd xformOp:orient = (0.6427876353263855, -0.7660444378852844, 4.6906696076750575e-17, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (1.662372303902509e-17, 0.2714860439300537, 1.4244985580444336)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "solar_array_1"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-3.6739402930577075e-16, -2, 4.050000190734863)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "solar_array_1__solar_cells" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/solar_array_1__solar_cells>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "solar_array_1__aluminium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/solar_array_1__aluminium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "solar_array_1__beta_white" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/solar_array_1__beta_white>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "solar_array_1_panel_col" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/solar_array_1_panel_col>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "solar_array_1_normal"
+                {
+                    custom double site:area_m2 = 3.48
+                    custom string site:description = "Solar array centre; +Z = cell normal"
+                    custom token site:kind = "power"
+                    quatd xformOp:orient = (0.6427876353263855, 0.7660444378852844, -1.4072007168663947e-16, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-4.987118235196507e-17, -0.2714860439300537, 1.4244985580444336)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "be7_gimbal_center"
+            {
+                custom string site:description = "BE-7 gimbal pivot"
+                custom token site:kind = "reference"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 2.62)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_0_hot_gas_0"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_0"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.857670783996582, 1.857670783996582, 7.899999618530273)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_0_hot_gas_1"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_0"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.857670783996582, 1.857670783996582, 7.5)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_0_hot_gas_2"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_0"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071068286895752, -0.5, -0.5, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.7162494659423828, 1.9990921020507812, 7.699999809265137)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_0_hot_gas_3"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_0"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071068286895752, 0.5, 0.5, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.9990921020507812, 1.7162494659423828, 7.699999809265137)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_0_cold_gas_4"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_0"
+                custom string thruster:confidence = "existence reported; layout and performance assumed"
+                custom double thruster:exitRadius = 0.012
+                custom double thruster:ispVac = 70
+                custom string thruster:kind = "rcs_cold_gas"
+                custom double thruster:massFlow = 0.032048223836449174
+                custom string thruster:notes = "Cold-gas fine attitude thrusters (Gunter's Space Page: hot and cold gas thrusters). Values assumed."
+                custom string thruster:propellant = "GN2 (assumed)"
+                custom double thruster:thrustVac = 22
+                quatd xformOp:orient = (0.7071068286895752, -0.5, -0.5, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.7374626398086548, 1.9778789281845093, 7.759999752044678)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_0_cold_gas_5"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_0"
+                custom string thruster:confidence = "existence reported; layout and performance assumed"
+                custom double thruster:exitRadius = 0.012
+                custom double thruster:ispVac = 70
+                custom string thruster:kind = "rcs_cold_gas"
+                custom double thruster:massFlow = 0.032048223836449174
+                custom string thruster:notes = "Cold-gas fine attitude thrusters (Gunter's Space Page: hot and cold gas thrusters). Values assumed."
+                custom string thruster:propellant = "GN2 (assumed)"
+                custom double thruster:thrustVac = 22
+                quatd xformOp:orient = (0.7071068286895752, 0.5, 0.5, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.9778789281845093, 1.7374626398086548, 7.759999752044678)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_1_hot_gas_0"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_1"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.857670783996582, 1.857670783996582, 7.899999618530273)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_1_hot_gas_1"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_1"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.857670783996582, 1.857670783996582, 7.5)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_1_hot_gas_2"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_1"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071068286895752, 0.5, -0.5, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.9990921020507812, 1.7162494659423828, 7.699999809265137)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_1_hot_gas_3"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_1"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071068286895752, -0.5, 0.5, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.7162494659423828, 1.9990921020507812, 7.699999809265137)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_1_cold_gas_4"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_1"
+                custom string thruster:confidence = "existence reported; layout and performance assumed"
+                custom double thruster:exitRadius = 0.012
+                custom double thruster:ispVac = 70
+                custom string thruster:kind = "rcs_cold_gas"
+                custom double thruster:massFlow = 0.032048223836449174
+                custom string thruster:notes = "Cold-gas fine attitude thrusters (Gunter's Space Page: hot and cold gas thrusters). Values assumed."
+                custom string thruster:propellant = "GN2 (assumed)"
+                custom double thruster:thrustVac = 22
+                quatd xformOp:orient = (0.7071068286895752, 0.5, -0.5, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.9778789281845093, 1.7374626398086548, 7.759999752044678)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_1_cold_gas_5"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_1"
+                custom string thruster:confidence = "existence reported; layout and performance assumed"
+                custom double thruster:exitRadius = 0.012
+                custom double thruster:ispVac = 70
+                custom string thruster:kind = "rcs_cold_gas"
+                custom double thruster:massFlow = 0.032048223836449174
+                custom string thruster:notes = "Cold-gas fine attitude thrusters (Gunter's Space Page: hot and cold gas thrusters). Values assumed."
+                custom string thruster:propellant = "GN2 (assumed)"
+                custom double thruster:thrustVac = 22
+                quatd xformOp:orient = (0.7071068286895752, -0.5, 0.5, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.7374626398086548, 1.9778789281845093, 7.759999752044678)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_2_hot_gas_0"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_2"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.857670783996582, -1.857670783996582, 7.899999618530273)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_2_hot_gas_1"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_2"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.857670783996582, -1.857670783996582, 7.5)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_2_hot_gas_2"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_2"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071068286895752, 0.5, 0.5, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.7162494659423828, -1.9990921020507812, 7.699999809265137)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_2_hot_gas_3"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_2"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071068286895752, -0.5, -0.5, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.9990921020507812, -1.7162494659423828, 7.699999809265137)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_2_cold_gas_4"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_2"
+                custom string thruster:confidence = "existence reported; layout and performance assumed"
+                custom double thruster:exitRadius = 0.012
+                custom double thruster:ispVac = 70
+                custom string thruster:kind = "rcs_cold_gas"
+                custom double thruster:massFlow = 0.032048223836449174
+                custom string thruster:notes = "Cold-gas fine attitude thrusters (Gunter's Space Page: hot and cold gas thrusters). Values assumed."
+                custom string thruster:propellant = "GN2 (assumed)"
+                custom double thruster:thrustVac = 22
+                quatd xformOp:orient = (0.7071068286895752, 0.5, 0.5, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.7374626398086548, -1.9778789281845093, 7.759999752044678)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_2_cold_gas_5"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_2"
+                custom string thruster:confidence = "existence reported; layout and performance assumed"
+                custom double thruster:exitRadius = 0.012
+                custom double thruster:ispVac = 70
+                custom string thruster:kind = "rcs_cold_gas"
+                custom double thruster:massFlow = 0.032048223836449174
+                custom string thruster:notes = "Cold-gas fine attitude thrusters (Gunter's Space Page: hot and cold gas thrusters). Values assumed."
+                custom string thruster:propellant = "GN2 (assumed)"
+                custom double thruster:thrustVac = 22
+                quatd xformOp:orient = (0.7071068286895752, -0.5, -0.5, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.9778789281845093, -1.7374626398086548, 7.759999752044678)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_3_hot_gas_0"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_3"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.857670783996582, -1.857670783996582, 7.899999618530273)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_3_hot_gas_1"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_3"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.857670783996582, -1.857670783996582, 7.5)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_3_hot_gas_2"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_3"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071068286895752, -0.5, 0.5, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.9990921020507812, -1.7162494659423828, 7.699999809265137)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_3_hot_gas_3"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_3"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad)."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071068286895752, 0.5, -0.5, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.7162494659423828, -1.9990921020507812, 7.699999809265137)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_3_cold_gas_4"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_3"
+                custom string thruster:confidence = "existence reported; layout and performance assumed"
+                custom double thruster:exitRadius = 0.012
+                custom double thruster:ispVac = 70
+                custom string thruster:kind = "rcs_cold_gas"
+                custom double thruster:massFlow = 0.032048223836449174
+                custom string thruster:notes = "Cold-gas fine attitude thrusters (Gunter's Space Page: hot and cold gas thrusters). Values assumed."
+                custom string thruster:propellant = "GN2 (assumed)"
+                custom double thruster:thrustVac = 22
+                quatd xformOp:orient = (0.7071068286895752, -0.5, 0.5, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.9778789281845093, -1.7374626398086548, 7.759999752044678)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_3_cold_gas_5"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_3"
+                custom string thruster:confidence = "existence reported; layout and performance assumed"
+                custom double thruster:exitRadius = 0.012
+                custom double thruster:ispVac = 70
+                custom string thruster:kind = "rcs_cold_gas"
+                custom double thruster:massFlow = 0.032048223836449174
+                custom string thruster:notes = "Cold-gas fine attitude thrusters (Gunter's Space Page: hot and cold gas thrusters). Values assumed."
+                custom string thruster:propellant = "GN2 (assumed)"
+                custom double thruster:thrustVac = 22
+                quatd xformOp:orient = (0.7071068286895752, 0.5, -0.5, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.7374626398086548, -1.9778789281845093, 7.759999752044678)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_low_0_hot_gas_0"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_low_0"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.9124306440353394, 0.7921547293663025, 1.1399999856948853)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_low_0_hot_gas_1"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_low_0"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071067094802856, -0.6532815098762512, -0.27059805393218994, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.8435475826263428, 0.9584530591964722, 1.3200000524520874)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_low_0_hot_gas_2"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_low_0"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071067094802856, 0.6532815098762512, 0.27059805393218994, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.981313705444336, 0.6258563995361328, 1.3200000524520874)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_low_1_hot_gas_0"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_low_1"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.7921547293663025, 1.9124306440353394, 1.1399999856948853)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_low_1_hot_gas_1"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_low_1"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071067094802856, 0.27059805393218994, -0.6532815098762512, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.9584530591964722, 1.8435475826263428, 1.3200000524520874)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_low_1_hot_gas_2"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_low_1"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071067094802856, -0.27059805393218994, 0.6532815098762512, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.6258563995361328, 1.981313705444336, 1.3200000524520874)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_low_2_hot_gas_0"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_low_2"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.9124306440353394, -0.7921547293663025, 1.1399999856948853)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_low_2_hot_gas_1"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_low_2"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071067094802856, 0.6532815098762512, 0.27059805393218994, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.8435475826263428, -0.9584530591964722, 1.3200000524520874)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_low_2_hot_gas_2"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_low_2"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071067094802856, -0.6532815098762512, -0.27059805393218994, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.981313705444336, -0.6258563995361328, 1.3200000524520874)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_low_3_hot_gas_0"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_low_3"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.7921547293663025, -1.9124306440353394, 1.1399999856948853)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_low_3_hot_gas_1"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_low_3"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071067094802856, -0.27059805393218994, 0.6532815098762512, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.9584530591964722, -1.8435475826263428, 1.3200000524520874)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rcs_low_3_hot_gas_2"
+            {
+                uniform token purpose = "guide"
+                custom token site:kind = "thruster"
+                custom string thruster:cluster = "rcs_low_3"
+                custom string thruster:confidence = "layout inferred from photos; performance assumed"
+                custom double thruster:exitRadius = 0.035
+                custom double thruster:ispVac = 350
+                custom string thruster:kind = "rcs_hot_gas"
+                custom double thruster:massFlow = 0.12964963279290803
+                custom string thruster:notes = "Hot-gas biprop fed by the GO2/GH2 corner tanks ('GO2 2' label on the photographed tank). Thrust/Isp are assumptions (Apollo-LM-class quad). Aft cluster."
+                custom string thruster:propellant = "GO2/GH2"
+                custom double thruster:thrustVac = 445
+                quatd xformOp:orient = (0.7071067094802856, 0.27059805393218994, -0.6532815098762512, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.6258563995361328, -1.981313705444336, 1.3200000524520874)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "star_tracker_0"
+            {
+                custom string site:description = "Star tracker boresight (+Z), estimated location"
+                custom token site:kind = "sensor"
+                quatd xformOp:orient = (0.9648663997650146, -0.10054665803909302, -0.24274109303951263, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.8584246635437012, 0.7697847485542297, 8.359625816345215)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "star_tracker_1"
+            {
+                custom string site:description = "Star tracker boresight (+Z), estimated location"
+                custom token site:kind = "sensor"
+                quatd xformOp:orient = (0.9648663997650146, 0.24274109303951263, 0.10054665803909302, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.7697847485542297, -1.8584246635437012, 8.359625816345215)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "omni_antenna_0"
+            {
+                custom string site:band = "S"
+                custom string site:description = "Low-gain / omni antenna phase centre (estimated)"
+                custom token site:kind = "antenna"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (2.1771433353424072, 0, 8.289999961853027)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "omni_antenna_1"
+            {
+                custom string site:band = "S"
+                custom string site:description = "Low-gain / omni antenna phase centre (estimated)"
+                custom token site:kind = "antenna"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.3331157742281854e-16, 2.1771433353424072, 8.289999961853027)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "omni_antenna_2"
+            {
+                custom string site:band = "S"
+                custom string site:description = "Low-gain / omni antenna phase centre (estimated)"
+                custom token site:kind = "antenna"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-2.1771433353424072, 2.666231548456371e-16, 8.289999961853027)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "omni_antenna_3"
+            {
+                custom string site:band = "S"
+                custom string site:description = "Low-gain / omni antenna phase centre (estimated)"
+                custom token site:kind = "antenna"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-3.9993473226845563e-16, -2.1771433353424072, 8.289999961853027)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "lra"
+            {
+                custom string site:description = "NASA GSFC Laser Retroreflector Array (8 reflectors)"
+                custom token site:kind = "payload"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.3, -0.9, 8.100000000000001)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "offloader_mount"
+            {
+                custom string site:description = "Deck mounting interface for the payload offloader (mates with mk1_offloader 'mount')"
+                custom token site:kind = "mount"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.9, 1, 8.05)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "vehicle_origin"
+            {
+                custom string site:description = "Ground point under the centreline, legs at nominal stroke"
+                custom token site:kind = "reference"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "deck_center"
+            {
+                custom string site:description = "Top deck centre (payload mounting plane)"
+                custom token site:kind = "payload_interface"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 8.05)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "imu"
+            {
+                custom string site:description = "IMU / navigation reference (estimated location)"
+                custom token site:kind = "sensor"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 7.550000000000001)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "lift_point_0"
+            {
+                custom string site:description = "GSE lift point (deck corner)"
+                custom token site:kind = "handling"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.6101834774017334, 1.6101834774017334, 8.050000190734863)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "lift_point_1"
+            {
+                custom string site:description = "GSE lift point (deck corner)"
+                custom token site:kind = "handling"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.6101834774017334, 1.6101834774017334, 8.050000190734863)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "lift_point_2"
+            {
+                custom string site:description = "GSE lift point (deck corner)"
+                custom token site:kind = "handling"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.6101834774017334, -1.6101834774017334, 8.050000190734863)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "lift_point_3"
+            {
+                custom string site:description = "GSE lift point (deck corner)"
+                custom token site:kind = "handling"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.6101834774017334, -1.6101834774017334, 8.050000190734863)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Camera "scalpss_cam_0"
+            {
+                float2 clippingRange = (0.05, 500)
+                float focalLength = 8
+                float fStop = 4
+                float horizontalAperture = 11.3
+                custom int2 sensor:resolution = (4096, 2160)
+                custom string sensor:source = "SCALPSS (NASA LaRC) - optics estimated"
+                float verticalAperture = 7.1
+                quatd xformOp:orient = (0.538102940634655, 0.13821539196637314, 0.20685393179512038, 0.8053279962877354)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1.8398566246032715, 0.7620936036109924, 1.3799028396606445)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Camera "scalpss_cam_1"
+            {
+                float2 clippingRange = (0.05, 500)
+                float focalLength = 8
+                float fStop = 4
+                float horizontalAperture = 11.3
+                custom int2 sensor:resolution = (4096, 2160)
+                custom string sensor:source = "SCALPSS (NASA LaRC) - optics estimated"
+                float verticalAperture = 7.1
+                quatd xformOp:orient = (-0.18895663855724917, -0.04853478637934005, 0.2440008575690491, 0.9499491274599002)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.7620936036109924, 1.8398566246032715, 1.3799028396606445)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Camera "scalpss_cam_2"
+            {
+                float2 clippingRange = (0.05, 500)
+                float focalLength = 8
+                float fStop = 4
+                float horizontalAperture = 11.3
+                custom int2 sensor:resolution = (4096, 2160)
+                custom string sensor:source = "SCALPSS (NASA LaRC) - optics estimated"
+                float verticalAperture = 7.1
+                quatd xformOp:orient = (0.8053280043675095, 0.20685392967518246, -0.13821539054987578, -0.5381029297211869)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.8398566246032715, -0.7620936036109924, 1.3799028396606445)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Camera "scalpss_cam_3"
+            {
+                float2 clippingRange = (0.05, 500)
+                float focalLength = 8
+                float fStop = 4
+                float horizontalAperture = 11.3
+                custom int2 sensor:resolution = (4096, 2160)
+                custom string sensor:source = "SCALPSS (NASA LaRC) - optics estimated"
+                float verticalAperture = 7.1
+                quatd xformOp:orient = (0.9499491385938043, 0.24400083217267354, 0.04853478132768705, 0.18895661667537775)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.7620936036109924, -1.8398566246032715, 1.3799028396606445)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+    }
+
+    def Scope "Physics"
+    {
+    }
+
+    def Scope "Materials"
+    {
+    }
+
+    def Scope "VisualMaterials"
+    {
+    }
+}
+

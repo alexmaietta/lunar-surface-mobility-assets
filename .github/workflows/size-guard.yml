@@ -1,0 +1,15 @@
+name: size-guard
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  no-large-files-outside-lfs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Check that every file over 4 MB is stored in LFS
+        run: python3 scripts/check_large_files.py --limit-mb 4

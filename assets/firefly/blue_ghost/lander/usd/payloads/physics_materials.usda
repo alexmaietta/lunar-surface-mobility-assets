@@ -1,0 +1,35 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Scope "PhysicsMaterials"
+{
+    def Material "footpad" (
+        prepend apiSchemas = ["PhysicsMaterialAPI", "NewtonMaterialAPI"]
+    )
+    {
+        float newton:rollingFriction = 0.0001
+        float newton:torsionalFriction = 0.005
+        float physics:dynamicFriction = 0.7
+        float physics:restitution = 0
+        float physics:staticFriction = 0.8
+    }
+
+    def Material "structure" (
+        prepend apiSchemas = ["PhysicsMaterialAPI", "NewtonMaterialAPI"]
+    )
+    {
+        float newton:rollingFriction = 0.0001
+        float newton:torsionalFriction = 0.005
+        float physics:dynamicFriction = 0.4
+        float physics:restitution = 0.05
+        float physics:staticFriction = 0.5
+    }
+}
+
