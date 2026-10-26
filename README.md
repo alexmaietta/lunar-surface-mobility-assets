@@ -37,12 +37,13 @@ These are simulation-ready models of lunar landers, rovers and their friends. Ea
 | Intuitive Machines | [Moon RACER](assets/intuitive_machines/moon_racer/rover) LTV bid | `moon_racer` | v0.1: photo-matched, packaged, Newton-tested |
 | Concept | [Lunar Terrain Vehicle](assets/concepts/ltv/rover), crewed or uncrewed | `ltv_concept` | v0.1: concept, packaged, Newton-tested |
 | Concept | [Pressurised rover](assets/concepts/pressurized/rover) | `pr_concept` | v0.1: concept, packaged, Newton-tested |
-| Blue Origin | Blue Moon MK2 crewed lander | `mk2` | planned |
+| Blue Origin | [Blue Moon MK2](assets/blue_origin/mk2/lander) crewed lander (Artemis HLS) | `mk2` | v0.1: render- and drawing-matched, packaged, Newton-tested |
 
 All assets share one frame and are built to scale (Z up, metres, origin on the ground under the centerline), so they can be placed side by side:
 
 | Asset | Height | Footpad span | Legs | Launch / touchdown / dry mass | Main propulsion |
 |---|---|---|---|---|---|
+| `mk2` | 15.3 m (Blue Origin drawing), 15.8 m with dishes (NASA: about 52 ft) | about 10 m pad centres | 4 | 45,000 / 30,000 / 16,000 kg | 3 × BE-7, 133 kN, LOX/LH2, gimballed |
 | `mk1` | 8.05 m | 6.1 m | 4 | 21,350 / 7,900 / 7,000 kg | 1 × BE-7, 44.5 kN, LOX/LH2, gimballed |
 | `apollo_lm` | 7.04 m (drawing), model 6.92 m | 8.51 m pad centres (31 ft over pads) | 4 | 16,400 / 8,000 / 4,900 kg | DPS 43.9 kN, throttled 10–65 %, gimballed; APS 15.6 kN fixed |
 | `nova_c` | 4.30 m (official), model 4.23 m | 4.6 m | 6 | 1,908 / 860 / 775 kg | 1 × VR900, 3.1 kN, LOX/LCH4, gimballed |
@@ -113,8 +114,14 @@ root.GetVariantSet("Lights").SetVariantSelection("on")
 
 Cycles renders on the lunar surface.
 
+Blue Moon MK2 to scale with (left to right) the LTV concept, the Apollo LM, Blue Moon MK1 and the JAXA / Toyota Lunar Cruiser:
+
+![Blue Moon MK2 to scale next to the LTV concept, Apollo LM, Blue Moon MK1 and Lunar Cruiser](docs/images/blue_origin/mk2/lander/scale_lineup.jpg)
+
 | | |
 |---|---|
+| ![MK2 front three-quarter](docs/images/blue_origin/mk2/lander/front_three_quarter.jpg) | ![MK2 side](docs/images/blue_origin/mk2/lander/side.jpg) |
+| ![MK2 crew door open, egress platform and stair](docs/images/blue_origin/mk2/lander/crew_door.jpg) | ![MK2 docking hatch, windows and engine skirt](docs/images/blue_origin/mk2/lander/low_engine.jpg) |
 | ![MK1 front three-quarter](docs/images/blue_origin/mk1/lander/front_three_quarter.jpg) | ![MK1 side](docs/images/blue_origin/mk1/lander/side.jpg) |
 | ![MK1 engine and legs](docs/images/blue_origin/mk1/lander/low_engine.jpg) | ![MK1 deck](docs/images/blue_origin/mk1/lander/top_deck.jpg) |
 | ![MK1 with the offloader](docs/images/blue_origin/mk1/lander/crane/front_three_quarter.jpg) | ![MK1 offloader](docs/images/blue_origin/mk1/offloader/lunar.jpg) |
@@ -430,7 +437,6 @@ To cut a release:
 
 ## Roadmap
 
-- **Blue Moon MK2** (crewed HLS): a new `mk2` family with a crew cabin, hatch and stair platform, four telescoping legs, two oblate tanks in a truss cage, the LH2 dome with sunshield panels, two gimballed dishes on top and three BE-7s.
 - **More landers**, such as Astrobotic Griffin, ispace / Draper APEX 1.0 and Intuitive Machines Nova-D, under their own vendor folders.
 
 ## Sources
@@ -450,6 +456,17 @@ For the rovers, the most reliable numbers are official specifications. Elsewhere
 - **SEV, VIPER, CADRE.** These come from NASA and JPL fact sheets and slides: SEV mass, wheelbase and height; VIPER's 1.7 × 1.7 × 2.5 m, 447 kg, 0.5 m wheels and mobility ranges; CADRE's 0.546 × 0.385 × 0.235 m and 8.6 kg. Suitport, docking hatch and instrument positions are measured from photos.
 - **FLIP and MAPP.** No official dimensions beyond mass and the Venturi wheel diameter (FLIP) or the 45 × 38 × 40 cm envelope (MAPP); the geometry is measured from renders.
 - **Concepts.** `ltv_concept` follows the NASA LTV requirements (2 suited crew plus 250 kg, or 1,600 kg uncrewed). `pr_concept` follows typical pressurised-rover features: 0.6 × 0.9 m suitports, an IDSS docking ring, a forward window band, radiators and a 2–3 m arm.
+
+For Blue Moon MK2:
+
+- **Size and mass.** Overall dimensions come from Blue Origin's LEM / MK-1 / MK-2 scale board (15.3 m, checked against the Apollo LM at the same scale) and NASA (about 52 ft). The masses are from press reports: more than 45 t fuelled and about 16 t dry; the 30 t touchdown mass is an estimate.
+- **Layout.** The layout follows the NASA HLS render and the full-size crew-cabin mockup at JSC:
+  - a crew cabin at the base with a side docking port and two windows
+  - a crew door with an egress platform and stair
+  - two oblate tanks in a triangulated truss cage
+  - the LH2 tank inside four hinged sunshield panels under a dome with two dishes
+  - four legs with large dish footpads
+- **Estimates.** Positions are measured from those images (±0.2–0.5 m). The BE-7 placement (three engines recessed in the skirt under the cabin), leg stroke, RCS layout and sunshield actuation are not published and are estimates.
 
 For the other landers:
 

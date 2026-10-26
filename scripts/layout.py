@@ -6,7 +6,9 @@ ROWS = [
     None,
     ["*", "peregrine", "nova_c", "blue_ghost", "*"],
     ["lunar_cruiser", "mk1", "apollo_lm", "pr_concept"],
+    ["mk2"],
 ]
+ALIGN = {"mk2": "mk1"}
 
 
 def arrange(items, rows_spec=ROWS, gap=GAP, row_gap=ROW_GAP):
@@ -36,4 +38,9 @@ def arrange(items, rows_spec=ROWS, gap=GAP, row_gap=ROW_GAP):
             out[it["asset"]] = {"shift": (x - it["lo"][0], y + depth / 2 - (it["lo"][1] + it["hi"][1]) / 2), "row": r}
             x += it["hi"][0] - it["lo"][0] + gap
         y += depth + row_gap
+    for a, b in ALIGN.items():
+        if a in out and b in out:
+            ca = (by[a]["lo"][0] + by[a]["hi"][0]) / 2 + out[a]["shift"][0]
+            cb = (by[b]["lo"][0] + by[b]["hi"][0]) / 2 + out[b]["shift"][0]
+            out[a]["shift"] = (out[a]["shift"][0] + cb - ca, out[a]["shift"][1])
     return out

@@ -18,6 +18,7 @@ MARGIN = 0.03
 AZIMUTH = 25.0
 ELEVATION = 8.0
 LENS = 80.0
+CROP_HEADROOM = 1.02
 
 
 def hosts():
@@ -73,9 +74,14 @@ def main():
         print(f"placed {g['asset']} row {placed[g['asset']]['row']} shift ({sx:.1f}, {sy:.1f})")
     bpy.context.view_layer.update()
     lo, hi = bounds(everything)
+    heights = sorted(g["hi"].z for g in groups)
+    crop = heights[-2] * CROP_HEADROOM if "--crop" in a and len(heights) > 1 else hi.z
+    cropped = crop < hi.z
+    hi.z = min(hi.z, crop)
     centre = (lo + hi) / 2
     size = hi - lo
     corners = [ob.matrix_world @ Vector(c) for ob in everything if ob.type == "MESH" for c in ob.bound_box]
+    corners = [Vector((c.x, c.y, min(c.z, crop))) for c in corners]
     R.setup_render(int(assetcfg.arg(a, "--samples", "256")), res)
     R.lunar(assetcfg.build_dir(hosts()[0][0], "textures"))
     bpy.context.scene.cycles.use_auto_tile = True
@@ -99,7 +105,8 @@ def main():
         v = [world_to_camera_view(sc, cam, c) for c in corners]
         xs, ys = [p.x for p in v], [p.y for p in v]
         ok = all(p.z > 0 for p in v) and max(xs) - min(xs) <= 1 - 2 * MARGIN and max(ys) - min(ys) <= 1 - 2 * MARGIN
-        return cam, ok, ((min(xs) + max(xs)) / 2 - 0.5, ((min(ys) + max(ys)) / 2 - 0.5) * aspect)
+        sy = (max(ys) - 1 + MARGIN) * aspect if cropped else ((min(ys) + max(ys)) / 2 - 0.5) * aspect
+        return cam, ok, ((min(xs) + max(xs)) / 2 - 0.5, sy)
 
     near, far = 1.0, 5000.0
     for _ in range(40):
@@ -108,6 +115,14 @@ def main():
     cam, _, (sx, sy) = frame(far)
     cam.data.shift_x, cam.data.shift_y = sx, sy
     print(f"camera {LENS:.0f} mm, {far:.1f} m, azimuth {AZIMUTH:.0f} deg, elevation {ELEVATION:.0f} deg, shift ({sx:+.3f}, {sy:+.3f})")
+    if cropped:
+        bpy.context.view_layer.update()
+        low = min(world_to_camera_view(sc, cam, c).y for c in corners)
+        sc.render.use_border = True
+        sc.render.use_crop_to_border = True
+        sc.render.border_min_x, sc.render.border_max_x = 0.0, 1.0
+        sc.render.border_min_y, sc.render.border_max_y = max(0.0, low - MARGIN), 1.0
+        print(f"cropped to the lowest {100 * (1 - sc.render.border_min_y):.0f}% of the frame height")
     os.makedirs(os.path.dirname(out), exist_ok=True)
     bpy.context.scene.render.filepath = out
     bpy.ops.render.render(write_still=True)
