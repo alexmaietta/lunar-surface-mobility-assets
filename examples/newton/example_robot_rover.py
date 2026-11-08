@@ -147,7 +147,7 @@ class Example:
         builder.add_ground_plane(color=(0.42, 0.41, 0.39))
         self.model = builder.finalize()
         self.solver = newton.solvers.SolverMuJoCo(self.model, iterations=100, ls_iterations=50, cone="elliptic", impratio=10,
-                                                  njmax=1200, nconmax=256)
+                                                  njmax=1200, nconmax=512)
         self.state_0, self.state_1 = self.model.state(), self.model.state()
         self.control = self.model.control()
         newton.eval_fk(self.model, self.model.joint_q, self.model.joint_qd, self.state_0)

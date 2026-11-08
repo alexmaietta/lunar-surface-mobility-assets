@@ -1,7 +1,7 @@
 GAP = 2.0
 ROW_GAP = 6.0
 ROWS = [
-    ["cadre", "mapp"],
+    ["cadre", "mapp", "ipex"],
     None,
     None,
     ["*", "peregrine", "nova_c", "blue_ghost", "*"],

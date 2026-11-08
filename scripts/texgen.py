@@ -710,9 +710,45 @@ def checkerboard(n, seed, tile_m=0.16, squares=12, border=0.08):
     return dict(basecolor=base, roughness=rough, metallic=np.zeros((n, n)), normal=normal_from_height(fuzz * 0.2, 1.0)), tile_m
 
 
+def bead_blast(n, seed, colour, tile_m=0.25, rough0=0.55, metallic=0.85, grain=1.0, mottle=0.06, edge_wear=0.0):
+    px_m = n / tile_m
+    rng = _rng(seed)
+    grit = rng.random((n, n))
+    pit = pnoise(n, max(1.2, 0.00035 * px_m), seed, octaves=2)
+    mott = pnoise(n, 0.06 * px_m, seed + 1, octaves=4)
+    var = pnoise(n, 0.2 * px_m, seed + 2, octaves=3)
+    base = tint(var * 0.6 + mott * 0.4, colour, mottle) * (0.95 + 0.08 * grain * (grit[..., None] - 0.5) + 0.05 * pit[..., None])
+    rough = np.clip(rough0 + (grit - 0.5) * 0.10 * grain + (mott - 0.5) * 0.08, 0, 1)
+    d = defects(n, seed + 3, tile_m, dust=0.8, smudge=0.5, prints=0.4, scratch=0.5 + edge_wear, scuff=0.6 + edge_wear)
+    base, rough = _apply(base, rough, d, scratch_colour=(0.70, 0.70, 0.71), scratch_rough=-0.15)
+    h = pit * 0.5 + (grit - 0.5) * 0.25 * grain - d["scratch"] * 0.6
+    return dict(basecolor=base, roughness=rough, metallic=np.clip(np.full((n, n), metallic) - d["dust"] * 0.3 + d["scratch"] * 0.1, 0, 1),
+                normal=normal_from_height(h, 1.2)), tile_m
+
+
+def perforated_oval(n, seed, colour, tile_m=0.12, hole=(0.010, 0.016), pitch=(0.022, 0.024), rough0=0.5, metallic=0.85):
+    y, x = np.mgrid[0:n, 0:n] + 0.5
+    px_m = n / tile_m
+    pu, pv = pitch[0] * px_m, pitch[1] * px_m
+    du = (np.mod(x / pu, 1.0) - 0.5) * pu
+    dv = (np.mod(y / pv, 1.0) - 0.5) * pv
+    au, av = hole[0] / 2 * px_m, hole[1] / 2 * px_m
+    e = np.sqrt((du / au) ** 2 + (dv / av) ** 2)
+    mask = np.clip((1 - e) * min(au, av) + 0.5, 0, 1)
+    rim = np.clip((1 - np.sqrt((du / (au + 0.0015 * px_m)) ** 2 + (dv / (av + 0.0015 * px_m)) ** 2)) * min(au, av) + 0.5, 0, 1)
+    grit = _rng(seed).random((n, n))
+    var = pnoise(n, n / 4, seed + 1)
+    base = tint(var, colour, 0.05) * (0.95 + 0.06 * (grit[..., None] - 0.5)) * (1 - 0.25 * (rim - mask)[..., None])
+    rough = np.clip(rough0 + (grit - 0.5) * 0.08, 0, 1)
+    d = defects(n, seed + 2, tile_m, dust=1.0, smudge=0.4, prints=0.2, scratch=0.6, scuff=0.8)
+    base, rough = _apply(base, rough, d, scratch_colour=(0.68, 0.68, 0.69), scratch_rough=-0.15)
+    h = (grit - 0.5) * 0.2 - (rim - mask) * 1.0
+    return dict(basecolor=base, roughness=rough, metallic=np.full((n, n), metallic), normal=normal_from_height(h, 1.5), opacity=1 - mask), tile_m
+
+
 GENERATORS = {f.__name__: f for f in (flag, mli, beta_cloth, panel, brushed, anodised, perforated, solar_cells, osr,
                                       nozzle_metal, composite, cloth, regolith, mli_flight, solar_array_flight, osr_flight,
-                                      sheet_metal, fabric_boot, worn_coating, checkerboard)}
+                                      sheet_metal, fabric_boot, worn_coating, checkerboard, bead_blast, perforated_oval)}
 
 
 def generate(out, sets, res=2048, only=None):

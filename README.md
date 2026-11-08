@@ -27,6 +27,7 @@ These are simulation-ready models of lunar landers, rovers and their friends. Ea
 | Toyota / JAXA | [Lunar Cruiser](assets/toyota_jaxa/lunar_cruiser/rover) pressurised rover (2025 design) | `lunar_cruiser` | v0.1: spec-matched, packaged, Newton-tested |
 | NASA | [Space Exploration Vehicle](assets/nasa/sev/rover) (SEV / LER, 2010) | `sev` | v0.1: photo-matched, packaged, Newton-tested |
 | NASA | [VIPER](assets/nasa/viper/rover) | `viper` | v0.2 (unreleased): flight-matched to lab photos and CAD, photometric lights, packaged, Newton-tested |
+| NASA | [IPEx](assets/nasa/ipex/rover) regolith excavator (TRL 5/6) | `ipex` | v0.2 (unreleased): CAD-matched, packaged, Newton-tested |
 | NASA / JPL | [CADRE](assets/nasa_jpl/cadre/rover) rover (IM-3) | `cadre` | v0.1: photo-matched, packaged, Newton-tested |
 | Astrolab | [FLEX](assets/astrolab/flex/rover) prototype | `flex` | v0.1: photo-matched, packaged, Newton-tested |
 | Astrolab | [CLV-1](assets/astrolab/clv1/rover) LTV (NASA task order 2026) | `clv1` | v0.1: render-matched, packaged, Newton-tested |
@@ -66,6 +67,7 @@ The rovers use the same frame, with the origin on the ground under the chassis c
 | `moon_racer` | 4.46 × 2.52 × 2.74 m | 1,100 kg (1,650 crewed, 2,050 loaded) | 4 × 0.80 m airless | double wishbone with coilovers; front steer | arm, dish |
 | `flip` | 2.33 × 1.91 × 2.30 m | 480 kg | 4 × 0.93 m Venturi | active swing arms; all-wheel steer | – |
 | `viper` | 1.72 × 1.77 × 2.59 m (with LGA whip) | 447 kg roving, 490 launch | 4 × 0.50 m wire-spoked drum, 20 grousers | active four-bar (360 mm stroke, wheel walking, 7–43 cm clearance); ±50° offset-kingpin steer | TRIDENT drill (0.38 m deploy, 1.24 m feed, auger spin), pan-tilt mast with lens covers, flat HGA, 8 photometric 457 nm lights, 9 spectral cameras |
+| `ipex` | 1.33 × 0.64 × 0.57 m (arms at the 40° driving pose; 1.51 m long with arms level) | 30 kg (60 kg with a full 30 kg drum load) | 4 × 0.305 m perforated cleat, 24 grousers | rigid, no suspension; skid steer | two arms (20° below level to 100°, enough to dig, dump and lift the chassis), each turning a pair of counter-rotating 0.30 × 0.26 m hollow bucket drums (spiral baffles, 34 mm scoop mouths, 7 kg per pair) on one through-shaft actuator; actuated radiator cover with wireless-charging coil, 6 LED lights, 8 cameras |
 | `mapp` | 0.45 × 0.39 × 0.44 m | 10 kg | 4 × 0.12 m paddle | rockers; skid steer | – |
 | `cadre` | 0.56 × 0.81 × 0.35 m (wings open) | 8.6 kg | 4 × 0.16 m grousered | rigid; skid steer | hinged solar wings, flip-up camera covers |
 | `mph` | 8.38 × 4.65 × 4.9 m (porch and ladder deployed, radiators out, blanket canisters; 12.9 m with the solar blankets raised); 3.0 × 6.55 m hull | 14,000 kg launch (15,000 heavy) | 8 × 1.44 m all-metal twin-band, tensioned-cable spokes | two passive walking-beam bogies per side; the four corner wheels steer | EVA door and docking-end door, fold-down porch and ladder, sun-tracking pedestal with two 1.8 × 8 m roll-out blankets, two folding radiator wings, gimballed dish |
@@ -158,6 +160,7 @@ Each rover from the front, the rear and at night under its own lights:
 | ![Astrolab FLIP front three-quarter](docs/images/astrolab/flip/rover/front_three_quarter.jpg) | ![Astrolab FLIP rear three-quarter](docs/images/astrolab/flip/rover/rear_three_quarter.jpg) | ![Astrolab FLIP at night](docs/images/astrolab/flip/rover/night.jpg) |
 | ![NASA VIPER front three-quarter](docs/images/nasa/viper/rover/front_three_quarter.jpg) | ![NASA VIPER rear three-quarter](docs/images/nasa/viper/rover/rear_three_quarter.jpg) | ![NASA VIPER at night](docs/images/nasa/viper/rover/night.jpg) |
 | ![Lunar Outpost MAPP front three-quarter](docs/images/lunar_outpost/mapp/rover/front_three_quarter.jpg) | ![Lunar Outpost MAPP rear three-quarter](docs/images/lunar_outpost/mapp/rover/rear_three_quarter.jpg) | ![Lunar Outpost MAPP at night](docs/images/lunar_outpost/mapp/rover/night.jpg) |
+| ![NASA IPEx front three-quarter](docs/images/nasa/ipex/rover/front_three_quarter.jpg) | ![NASA IPEx rear three-quarter](docs/images/nasa/ipex/rover/rear_three_quarter.jpg) | ![NASA IPEx at night](docs/images/nasa/ipex/rover/night.jpg) |
 | ![NASA JPL CADRE front three-quarter](docs/images/nasa_jpl/cadre/rover/front_three_quarter.jpg) | ![NASA JPL CADRE rear three-quarter](docs/images/nasa_jpl/cadre/rover/rear_three_quarter.jpg) | ![NASA JPL CADRE at night](docs/images/nasa_jpl/cadre/rover/night.jpg) |
 
 VIPER in the dark under its own 457 nm NavLights and HazLights (Cycles), and what its left NavCam and front-left HazCam see in Omniverse RTX spectral path tracing through the flight cameras' spectral response:
@@ -166,6 +169,12 @@ VIPER in the dark under its own 457 nm NavLights and HazLights (Cycles), and wha
 |---|---|---|
 | ![NASA VIPER driving at night under its NavLights](docs/images/nasa/viper/rover/night_drive.jpg) | ![VIPER left NavCam view, RTX spectral](docs/images/nasa/viper/rover/nav_cam_left_spectral.jpg) | ![VIPER front-left HazCam view, RTX spectral](docs/images/nasa/viper/rover/haz_cam_fl_spectral.jpg) |
 | ![NASA VIPER mast head, NavCams, NavLights and HGA](docs/images/nasa/viper/rover/mast.jpg) | ![NASA VIPER wheel module](docs/images/nasa/viper/rover/wheel.jpg) | |
+
+IPEx digging, with both arms lowered so the drums bite into the regolith and the radiator cover open, and its five-spoke cleated wheels.
+
+| | |
+|---|---|
+| ![NASA IPEx digging with the radiator cover open](docs/images/nasa/ipex/rover/digging.jpg) | ![NASA IPEx wheels and bucket drums](docs/images/nasa/ipex/rover/wheel.jpg) |
 
 ### Habitats
 
@@ -214,14 +223,14 @@ Build the models and serve the site locally:
     - **Rockers.**
     - **Prismatic legs.**
   - Passive suspension springs are tuned to each rover's mass for about 7° of static sag. Active suspension (`active_suspension`) is a stiff position servo that sets ride height.
-  - Hatches, latches, stairs, railings, solar wings, masts, dishes, drills and arms are position servos with their own roles (`hatch`, `latch`, `stair`, `railing`, `solar`, `camera`, `antenna`, `arm`). That's 46–71 joints on the crewed rovers.
+  - Hatches, latches, stairs, railings, solar wings, masts, dishes, drills and arms are position servos with their own roles (`hatch`, `latch`, `stair`, `railing`, `solar`, `camera`, `antenna`, `arm`). That's 46–71 joints on the crewed rovers. IPEx's bucket-drum pairs are velocity-driven joints with the `excavate` role, so they spin like wheels and reverse to dump. Each drum is hollow: the shells and inner baffles are two interleaved spirals per slice, so a granular solver can fill and empty them.
 - **Lights.** Every lamp is a site with a `UsdLux.DiskLight` just in front of its lens, with radius, intensity, colour temperature and a 60° cone. The lens also has an emissive material. The `Lights` variant switches them all off. On the Lunar Cruiser the stair-tread LED lights ride on the stair links, so they fold with it.
 - **Photometric lights (`viper`).** Lights given in physical units become `RectLight` or `DiskLight` prims with the Omniverse RTX `PhotometricAreaLightAPI` (lumens) and `PhysicalLightIlluminantAPI` (a sampled LED emission spectrum), plus a generated LM-63 IES beam profile on `UsdLux.ShapingAPI`. `inputs:color` and `inputs:intensity` carry the matching Rec.709 colour and luminance for other renderers. `scripts/photometry.py` converts radiant watts to lumens with the CIE 1931 observer. VIPER's 190 W NavLights and 32 W HazLights at 457 nm come out at 7,307 lm and 1,231 lm, and an RTX render measures 598 lux on the NavLight axis at 2.29 m against 596 lux predicted. The lens windows are plain glass, so the blue shows only in the light the lamps throw.
 - **Spectral cameras (`viper`).** Each VIS camera carries `PhysicalCameraResponsivityAPI` with the CMV4000 response behind the 425–495 nm filter, so RTX spectral path tracing renders the greyscale image the flight cameras would see.
 - **Thrusters.** Every engine and RCS nozzle is a site at the nozzle exit plane, with +Z along the exhaust flow and its thrust, Isp, mass flow, exit radius and propellant as attributes. The same data is in `thrusters.json` for plume tools. The main-engine site rides on the gimbal links, so the plume follows the gimbal.
 - **Other sites.** Footpad contacts, touchdown sensors, star trackers, IMU, antennas, solar-array normals, payload interfaces, lift points and the offloader's cable endpoints.
 - **Sensors.** SCALPSS plume cameras, navigation and surface cameras as `UsdGeom.Camera` prims on the body.
-- **Colliders.** Convex hulls of at most 200 vertices, authored with `newton:maxHullVertices` and `physxConvexHullCollision:hullVertexLimit` set to 255 so neither engine re-simplifies them (PhysX defaults to 64, which can drop a footpad's bottom ring).
+- **Colliders.** Convex hulls of at most 200 vertices, authored with `newton:maxHullVertices` and `physxConvexHullCollision:hullVertexLimit` set to 255 so neither engine re-simplifies them (PhysX defaults to 64, which can drop a footpad's bottom ring). A collider group can also be split into one hull per connected mesh piece (`COLLIDERS` option `islands`). IPEx uses this for its drums, so each drum pair carries 260 small hulls that follow the spiral walls instead of one solid hull, and particles can get inside. In URDF, links with more than 8 hulls are written as one compound OBJ with an `o` group per hull, which PyBullet loads as a compound of convex parts and Gazebo as a triangle mesh.
 - **Mass states.** `Propellant` variant: launch, touchdown (default) and dry, each with its own mass, centre of mass and inertia. Rovers use a `Payload` variant instead (e.g. empty, crewed, uncrewed cargo), with the chassis mass set so the whole vehicle matches each state.
 - **Materials.** Tileable PBR texture sets (base colour, roughness, metallic, normal), sized in real-world metres: 4096 px crinkled MLI, painted honeycomb panels, brushed and perforated aluminium (opacity cut-outs), titanium, a heat-tinted regen nozzle, OSR tiles, solar cells and beta cloth.
 - **Formats:**
@@ -234,7 +243,7 @@ Build the models and serve the site locally:
   | Blender | `blender/<id>.blend` | Source model with all textures packed |
   | Simple USD | `simple/usd/<id>_simple.usd` | One decimated mesh, flat materials, one rigid body with mass, inertia and per-link convex-hull colliders |
   | Simple glTF / OBJ | `simple/gltf/<id>_simple.glb`, `simple/obj/<id>_simple.obj` | The same mesh, Y-up, no textures |
-  | URDF (`viper`, `cadre`) | `urdf/<id>.urdf` + `urdf/meshes/` | Z-up, one link per USD link with mass, centre of mass and full inertia tensor, per-link OBJ visuals (textures shared with `obj/`), convex-hull colliders, joint limits and efforts. VIPER's four-bar loops become `<mimic>` joints (exact for its parallelogram arms). Cameras, lights and tool sites are fixed `<name>_frame` links with +X forward |
+  | URDF (`viper`, `cadre`, `ipex`) | `urdf/<id>.urdf` + `urdf/meshes/` | Z-up, one link per USD link with mass, centre of mass and full inertia tensor, per-link OBJ visuals (textures shared with `obj/`), convex-hull colliders, joint limits and efforts. VIPER's four-bar loops become `<mimic>` joints (exact for its parallelogram arms). Cameras, lights and tool sites are fixed `<name>_frame` links with +X forward |
 
   Paths are inside each asset folder, `assets/<vendor>/<family>/<name>/`, which also holds that asset's `LICENSE` and `NOTICE`. glTF and OBJ carry the default configuration only (no variants, physics or sites); texture tiling is baked into their UVs.
 
@@ -245,7 +254,7 @@ Build the models and serve the site locally:
 | `Articulation` | **articulated**, rigid (one rigid body: joints and child bodies removed, child colliders join the root body) |
 | `Propellant` | launch, **touchdown**, dry |
 | `Offloader` (`mk1`) | **none**, crane (bundled `mk1_offloader`, fixed to the deck mount) |
-| `Payload` (rovers) | per rover, e.g. **unloaded**, crewed, uncrewed (`ltv_concept`); **loaded**, launch (`lunar_cruiser`) |
+| `Payload` (rovers) | per rover, e.g. **unloaded**, crewed, uncrewed (`ltv_concept`); **loaded**, launch (`lunar_cruiser`); **empty**, loaded (`ipex`, 30 kg of regolith in the drums) |
 | `Crew` (LTVs) | **crewed** (seats or standing stations, console, hand-holds), cargo or uncrewed (pallet and boxes instead) |
 | `Solar` (`lunar_cruiser`, `pr_concept`, `flex`, `cadre`, `mph`) | **stowed**, deployed (also drives the wing joints to their deployed angles; on `cadre` the default is deployed; on `mph` the default is deployed and stowed retracts the blankets and folds the radiator wings up for driving) |
 | `Ports` (`pr_concept`) | **suitports**, airlock |
@@ -299,7 +308,7 @@ Conventions:
 | Validator | Result |
 |---|---|
 | `nvidia_usd_validate` (usd-validation-nvidia 1.22) | 0 errors and 0 failures on `mk1`, `mk1_offloader`, `apollo_lm`, `nova_c`, `blue_ghost` and `peregrine`, with the mesh-weld and indexed-primvar checks off; only non-manifold and zero-area-face warnings remain |
-| Newton 1.6 (`SolverMuJoCo`) | `mk1` settles level on all four legs in lunar gravity, tracks the gimbal and antenna servos and lifts off under BE-7 thrust; with `Offloader = crane` (15 bodies) it also tracks slew, luff and hoist targets. `apollo_lm`, `nova_c`, `blue_ghost` and `peregrine` pass every check that applies to them. All 13 rovers settle level on every wheel, track every servo (steering, active suspension, hatches, latches, stairs, railings, wings, arms, masts) and drive; the 18 t Lunar Cruiser also passes its scripted showcase |
+| Newton 1.6 (`SolverMuJoCo`) | `mk1` settles level on all four legs in lunar gravity, tracks the gimbal and antenna servos and lifts off under BE-7 thrust; with `Offloader = crane` (15 bodies) it also tracks slew, luff and hoist targets. `apollo_lm`, `nova_c`, `blue_ghost` and `peregrine` pass every check that applies to them. All 14 rovers settle level on every wheel, track every servo (steering, active suspension, hatches, latches, stairs, railings, wings, arms, masts) and drive; the 18 t Lunar Cruiser also passes its scripted showcase |
 
 `scripts/sim_newton.py` works on any asset. It reads each joint's `joint:role` and `joint:driveKind` from the USD and runs the checks that apply, exiting non-zero if any fails:
 
@@ -412,6 +421,21 @@ cd examples/newton
 ../../.venv/bin/python example_robot_viper.py --viewer null --demo --num-frames 4920 --test
 ```
 
+`examples/newton/example_robot_ipex.py` runs every IPEx joint on rigid ground (4 skid-steered wheels, 2 arms, 2 drum pairs and the radiator cover).
+- **Counter-rotating dig.** Both arms lower and both drum pairs dig at once. The two pairs turn in opposite directions, so their reactions cancel and the chassis stays within 2 cm. A single pair pushes the rover instead.
+- **Dig, dump, tilt and lift.** The front pair digs while the rover creeps forward, lifts and dumps by reversing. One arm alone tilts the chassis about 6°, and both arms pushed below level lift it about 6 cm (the "iron cross").
+- **Dock.** The radiator cover opens 90° for charging.
+
+Keys `1` to `6` run the sequences, `x` starts and stops the drums and `z` reverses them. `--demo` plays everything and `--test` checks it.
+
+`examples/newton/example_robot_ipex_dig.py` digs real regolith. It couples IPEx (MuJoCo) with a bed of about 343,000 MPM particles (`SolverImplicitMPM`, 10 mm voxels). The rover drives on rigid ground through a 6 cm bed, cuts 2 cm deep with the front drums, lifts the load, weighs what the drums hold and dumps it. The default regolith is GRC-1 as used in the Project Chrono RASSOR studies (1,700 kg/m³, 38° friction angle). `--two-way` feeds the regolith reaction back into the rover, `--dither-hz 2.66` adds the front-shoulder dither from SBEL TR-2024-04, and `--fill-revs`, `--transit` and `--dump-time` lengthen the sequence. A default run collects about 4.6 kg, keeps 2.4 kg through the lift and dumps all but 0.9 kg. `--record` saves body poses and grain positions.
+
+```bash
+cd examples/newton
+../../.venv/bin/python example_robot_ipex.py --viewer null --demo --num-frames 3700 --test
+../../.venv/bin/python example_robot_ipex_dig.py --viewer null --num-frames 1410 --test --record ../../build/ipex/dig_run.npz
+```
+
 `scripts/render_rtx.py` renders any asset in Omniverse RTX. `--mode RealTimePathTracing` and `--spectral` pick the renderer, `--pose joint=value` poses joints (degrees or metres) and `--sensors` renders through the asset's own cameras:
 
 ```bash
@@ -457,8 +481,8 @@ Texture sets are cached by spec, so only changed sets regenerate. The 4096 px ML
 | Path | Contents |
 |---|---|
 | `configs/<id>.py` | One config per asset: dimensions, materials, features, masses, colliders, `ASSET_PATH` |
-| `families/` | Family builders shared by an asset family (`mk1`, `offloader`, `apollo_lm`, `nova_c`, `blue_ghost`, `peregrine`), plus `parts.py`: shared nozzles, sprung legs, thruster clusters, panels, dishes and lofts. `rover.py` builds every rover from its config: wheel modules (double wishbone, trailing arm, rocker, steering column, prismatic leg), wheel styles (airless spring, wire mesh, grousered, slat), extra jointed links and loop closures, a parts vocabulary (boxes, lofts, extrusions, panels, rails), crew stations, masts, dishes, solar arrays, arms and lights; `rover_kit.py` has the shared materials and helpers |
-| `examples/newton/` | Newton examples: lander touchdown, any-rover driving, Lunar Cruiser showcase |
+| `families/` | Family builders shared by an asset family (`mk1`, `offloader`, `apollo_lm`, `nova_c`, `blue_ghost`, `peregrine`), plus `parts.py`: shared nozzles, sprung legs, thruster clusters, panels, dishes and lofts. `rover.py` builds every rover from its config: wheel modules (double wishbone, trailing arm, rocker, steering column, prismatic leg), wheel styles (airless spring, wire mesh, grousered, slat), extra jointed links and loop closures, a parts vocabulary (boxes, lofts, extrusions, panels, rails, chunked walls swept along a 2D path), crew stations, masts, dishes, solar arrays, arms and lights; `rover_kit.py` has the shared materials and helpers |
+| `examples/newton/` | Newton examples: lander touchdown, any-rover driving, Lunar Cruiser, VIPER and IPEx showcases, IPEx regolith digging with MPM |
 | `scripts/` | Pipeline: texture generation, Blender build, export, USD packaging, simple versions, renders, hero, release |
 | `assets/<vendor>/<family>/<name>/` | Generated by the pipeline and committed with Git LFS: `usd/`, `gltf/`, `obj/`, `blender/`, `simple/`, `LICENSE`, `NOTICE` |
 | `web/` | Static three.js viewer: `index.html`, `src/` (viewer and lil-gui panel), `vendor/three/` (pinned three.js r170 and lil-gui), `models/` (generated by `./pipeline.sh web`, git-ignored) |
@@ -497,6 +521,7 @@ For the rovers, the most reliable numbers are official specifications. Elsewhere
 - **Lunar Cruiser.** Official figures come from JAXA's 2025 specification slide: 6.44 × 4.84 × 4.85 m, wheelbase 3.81 m, track 3.20 m, ≤ 15 t at launch and ≤ 18 t loaded, 4 × 10 m solar wings, and a 1.0 × 1.5 m hatch. Everything else is calibrated on those figures from the NASA/JAXA 2025 renders: windscreen, lamps, rear patio, stair, stowage, gas bottles and the arm. Suspension and steering are not published; independent wishbones with a steering front axle are assumed.
 - **LTVs.** CLV-1 and Pegasus dimensions are measured from NASA photos and renders; the mass caps are official. FLEX dimensions come from Astrolab's payload interface guide. The Moon RACER and Eagle are measured from photos, and the Moon RACER's published 3.9 m width is read as including its panels.
 - **SEV, VIPER, CADRE.** These come from NASA and JPL fact sheets and slides: SEV mass, wheelbase and height; VIPER's 1.7 × 1.7 × 2.5 m, 447 kg, 0.5 m wheels and mobility ranges; CADRE's 0.546 × 0.385 × 0.235 m and 8.6 kg. Suitport, docking hatch and instrument positions are measured from photos. VIPER's layout follows the LSIC 2024 CAD cutaway and the LPSC 2022 Visible Imaging System figure. Its lights and cameras follow LPSC 2022 #2466 and LPSC 2023 #2508, and its finishes follow JSC clean-room and thermal-vacuum photos of the flight rover.
+- **IPEx.** NASA does not publish overall dimensions or an as-built mass, only the 30 kg-class target, so the model is calibrated on three figures from the TRL 5 design work (ASCEND 2024, NTRS 20240008162), namely the 30.5 cm wheel (ASCE 2024 wheel paper), the 0.165 m stereo baseline printed on its end-view CAD and the 295 × 246 mm "medium" bucket drum (ASCE 2022 scaling paper). These agree within about 3 %. Wheelbase, track, shoulder pivots, arm length and body sizes are measured from the FY24 side orthographic CAD and the TRL 5 top and end views (±1–2 cm). Skid steering, no suspension, one through-shaft actuator per drum pair, counter-rotating digging, dumping by reversing the drums, the radiator cover and wireless charging come from the TRL 5 and IEEE 2025 actuator papers. The camera set follows the post-TRL 5 layout (two 5 cm stereo pairs, two mono cameras between the drums and two side cameras). The six LED positions are inferred. The drum spiral is the RASSOR 2.0 drum slice from Project Chrono (`data/robot/rassor`, BSD-3) scaled to IPEx's 0.30 m drum, which gives a 34 mm scoop mouth against the published 34.5 mm. Finishes follow the TRL 5 CAD, the FY24 finish list and colours measured from photos of the test unit (charcoal hard anodise on the drums and cleats, khaki-gold conversion coat on the wheel rings and spokes, matte white paint); the 2024 alpha test unit has bright silver drums and yellow wheels and is not flight-representative.
 - **FLIP and MAPP.** No official dimensions beyond mass and the Venturi wheel diameter (FLIP) or the 45 × 38 × 40 cm envelope (MAPP); the geometry is measured from renders.
 - **Concepts.** `ltv_concept` follows the NASA LTV requirements (2 suited crew plus 250 kg, or 1,600 kg uncrewed). `pr_concept` follows typical pressurised-rover features: 0.6 × 0.9 m suitports, an IDSS docking ring, a forward window band, radiators and a 2–3 m arm.
 

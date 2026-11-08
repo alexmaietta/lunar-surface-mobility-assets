@@ -98,6 +98,9 @@ def write_mtl(path, materials, tex_rel):
         f.write("\n".join(lines))
 
 
+COMPOUND_MIN = 8
+
+
 def collider_meshes(stage, link_path, link_names):
     out = []
     it = iter(Usd.PrimRange(stage.GetPrimAtPath(link_path), Usd.TraverseInstanceProxies()))
@@ -194,10 +197,12 @@ def main(argv):
             ET.SubElement(vis, "origin", xyz="0 0 0", rpy="0 0 0")
             ET.SubElement(ET.SubElement(vis, "geometry"), "mesh", filename=f"meshes/visual/{name}.obj")
         if name in paths:
-            for c in collider_meshes(usd, paths[name], set(links)):
-                fn = f"{c['name']}.obj"
-                write_obj(os.path.join(out, "meshes", "collision", fn), [c], "collision.mtl")
-                col = ET.SubElement(link, "collision", name=c["name"])
+            cols = collider_meshes(usd, paths[name], set(links))
+            groups = [(f"{name}_compound_col", cols)] if len(cols) > COMPOUND_MIN else [(c["name"], [c]) for c in cols]
+            for cname, parts in groups:
+                fn = f"{cname}.obj"
+                write_obj(os.path.join(out, "meshes", "collision", fn), parts, "collision.mtl")
+                col = ET.SubElement(link, "collision", name=cname)
                 ET.SubElement(col, "origin", xyz="0 0 0", rpy="0 0 0")
                 ET.SubElement(ET.SubElement(col, "geometry"), "mesh", filename=f"meshes/collision/{fn}")
         if L["parent"] is None:

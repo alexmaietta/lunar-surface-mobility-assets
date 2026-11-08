@@ -125,6 +125,40 @@ class Source:
                 pts += [m.Transform(Gf.Vec3d(*q)) for q in p]
         return np.array([[q[0], q[1], q[2]] for q in pts]) if pts else np.zeros((0, 3))
 
+    def islands(self, link, names=None, skip=None):
+        out = []
+        for g, mp, m, _mat in self.items.get(link, []):
+            if names and not any(t in g for t in names):
+                continue
+            if skip and skip(g):
+                continue
+            mesh = UsdGeom.Mesh(self.stage.GetPrimAtPath(mp))
+            p = mesh.GetPointsAttr().Get()
+            counts, idx = mesh.GetFaceVertexCountsAttr().Get(), mesh.GetFaceVertexIndicesAttr().Get()
+            if not p or not counts:
+                continue
+            parent = list(range(len(p)))
+
+            def find(a):
+                while parent[a] != a:
+                    parent[a] = parent[parent[a]]
+                    a = parent[a]
+                return a
+            o = 0
+            for c in counts:
+                f = idx[o:o + c]
+                for a in f[1:]:
+                    ra, rb = find(f[0]), find(a)
+                    if ra != rb:
+                        parent[rb] = ra
+                o += c
+            groups = {}
+            for i in range(len(p)):
+                groups.setdefault(find(i), []).append(i)
+            for ids in groups.values():
+                out.append(np.array([list(m.Transform(Gf.Vec3d(*p[i]))) for i in ids]))
+        return out
+
 
 def link_paths(links, root_link):
     paths = {}
@@ -195,14 +229,20 @@ def hull_mesh(points):
 def collider_specs(src, links, cfg):
     out = {}
     for link, groups in cfg.COLLIDERS.items():
-        for prefix, tokens in groups:
+        for prefix, tokens, *opts in groups:
             targets = [l for l in links if re.fullmatch(link, l)]
+            skip = lambda g: (v := variant_of(g, cfg)) is not None and v[1] != cfg.GEOMETRY_VARIANTS[v[0]][0]
             for t in targets:
-                pts = src.points(t, tokens, skip=lambda g: (v := variant_of(g, cfg)) is not None
-                                 and v[1] != cfg.GEOMETRY_VARIANTS[v[0]][0])
+                pm = cfg.PHYSICS_MATERIAL.get(prefix, "structure")
+                if opts and opts[0].get("islands"):
+                    parts = [q for q in src.islands(t, tokens, skip=skip) if len(q) >= 8]
+                    for i, q in enumerate(parts):
+                        out.setdefault(t, []).append((f"{t}_{prefix}_{i:03d}_col", hull_mesh(q), pm))
+                    continue
+                pts = src.points(t, tokens, skip=skip)
                 if len(pts) < 8:
                     continue
-                out.setdefault(t, []).append((f"{t}_{prefix}_col", hull_mesh(pts), cfg.PHYSICS_MATERIAL.get(prefix, "structure")))
+                out.setdefault(t, []).append((f"{t}_{prefix}_col", hull_mesh(pts), pm))
     return out
 
 

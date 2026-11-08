@@ -178,6 +178,36 @@ def arc_shell_geo(c, r, w, a0, a1, t=0.006, seg=16):
     return V, F, U
 
 
+def wall_geo(c, pts, t, y0, y1, caps=(True, True)):
+    c = Vector(c)
+    n = len(pts)
+    tan = []
+    for i in range(n):
+        a, b = Vector(pts[max(i - 1, 0)]), Vector(pts[min(i + 1, n - 1)])
+        d = (b - a).normalized()
+        tan.append(d)
+    V, F, U = [], [], []
+    s = 0.0
+    for i, (p, d) in enumerate(zip(pts, tan)):
+        if i:
+            s += (Vector(p) - Vector(pts[i - 1])).length
+        nrm = Vector((-d.y, d.x))
+        for (off, y) in ((1, y0), (1, y1), (-1, y1), (-1, y0)):
+            q = Vector(p) + nrm * off * t / 2
+            V.append((c.x + q.x, c.y + y, c.z + q.y))
+            U.append((s, y if off > 0 else y + t))
+    for i in range(n - 1):
+        a, b = 4 * i, 4 * (i + 1)
+        for e in range(4):
+            F.append((a + e, b + e, b + (e + 1) % 4, a + (e + 1) % 4))
+    if caps[0]:
+        F.append((0, 1, 2, 3))
+    if caps[1]:
+        o = 4 * (n - 1)
+        F.append((o + 3, o + 2, o + 1, o))
+    return V, F, U
+
+
 def _drive(kind, **kw):
     return {"kind": kind, **kw}
 
@@ -567,6 +597,14 @@ def _part(p, m):
         ob = G.add_mesh_uv(name, G.tube_uv(p["p0"], p["p1"], p["r"], p.get("sides", 16), r1=p.get("r1")), mat, link)
     elif kind == "rail":
         ob = G.pipe(name, [Vector(q) for q in p["points"]], p["r"], mat, link, closed=p.get("closed", False), sides=8)
+    elif kind == "wall":
+        pts, nc = [tuple(q) for q in p["points"]], max(1, p.get("chunks", 1))
+        cuts = [round(i * (len(pts) - 1) / nc) for i in range(nc + 1)]
+        caps = p.get("caps", (True, True))
+        for k in range(nc):
+            seg = pts[cuts[k]:cuts[k + 1] + 1]
+            ob = G.add_mesh_uv(f"{name}_{k}" if nc > 1 else name, wall_geo(p["c"], seg, p["t"], *p["y"], (caps[0] and k == 0, caps[1] and k == nc - 1)),
+                               mat, link, smooth=p.get("smooth", False))
     elif kind == "beam":
         v, f = G.box_beam_geo(p["p0"], p["p1"], p["w"], p["h"])
         ob = G.add_mesh(name, v, f, mat, link)

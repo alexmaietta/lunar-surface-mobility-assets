@@ -5,11 +5,11 @@ import { Viewer } from "./viewer.js";
 const BASE = "models";
 const REPO = "https://github.com/alexmaietta/lunar-surface-mobility-assets";
 const PASSIVE = new Set(["landing_gear", "suspension", "linkage"]);
-const ROLE_ORDER = ["gimbal", "steer", "drive", "active_suspension", "antenna", "camera", "arm", "crane", "hatch", "latch", "stair", "railing", "solar", "deploy"];
+const ROLE_ORDER = ["gimbal", "steer", "drive", "active_suspension", "antenna", "camera", "arm", "crane", "hatch", "latch", "stair", "railing", "solar", "deploy", "excavate"];
 const ROLE_NAMES = {
   gimbal: "Engine gimbal", steer: "Steering", drive: "Wheels", active_suspension: "Active suspension", antenna: "Antennas",
   camera: "Cameras", arm: "Robotic arm", crane: "Crane", hatch: "Hatches", latch: "Latches", stair: "Stairs",
-  railing: "Railings", solar: "Solar arrays", deploy: "Deployables", actuated: "Other",
+  railing: "Railings", solar: "Solar arrays", deploy: "Deployables", excavate: "Bucket drums", actuated: "Other",
 };
 const OVERVIEW = "(overview)";
 
