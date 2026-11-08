@@ -199,7 +199,7 @@ def main():
         old = {e["id"]: e for e in json.load(open(mpath))["assets"]}
     for asset in host_ids + sorted(deps):
         cfg = assetcfg.load(asset)
-        kind = "attachment" if asset in deps else ("lander" if cfg.ASSET_PATH.endswith("/lander") else "rover")
+        kind = "attachment" if asset in deps else next((k for k in ("lander", "habitat") if cfg.ASSET_PATH.endswith(f"/{k}")), "rover")
         if only and asset not in only and asset in old:
             e = old[asset]
             files += [os.path.join(OUT, e["files"][k]) for k in ("full", "preview") if k in e["files"]]

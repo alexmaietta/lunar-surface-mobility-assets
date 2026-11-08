@@ -85,9 +85,9 @@ def main():
     R.setup_render(int(assetcfg.arg(a, "--samples", "256")), res)
     R.lunar(assetcfg.build_dir(hosts()[0][0], "textures"))
     bpy.context.scene.cycles.use_auto_tile = True
-    bpy.context.scene.cycles.tile_size = 1024
+    bpy.context.scene.cycles.tile_size = int(assetcfg.arg(a, "--tile", "1024"))
     bpy.context.scene.render.use_simplify = True
-    bpy.context.scene.cycles.texture_limit_render = "2048"
+    bpy.context.scene.cycles.texture_limit_render = assetcfg.arg(a, "--tex-limit", "2048")
     bpy.context.scene.cycles.denoiser = "OPTIX"
     bpy.context.scene.cycles.denoising_use_gpu = True
     az, el = math.radians(AZIMUTH), math.radians(ELEVATION)

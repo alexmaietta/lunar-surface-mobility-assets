@@ -6,7 +6,7 @@ ROWS = [
     None,
     ["*", "peregrine", "nova_c", "blue_ghost", "*"],
     ["lunar_cruiser", "mk1", "apollo_lm", "pr_concept"],
-    ["mk2"],
+    ["mk2", "mph"],
 ]
 ALIGN = {"mk2": "mk1"}
 

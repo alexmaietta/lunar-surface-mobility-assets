@@ -205,7 +205,7 @@ function placeHuman() {
 function buildGui() {
   gui = new GUI({ title: `Lunar Surface Mobility Assets v${state.manifest.version}`, width: 330 });
   const options = { [OVERVIEW]: OVERVIEW };
-  for (const kind of ["lander", "rover"]) {
+  for (const kind of ["lander", "habitat", "rover"]) {
     for (const a of hosts().filter((x) => x.kind === kind).sort((x, y) => y.dims.height - x.dims.height)) {
       options[`${a.title} (${fmt.m(a.dims.height)})`] = a.id;
     }
