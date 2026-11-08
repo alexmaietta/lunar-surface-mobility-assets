@@ -26,8 +26,8 @@ These are simulation-ready models of lunar landers, rovers and their friends. Ea
 | Astrobotic | [Peregrine](assets/astrobotic/peregrine/lander) (Mission One) | `peregrine` | v0.1: photo-matched, packaged, Newton-tested |
 | Toyota / JAXA | [Lunar Cruiser](assets/toyota_jaxa/lunar_cruiser/rover) pressurised rover (2025 design) | `lunar_cruiser` | v0.1: spec-matched, packaged, Newton-tested |
 | NASA | [Space Exploration Vehicle](assets/nasa/sev/rover) (SEV / LER, 2010) | `sev` | v0.1: photo-matched, packaged, Newton-tested |
-| NASA | [VIPER](assets/nasa/viper/rover) | `viper` | v0.2 (unreleased): flight-matched to lab photos and CAD, photometric lights, packaged, Newton-tested |
-| NASA | [IPEx](assets/nasa/ipex/rover) regolith excavator (TRL 5/6) | `ipex` | v0.2 (unreleased): CAD-matched, packaged, Newton-tested |
+| NASA | [VIPER](assets/nasa/viper/rover) | `viper` | v0.2: flight-matched to lab photos and CAD, photometric lights, packaged, Newton-tested |
+| NASA | [IPEx](assets/nasa/ipex/rover) regolith excavator (TRL 5/6) | `ipex` | v0.2: CAD-matched, packaged, Newton-tested |
 | NASA / JPL | [CADRE](assets/nasa_jpl/cadre/rover) rover (IM-3) | `cadre` | v0.1: photo-matched, packaged, Newton-tested |
 | Astrolab | [FLEX](assets/astrolab/flex/rover) prototype | `flex` | v0.1: photo-matched, packaged, Newton-tested |
 | Astrolab | [CLV-1](assets/astrolab/clv1/rover) LTV (NASA task order 2026) | `clv1` | v0.1: render-matched, packaged, Newton-tested |
@@ -39,7 +39,7 @@ These are simulation-ready models of lunar landers, rovers and their friends. Ea
 | Concept | [Lunar Terrain Vehicle](assets/concepts/ltv/rover), crewed or uncrewed | `ltv_concept` | v0.1: concept, packaged, Newton-tested |
 | Concept | [Pressurised rover](assets/concepts/pressurized/rover) | `pr_concept` | v0.1: concept, packaged, Newton-tested |
 | Blue Origin | [Blue Moon MK2](assets/blue_origin/mk2/lander) crewed lander (Artemis HLS) | `mk2` | v0.1: render- and drawing-matched, packaged, Newton-tested |
-| ASI / Thales Alenia Space | [Multi-Purpose Habitation (MPH)](assets/asi_thales/mph/habitat) mobile surface habitat (2025 reference design) | `mph` | v0.1 (unreleased): CAD camera-matched, packaged, Newton-tested |
+| ASI / Thales Alenia Space | [Multi-Purpose Habitation (MPH)](assets/asi_thales/mph/habitat) mobile surface habitat (2025 reference design) | `mph` | v0.1: CAD camera-matched, packaged, Newton-tested |
 
 All assets share one frame and are built to scale (Z up, metres, origin on the ground under the centerline), so they can be placed side by side:
 
