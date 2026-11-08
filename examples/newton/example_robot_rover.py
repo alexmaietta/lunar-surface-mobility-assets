@@ -32,6 +32,48 @@ def usd_roles(stage):
     return out
 
 
+def find_light_sites(stage, blabels):
+    from pxr import Usd, UsdGeom
+
+    cache = UsdGeom.XformCache(Usd.TimeCode.Default())
+    out = []
+    for prim in Usd.PrimRange(stage.GetDefaultPrim()):
+        if not prim.HasAttribute("site:kind") or prim.GetAttribute("site:kind").Get() != "light":
+            continue
+        body = prim.GetParent()
+        while body and body.GetName() not in blabels:
+            body = body.GetParent()
+        if not body:
+            continue
+        local = cache.GetLocalToWorldTransform(prim) * cache.GetLocalToWorldTransform(body).GetInverse()
+        t = local.ExtractTranslation()
+        z = local.TransformDir((0, 0, 1))
+        attr = lambda k, d: prim.GetAttribute(k).Get() if prim.HasAttribute(k) else d
+        r = attr("site:radius_m", None) or max(attr("site:width_m", 0.1) or 0.1, attr("site:height_m", 0.1) or 0.1) / 2
+        out.append({"body": blabels.index(body.GetName()), "p": np.array(t), "d": np.array(z) / max(np.linalg.norm(z), 1e-9),
+                    "r": float(r), "name": prim.GetName(), "group": attr("site:group", "") or ""})
+    return out
+
+
+def draw_light_beams(viewer, state, sites, colour=(1.0, 0.92, 0.65), name="lights"):
+    if not sites:
+        viewer.log_points(name, None)
+        viewer.log_lines(f"{name}_beams", None, None, None)
+        return
+    bq = state.body_q.numpy()
+    pts, ends, radii = [], [], []
+    for s in sites:
+        q = bq[s["body"]]
+        tf = wp.transform(wp.vec3(*q[:3]), wp.quat(*q[3:7]))
+        p = np.array(wp.transform_point(tf, wp.vec3(*s["p"])))
+        d = np.array(wp.transform_vector(tf, wp.vec3(*s["d"])))
+        pts.append(p)
+        ends.append(p + d * (0.6 if s["r"] < 0.05 else 3.0))
+        radii.append(max(0.04, s["r"] * 1.4))
+    viewer.log_points(name, wp.array(pts, dtype=wp.vec3), wp.array(radii, dtype=wp.float32), colour)
+    viewer.log_lines(f"{name}_beams", wp.array(pts, dtype=wp.vec3), wp.array(ends, dtype=wp.vec3), tuple(c * 0.9 for c in colour), width=0.02)
+
+
 class Example:
     def __init__(self, viewer, args):
         self.fps = 60

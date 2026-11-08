@@ -2,23 +2,23 @@
 (
     customLayerData = {
         dictionary SimReady_Metadata = {
-            float3 asset_extents = (1.7426645, 1.7276001, 2.5352821)
+            float3 asset_extents = (1.7189819, 1.7671638, 2.5860841)
             string asset_license = "CC-BY-4.0"
             string asset_name = "viper"
             string asset_type = "robot"
             string asset_version = "0.1.1"
             string category = "spacecraft"
             double mass = 447
-            int rigid_body_count = 18
+            int rigid_body_count = 30
             string source_file = "build/viper/viper.blend (scripts/build.py)"
-            string usd_date_generated = "2026-10-26"
+            string usd_date_generated = "2026-11-07"
             string usd_version = "0.26.8"
         }
         string asset_name = "viper"
         string asset_type = "robot"
         string asset_version = "0.1.1"
         string creator = "lunar-surface-mobility-assets pipeline"
-        string usd_date_generated = "2026-10-26"
+        string usd_date_generated = "2026-11-07"
     }
     defaultPrim = "viper"
     kilogramsPerUnit = 1
@@ -31,11 +31,12 @@ def Xform "viper" (
     variants = {
         string Articulation = "articulated"
         string Fidelity = "full"
+        string LightModel = "spectral"
         string Lights = "on"
         string Payload = "roving"
         string Physics = "physx"
     }
-    prepend variantSets = ["Articulation", "Payload", "Lights", "Fidelity", "Physics"]
+    prepend variantSets = ["Articulation", "Payload", "Lights", "LightModel", "Fidelity", "Physics"]
 )
 {
     variantSet "Articulation" = {
@@ -66,6 +67,21 @@ def Xform "viper" (
         }
     }
     variantSet "Lights" = {
+        "haz" (
+            prepend payload = @./payloads/Lights/haz.usda@
+        ) {
+
+        }
+        "nav" (
+            prepend payload = @./payloads/Lights/nav.usda@
+        ) {
+
+        }
+        "nirvss" (
+            prepend payload = @./payloads/Lights/nirvss.usda@
+        ) {
+
+        }
         "off" (
             prepend payload = @./payloads/Lights/off.usda@
         ) {
@@ -73,6 +89,18 @@ def Xform "viper" (
         }
         "on" (
             prepend payload = @./payloads/Lights/on.usda@
+        ) {
+
+        }
+    }
+    variantSet "LightModel" = {
+        "rgb" (
+            prepend payload = @./payloads/LightModel/rgb.usda@
+        ) {
+
+        }
+        "spectral" (
+            prepend payload = @./payloads/LightModel/spectral.usda@
         ) {
 
         }

@@ -16,7 +16,7 @@ over "viper"
 {
     over "Physics"
     {
-        over "fl_arm" (
+        over "fl_lower_arm" (
             delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
             prepend apiSchemas = ["MjcJointAPI"]
         )
@@ -24,15 +24,22 @@ over "viper"
             uniform double mjc:armature = 0.01
         }
 
-        def MjcActuator "fl_arm_actuator"
+        def MjcActuator "fl_lower_arm_actuator"
         {
-            uniform double[] mjc:biasPrm = [0, -8171.71875, -266.47630473927694, 0, 0, 0, 0, 0, 0, 0]
+            uniform double[] mjc:biasPrm = [0, -8852.6953125, -240.37635407028912, 0, 0, 0, 0, 0, 0, 0]
             uniform token mjc:biasType = "affine"
             uniform token mjc:forceLimited = "true"
-            uniform double mjc:forceRange:max = 1089.5625
-            uniform double mjc:forceRange:min = -1089.5625
-            uniform double[] mjc:gainPrm = [8171.71875, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-            rel mjc:target = </viper/Physics/fl_arm>
+            uniform double mjc:forceRange:max = 1180.359375
+            uniform double mjc:forceRange:min = -1180.359375
+            uniform double[] mjc:gainPrm = [8852.6953125, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </viper/Physics/fl_lower_arm>
+        }
+
+        over "fl_upright" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
         }
 
         over "fl_steer" (
@@ -73,7 +80,14 @@ over "viper"
             rel mjc:target = </viper/Physics/fl_wheel>
         }
 
-        over "fr_arm" (
+        over "fl_upper_arm" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        over "fr_lower_arm" (
             delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
             prepend apiSchemas = ["MjcJointAPI"]
         )
@@ -81,15 +95,22 @@ over "viper"
             uniform double mjc:armature = 0.01
         }
 
-        def MjcActuator "fr_arm_actuator"
+        def MjcActuator "fr_lower_arm_actuator"
         {
-            uniform double[] mjc:biasPrm = [0, -8171.71875, -266.47630473927694, 0, 0, 0, 0, 0, 0, 0]
+            uniform double[] mjc:biasPrm = [0, -8852.6953125, -240.37635407028912, 0, 0, 0, 0, 0, 0, 0]
             uniform token mjc:biasType = "affine"
             uniform token mjc:forceLimited = "true"
-            uniform double mjc:forceRange:max = 1089.5625
-            uniform double mjc:forceRange:min = -1089.5625
-            uniform double[] mjc:gainPrm = [8171.71875, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-            rel mjc:target = </viper/Physics/fr_arm>
+            uniform double mjc:forceRange:max = 1180.359375
+            uniform double mjc:forceRange:min = -1180.359375
+            uniform double[] mjc:gainPrm = [8852.6953125, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </viper/Physics/fr_lower_arm>
+        }
+
+        over "fr_upright" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
         }
 
         over "fr_steer" (
@@ -128,6 +149,13 @@ over "viper"
             uniform double mjc:forceRange:min = -54.478125
             uniform double[] mjc:gainPrm = [670.5, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             rel mjc:target = </viper/Physics/fr_wheel>
+        }
+
+        over "fr_upper_arm" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
         }
 
         over "hga_azimuth" (
@@ -206,7 +234,7 @@ over "viper"
             rel mjc:target = </viper/Physics/nav_mast_tilt>
         }
 
-        over "rl_arm" (
+        over "nav_cam_left_cover" (
             delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
             prepend apiSchemas = ["MjcJointAPI"]
         )
@@ -214,15 +242,60 @@ over "viper"
             uniform double mjc:armature = 0.01
         }
 
-        def MjcActuator "rl_arm_actuator"
+        def MjcActuator "nav_cam_left_cover_actuator"
         {
-            uniform double[] mjc:biasPrm = [0, -8171.71875, -266.47630473927694, 0, 0, 0, 0, 0, 0, 0]
+            uniform double[] mjc:biasPrm = [0, -2, -0.2, 0, 0, 0, 0, 0, 0, 0]
             uniform token mjc:biasType = "affine"
             uniform token mjc:forceLimited = "true"
-            uniform double mjc:forceRange:max = 1089.5625
-            uniform double mjc:forceRange:min = -1089.5625
-            uniform double[] mjc:gainPrm = [8171.71875, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-            rel mjc:target = </viper/Physics/rl_arm>
+            uniform double mjc:forceRange:max = 2
+            uniform double mjc:forceRange:min = -2
+            uniform double[] mjc:gainPrm = [2, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </viper/Physics/nav_cam_left_cover>
+        }
+
+        over "nav_cam_right_cover" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "nav_cam_right_cover_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -2, -0.2, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 2
+            uniform double mjc:forceRange:min = -2
+            uniform double[] mjc:gainPrm = [2, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </viper/Physics/nav_cam_right_cover>
+        }
+
+        over "rl_lower_arm" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "rl_lower_arm_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -8852.6953125, -240.37635407028912, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 1180.359375
+            uniform double mjc:forceRange:min = -1180.359375
+            uniform double[] mjc:gainPrm = [8852.6953125, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </viper/Physics/rl_lower_arm>
+        }
+
+        over "rl_upright" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
         }
 
         over "rl_steer" (
@@ -263,7 +336,14 @@ over "viper"
             rel mjc:target = </viper/Physics/rl_wheel>
         }
 
-        over "rr_arm" (
+        over "rl_upper_arm" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        over "rr_lower_arm" (
             delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
             prepend apiSchemas = ["MjcJointAPI"]
         )
@@ -271,15 +351,22 @@ over "viper"
             uniform double mjc:armature = 0.01
         }
 
-        def MjcActuator "rr_arm_actuator"
+        def MjcActuator "rr_lower_arm_actuator"
         {
-            uniform double[] mjc:biasPrm = [0, -8171.71875, -266.47630473927694, 0, 0, 0, 0, 0, 0, 0]
+            uniform double[] mjc:biasPrm = [0, -8852.6953125, -240.37635407028912, 0, 0, 0, 0, 0, 0, 0]
             uniform token mjc:biasType = "affine"
             uniform token mjc:forceLimited = "true"
-            uniform double mjc:forceRange:max = 1089.5625
-            uniform double mjc:forceRange:min = -1089.5625
-            uniform double[] mjc:gainPrm = [8171.71875, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-            rel mjc:target = </viper/Physics/rr_arm>
+            uniform double mjc:forceRange:max = 1180.359375
+            uniform double mjc:forceRange:min = -1180.359375
+            uniform double[] mjc:gainPrm = [8852.6953125, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </viper/Physics/rr_lower_arm>
+        }
+
+        over "rr_upright" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
         }
 
         over "rr_steer" (
@@ -320,7 +407,14 @@ over "viper"
             rel mjc:target = </viper/Physics/rr_wheel>
         }
 
-        over "trident_drill" (
+        over "rr_upper_arm" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        over "trident_deploy" (
             delete apiSchemas = ["PhysicsDriveAPI:linear", "PhysicsJointStateAPI:linear"]
             prepend apiSchemas = ["MjcJointAPI"]
         )
@@ -328,7 +422,26 @@ over "viper"
             uniform double mjc:armature = 0.01
         }
 
-        def MjcActuator "trident_drill_actuator"
+        def MjcActuator "trident_deploy_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -4000, -400, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 800
+            uniform double mjc:forceRange:min = -800
+            uniform double[] mjc:gainPrm = [4000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </viper/Physics/trident_deploy>
+        }
+
+        over "trident_feed" (
+            delete apiSchemas = ["PhysicsDriveAPI:linear", "PhysicsJointStateAPI:linear"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "trident_feed_actuator"
         {
             uniform double[] mjc:biasPrm = [0, -3000, -300, 0, 0, 0, 0, 0, 0, 0]
             uniform token mjc:biasType = "affine"
@@ -336,7 +449,26 @@ over "viper"
             uniform double mjc:forceRange:max = 500
             uniform double mjc:forceRange:min = -500
             uniform double[] mjc:gainPrm = [3000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-            rel mjc:target = </viper/Physics/trident_drill>
+            rel mjc:target = </viper/Physics/trident_feed>
+        }
+
+        over "trident_auger" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "trident_auger_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -20, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 60
+            uniform double mjc:forceRange:min = -60
+            uniform double[] mjc:gainPrm = [20, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </viper/Physics/trident_auger>
         }
     }
 }

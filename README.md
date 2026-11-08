@@ -26,7 +26,7 @@ These are simulation-ready models of lunar landers, rovers and their friends. Ea
 | Astrobotic | [Peregrine](assets/astrobotic/peregrine/lander) (Mission One) | `peregrine` | v0.1: photo-matched, packaged, Newton-tested |
 | Toyota / JAXA | [Lunar Cruiser](assets/toyota_jaxa/lunar_cruiser/rover) pressurised rover (2025 design) | `lunar_cruiser` | v0.1: spec-matched, packaged, Newton-tested |
 | NASA | [Space Exploration Vehicle](assets/nasa/sev/rover) (SEV / LER, 2010) | `sev` | v0.1: photo-matched, packaged, Newton-tested |
-| NASA | [VIPER](assets/nasa/viper/rover) | `viper` | v0.1: photo-matched, packaged, Newton-tested |
+| NASA | [VIPER](assets/nasa/viper/rover) | `viper` | v0.2 (unreleased): flight-matched to lab photos and CAD, photometric lights, packaged, Newton-tested |
 | NASA / JPL | [CADRE](assets/nasa_jpl/cadre/rover) rover (IM-3) | `cadre` | v0.1: photo-matched, packaged, Newton-tested |
 | Astrolab | [FLEX](assets/astrolab/flex/rover) prototype | `flex` | v0.1: photo-matched, packaged, Newton-tested |
 | Astrolab | [CLV-1](assets/astrolab/clv1/rover) LTV (NASA task order 2026) | `clv1` | v0.1: render-matched, packaged, Newton-tested |
@@ -64,7 +64,7 @@ The rovers use the same frame, with the origin on the ground under the chassis c
 | `eagle` | 4.00 × 2.48 × 2.58 m | 1,600 kg (2,140 crewed) | 4 × 1.0 m | double wishbone; all-wheel steer | tilting solar panel, arm |
 | `moon_racer` | 4.46 × 2.52 × 2.74 m | 1,100 kg (1,650 crewed, 2,050 loaded) | 4 × 0.80 m airless | double wishbone with coilovers; front steer | arm, dish |
 | `flip` | 2.33 × 1.91 × 2.30 m | 480 kg | 4 × 0.93 m Venturi | active swing arms; all-wheel steer | – |
-| `viper` | 1.74 × 1.72 × 2.53 m | 447 kg roving, 490 launch | 4 × 0.50 m grousered | active swing arms (wheel walking, 7–43 cm clearance); ±50° steer | TRIDENT drill (1.1 m prismatic), pan-tilt mast, dish |
+| `viper` | 1.72 × 1.77 × 2.59 m (with LGA whip) | 447 kg roving, 490 launch | 4 × 0.50 m wire-spoked drum, 20 grousers | active four-bar (360 mm stroke, wheel walking, 7–43 cm clearance); ±50° offset-kingpin steer | TRIDENT drill (0.38 m deploy, 1.24 m feed, auger spin), pan-tilt mast with lens covers, flat HGA, 8 photometric 457 nm lights, 9 spectral cameras |
 | `mapp` | 0.45 × 0.39 × 0.44 m | 10 kg | 4 × 0.12 m paddle | rockers; skid steer | – |
 | `cadre` | 0.56 × 0.81 × 0.35 m (wings open) | 8.6 kg | 4 × 0.16 m grousered | rigid; skid steer | hinged solar wings, flip-up camera covers |
 
@@ -158,6 +158,13 @@ Each rover from the front, the rear and at night under its own lights:
 | ![Lunar Outpost MAPP front three-quarter](docs/images/lunar_outpost/mapp/rover/front_three_quarter.jpg) | ![Lunar Outpost MAPP rear three-quarter](docs/images/lunar_outpost/mapp/rover/rear_three_quarter.jpg) | ![Lunar Outpost MAPP at night](docs/images/lunar_outpost/mapp/rover/night.jpg) |
 | ![NASA JPL CADRE front three-quarter](docs/images/nasa_jpl/cadre/rover/front_three_quarter.jpg) | ![NASA JPL CADRE rear three-quarter](docs/images/nasa_jpl/cadre/rover/rear_three_quarter.jpg) | ![NASA JPL CADRE at night](docs/images/nasa_jpl/cadre/rover/night.jpg) |
 
+VIPER in the dark under its own 457 nm NavLights and HazLights (Cycles), and what its left NavCam and front-left HazCam see in Omniverse RTX spectral path tracing through the flight cameras' spectral response:
+
+| | | |
+|---|---|---|
+| ![NASA VIPER driving at night under its NavLights](docs/images/nasa/viper/rover/night_drive.jpg) | ![VIPER left NavCam view, RTX spectral](docs/images/nasa/viper/rover/nav_cam_left_spectral.jpg) | ![VIPER front-left HazCam view, RTX spectral](docs/images/nasa/viper/rover/haz_cam_fl_spectral.jpg) |
+| ![NASA VIPER mast head, NavCams, NavLights and HGA](docs/images/nasa/viper/rover/mast.jpg) | ![NASA VIPER wheel module](docs/images/nasa/viper/rover/wheel.jpg) | |
+
 ## Web viewer
 
 `web/` is a static, interactive 3D viewer of every asset, to scale on the lunar surface. It needs no build step and has no CDN calls: three.js r170 and lil-gui are vendored under `web/vendor/three/` (MIT), and it runs from any static file server, offline included.
@@ -198,6 +205,8 @@ Build the models and serve the site locally:
   - Passive suspension springs are tuned to each rover's mass for about 7° of static sag. Active suspension (`active_suspension`) is a stiff position servo that sets ride height.
   - Hatches, latches, stairs, railings, solar wings, masts, dishes, drills and arms are position servos with their own roles (`hatch`, `latch`, `stair`, `railing`, `solar`, `camera`, `antenna`, `arm`). That's 46–71 joints on the crewed rovers.
 - **Lights.** Every lamp is a site with a `UsdLux.DiskLight` just in front of its lens, with radius, intensity, colour temperature and a 60° cone. The lens also has an emissive material. The `Lights` variant switches them all off. On the Lunar Cruiser the stair-tread LED lights ride on the stair links, so they fold with it.
+- **Photometric lights (`viper`).** Lights given in physical units become `RectLight` or `DiskLight` prims with the Omniverse RTX `PhotometricAreaLightAPI` (lumens) and `PhysicalLightIlluminantAPI` (a sampled LED emission spectrum), plus a generated LM-63 IES beam profile on `UsdLux.ShapingAPI`. `inputs:color` and `inputs:intensity` carry the matching Rec.709 colour and luminance for other renderers. `scripts/photometry.py` converts radiant watts to lumens with the CIE 1931 observer. VIPER's 190 W NavLights and 32 W HazLights at 457 nm come out at 7,307 lm and 1,231 lm, and an RTX render measures 598 lux on the NavLight axis at 2.29 m against 596 lux predicted. The lens windows are plain glass, so the blue shows only in the light the lamps throw.
+- **Spectral cameras (`viper`).** Each VIS camera carries `PhysicalCameraResponsivityAPI` with the CMV4000 response behind the 425–495 nm filter, so RTX spectral path tracing renders the greyscale image the flight cameras would see.
 - **Thrusters.** Every engine and RCS nozzle is a site at the nozzle exit plane, with +Z along the exhaust flow and its thrust, Isp, mass flow, exit radius and propellant as attributes. The same data is in `thrusters.json` for plume tools. The main-engine site rides on the gimbal links, so the plume follows the gimbal.
 - **Other sites.** Footpad contacts, touchdown sensors, star trackers, IMU, antennas, solar-array normals, payload interfaces, lift points and the offloader's cable endpoints.
 - **Sensors.** SCALPSS plume cameras, navigation and surface cameras as `UsdGeom.Camera` prims on the body.
@@ -229,7 +238,8 @@ Build the models and serve the site locally:
 | `Solar` (`lunar_cruiser`, `pr_concept`, `flex`, `cadre`) | **stowed**, deployed (also drives the wing joints to their deployed angles; on `cadre` the default is deployed) |
 | `Ports` (`pr_concept`) | **suitports**, airlock |
 | `SuitportCover` (`sev`), `Antennas` (`mapp`) | the 2010 inflatable suitport cover; the field-test whip antennas |
-| `Lights` (rovers) | **on**, off |
+| `Lights` (rovers) | **on**, off; on `viper` also nav, haz and nirvss (one light group each) |
+| `LightModel` (`viper`) | **spectral** (lumens and spectrum as measured, for RTX spectral path tracing, Storm and Blender), rgb (lumens raised to offset ovrtx 0.6 RGB modes, which ignore a custom spectrum's colour and then filter by `inputs:color`) |
 | `LandingGear` (`apollo_lm`) | **spring** (linear spring-damper primaries, secondaries locked), crush (honeycomb crush stages, see below) |
 | `Fidelity` | **full**, simple (decimated meshes, flat PBR colours), proxy (one box per part) |
 | `Physics` | none, physics (UsdPhysics + Newton), **physx**, mujoco |
@@ -375,6 +385,27 @@ cd examples/newton
 cd ../.. && blender -b build/lunar_cruiser/lunar_cruiser.blend -P scripts/playback.py -- --asset lunar_cruiser --variant Solar:deployed --eevee --samples 32
 ```
 
+`examples/newton/example_robot_viper.py` runs every VIPER joint (4 drive, 4 offset-kingpin steer, 4 active four-bar lifts with their passive links and loop joints, mast pan and tilt, two NavCam lens covers, HGA azimuth and elevation, TRIDENT deploy, feed and auger spin).
+- **Driving.** Ackermann, crab and turn-in-place at VIPER's 20 cm/s, with ride height across the 7–43 cm clearance range.
+- **Wheel walking.** One corner at a time (front-left, rear-right, front-right, rear-left) lifts on its suspension while the other three push.
+- **Survey.** The mast tilts down and pans a six-image panorama.
+- **Drill.** TRIDENT deploys 0.38 m and feeds in 20 cm bites to 1.0 m with the auger at 100 rpm, then retracts.
+- **Lights.** `f` cycles the nav, haz and nirvss groups (drawn as coloured beams). `e` makes the HGA track Earth.
+
+Keys: `1` lens covers, `2` survey panorama, `3` drill, `4` wheel walk, `5` auger, `f` lights, `e` Earth tracking, plus the rover keys. `--demo` plays the whole sequence and `--test` checks that it drove, walked, drilled past 0.9 m, spun the auger, opened the covers and kept the belly clear.
+
+```bash
+cd examples/newton
+../../.venv/bin/python example_robot_viper.py --lights nav
+../../.venv/bin/python example_robot_viper.py --viewer null --demo --num-frames 4920 --test
+```
+
+`scripts/render_rtx.py` renders any asset in Omniverse RTX. `--mode RealTimePathTracing` and `--spectral` pick the renderer, `--pose joint=value` poses joints (degrees or metres) and `--sensors` renders through the asset's own cameras:
+
+```bash
+.venv/bin/python scripts/render_rtx.py --asset viper --views front_three_quarter --sensors nav_cam_left,haz_cam_fl --night --exposure -5 --spectral --pose nav_mast_tilt=-35 --variant Lights=nav
+```
+
 ```bash
 .venv/bin/nvidia_usd_validate -D WeldChecker -D IndexedPrimvarChecker assets/blue_origin/mk1/lander/usd/mk1.usda
 ./pipeline.sh mk1 sim
@@ -453,7 +484,7 @@ For the rovers, the most reliable numbers are official specifications. Elsewhere
 
 - **Lunar Cruiser.** Official figures come from JAXA's 2025 specification slide: 6.44 × 4.84 × 4.85 m, wheelbase 3.81 m, track 3.20 m, ≤ 15 t at launch and ≤ 18 t loaded, 4 × 10 m solar wings, and a 1.0 × 1.5 m hatch. Everything else is calibrated on those figures from the NASA/JAXA 2025 renders: windscreen, lamps, rear patio, stair, stowage, gas bottles and the arm. Suspension and steering are not published; independent wishbones with a steering front axle are assumed.
 - **LTVs.** CLV-1 and Pegasus dimensions are measured from NASA photos and renders; the mass caps are official. FLEX dimensions come from Astrolab's payload interface guide. The Moon RACER and Eagle are measured from photos, and the Moon RACER's published 3.9 m width is read as including its panels.
-- **SEV, VIPER, CADRE.** These come from NASA and JPL fact sheets and slides: SEV mass, wheelbase and height; VIPER's 1.7 × 1.7 × 2.5 m, 447 kg, 0.5 m wheels and mobility ranges; CADRE's 0.546 × 0.385 × 0.235 m and 8.6 kg. Suitport, docking hatch and instrument positions are measured from photos.
+- **SEV, VIPER, CADRE.** These come from NASA and JPL fact sheets and slides: SEV mass, wheelbase and height; VIPER's 1.7 × 1.7 × 2.5 m, 447 kg, 0.5 m wheels and mobility ranges; CADRE's 0.546 × 0.385 × 0.235 m and 8.6 kg. Suitport, docking hatch and instrument positions are measured from photos. VIPER's layout follows the LSIC 2024 CAD cutaway and the LPSC 2022 Visible Imaging System figure. Its lights and cameras follow LPSC 2022 #2466 and LPSC 2023 #2508, and its finishes follow JSC clean-room and thermal-vacuum photos of the flight rover.
 - **FLIP and MAPP.** No official dimensions beyond mass and the Venturi wheel diameter (FLIP) or the 45 × 38 × 40 cm envelope (MAPP); the geometry is measured from renders.
 - **Concepts.** `ltv_concept` follows the NASA LTV requirements (2 suited crew plus 250 kg, or 1,600 kg uncrewed). `pr_concept` follows typical pressurised-rover features: 0.6 × 0.9 m suitports, an IDSS docking ring, a forward window band, radiators and a 2–3 m arm.
 

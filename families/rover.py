@@ -10,6 +10,22 @@ import rover_kit as K
 WHEEL_FRAME = [[1, 0, 0], [0, 0, 1], [0, -1, 0]]
 
 
+def _add_links(links):
+    pending = list(links)
+    while True:
+        ready = [L for L in pending if L.get("parent", "chassis") in LINKS]
+        if not ready:
+            return pending
+        for L in ready:
+            joint = {"type": L.get("type", "revolute"), "axis": tuple(L.get("axis", (0, 0, 1))), "role": L.get("role", "actuated")}
+            if "limit" in L:
+                joint["limit"] = tuple(L["limit"])
+            if L.get("drive"):
+                joint["drive"] = dict(L["drive"])
+            LINKS[L["name"]] = G.link(L["name"], L["pos"], LINKS[L.get("parent", "chassis")], joint, mass=L.get("mass", 5.0))
+        pending = [L for L in pending if L not in ready]
+
+
 def axis_frame(d):
     f = P._axis_frame(d)
     return None if f is None else [list(r) for r in zip(*f)]
@@ -35,19 +51,14 @@ def build(cfg):
     LINKS["chassis"] = chassis
     for c in R.get("carriers", []):
         _carrier(c, R, total, m)
-    for L in R.get("links", []):
-        joint = {"type": L.get("type", "revolute"), "axis": tuple(L.get("axis", (0, 0, 1))), "role": L.get("role", "actuated")}
-        if "limit" in L:
-            joint["limit"] = tuple(L["limit"])
-        if L.get("drive"):
-            joint["drive"] = dict(L["drive"])
-        LINKS[L["name"]] = G.link(L["name"], L["pos"], LINKS[L.get("parent", "chassis")], joint, mass=L.get("mass", 5.0))
+    pending_links = _add_links(R.get("links", []))
     for lp in R.get("loops", []):
         G.loop_joint(lp["name"], lp["parent"], lp["child"], tuple(lp["anchor"]), tuple(lp["axis"]), jtype=lp.get("type", "revolute"))
     for w in R["wheels"]:
         _wheel_module(w, R, total, m)
+    deferred = []
     for p in R.get("parts", []):
-        _part(p, m)
+        (_part(p, m) if p.get("link", "chassis") in LINKS else deferred.append(p))
     if R.get("crew"):
         _crew(R["crew"], chassis, m)
     for i, mast in enumerate(R.get("masts", [])):
@@ -58,9 +69,22 @@ def build(cfg):
         _solar(i, s, m)
     if R.get("arm"):
         _arm(R["arm"], m)
+    pending_links = _add_links(pending_links)
+    if pending_links:
+        raise ValueError(f"links with unknown parents: {[L['name'] for L in pending_links]}")
+    for p in deferred:
+        _part(p, m)
     for i, lt in enumerate(R.get("lights", [])):
+        if isinstance(lt, dict):
+            _photometric_light(lt, m)
+            continue
         _light(lt[3] if len(lt) > 3 else f"light_{i}", LINKS[lt[4]] if len(lt) > 4 else chassis, lt[0], lt[1], m,
                lt[2] if len(lt) > 2 else 0.05)
+    for c in R.get("cameras", []):
+        link = LINKS[c.get("link", "chassis")]
+        if c.get("housing", True):
+            _camera_housing(c, link, m)
+        G.sensor_camera(c["name"], link, tuple(c["pos"]), tuple(c["forward"]), tuple(c.get("up", (0, 0, 1))), c["spec"])
     for n, link, pos, z_axis, kind, desc, *extra in R.get("sites", []):
         G.site(n, LINKS[link], pos, z_axis, kind=kind, description=desc, **(extra[0] if extra else {}))
     G.site("vehicle_origin", chassis, (0, 0, 0), kind="reference", description="Ground point under the chassis centre at nominal ride height")
@@ -300,6 +324,18 @@ def _wishbone(n, w, S, R, wc, ky, side, up_dz, lo_dz, mm, total, nw, m):
                       smooth=False)
     v, f = G.box_beam_geo(lb, ub, 2.4 * rr, 2.4 * rr)
     G.add_mesh(f"{n}_upright_post", v, f, arm_mat, upright)
+    if S.get("actuator"):
+        ax, ay, az = S["actuator"]
+        G.add_mesh_uv(f"{n}_susp_actuator", G.box_uv(tuple((li + ui) / 2 + Vector((0, side * ay / 2 - side * 0.01, 0))), (ax, ay, az)),
+                      m(S.get("actuator_mat", "anodised_dark")), chassis, smooth=False)
+        G.add_mesh_uv(f"{n}_susp_motor", G.tube_uv(li + Vector((-ax / 2 - 0.08, side * ay / 2, 0)), li + Vector((-ax / 2, side * ay / 2, 0)),
+                                                    0.045, 20), m("anodised_dark"), chassis)
+    if S.get("boot"):
+        br = (ub.z - lb.z) / 2 + rr * 3
+        p0 = (li + ui) / 2 + Vector((0, -side * 0.0, 0))
+        p1 = (lb + ub) / 2
+        geo = G.tube_uv(p0 + Vector((0, side * 0.03, 0)), p1 - Vector((0, side * 0.02, 0)), br, 20)
+        G.add_mesh_uv(f"{n}_boot", geo, m(S["boot"]), lower)
     if S.get("strut", True):
         lm = li + (lb - li) * S.get("strut_at", 0.6)
         top = Vector((lm.x, ui.y - side * S.get("strut_in", 0.12 * arm), ub.z + S.get("strut_up", 0.35 * (up_dz - lo_dz))))
@@ -413,6 +449,51 @@ def _wheel_geo(n, link, wc, W, side, m):
     if W.get("disc"):
         for s_ in (-1, 1):
             lathe([(rh, s_ * w * 0.3), (ri, s_ * w * 0.3)][::s_], W.get("disc_mat", W.get("rim_mat", "aluminium")), f"disc_{s_ + 1}")
+    if W.get("flange"):
+        fw, fmat = W["flange"]
+        for s_ in (-1, 1):
+            lathe([(r - gh - fw, s_ * w / 2), (r - gh + 0.002, s_ * w / 2), (r - gh + 0.002, s_ * (w / 2 - 0.003)),
+                   (r - gh - fw, s_ * (w / 2 - 0.003))][::s_], fmat, f"flange_{s_ + 1}")
+    if W.get("gussets"):
+        (gl, gh_, gt), gmat_, rv = W["gussets"]
+        tabs, rivets = [], []
+        for k in range(ng):
+            a = 2 * math.pi * k / ng
+            d = Vector((math.cos(a), 0, -math.sin(a)))
+            t = Vector((-math.sin(a), 0, -math.cos(a)))
+            for s_ in (-1, 1):
+                c = c0 + d * (r - gh - gh_ / 2 + 0.004) + Vector((0, s_ * (w / 2 + gt / 2 + 0.001), 0))
+                tabs.append(obox_geo(c, t, d, (gl, gh_, gt)))
+                for j in (-1, 1):
+                    rp = c + t * j * gl * 0.3 + Vector((0, s_ * gt / 2, 0))
+                    rivets.append(G.tube_uv(rp, rp + Vector((0, s_ * 0.002, 0)), rv, 8))
+        G.add_mesh_uv(f"{n}_gussets", G.merge_geo(*tabs), m(gmat_), link, smooth=False)
+        G.add_mesh_uv(f"{n}_rivets", G.merge_geo(*rivets), m("titanium"), link)
+    if W.get("wire_spokes"):
+        count, wr, hub_y = W["wire_spokes"]
+        hub_c = c0 + Vector((0, side * hub_y, 0))
+        sp = []
+        for k in range(count):
+            a = 2 * math.pi * k / count
+            edge = (-1 if k % 2 else 1) * (w / 2 - 0.006)
+            rim = c0 + Vector(((r - gh - 0.004) * math.cos(a), edge, -(r - gh - 0.004) * math.sin(a)))
+            a0 = a + (0.35 if k % 4 < 2 else -0.35)
+            hub = hub_c + Vector((rh * 0.8 * math.cos(a0), 0, -rh * 0.8 * math.sin(a0)))
+            sp.append(G.tube_uv(hub, rim, wr, 5, caps=False))
+        G.add_mesh_uv(f"{n}_wire_spokes", G.merge_geo(*sp), m(W.get("spoke_mat", "titanium")), link)
+        G.add_mesh_uv(f"{n}_hub_flange", G.tube_uv(hub_c - Vector((0, 0.006, 0)), hub_c + Vector((0, 0.006, 0)), rh, 32),
+                      m(W.get("hub_mat", "anodised_dark")), link)
+        G.add_mesh_uv(f"{n}_drive_motor", G.tube_uv(hub_c - Vector((0, side * 0.006, 0)), c0 - Vector((0, side * w * 0.42, 0)), rh * 0.5, 24),
+                      m(W.get("motor_mat", "anodised_dark")), link)
+        ribs = []
+        for k in range(12):
+            a = 2 * math.pi * k / 12
+            d = Vector((math.cos(a), 0, -math.sin(a)))
+            ribs.append(obox_geo(hub_c + d * rh * 0.55 + Vector((0, side * 0.009, 0)), d, Vector((0, 1, 0)), (rh * 0.8, 0.006, 0.006)))
+        G.add_mesh_uv(f"{n}_hub_ribs", G.merge_geo(*ribs), m(W.get("hub_mat", "anodised_dark")), link, smooth=False)
+        G.add_mesh_uv(f"{n}_hub_centre", G.tube_uv(hub_c, hub_c + Vector((0, side * 0.014, 0)), rh * 0.22, 20),
+                      m(W.get("hub_centre_mat", "titanium")), link)
+        return
     ns = W.get("spokes", 10)
     spoke_mat = m(W.get("spoke_mat", "composite" if style in ("spring", "airless") else "titanium"))
     sr = W.get("spoke_r", 0.008 + 0.012 * r)
@@ -484,6 +565,19 @@ def _part(p, m):
         ob = G.add_mesh_uv(name, G.lathe_geo(prof, p.get("sides", 40), c, frame), mat, link)
     elif kind == "sphere":
         ob = G.add_mesh_uv(name, P.sphere_geo(p["c"], p["r"]), mat, link)
+    elif kind == "frustum":
+        cx, cy = p["c"]
+        (z0, sx0, sy0), (z1, sx1, sy1) = p["bottom"], p["top"]
+        dx, dy = p.get("top_offset", (0.0, 0.0))
+        V = [(cx + sx * sx0 / 2, cy + sy * sy0 / 2, z0) for sx, sy in ((-1, -1), (1, -1), (1, 1), (-1, 1))]
+        V += [(cx + dx + sx * sx1 / 2, cy + dy + sy * sy1 / 2, z1) for sx, sy in ((-1, -1), (1, -1), (1, 1), (-1, 1))]
+        F = [(0, 1, 5, 4), (1, 2, 6, 5), (2, 3, 7, 6), (3, 0, 4, 7)]
+        if p.get("caps", (True, True))[0]:
+            F.append((3, 2, 1, 0))
+        if p.get("caps", (True, True))[1]:
+            F.append((4, 5, 6, 7))
+        ob = G.add_mesh(name, V, F, mat, link)
+        G.ensure_uvs(ob)
     elif kind == "lathe":
         c, d = Vector(p["c"]), Vector(p.get("n", (0, 0, 1))).normalized()
         ob = G.add_mesh_uv(name, G.lathe_geo(p["profile"], p.get("sides", 32), c, axis_frame(d)), mat, link)
@@ -599,8 +693,27 @@ def _hga(H, m):
                   m("aluminium"), az, smooth=False)
     b = Vector(H.get("boresight", (1, 0, 0.3))).normalized()
     c = piv + b * 0.05
-    focus = dish("hga_dish", el, c, b, H["r"], m(H.get("front", "radome")), m(H.get("back", "white_panel")), depth=H.get("depth", 0.3))
-    G.add_mesh_uv("hga_feed", G.tube_uv(c, focus, 0.008, 8), m("aluminium"), el)
+    if H.get("flat"):
+        fw, fh, ft = H["flat"]
+        u = Vector((0, 0, 1)).cross(b).normalized()
+        v = b.cross(u).normalized()
+        c = piv + b * (0.04 + ft / 2)
+        P.panel("hga_panel", el, tuple(c), tuple(u), tuple(v), fw, fh, ft, m(H.get("front", "white_panel")), m(H.get("back", "mli_silver")),
+                normal=tuple(b))
+        fr = H.get("frame", 0.018)
+        for sx in (-1, 1):
+            for p0, p1 in (((c + u * sx * fw / 2 - v * fh / 2), (c + u * sx * fw / 2 + v * fh / 2)),
+                           ((c - u * fw / 2 + v * sx * fh / 2), (c + u * fw / 2 + v * sx * fh / 2))):
+                vv, ff = G.box_beam_geo(p0, p1, fr, ft + 0.01)
+                G.add_mesh("hga_frame", vv, ff, m(H.get("frame_mat", "aluminium")), el)
+        focus = c + b * ft / 2
+    else:
+        focus = dish("hga_dish", el, c, b, H["r"], m(H.get("front", "radome")), m(H.get("back", "white_panel")), depth=H.get("depth", 0.3))
+        G.add_mesh_uv("hga_feed", G.tube_uv(c, focus, 0.008, 8), m("aluminium"), el)
+    if H.get("lga"):
+        top = c + Vector((0, 0, H["flat"][1] / 2 if H.get("flat") else H["r"]))
+        G.add_mesh_uv("lga_whip", G.tube_uv(top, top + Vector((0, 0, H["lga"])), 0.006, 8), m("aluminium"), el)
+        G.add_mesh_uv("lga_tip", P.sphere_geo(top + Vector((0, 0, H["lga"])), 0.012, 6, 10), m("white_panel"), el)
     G.site("hga_boresight", el, tuple(focus), tuple(b), kind="antenna", band=H.get("band", "X"),
            description="High-gain antenna boresight (+Z), 2-axis gimbal")
 
@@ -675,3 +788,40 @@ def _light(name, link, pos, d, m, r=0.05):
     G.add_mesh_uv(f"{name}_lens", G.tube_uv(p, p + d * r * 0.16, r * 0.84, 20), m("lamp"), link)
     G.site(name, link, tuple(p + d * 0.01), tuple(d), kind="light", description="Floodlight (+Z = beam axis)", radius_m=r * 0.84,
            intensity=200000.0, colour_k=5600.0)
+
+
+def _photometric_light(L, m):
+    link = LINKS[L.get("link", "chassis")]
+    p, d = Vector(L["pos"]), Vector(L["dir"]).normalized()
+    xh = Vector(L.get("x_axis", (0, 0, 1) if abs(d.z) < 0.9 else (1, 0, 0)))
+    xh = (xh - d * xh.dot(d)).normalized()
+    yh = d.cross(xh)
+    name = L["name"]
+    attrs = {k: v for k, v in L.items() if k not in ("name", "link", "pos", "dir", "x_axis", "housing", "housing_mat", "lens_mat")}
+    if L.get("shape") == "rect":
+        w, h = L["width_m"], L["height_m"]
+        hd = L.get("housing", (w + 0.03, h + 0.03, 0.05))
+        G.add_mesh_uv(f"{name}_housing", obox_geo(p - d * hd[2] / 2, xh, yh, (hd[0], hd[1], hd[2])), m(L.get("housing_mat", "anodised_dark")),
+                      link, smooth=False)
+        G.add_mesh_uv(f"{name}_lens", obox_geo(p + d * 0.002, xh, yh, (w, h, 0.004)), m(L.get("lens_mat", "lamp")), link, smooth=False)
+    else:
+        r = L.get("radius_m", 0.03)
+        G.add_mesh_uv(f"{name}_housing", G.tube_uv(p - d * r * 1.4, p, r * 1.25, 20), m(L.get("housing_mat", "anodised_dark")), link)
+        G.add_mesh_uv(f"{name}_lens", G.tube_uv(p, p + d * 0.003, r, 20), m(L.get("lens_mat", "lamp")), link)
+    G.site(name, link, tuple(p + d * 0.004), tuple(d), kind="light", x_axis=tuple(xh), **attrs)
+
+
+def _camera_housing(c, link, m):
+    p, d = Vector(c["pos"]), Vector(c["forward"]).normalized()
+    hs = c.get("housing", True)
+    hs = hs if isinstance(hs, dict) else {}
+    r, ln = hs.get("r", 0.035), hs.get("len", 0.08)
+    G.add_mesh_uv(f"{c['name']}_body", G.tube_uv(p - d * ln, p - d * 0.012, r, 20), m(hs.get("mat", "anodised_dark")), link)
+    G.add_mesh_uv(f"{c['name']}_hood", G.tube_uv(p - d * 0.014, p + d * hs.get("hood", 0.01), r * 0.72, 20, r1=r * 0.8, caps=False),
+                  m(hs.get("hood_mat", "anodised_dark")), link)
+    G.add_mesh_uv(f"{c['name']}_lens", G.tube_uv(p - d * 0.004, p - d * 0.001, r * 0.5, 20), m("lens"), link)
+    if hs.get("ring"):
+        rr, rw = hs["ring"]
+        frame = axis_frame(d)
+        prof = [(r + 0.002, -ln * 0.6), (rr, -ln * 0.6), (rr, -ln * 0.6 + rw), (r + 0.002, -ln * 0.6 + rw), (r + 0.002, -ln * 0.6)]
+        G.add_mesh_uv(f"{c['name']}_ring", G.lathe_geo(prof, 40, p, frame), m(hs.get("ring_mat", "white_panel")), link)

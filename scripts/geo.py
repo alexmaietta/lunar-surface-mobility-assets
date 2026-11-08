@@ -403,17 +403,23 @@ def _register(key, rec):
     sc[key] = json.dumps(lst)
 
 
-def _quat_from_z(direction, up_hint=(0, 0, 1)):
+def _quat_from_z(direction, x_hint=None):
     d = Vector(direction).normalized()
-    return tuple(Vector((0, 0, 1)).rotation_difference(d))
+    if x_hint is None:
+        return tuple(Vector((0, 0, 1)).rotation_difference(d))
+    from mathutils import Matrix
+    x = Vector(x_hint)
+    x = (x - d * x.dot(d)).normalized()
+    y = d.cross(x)
+    return tuple(Matrix((x, y, d)).transposed().to_quaternion())
 
 
-def site(name, link_ob, pos, z_axis=(0, 0, 1), kind="interface", **attrs):
+def site(name, link_ob, pos, z_axis=(0, 0, 1), kind="interface", x_axis=None, **attrs):
     e = bpy.data.objects.new(f"site:{name}", None)
     e.empty_display_type = "SINGLE_ARROW"
     e.empty_display_size = 0.25
     bpy.context.scene.collection.objects.link(e)
-    q = _quat_from_z(z_axis)
+    q = _quat_from_z(z_axis, x_axis)
     from mathutils import Matrix, Quaternion
     e.matrix_world = Matrix.Translation(Vector(pos)) @ Quaternion(q).to_matrix().to_4x4()
     mw = e.matrix_world.copy()

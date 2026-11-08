@@ -415,8 +415,304 @@ def flag(n, seed, tile_m=1.0):
                 normal=normal_from_height(var, 0.5)), tile_m
 
 
+
+def _blur(a, sigma):
+    from scipy.ndimage import gaussian_filter
+    return gaussian_filter(a, sigma, mode="wrap")
+
+
+def _wrapd(n, cx, cy):
+    y, x = np.mgrid[0:n, 0:n] + 0.5
+    dx = (x - cx + n / 2) % n - n / 2
+    dy = (y - cy + n / 2) % n - n / 2
+    return dx, dy
+
+
+def _stamp(acc, cx, cy, half, fn):
+    n = acc.shape[0]
+    h = int(math.ceil(half)) + 2
+    xs = (np.arange(int(cx) - h, int(cx) + h + 1)) % n
+    ys = (np.arange(int(cy) - h, int(cy) + h + 1)) % n
+    lx = np.arange(int(cx) - h, int(cx) + h + 1) + 0.5 - cx
+    ly = np.arange(int(cy) - h, int(cy) + h + 1) + 0.5 - cy
+    gx, gy = np.meshgrid(lx, ly)
+    acc[np.ix_(ys, xs)] = np.maximum(acc[np.ix_(ys, xs)], fn(gx, gy))
+
+
+def _rect_fn(hw, hh, ang, soft=0.7):
+    c, s_ = math.cos(ang), math.sin(ang)
+
+    def f(gx, gy):
+        u, v = gx * c + gy * s_, -gx * s_ + gy * c
+        return np.clip(np.minimum(hw - np.abs(u), hh - np.abs(v)) / soft + 0.5, 0, 1)
+    return f
+
+
+def defects(n, seed, tile_m, dust=1.0, smudge=1.0, prints=1.0, scratch=1.0, scuff=1.0):
+    rng = _rng(seed)
+    px_m = n / tile_m
+    specks = (rng.random((n, n)) < dust * 4e-5).astype(float) * (0.3 + 0.7 * rng.random((n, n)))
+    fine = _blur(specks, max(0.5, 0.00015 * px_m))
+    fine = np.clip(fine / (fine.max() + 1e-9) * 2.0, 0, 1)
+    film = np.clip((pnoise(n, n / 3, seed + 1, octaves=4) - 0.5) * 4 * dust, 0, 1) * 0.5
+    sm = np.clip((pnoise(n, 0.07 * px_m, seed + 2, octaves=4) - 0.62) * 5, 0, 1) * smudge
+    fp = np.zeros((n, n))
+    count = int(round(prints * tile_m * tile_m * 6))
+    for i in range(count):
+        cx, cy = rng.random(2) * n
+        a, b = (0.008 + rng.random() * 0.004) * px_m, (0.011 + rng.random() * 0.005) * px_m
+        ang = rng.random() * math.pi
+        freq = 2 * math.pi / max(1.2, 0.00045 * px_m)
+        c, s_ = math.cos(ang), math.sin(ang)
+
+        def f(gx, gy, a=a, b=b, c=c, s_=s_, freq=freq):
+            u, v = gx * c + gy * s_, -gx * s_ + gy * c
+            r = np.sqrt((u / a) ** 2 + (v / b) ** 2)
+            ridge = 0.5 + 0.5 * np.sin(np.sqrt(u * u + (v * 0.8) ** 2) * freq)
+            return np.clip(1.2 - r, 0, 1) * ridge
+        _stamp(fp, cx, cy, max(a, b) * 1.3, f)
+    sc = -scratches(n, seed + 3, count=int(30 * scratch * max(tile_m, 0.2)), max_len=0.12, depth=0.7)
+    sc = np.clip(sc, 0, 1)
+    scf = np.clip((pnoise(n, 0.06 * px_m, seed + 4, octaves=4) - 0.64) * 4, 0, 1) * scuff
+    return {"dust": np.clip(fine + film * 0.2, 0, 1), "smudge": sm, "prints": fp, "scratch": sc, "scuff": scf}
+
+
+def _apply(base, rough, d, dust_colour=(0.16, 0.15, 0.14), dust_amt=0.35, rough_dust=0.25, rough_smudge=0.10, rough_print=0.12,
+           scratch_colour=None, scratch_rough=-0.1):
+    dc = np.array(dust_colour)[None, None, :]
+    w = (d["dust"] * dust_amt)[..., None]
+    base = base * (1 - w) + dc * w
+    rough = rough + d["dust"] * rough_dust + d["smudge"] * rough_smudge * 0.5 + d["prints"] * rough_print + d["scuff"] * 0.04
+    if scratch_colour is not None:
+        sw = d["scratch"][..., None]
+        base = base * (1 - sw) + np.array(scratch_colour)[None, None, :] * sw
+    rough = rough + d["scratch"] * scratch_rough
+    return base, np.clip(rough, 0.02, 1.0)
+
+
+def mli_flight(n, seed, colour, tile_m=1.2, quilt=0.15, tape=(0.86, 0.84, 0.78), grime=1.0, gloss=0.36, stitch=False, metal=0.7):
+    rng = _rng(seed)
+    px_m = n / tile_m
+    folds = crumple(n, seed, folds=40, kmax=max(2, int(tile_m / 0.25)), sharp=0.8, warp_px=0.05 * px_m)
+    pillow = pnoise(n, 0.12 * px_m, seed + 1, octaves=3)
+    big, cid, e1 = facets(n, seed + 2, int((tile_m / 0.16) ** 2 * 1.2), 5, stretch=1.6)
+    fine, _, _ = facets(n, seed + 3, int((tile_m / 0.022) ** 2), 4, stretch=1.2)
+    ridges = crumple(n, seed + 8, folds=120, kmax=max(6, int(tile_m / 0.06)), sharp=1.3, warp_px=0.03 * px_m)
+    dimple = np.zeros((n, n))
+    tabs = np.zeros((n, n))
+    k = max(1, int(round(tile_m / quilt)))
+    pitch = n / k
+    for i in range(k):
+        for j in range(k):
+            cx = (i + 0.5 + rng.normal(0, 0.06)) * pitch
+            cy = (j + 0.5 + rng.normal(0, 0.06)) * pitch
+            r = 0.03 * px_m
+            _stamp(dimple, cx, cy, r * 2.5, lambda gx, gy, r=r: np.exp(-(gx * gx + gy * gy) / (r * r)))
+            if rng.random() < 0.55:
+                hw = (0.012 + rng.random() * 0.008) * px_m
+                _stamp(tabs, cx, cy, hw * 1.5, _rect_fn(hw, hw * (0.8 + rng.random() * 0.4), rng.normal(0, 0.15)))
+    h = folds * 3.0 + pillow * 2.0 - dimple * 1.5 + ridges * 1.2
+    nrm = normal_from_height(h, 9.0 * n / 2048) * 2 - 1
+    nrm = nrm + (big - [0, 0, 1]) * 0.35 + (fine - [0, 0, 1]) * 0.3
+    lap = np.abs(4 * ridges - np.roll(ridges, 1, 0) - np.roll(ridges, -1, 0) - np.roll(ridges, 1, 1) - np.roll(ridges, -1, 1))
+    crease = np.clip(lap / (np.percentile(lap, 99.5) + 1e-9), 0, 1) ** 1.5
+    y, x = np.mgrid[0:n, 0:n] + 0.5
+    tw = 0.048 * px_m
+    ox, oy = rng.random(2) * n
+    seam = ((np.abs((x - ox + n / 2) % n - n / 2) < tw / 2) | (np.abs((y - oy + n / 2) % n - n / 2) < tw / 2)).astype(float)
+    tape_wr = pnoise(n, 0.01 * px_m, seed + 5, octaves=2)
+    t = (x * 0.7 + y * 0.3) / n
+    zz = np.abs(((x * 0.3 - y * 0.7) / (0.015 * px_m)) % 1.0 - 0.5) * 2 - 0.5
+    stitch_line = np.abs(((y - 0.7 * x - oy * 0.5) % n) - n / 2 + zz * 0.004 * px_m) < 0.0008 * px_m
+    stitch = stitch_line.astype(float) * (np.mod(t * n / (0.006 * px_m), 1.0) < 0.6) * float(stitch)
+    var = pnoise(n, n / 4, seed + 6, octaves=3)
+    fvar = (np.sin(cid * 12.9898) * 43758.5453) % 1.0
+    base = tint(var * 0.85 + fvar * 0.15, colour, 0.03) * (1 - 0.06 * crease[..., None])
+    rough = gloss + (fvar - 0.5) * 0.03 + crease * 0.06 + (var - 0.5) * 0.08
+    tc = np.array(tape)[None, None, :]
+    base = base * (1 - seam[..., None]) + tc * (0.97 + 0.06 * tape_wr[..., None]) * seam[..., None]
+    rough = rough * (1 - seam) + (0.22 + 0.1 * tape_wr) * seam
+    nrm = nrm * (1 - 0.7 * seam[..., None]) + np.array([0, 0, 1.0]) * 0.7 * seam[..., None]
+    base = base * (1 - tabs[..., None]) + np.array([0.80, 0.78, 0.70])[None, None, :] * tabs[..., None]
+    rough = rough * (1 - tabs) + 0.6 * tabs
+    nrm = nrm * (1 - 0.8 * tabs[..., None]) + np.array([0, 0, 1.0]) * 0.8 * tabs[..., None]
+    base = base * (1 - 0.85 * stitch[..., None])
+    d = defects(n, seed + 7, tile_m, dust=0.5 * grime, smudge=grime, prints=0.4 * grime, scratch=0.0, scuff=grime)
+    base, rough = _apply(base, rough, d, dust_amt=0.25, rough_dust=0.15)
+    met = np.clip(metal - tabs * metal - d["dust"] * 0.3, 0, 1)
+    nrm[..., 2] = np.abs(nrm[..., 2]) + 0.25
+    return dict(basecolor=base, roughness=rough, metallic=met, normal=_encode_normal(nrm)), tile_m
+
+
+def solar_array_flight(n, seed, tile_m=0.40, cell=(0.08, 0.04), gap=0.0015, string_every=4, string_gap=0.004,
+                       cell_colour=(0.010, 0.012, 0.032), substrate=(0.16, 0.14, 0.11)):
+    rng = _rng(seed)
+    px_m = n / tile_m
+    y, x = np.mgrid[0:n, 0:n] + 0.5
+    cw, ch = cell[0] * px_m, cell[1] * px_m
+    col = np.floor(x / cw)
+    row = np.floor(y / ch)
+    u, v = x - col * cw, y - row * ch
+    g = gap * px_m * 0.7
+    gl = np.where(np.mod(col, string_every) == 0, string_gap * px_m, g)
+    in_cell = (u > gl) & (u < cw - g) & (v > g) & (v < ch - g)
+    cc = 0.006 * px_m
+    corner = ((u - gl) + (v - g) < cc) | ((cw - g - u) + (ch - g - v) < cc)
+    in_cell &= ~corner
+    fingers = (np.abs(np.mod(v, 0.0016 * px_m) - 0.0008 * px_m) < 0.35) & in_cell
+    bus = (u > gl) & (u < gl + 0.0022 * px_m) & in_cell
+    tabs = (~in_cell) & (u < gl + 0.002 * px_m) & (np.abs(np.mod(v, ch / 3) - ch / 6) < 0.0025 * px_m)
+    cid = col * 7.13 + row * 13.7
+    cvar = (np.sin(cid * 12.9898) * 43758.5453) % 1.0
+    ar = pnoise(n, 0.3 * px_m, seed + 1, octaves=2)
+    cellc = np.array(cell_colour)[None, None, :] * (0.8 + 0.4 * cvar[..., None])
+    cellc = cellc + np.array([0.006, 0.0, 0.010])[None, None, :] * (ar[..., None] - 0.4)
+    base = np.where(in_cell[..., None], cellc, np.array(substrate)[None, None, :])
+    base = np.where(fingers[..., None], base * 1.6 + 0.01, base)
+    base = np.where((bus | tabs)[..., None], np.array([0.62, 0.62, 0.64])[None, None, :], base)
+    rough = np.where(in_cell, 0.05, 0.45) + 0.0 * x
+    met = np.where(bus | tabs, 1.0, 0.0) + 0.0 * x
+    tilt = np.stack([np.sin(cid * 3.1) * 0.02, np.cos(cid * 5.7) * 0.02, np.ones_like(cid)], -1)
+    edge = normal_from_height(in_cell.astype(float) * 0.6 + (bus | tabs) * 0.4, 1.2) * 2 - 1
+    nrm = np.where(in_cell[..., None], tilt, edge)
+    crack = np.zeros((n, n))
+    for _ in range(max(1, int(tile_m * tile_m * 8))):
+        cx, cy = rng.random(2) * n
+        ang = rng.random() * math.pi
+        L = (0.01 + rng.random() * 0.02) * px_m
+        c, s_ = math.cos(ang), math.sin(ang)
+        _stamp(crack, cx, cy, L, lambda gx, gy, c=c, s_=s_, L=L:
+               np.clip(0.7 - np.abs(-gx * s_ + gy * c), 0, 1) * (np.abs(gx * c + gy * s_) < L))
+    crack *= in_cell
+    base = base * (1 - crack[..., None]) + np.array([0.12, 0.12, 0.14])[None, None, :] * crack[..., None]
+    d = defects(n, seed + 2, tile_m, dust=0.8, smudge=1.0, prints=1.5, scratch=0.4, scuff=0.5)
+    base, rough = _apply(base, rough, d, dust_colour=(0.20, 0.19, 0.18), dust_amt=0.25, rough_dust=0.3, rough_smudge=0.12, rough_print=0.2)
+    return dict(basecolor=base, roughness=rough, metallic=met, normal=_encode_normal(nrm)), tile_m
+
+
+def osr_flight(n, seed, tile_m=0.40, tile=0.05, grout=0.0007):
+    rng = _rng(seed)
+    px_m = n / tile_m
+    k = int(round(tile_m / tile))
+    line, x, y = _grid_lines(n, k, grout * px_m)
+    tid = np.floor(x / (n / k)) * 3.3 + np.floor(y / (n / k)) * 17.1
+    var = (np.sin(tid * 78.233) * 43758.5453) % 1.0
+    var2 = (np.sin(tid * 12.9898) * 43758.5453) % 1.0
+    base = np.array([0.87, 0.875, 0.89])[None, None, :] * (0.95 + 0.06 * var[..., None])
+    base = base * (1 - line[..., None]) + np.array([0.06, 0.06, 0.065])[None, None, :] * line[..., None]
+    rough = 0.025 + 0.03 * var2 + line * 0.6
+    met = 0.95 - line * 0.9
+    tilt = np.stack([(var - 0.5) * 0.03, (var2 - 0.5) * 0.03, np.ones_like(var)], -1)
+    nrm = tilt + (normal_from_height(-line, 2.0) * 2 - 1) * [1, 1, 0]
+    chip = np.zeros((n, n))
+    cell = n / k
+    for _ in range(max(2, int(k * k * 0.04))):
+        i, j = rng.integers(0, k, 2)
+        cx, cy = (i + rng.choice([0.03, 0.97])) * cell, (j + rng.choice([0.03, 0.97])) * cell
+        r = (0.002 + rng.random() * 0.004) * px_m
+        _stamp(chip, cx, cy, r, lambda gx, gy, r=r: np.clip(r - np.abs(gx) - np.abs(gy), 0, 1))
+    base = base * (1 - chip[..., None]) + np.array([0.35, 0.36, 0.38])[None, None, :] * chip[..., None]
+    rough = rough + chip * 0.4
+    d = defects(n, seed + 3, tile_m, dust=1.0, smudge=1.2, prints=2.0, scratch=0.6, scuff=0.6)
+    base, rough = _apply(base, rough, d, dust_amt=0.3, rough_dust=0.35, rough_smudge=0.15, rough_print=0.25, scratch_rough=0.15)
+    return dict(basecolor=base, roughness=rough, metallic=np.clip(met, 0, 1), normal=_encode_normal(nrm)), tile_m
+
+
+def sheet_metal(n, seed, colour, tile_m=0.5, rivet_pitch=0.03, iridite=0.0, rough0=0.45):
+    rng = _rng(seed)
+    px_m = n / tile_m
+    pit = pnoise(n, max(1.5, 0.0004 * px_m), seed, octaves=2)
+    var = pnoise(n, 0.15 * px_m, seed + 1, octaves=4)
+    mott = pnoise(n, 0.04 * px_m, seed + 2, octaves=4)
+    base = tint(var, colour, 0.05) * (0.96 + 0.08 * pit[..., None])
+    if iridite:
+        shift = (mott[..., None] - 0.5) * iridite * np.array([0.25, 0.05, -0.35])[None, None, :]
+        streak = streaks(n, seed + 3, along=0, length_px=0.3 * px_m, width_px=4)
+        base = base * (1 + shift) * (1 + (streak[..., None] - 0.5) * 0.15 * iridite)
+    rough = rough0 + (pit - 0.5) * 0.12 + (var - 0.5) * 0.08
+    h = pit * 0.4
+    if rivet_pitch:
+        y, x = np.mgrid[0:n, 0:n] + 0.5
+        sx = rng.random() * n
+        seam = np.abs((x - sx + n / 2) % n - n / 2)
+        r = 0.0025 * px_m
+        pitch = rivet_pitch * px_m
+        dv = np.mod(y, pitch) - pitch / 2
+        dd = np.sqrt((seam - 0.008 * px_m) ** 2 + dv ** 2)
+        head = np.clip(r - dd + 0.5, 0, 1)
+        dome = np.sqrt(np.clip(1 - (dd / r) ** 2, 0, 1))
+        joint = np.clip(0.0008 * px_m - seam + 0.5, 0, 1)
+        base = base * (1 - head[..., None]) + np.array([0.62, 0.62, 0.63])[None, None, :] * head[..., None]
+        base = base * (1 - 0.5 * joint[..., None])
+        rough = rough * (1 - head) + 0.3 * head + joint * 0.2
+        h = h + dome * 1.5 - joint * 1.0
+    d = defects(n, seed + 4, tile_m, dust=0.6, smudge=0.8, prints=0.6, scratch=0.6, scuff=0.8)
+    base, rough = _apply(base, rough, d, scratch_colour=(0.80, 0.80, 0.80) if iridite else None, scratch_rough=-0.12)
+    h = h - d["scratch"] * 0.8
+    return dict(basecolor=base, roughness=rough, metallic=np.full((n, n), 0.9) - d["dust"] * 0.4,
+                normal=normal_from_height(h, 1.8)), tile_m
+
+
+def fabric_boot(n, seed, colour, tile_m=0.3, rough0=0.42):
+    px_m = n / tile_m
+    y, x = np.mgrid[0:n, 0:n] + 0.5
+    warp = (pnoise(n, 0.08 * px_m, seed, octaves=2) - 0.5) * 0.03 * px_m
+    k = max(1, int(round(tile_m / 0.045)))
+    ph = (y + warp) / n * k
+    pleat = np.abs(np.sin(math.pi * ph)) ** 0.6
+    cr = crumple(n, seed + 1, folds=70, kmax=8, sharp=1.0, warp_px=0.02 * px_m)
+    fine, cid, _ = facets(n, seed + 2, int((tile_m / 0.012) ** 2), 10, stretch=1.3)
+    h = pleat * 2.5 + cr * 1.2
+    nrm = normal_from_height(h, 7.0 * n / 2048) * 2 - 1 + (fine - [0, 0, 1]) * 0.5
+    nrm[..., 2] = np.abs(nrm[..., 2]) + 0.25
+    fvar = (np.sin(cid * 12.9898) * 43758.5453) % 1.0
+    valley = 1 - pleat
+    cvar = pnoise(n, 0.05 * px_m, seed + 4, octaves=3)
+    base = tint(cvar * 0.8 + fvar * 0.2, colour, 0.08) * (1 - 0.35 * valley[..., None])
+    rough = rough0 + (fvar - 0.5) * 0.06 + valley * 0.1
+    d = defects(n, seed + 3, tile_m, dust=1.5, smudge=0.8, prints=0.0, scratch=0.0, scuff=1.0)
+    base, rough = _apply(base, rough, d, dust_colour=(0.20, 0.19, 0.18), dust_amt=0.5, rough_dust=0.3)
+    return dict(basecolor=base, roughness=rough, metallic=np.full((n, n), 0.55) - d["dust"] * 0.4, normal=_encode_normal(nrm)), tile_m
+
+
+def worn_coating(n, seed, colour, tile_m=0.3, metallic=0.0, rough0=0.5, bare=(0.75, 0.75, 0.76)):
+    px_m = n / tile_m
+    peel = pnoise(n, max(2.0, 0.0012 * px_m), seed, octaves=3)
+    var = pnoise(n, 0.1 * px_m, seed + 1, octaves=3)
+    chips_n = pnoise(n, 0.006 * px_m, seed + 2, octaves=3)
+    region = pnoise(n, 0.08 * px_m, seed + 3, octaves=2)
+    chips = np.clip((chips_n - 0.74) * 12, 0, 1) * np.clip((region - 0.62) * 8, 0, 1)
+    base = tint(var, colour, 0.04) * (0.97 + 0.06 * peel[..., None])
+    base = base * (1 - chips[..., None]) + np.array(bare)[None, None, :] * chips[..., None]
+    rough = rough0 + (peel - 0.5) * 0.12 + (var - 0.5) * 0.06
+    rough = rough * (1 - chips) + 0.3 * chips
+    met = metallic * (1 - chips) + chips
+    d = defects(n, seed + 4, tile_m, dust=1.0, smudge=1.0, prints=1.2, scratch=1.0, scuff=1.0)
+    base, rough = _apply(base, rough, d, scratch_colour=bare, scratch_rough=-0.15)
+    met = np.clip(met + d["scratch"] * (1 - metallic), 0, 1)
+    h = peel * 0.3 - chips * 1.0 - d["scratch"] * 0.7
+    return dict(basecolor=base, roughness=rough, metallic=met, normal=normal_from_height(h, 1.8)), tile_m
+
+
+def checkerboard(n, seed, tile_m=0.16, squares=12, border=0.08):
+    px_m = n / tile_m
+    y, x = np.mgrid[0:n, 0:n] + 0.5
+    b = border * n
+    inner = (x > b) & (x < n - b) & (y > b) & (y < n - b)
+    sq = (n - 2 * b) / squares
+    chk = ((np.floor((x - b) / sq) + np.floor((y - b) / sq)) % 2 == 0) & inner
+    fuzz = pnoise(n, 1.5, seed, octaves=2)
+    base = np.where(chk[..., None], np.array([0.035, 0.035, 0.037]), np.array([0.82, 0.82, 0.80]))
+    base = base * (0.97 + 0.06 * fuzz[..., None])
+    rough = np.where(chk, 0.6, 0.75) + 0.0 * x
+    d = defects(n, seed + 1, tile_m, dust=0.5, smudge=0.6, prints=0.8, scratch=0.3, scuff=0.3)
+    base, rough = _apply(base, rough, d, dust_amt=0.2)
+    return dict(basecolor=base, roughness=rough, metallic=np.zeros((n, n)), normal=normal_from_height(fuzz * 0.2, 1.0)), tile_m
+
+
 GENERATORS = {f.__name__: f for f in (flag, mli, beta_cloth, panel, brushed, anodised, perforated, solar_cells, osr,
-                                      nozzle_metal, composite, cloth, regolith)}
+                                      nozzle_metal, composite, cloth, regolith, mli_flight, solar_array_flight, osr_flight,
+                                      sheet_metal, fabric_boot, worn_coating, checkerboard)}
 
 
 def generate(out, sets, res=2048, only=None):

@@ -91,16 +91,22 @@ def camera(name, view, res, ev):
     }}"""
 
 
-def product(name, res, spp):
-    return f"""
-    def RenderProduct "{name}" {{
-        int2 resolution = ({res[0]}, {res[1]})
-        rel camera = </World/Cameras/{name}>
-        rel orderedVars = [<LdrColor>]
-        token omni:rtx:rendermode = "PathTracing"
+def product(name, res, spp, mode="PathTracing", spectral=False, cam=None):
+    spec = ""
+    if mode == "PathTracing":
+        spec = f"""
         uint omni:rtx:pt:samplesPerPixel = {spp}
         uint omni:rtx:pt:limits:maxBounces = 6
         bool omni:rtx:pt:ris:meshLights = 1
+        custom bool omni:rtx:pathtracing:spectral:enabled = {str(spectral).lower()}
+        custom float omni:rtx:pathtracing:spectral:wavelengthMin = 360
+        custom float omni:rtx:pathtracing:spectral:wavelengthMax = 830"""
+    return f"""
+    def RenderProduct "{name}" {{
+        int2 resolution = ({res[0]}, {res[1]})
+        rel camera = <{cam or f"/World/Cameras/{name}"}>
+        rel orderedVars = [<LdrColor>]
+        token omni:rtx:rendermode = "{mode}"{spec}
         def RenderVar "LdrColor" {{
             string sourceName = "LdrColor"
         }}
@@ -161,12 +167,56 @@ def lights(night, sun, dome):
 {fill}"""
 
 
-def scene(asset_id, usd, views, variants, night, res, spp, sun, dome, offset, ev):
+def pose_layer(usd, poses, out):
+    from pxr import Gf, Sdf, Usd, UsdGeom, UsdPhysics
+    if not poses:
+        return usd
+    st = Usd.Stage.Open(usd)
+    joints = {p.GetName(): p for p in st.Traverse() if p.IsA(UsdPhysics.RevoluteJoint) or p.IsA(UsdPhysics.PrismaticJoint)}
+    layer = Sdf.Layer.CreateNew(os.path.join(out, "posed.usda"))
+    layer.subLayerPaths.append(usd)
+    layer.defaultPrim = st.GetDefaultPrim().GetName()
+    edit = Usd.Stage.Open(layer)
+    unit = {"X": Gf.Vec3d(1, 0, 0), "Y": Gf.Vec3d(0, 1, 0), "Z": Gf.Vec3d(0, 0, 1)}
+    for name, value in poses.items():
+        if name not in joints:
+            raise SystemExit(f"no joint {name} in {usd}")
+        j = joints[name]
+        child = st.GetPrimAtPath(j.GetRelationship("physics:body1").GetTargets()[0])
+        rot0 = Gf.Rotation(Gf.Quatd(j.GetAttribute("physics:localRot0").Get()))
+        axis = rot0.TransformDir(unit[j.GetAttribute("physics:axis").Get()])
+        pivot = Gf.Vec3d(j.GetAttribute("physics:localPos0").Get())
+        local = UsdGeom.Xformable(child).GetLocalTransformation()
+        if j.IsA(UsdPhysics.RevoluteJoint):
+            move = Gf.Matrix4d().SetTranslate(-pivot) * Gf.Matrix4d().SetRotate(Gf.Rotation(axis, value)) * Gf.Matrix4d().SetTranslate(pivot)
+        else:
+            move = Gf.Matrix4d().SetTranslate(axis * value)
+        m = local * move
+        prim = edit.OverridePrim(child.GetPath())
+        prim.GetAttribute("xformOp:translate").Set(m.ExtractTranslation())
+        prim.GetAttribute("xformOp:orient").Set(Gf.Quatd(m.ExtractRotationQuat()))
+    layer.Save()
+    return layer.realPath
+
+
+def sensor_paths(usd, names):
+    from pxr import Usd, UsdGeom
+    st = Usd.Stage.Open(usd)
+    root = st.GetDefaultPrim().GetPath()
+    found = {p.GetName(): p.GetPath() for p in st.Traverse() if p.IsA(UsdGeom.Camera) and p.GetName() in names}
+    missing = [n for n in names if n not in found]
+    if missing:
+        raise SystemExit(f"cameras not found in {usd}: {missing}")
+    return {n: "/World/" + os.path.basename(usd).rsplit(".", 1)[0] + "/" + found[n].MakeRelativePath(root).pathString for n in names}
+
+
+def scene(asset_id, usd, views, variants, night, res, spp, sun, dome, offset, ev, mode="PathTracing", spectral=False, sensors=None):
     root = os.path.basename(usd).rsplit(".", 1)[0]
     sel = "".join(f'\n            string {k} = "{v}"' for k, v in variants.items())
     g = GROUND / 2
     cams = "".join(camera(n, v, res, ev) for n, v in views.items())
-    prods = "".join(product(n, res, spp) for n in views)
+    prods = "".join(product(n, res, spp, mode, spectral) for n in views)
+    prods += "".join(product(n, res, spp, mode, spectral, cam=p) for n, p in (sensors or {}).items())
     lit = lights(night, sun, dome)
     return f"""#usda 1.0
 (
@@ -238,21 +288,29 @@ def main(argv):
     offset = float(assetcfg.arg(argv, "--lamp-offset", "0.0"))
     ev = float(assetcfg.arg(argv, "--exposure", "3" if night else "0"))
     out = assetcfg.arg(argv, "--out", os.path.join(assetcfg.ROOT, "build", asset_id, "rtx"))
+    mode = assetcfg.arg(argv, "--mode", "PathTracing")
+    spectral = "--spectral" in argv
+    frames = int(assetcfg.arg(argv, "--frames", "2" if mode == "PathTracing" else "48"))
     os.makedirs(out, exist_ok=True)
-    usda = scene(asset_id, usd, views, variants, night, res, spp, sun, dome, offset, ev)
+    poses = {k: float(v) for k, v in (kv.split("=") for kv in assetcfg.arg(argv, "--pose", "").split(",") if kv)}
+    usd = pose_layer(usd, poses, out)
+    sensors = sensor_paths(usd, [n for n in assetcfg.arg(argv, "--sensors", "").split(",") if n])
+    usda = scene(asset_id, usd, views, variants, night, res, spp, sun, dome, offset, ev, mode, spectral, sensors)
+    names = names + list(sensors)
     with open(os.path.join(out, "render_stage.usda"), "w") as f:
         f.write(usda)
     t = time.time()
-    renderer = ovrtx.Renderer(ovrtx.RendererConfig(log_file_path=os.path.join(out, "ovrtx.log")))
+    renderer = ovrtx.Renderer(ovrtx.RendererConfig(enable_spectral_rendering=spectral, log_file_path=os.path.join(out, "ovrtx.log")))
     stage = ovstage.Stage("render_rtx")
     renderer.attach_ovstage(stage)
     ovstage.population.open_usd_from_string(stage, usda, ordinal=1)
     stage.advance_write_floor(1, ovstage.Scope.ALL).wait()
     print(f"loaded in {time.time() - t:.1f}s")
-    suffix = "_night" if night else ""
+    suffix = ("_night" if night else "") + ("_spectral" if spectral else "") + ("_rt" if mode != "PathTracing" else "")
     for i, n in enumerate(names):
         t = time.time()
-        products = renderer.step(render_products={f"/Render/{n}"}, delta_time=1.0 / 60, ordinal=1)
+        for _ in range(frames):
+            products = renderer.step(render_products={f"/Render/{n}"}, delta_time=1.0 / 60, ordinal=1)
         for _, p in products.items():
             for fr in p.frames:
                 var = fr.render_vars[f"/Render/{n}/LdrColor"].map(device=ovrtx.Device.CPU)

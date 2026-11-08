@@ -17,45 +17,68 @@ over "viper" (
     token isaac:license = "Other"
     string isaac:namespace = "viper"
     prepend rel isaac:physics:robotJoints = [
-        </viper/Physics/fl_arm>,
+        </viper/Physics/fl_lower_arm>,
+        </viper/Physics/fl_upright>,
         </viper/Physics/fl_steer>,
         </viper/Physics/fl_wheel>,
-        </viper/Physics/fr_arm>,
+        </viper/Physics/fl_upper_arm>,
+        </viper/Physics/fr_lower_arm>,
+        </viper/Physics/fr_upright>,
         </viper/Physics/fr_steer>,
         </viper/Physics/fr_wheel>,
+        </viper/Physics/fr_upper_arm>,
         </viper/Physics/hga_azimuth>,
         </viper/Physics/hga_elevation>,
         </viper/Physics/nav_mast_pan>,
         </viper/Physics/nav_mast_tilt>,
-        </viper/Physics/rl_arm>,
+        </viper/Physics/nav_cam_left_cover>,
+        </viper/Physics/nav_cam_right_cover>,
+        </viper/Physics/rl_lower_arm>,
+        </viper/Physics/rl_upright>,
         </viper/Physics/rl_steer>,
         </viper/Physics/rl_wheel>,
-        </viper/Physics/rr_arm>,
+        </viper/Physics/rl_upper_arm>,
+        </viper/Physics/rr_lower_arm>,
+        </viper/Physics/rr_upright>,
         </viper/Physics/rr_steer>,
         </viper/Physics/rr_wheel>,
-        </viper/Physics/trident_drill>,
+        </viper/Physics/rr_upper_arm>,
+        </viper/Physics/trident_deploy>,
+        </viper/Physics/trident_feed>,
+        </viper/Physics/trident_auger>,
     ]
     prepend rel isaac:physics:robotLinks = [
         </viper/Geometry/chassis>,
         </viper/Geometry/chassis/haz_light_fl>,
         </viper/Geometry/chassis/haz_light_fr>,
-        </viper/Geometry/chassis/haz_light_fc>,
-        </viper/Geometry/chassis/haz_light_al>,
-        </viper/Geometry/chassis/haz_light_ar>,
-        </viper/Geometry/chassis/haz_cam_front>,
+        </viper/Geometry/chassis/haz_light_rl>,
+        </viper/Geometry/chassis/haz_light_rr>,
+        </viper/Geometry/chassis/haz_light_front>,
+        </viper/Geometry/chassis/haz_light_aft>,
+        </viper/Geometry/chassis/nirvss_led_340>,
+        </viper/Geometry/chassis/nirvss_led_410>,
+        </viper/Geometry/chassis/nirvss_led_540>,
+        </viper/Geometry/chassis/nirvss_led_640>,
+        </viper/Geometry/chassis/nirvss_led_740>,
+        </viper/Geometry/chassis/nirvss_led_905>,
+        </viper/Geometry/chassis/nirvss_led_940>,
         </viper/Geometry/chassis/lift_point>,
         </viper/Geometry/chassis/vehicle_origin>,
         </viper/Geometry/chassis/imu>,
-        </viper/Geometry/chassis/fl_arm>,
-        </viper/Geometry/chassis/fl_arm/fl_steer>,
-        </viper/Geometry/chassis/fl_arm/fl_steer/fl_wheel>,
-        </viper/Geometry/chassis/fl_arm/fl_steer/fl_wheel/fl_contact>,
-        </viper/Geometry/chassis/fl_arm/fl_steer/fl_wheel/fl_hub>,
-        </viper/Geometry/chassis/fr_arm>,
-        </viper/Geometry/chassis/fr_arm/fr_steer>,
-        </viper/Geometry/chassis/fr_arm/fr_steer/fr_wheel>,
-        </viper/Geometry/chassis/fr_arm/fr_steer/fr_wheel/fr_contact>,
-        </viper/Geometry/chassis/fr_arm/fr_steer/fr_wheel/fr_hub>,
+        </viper/Geometry/chassis/fl_lower_arm>,
+        </viper/Geometry/chassis/fl_lower_arm/fl_upright>,
+        </viper/Geometry/chassis/fl_lower_arm/fl_upright/fl_steer>,
+        </viper/Geometry/chassis/fl_lower_arm/fl_upright/fl_steer/fl_wheel>,
+        </viper/Geometry/chassis/fl_lower_arm/fl_upright/fl_steer/fl_wheel/fl_contact>,
+        </viper/Geometry/chassis/fl_lower_arm/fl_upright/fl_steer/fl_wheel/fl_hub>,
+        </viper/Geometry/chassis/fl_upper_arm>,
+        </viper/Geometry/chassis/fr_lower_arm>,
+        </viper/Geometry/chassis/fr_lower_arm/fr_upright>,
+        </viper/Geometry/chassis/fr_lower_arm/fr_upright/fr_steer>,
+        </viper/Geometry/chassis/fr_lower_arm/fr_upright/fr_steer/fr_wheel>,
+        </viper/Geometry/chassis/fr_lower_arm/fr_upright/fr_steer/fr_wheel/fr_contact>,
+        </viper/Geometry/chassis/fr_lower_arm/fr_upright/fr_steer/fr_wheel/fr_hub>,
+        </viper/Geometry/chassis/fr_upper_arm>,
         </viper/Geometry/chassis/hga_azimuth>,
         </viper/Geometry/chassis/hga_azimuth/hga_elevation>,
         </viper/Geometry/chassis/hga_azimuth/hga_elevation/hga_boresight>,
@@ -63,18 +86,26 @@ over "viper" (
         </viper/Geometry/chassis/nav_mast_pan/nav_mast_tilt>,
         </viper/Geometry/chassis/nav_mast_pan/nav_mast_tilt/nav_light_l>,
         </viper/Geometry/chassis/nav_mast_pan/nav_mast_tilt/nav_light_r>,
-        </viper/Geometry/chassis/rl_arm>,
-        </viper/Geometry/chassis/rl_arm/rl_steer>,
-        </viper/Geometry/chassis/rl_arm/rl_steer/rl_wheel>,
-        </viper/Geometry/chassis/rl_arm/rl_steer/rl_wheel/rl_contact>,
-        </viper/Geometry/chassis/rl_arm/rl_steer/rl_wheel/rl_hub>,
-        </viper/Geometry/chassis/rr_arm>,
-        </viper/Geometry/chassis/rr_arm/rr_steer>,
-        </viper/Geometry/chassis/rr_arm/rr_steer/rr_wheel>,
-        </viper/Geometry/chassis/rr_arm/rr_steer/rr_wheel/rr_contact>,
-        </viper/Geometry/chassis/rr_arm/rr_steer/rr_wheel/rr_hub>,
-        </viper/Geometry/chassis/trident_drill>,
-        </viper/Geometry/chassis/trident_drill/trident_bit>,
+        </viper/Geometry/chassis/nav_mast_pan/nav_mast_tilt/nav_cam_left_cover>,
+        </viper/Geometry/chassis/nav_mast_pan/nav_mast_tilt/nav_cam_right_cover>,
+        </viper/Geometry/chassis/rl_lower_arm>,
+        </viper/Geometry/chassis/rl_lower_arm/rl_upright>,
+        </viper/Geometry/chassis/rl_lower_arm/rl_upright/rl_steer>,
+        </viper/Geometry/chassis/rl_lower_arm/rl_upright/rl_steer/rl_wheel>,
+        </viper/Geometry/chassis/rl_lower_arm/rl_upright/rl_steer/rl_wheel/rl_contact>,
+        </viper/Geometry/chassis/rl_lower_arm/rl_upright/rl_steer/rl_wheel/rl_hub>,
+        </viper/Geometry/chassis/rl_upper_arm>,
+        </viper/Geometry/chassis/rr_lower_arm>,
+        </viper/Geometry/chassis/rr_lower_arm/rr_upright>,
+        </viper/Geometry/chassis/rr_lower_arm/rr_upright/rr_steer>,
+        </viper/Geometry/chassis/rr_lower_arm/rr_upright/rr_steer/rr_wheel>,
+        </viper/Geometry/chassis/rr_lower_arm/rr_upright/rr_steer/rr_wheel/rr_contact>,
+        </viper/Geometry/chassis/rr_lower_arm/rr_upright/rr_steer/rr_wheel/rr_hub>,
+        </viper/Geometry/chassis/rr_upper_arm>,
+        </viper/Geometry/chassis/trident_deploy>,
+        </viper/Geometry/chassis/trident_deploy/trident_feed>,
+        </viper/Geometry/chassis/trident_deploy/trident_feed/trident_bit>,
+        </viper/Geometry/chassis/trident_deploy/trident_feed/trident_auger>,
     ]
     token isaac:robotType = "Wheeled"
     string isaac:source = "lunar-surface-mobility-assets pipeline"
@@ -86,66 +117,88 @@ over "viper" (
             prepend apiSchemas = ["IsaacLinkAPI"]
         )
         {
-            over "fl_arm" (
+            over "fl_lower_arm" (
                 prepend apiSchemas = ["IsaacLinkAPI"]
             )
             {
-                over "fl_steer" (
+                over "fl_upright" (
                     prepend apiSchemas = ["IsaacLinkAPI"]
                 )
                 {
-                    over "fl_wheel" (
+                    over "fl_steer" (
                         prepend apiSchemas = ["IsaacLinkAPI"]
                     )
                     {
-                        over "fl_contact" (
-                            prepend apiSchemas = ["IsaacSiteAPI"]
+                        over "fl_wheel" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
                         )
                         {
-                            string isaac:Description = "Nominal tyre contact point"
-                            uniform token isaac:forwardAxis = "Z"
-                        }
+                            over "fl_contact" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Nominal tyre contact point"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
 
-                        over "fl_hub" (
-                            prepend apiSchemas = ["IsaacSiteAPI"]
-                        )
-                        {
-                            string isaac:Description = "Wheel centre; +Z = outboard axle"
-                            uniform token isaac:forwardAxis = "Z"
+                            over "fl_hub" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Wheel centre; +Z = outboard axle"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
                         }
                     }
                 }
             }
 
-            over "fr_arm" (
+            over "fl_upper_arm" (
                 prepend apiSchemas = ["IsaacLinkAPI"]
             )
             {
-                over "fr_steer" (
+            }
+
+            over "fr_lower_arm" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "fr_upright" (
                     prepend apiSchemas = ["IsaacLinkAPI"]
                 )
                 {
-                    over "fr_wheel" (
+                    over "fr_steer" (
                         prepend apiSchemas = ["IsaacLinkAPI"]
                     )
                     {
-                        over "fr_contact" (
-                            prepend apiSchemas = ["IsaacSiteAPI"]
+                        over "fr_wheel" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
                         )
                         {
-                            string isaac:Description = "Nominal tyre contact point"
-                            uniform token isaac:forwardAxis = "Z"
-                        }
+                            over "fr_contact" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Nominal tyre contact point"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
 
-                        over "fr_hub" (
-                            prepend apiSchemas = ["IsaacSiteAPI"]
-                        )
-                        {
-                            string isaac:Description = "Wheel centre; +Z = outboard axle"
-                            uniform token isaac:forwardAxis = "Z"
+                            over "fr_hub" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Wheel centre; +Z = outboard axle"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
                         }
                     }
                 }
+            }
+
+            over "fr_upper_arm" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
             }
 
             over "hga_azimuth" (
@@ -174,11 +227,23 @@ over "viper" (
                     prepend apiSchemas = ["IsaacLinkAPI"]
                 )
                 {
+                    over "nav_cam_left_cover" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                    }
+
+                    over "nav_cam_right_cover" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                    }
+
                     over "nav_light_l" (
                         prepend apiSchemas = ["IsaacSiteAPI"]
                     )
                     {
-                        string isaac:Description = "Floodlight (+Z = beam axis)"
+                        string isaac:Description = "VIPER NavLight, 457 nm LED array with parabolic reflector"
                         uniform token isaac:forwardAxis = "Z"
                     }
 
@@ -186,84 +251,117 @@ over "viper" (
                         prepend apiSchemas = ["IsaacSiteAPI"]
                     )
                     {
-                        string isaac:Description = "Floodlight (+Z = beam axis)"
+                        string isaac:Description = "VIPER NavLight, 457 nm LED array with parabolic reflector"
                         uniform token isaac:forwardAxis = "Z"
                     }
                 }
             }
 
-            over "rl_arm" (
+            over "rl_lower_arm" (
                 prepend apiSchemas = ["IsaacLinkAPI"]
             )
             {
-                over "rl_steer" (
+                over "rl_upright" (
                     prepend apiSchemas = ["IsaacLinkAPI"]
                 )
                 {
-                    over "rl_wheel" (
+                    over "rl_steer" (
                         prepend apiSchemas = ["IsaacLinkAPI"]
                     )
                     {
-                        over "rl_contact" (
-                            prepend apiSchemas = ["IsaacSiteAPI"]
+                        over "rl_wheel" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
                         )
                         {
-                            string isaac:Description = "Nominal tyre contact point"
-                            uniform token isaac:forwardAxis = "Z"
-                        }
+                            over "rl_contact" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Nominal tyre contact point"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
 
-                        over "rl_hub" (
-                            prepend apiSchemas = ["IsaacSiteAPI"]
-                        )
-                        {
-                            string isaac:Description = "Wheel centre; +Z = outboard axle"
-                            uniform token isaac:forwardAxis = "Z"
+                            over "rl_hub" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Wheel centre; +Z = outboard axle"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
                         }
                     }
                 }
             }
 
-            over "rr_arm" (
+            over "rl_upper_arm" (
                 prepend apiSchemas = ["IsaacLinkAPI"]
             )
             {
-                over "rr_steer" (
+            }
+
+            over "rr_lower_arm" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "rr_upright" (
                     prepend apiSchemas = ["IsaacLinkAPI"]
                 )
                 {
-                    over "rr_wheel" (
+                    over "rr_steer" (
                         prepend apiSchemas = ["IsaacLinkAPI"]
                     )
                     {
-                        over "rr_contact" (
-                            prepend apiSchemas = ["IsaacSiteAPI"]
+                        over "rr_wheel" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
                         )
                         {
-                            string isaac:Description = "Nominal tyre contact point"
-                            uniform token isaac:forwardAxis = "Z"
-                        }
+                            over "rr_contact" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Nominal tyre contact point"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
 
-                        over "rr_hub" (
-                            prepend apiSchemas = ["IsaacSiteAPI"]
-                        )
-                        {
-                            string isaac:Description = "Wheel centre; +Z = outboard axle"
-                            uniform token isaac:forwardAxis = "Z"
+                            over "rr_hub" (
+                                prepend apiSchemas = ["IsaacSiteAPI"]
+                            )
+                            {
+                                string isaac:Description = "Wheel centre; +Z = outboard axle"
+                                uniform token isaac:forwardAxis = "Z"
+                            }
                         }
                     }
                 }
             }
 
-            over "trident_drill" (
+            over "rr_upper_arm" (
                 prepend apiSchemas = ["IsaacLinkAPI"]
             )
             {
-                over "trident_bit" (
-                    prepend apiSchemas = ["IsaacSiteAPI"]
+            }
+
+            over "trident_deploy" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "trident_feed" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
                 )
                 {
-                    string isaac:Description = "TRIDENT drill bit (1 m depth)"
-                    uniform token isaac:forwardAxis = "Z"
+                    over "trident_auger" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                    }
+
+                    over "trident_bit" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "TRIDENT 25.4 mm bit (1.02 m max depth)"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
                 }
             }
 
@@ -271,7 +369,7 @@ over "viper" (
                 prepend apiSchemas = ["IsaacSiteAPI"]
             )
             {
-                string isaac:Description = "Floodlight (+Z = beam axis)"
+                string isaac:Description = "VIPER HazLight, 457 nm LED with side-throw internal reflector"
                 uniform token isaac:forwardAxis = "Z"
             }
 
@@ -279,39 +377,95 @@ over "viper" (
                 prepend apiSchemas = ["IsaacSiteAPI"]
             )
             {
-                string isaac:Description = "Floodlight (+Z = beam axis)"
+                string isaac:Description = "VIPER HazLight, 457 nm LED with side-throw internal reflector"
                 uniform token isaac:forwardAxis = "Z"
             }
 
-            over "haz_light_fc" (
+            over "haz_light_rl" (
                 prepend apiSchemas = ["IsaacSiteAPI"]
             )
             {
-                string isaac:Description = "Floodlight (+Z = beam axis)"
+                string isaac:Description = "VIPER HazLight, 457 nm LED with side-throw internal reflector"
                 uniform token isaac:forwardAxis = "Z"
             }
 
-            over "haz_light_al" (
+            over "haz_light_rr" (
                 prepend apiSchemas = ["IsaacSiteAPI"]
             )
             {
-                string isaac:Description = "Floodlight (+Z = beam axis)"
+                string isaac:Description = "VIPER HazLight, 457 nm LED with side-throw internal reflector"
                 uniform token isaac:forwardAxis = "Z"
             }
 
-            over "haz_light_ar" (
+            over "haz_light_front" (
                 prepend apiSchemas = ["IsaacSiteAPI"]
             )
             {
-                string isaac:Description = "Floodlight (+Z = beam axis)"
+                string isaac:Description = "VIPER HazLight, 457 nm LED with side-throw internal reflector"
                 uniform token isaac:forwardAxis = "Z"
             }
 
-            over "haz_cam_front" (
+            over "haz_light_aft" (
                 prepend apiSchemas = ["IsaacSiteAPI"]
             )
             {
-                string isaac:Description = "Front hazard camera pair (estimated)"
+                string isaac:Description = "VIPER HazLight, 457 nm LED with side-throw internal reflector"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "nirvss_led_340" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "NIRVSS AIM illumination LED set, 340 nm"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "nirvss_led_410" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "NIRVSS AIM illumination LED set, 410 nm"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "nirvss_led_540" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "NIRVSS AIM illumination LED set, 540 nm"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "nirvss_led_640" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "NIRVSS AIM illumination LED set, 640 nm"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "nirvss_led_740" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "NIRVSS AIM illumination LED set, 740 nm"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "nirvss_led_905" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "NIRVSS AIM illumination LED set, 905 nm"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "nirvss_led_940" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "NIRVSS AIM illumination LED set, 940 nm"
                 uniform token isaac:forwardAxis = "Z"
             }
 
@@ -343,11 +497,18 @@ over "viper" (
 
     over "Physics"
     {
-        over "fl_arm" (
+        over "fl_lower_arm" (
             prepend apiSchemas = ["IsaacJointAPI"]
         )
         {
             bool[] isaac:actuator = [1]
+        }
+
+        over "fl_upright" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
         }
 
         over "fl_steer" (
@@ -364,11 +525,25 @@ over "viper" (
             bool[] isaac:actuator = [1]
         }
 
-        over "fr_arm" (
+        over "fl_upper_arm" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "fr_lower_arm" (
             prepend apiSchemas = ["IsaacJointAPI"]
         )
         {
             bool[] isaac:actuator = [1]
+        }
+
+        over "fr_upright" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
         }
 
         over "fr_steer" (
@@ -383,6 +558,13 @@ over "viper" (
         )
         {
             bool[] isaac:actuator = [1]
+        }
+
+        over "fr_upper_arm" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
         }
 
         over "hga_azimuth" (
@@ -413,11 +595,32 @@ over "viper" (
             bool[] isaac:actuator = [1]
         }
 
-        over "rl_arm" (
+        over "nav_cam_left_cover" (
             prepend apiSchemas = ["IsaacJointAPI"]
         )
         {
             bool[] isaac:actuator = [1]
+        }
+
+        over "nav_cam_right_cover" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "rl_lower_arm" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "rl_upright" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
         }
 
         over "rl_steer" (
@@ -434,11 +637,25 @@ over "viper" (
             bool[] isaac:actuator = [1]
         }
 
-        over "rr_arm" (
+        over "rl_upper_arm" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "rr_lower_arm" (
             prepend apiSchemas = ["IsaacJointAPI"]
         )
         {
             bool[] isaac:actuator = [1]
+        }
+
+        over "rr_upright" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
         }
 
         over "rr_steer" (
@@ -455,7 +672,28 @@ over "viper" (
             bool[] isaac:actuator = [1]
         }
 
-        over "trident_drill" (
+        over "rr_upper_arm" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [0]
+        }
+
+        over "trident_deploy" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "trident_feed" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "trident_auger" (
             prepend apiSchemas = ["IsaacJointAPI"]
         )
         {

@@ -167,7 +167,7 @@ def attach(cfg, dep, mount_site, dep_site):
     print(f"attached {dep} at {tuple(round(c, 3) for c in mount)}")
 
 
-def add_lights(scale=1.0):
+def add_lights(scale=1.0, only_groups=None):
     import json
     from mathutils import Matrix
     n = 0
@@ -178,14 +178,27 @@ def add_lights(scale=1.0):
         if ob is None:
             continue
         a = rec.get("attrs", {})
+        if only_groups is not None and a.get("group") not in only_groups:
+            continue
         r = float(a.get("radius_m", 0.05))
         ld = bpy.data.lights.new(f"lamp_{rec['name']}", "SPOT")
-        ld.energy = float(a.get("intensity", 30000.0)) * r * r * 0.25 * scale
-        ld.shadow_soft_size = r
-        ld.spot_size = math.radians(float(a.get("cone_deg", 60.0)) * 2)
-        ld.spot_blend = 0.6
-        k = float(a.get("colour_k", 5600.0))
-        ld.color = (1.0, min(1.0, 0.55 + k / 12000), min(1.0, 0.25 + k / 8000))
+        if {"radiant_w", "lumens", "peak_nm"} & set(a):
+            import photometry as PH
+            L = PH.light_spec(a)
+            half = math.radians(min(89.0, float(a.get("fwhm_h_deg", 2 * float(a.get("cone_deg", 60.0)))) / 2 * 1.25))
+            omega = 2 * math.pi * (1 - math.cos(half))
+            ld.energy = L["lumens"] / 683.0 / max(L["rgb_luminance"], 1e-3) * (4 * math.pi / omega) * scale
+            ld.spot_size = 2 * half
+            ld.spot_blend = 0.85
+            ld.color = L["rgb"]
+            ld.shadow_soft_size = max(float(a.get("width_m", 2 * r)), float(a.get("height_m", 2 * r))) / 2
+        else:
+            ld.energy = float(a.get("intensity", 30000.0)) * r * r * 0.25 * scale
+            ld.shadow_soft_size = r
+            ld.spot_size = math.radians(float(a.get("cone_deg", 60.0)) * 2)
+            ld.spot_blend = 0.6
+            k = float(a.get("colour_k", 5600.0))
+            ld.color = (1.0, min(1.0, 0.55 + k / 12000), min(1.0, 0.25 + k / 8000))
         lo = bpy.data.objects.new(f"lamp_{rec['name']}", ld)
         bpy.context.scene.collection.objects.link(lo)
         lo.parent = ob
@@ -222,13 +235,14 @@ def main():
     G.prune_variants(cfg, sel)
     vj = [f"{j}={q}" for st, o in sel.items() for j, q in getattr(cfg, "GEOMETRY_VARIANT_JOINTS", {}).get(st, {}).get(o, {}).items()]
     pose(vj + [kv for kv in assetcfg.arg(a, "--pose", "").split(",") if kv])
-    if "--lights" in a:
-        add_lights(float(assetcfg.arg(a, "--light-scale", "1.0")))
     for spec in [x for x in assetcfg.arg(a, "--attach", "").split(",") if x]:
         set_name, opt = spec.split(":")
         attach(cfg, *cfg.ATTACHMENTS[set_name][opt])
     setup_render(int(assetcfg.arg(a, "--samples", "128")), tuple(int(x) for x in assetcfg.arg(a, "--res", "1600x1200").split("x")))
     lunar(tex_dir)
+    if "--lights" in a:
+        groups = [g for g in assetcfg.arg(a, "--light-groups", "").split(",") if g]
+        add_lights(float(assetcfg.arg(a, "--light-scale", "1.0")), groups or None)
     if assetcfg.arg(a, "--sun"):
         az, el = (math.radians(float(v)) for v in assetcfg.arg(a, "--sun").split(","))
         sun = bpy.data.objects["env_sun"]

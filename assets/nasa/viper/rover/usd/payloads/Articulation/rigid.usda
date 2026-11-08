@@ -15,36 +15,58 @@ over "viper"
     {
         over "chassis"
         {
-            over "fl_arm" (
+            over "fl_lower_arm" (
                 delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
             )
             {
-                over "fl_steer" (
+                over "fl_upright" (
                     delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                 )
                 {
-                    over "fl_wheel" (
+                    over "fl_steer" (
                         delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                     )
                     {
+                        over "fl_wheel" (
+                            delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                        }
                     }
                 }
             }
 
-            over "fr_arm" (
+            over "fl_upper_arm" (
                 delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
             )
             {
-                over "fr_steer" (
+            }
+
+            over "fr_lower_arm" (
+                delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                over "fr_upright" (
                     delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                 )
                 {
-                    over "fr_wheel" (
+                    over "fr_steer" (
                         delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                     )
                     {
+                        over "fr_wheel" (
+                            delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                        }
                     }
                 }
+            }
+
+            over "fr_upper_arm" (
+                delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
             }
 
             over "hga_azimuth" (
@@ -66,18 +88,13 @@ over "viper"
                     delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                 )
                 {
-                }
-            }
+                    over "nav_cam_left_cover" (
+                        delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                    }
 
-            over "rl_arm" (
-                delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
-            )
-            {
-                over "rl_steer" (
-                    delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
-                )
-                {
-                    over "rl_wheel" (
+                    over "nav_cam_right_cover" (
                         delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                     )
                     {
@@ -85,39 +102,99 @@ over "viper"
                 }
             }
 
-            over "rr_arm" (
+            over "rl_lower_arm" (
                 delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
             )
             {
-                over "rr_steer" (
+                over "rl_upright" (
                     delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                 )
                 {
-                    over "rr_wheel" (
+                    over "rl_steer" (
+                        delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        over "rl_wheel" (
+                            delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                        }
+                    }
+                }
+            }
+
+            over "rl_upper_arm" (
+                delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+            }
+
+            over "rr_lower_arm" (
+                delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                over "rr_upright" (
+                    delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    over "rr_steer" (
+                        delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        over "rr_wheel" (
+                            delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                        }
+                    }
+                }
+            }
+
+            over "rr_upper_arm" (
+                delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+            }
+
+            over "trident_deploy" (
+                delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                over "trident_feed" (
+                    delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    over "trident_auger" (
                         delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                     )
                     {
                     }
                 }
-            }
-
-            over "trident_drill" (
-                delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
-            )
-            {
             }
         }
     }
 
     over "Physics"
     {
-        over "fl_arm" (
+        over "fl_lower_arm" (
             active = false
         )
         {
         }
 
-        over "fl_arm_actuator" (
+        over "fl_lower_arm_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "fl_upright" (
+            active = false
+        )
+        {
+        }
+
+        over "fl_upright_actuator" (
             active = false
         )
         {
@@ -147,13 +224,37 @@ over "viper"
         {
         }
 
-        over "fr_arm" (
+        over "fl_upper_arm" (
             active = false
         )
         {
         }
 
-        over "fr_arm_actuator" (
+        over "fl_upper_arm_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "fr_lower_arm" (
+            active = false
+        )
+        {
+        }
+
+        over "fr_lower_arm_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "fr_upright" (
+            active = false
+        )
+        {
+        }
+
+        over "fr_upright_actuator" (
             active = false
         )
         {
@@ -178,6 +279,18 @@ over "viper"
         }
 
         over "fr_wheel_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "fr_upper_arm" (
+            active = false
+        )
+        {
+        }
+
+        over "fr_upper_arm_actuator" (
             active = false
         )
         {
@@ -231,13 +344,49 @@ over "viper"
         {
         }
 
-        over "rl_arm" (
+        over "nav_cam_left_cover" (
             active = false
         )
         {
         }
 
-        over "rl_arm_actuator" (
+        over "nav_cam_left_cover_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "nav_cam_right_cover" (
+            active = false
+        )
+        {
+        }
+
+        over "nav_cam_right_cover_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "rl_lower_arm" (
+            active = false
+        )
+        {
+        }
+
+        over "rl_lower_arm_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "rl_upright" (
+            active = false
+        )
+        {
+        }
+
+        over "rl_upright_actuator" (
             active = false
         )
         {
@@ -267,13 +416,37 @@ over "viper"
         {
         }
 
-        over "rr_arm" (
+        over "rl_upper_arm" (
             active = false
         )
         {
         }
 
-        over "rr_arm_actuator" (
+        over "rl_upper_arm_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "rr_lower_arm" (
+            active = false
+        )
+        {
+        }
+
+        over "rr_lower_arm_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "rr_upright" (
+            active = false
+        )
+        {
+        }
+
+        over "rr_upright_actuator" (
             active = false
         )
         {
@@ -303,13 +476,97 @@ over "viper"
         {
         }
 
-        over "trident_drill" (
+        over "rr_upper_arm" (
             active = false
         )
         {
         }
 
-        over "trident_drill_actuator" (
+        over "rr_upper_arm_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "trident_deploy" (
+            active = false
+        )
+        {
+        }
+
+        over "trident_deploy_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "trident_feed" (
+            active = false
+        )
+        {
+        }
+
+        over "trident_feed_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "trident_auger" (
+            active = false
+        )
+        {
+        }
+
+        over "trident_auger_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "fl_upper_ball" (
+            active = false
+        )
+        {
+        }
+
+        over "fl_upper_ball_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "fr_upper_ball" (
+            active = false
+        )
+        {
+        }
+
+        over "fr_upper_ball_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "rl_upper_ball" (
+            active = false
+        )
+        {
+        }
+
+        over "rl_upper_ball_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "rr_upper_ball" (
+            active = false
+        )
+        {
+        }
+
+        over "rr_upper_ball_actuator" (
             active = false
         )
         {

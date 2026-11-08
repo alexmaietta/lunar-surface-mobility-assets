@@ -28,7 +28,14 @@ over "viper"
 
     over "Physics"
     {
-        over "fl_arm" (
+        over "fl_lower_arm" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "fl_upright" (
             prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
         )
         {
@@ -49,7 +56,21 @@ over "viper"
             float physxJoint:maxJointVelocity = 180
         }
 
-        over "fr_arm" (
+        over "fl_upper_arm" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "fr_lower_arm" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "fr_upright" (
             prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
         )
         {
@@ -64,6 +85,13 @@ over "viper"
         }
 
         over "fr_wheel" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "fr_upper_arm" (
             prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
         )
         {
@@ -98,7 +126,28 @@ over "viper"
             float physxJoint:maxJointVelocity = 180
         }
 
-        over "rl_arm" (
+        over "nav_cam_left_cover" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "nav_cam_right_cover" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "rl_lower_arm" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "rl_upright" (
             prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
         )
         {
@@ -119,7 +168,21 @@ over "viper"
             float physxJoint:maxJointVelocity = 180
         }
 
-        over "rr_arm" (
+        over "rl_upper_arm" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "rr_lower_arm" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "rr_upright" (
             prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
         )
         {
@@ -140,11 +203,32 @@ over "viper"
             float physxJoint:maxJointVelocity = 180
         }
 
-        over "trident_drill" (
+        over "rr_upper_arm" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "trident_deploy" (
             prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear", "PhysxJointAPI"]
         )
         {
             float physxJoint:maxJointVelocity = 2
+        }
+
+        over "trident_feed" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 2
+        }
+
+        over "trident_auger" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
         }
     }
 }

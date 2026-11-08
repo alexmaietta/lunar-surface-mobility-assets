@@ -375,6 +375,9 @@ def write_base(src, path, links, paths, colliders, sites, cameras, cfg):
             UsdGeom.Imageable(prim).CreatePurposeAttr(UsdGeom.Tokens.guide)
         if s["kind"] == "light":
             a = s["attrs"]
+            if PHOTOMETRIC_KEYS & set(a):
+                write_photometric_light(stage, f"{paths[s['link']]}/{s['name']}/emitter", s, os.path.dirname(path))
+                continue
             lux = UsdLux.DiskLight.Define(stage, f"{paths[s['link']]}/{s['name']}/emitter")
             xform_ops(lux.GetPrim(), (0, 0, float(a.get("radius_m", 0.05)) * 0.3 + 0.02), Gf.Quatd(0, 1, 0, 0))
             lux.CreateRadiusAttr(float(a.get("radius_m", 0.05)))
@@ -394,9 +397,22 @@ def write_base(src, path, links, paths, colliders, sites, cameras, cfg):
         cam.CreateHorizontalApertureAttr(c["aperture_mm"][0])
         cam.CreateVerticalApertureAttr(c["aperture_mm"][1])
         cam.CreateFStopAttr(c.get("fstop", 0.0))
+        if c.get("focus_m"):
+            cam.CreateFocusDistanceAttr(float(c["focus_m"]))
         cam.CreateClippingRangeAttr(Gf.Vec2f(*c.get("clip_m", (0.05, 1000.0))))
         set_attr(cam.GetPrim(), "sensor:resolution", t.Int2, Gf.Vec2i(*c.get("resolution", (1920, 1080))), custom=True)
         set_attr(cam.GetPrim(), "sensor:source", t.String, c.get("source", ""), custom=True)
+        if c.get("f_number"):
+            set_attr(cam.GetPrim(), "sensor:fNumber", t.Float, float(c["f_number"]), custom=True)
+        if c.get("responsivity"):
+            prim = cam.GetPrim()
+            apply_schemas(prim, ["PhysicalCameraResponsivityAPI"])
+            curve = [Gf.Vec2f(float(w), float(v)) for w, v in c["responsivity"]]
+            for ch in "rgb":
+                set_attr(prim, f"physical:responsivity:{ch}", t.Float2Array, curve)
+            set_attr(prim, "physical:responsivity:cameraToXYZ", t.Matrix3d,
+                     Gf.Matrix3d(0.95047, 0, 0, 0, 1.0, 0, 0, 0, 1.08883))
+            set_attr(prim, "physical:responsivity:colorTemperature", t.Float, 0.0)
     stage.GetRootLayer().Save()
 
 
@@ -709,18 +725,101 @@ def write_joint_variants(pay, cfg, joints):
             st.GetRootLayer().Save()
 
 
+PHOTOMETRIC_KEYS = {"radiant_w", "lumens", "peak_nm"}
+
+
+def write_photometric_light(stage, prim_path, site, pay):
+    import photometry as PH
+    t = Sdf.ValueTypeNames
+    a = site["attrs"]
+    L = PH.light_spec(a)
+    if L["shape"] == "rect":
+        lux = UsdLux.RectLight.Define(stage, prim_path)
+        lux.CreateWidthAttr(float(a["width_m"]))
+        lux.CreateHeightAttr(float(a["height_m"]))
+        lift = 0.004
+    else:
+        lux = UsdLux.DiskLight.Define(stage, prim_path)
+        lux.CreateRadiusAttr(float(a.get("radius_m", 0.05)))
+        lift = float(a.get("radius_m", 0.05)) * 0.3 + 0.02
+    prim = lux.GetPrim()
+    xform_ops(prim, (0, 0, float(a.get("emitter_offset_m", lift))), Gf.Quatd(0, 1, 0, 0))
+    lux.CreateIntensityAttr(float(L["intensity"]))
+    lux.CreateExposureAttr(0.0)
+    lux.CreateNormalizeAttr(False)
+    lux.CreateColorAttr(Gf.Vec3f(*L["rgb"]))
+    lux.CreateEnableColorTemperatureAttr(False)
+    sh = UsdLux.ShapingAPI.Apply(prim)
+    sh.CreateShapingConeAngleAttr(float(a.get("cone_deg", 90.0)))
+    sh.CreateShapingConeSoftnessAttr(float(a.get("cone_softness", 0.0)))
+    sh.CreateShapingFocusAttr(float(a.get("focus", 0.0)))
+    if "fwhm_h_deg" in a and L["lumens"]:
+        ies_rel = f"Lights/ies/{a.get('ies_name', site['name'])}.ies"
+        ies_abs = os.path.join(pay, ies_rel)
+        if not os.path.exists(ies_abs):
+            notes = [f"spectrum: LED peak {a['peak_nm']} nm, FWHM {a.get('fwhm_nm', 20.0)} nm" if "peak_nm" in a else "white"]
+            if a.get("source"):
+                notes.append(f"source: {a['source']}")
+            size = (float(a.get("width_m", 2 * a.get("radius_m", 0.05))), float(a.get("height_m", 2 * a.get("radius_m", 0.05))))
+            PH.write_ies(ies_abs, L["lumens"], float(a["fwhm_h_deg"]), float(a.get("fwhm_v_deg", a["fwhm_h_deg"])),
+                         float(a.get("beam_shape", 2.0)), float(a.get("cutoff_deg", 90.0)), size, a.get("description", site["name"]),
+                         notes)
+        sh.CreateShapingIesFileAttr(Sdf.AssetPath(f"./{ies_rel}"))
+        sh.CreateShapingIesNormalizeAttr(True)
+    if L["lumens"]:
+        apply_schemas(prim, ["PhotometricAreaLightAPI", "PhysicalLightIlluminantAPI"])
+        set_attr(prim, "photometric:power", t.Float, float(L["lumens"]))
+        set_attr(prim, "photometric:illuminance", t.Float, 0.0)
+        set_attr(prim, "photometric:illuminance:distance", t.Float, 0.0)
+        if L["spectrum"]:
+            set_attr(prim, "physical:illuminant", t.Token, "custom", uniform=True)
+            set_attr(prim, "physical:customIlluminant", t.Float2Array, [Gf.Vec2f(*p) for p in L["spectrum"]])
+        else:
+            set_attr(prim, "physical:illuminant", t.Token, "blackbody", uniform=True)
+            lux.CreateColorTemperatureAttr(float(a.get("colour_k", 5600.0)))
+            lux.CreateColorAttr(Gf.Vec3f(1, 1, 1))
+    if a.get("group"):
+        set_attr(prim, "light:group", t.Token, a["group"], custom=True)
+    return lux
+
+
 def write_lights(pay, sites, paths):
     lights = [s for s in sites if s["kind"] == "light"]
     if not lights:
-        return False
-    for opt in ("on", "off"):
+        return []
+    groups = sorted({s["attrs"]["group"] for s in lights if s["attrs"].get("group")})
+    opts = {"on": None, "off": set()}
+    if len(groups) > 1:
+        for g in groups:
+            opts[g] = {g}
+    for opt, keep in opts.items():
         st = new_stage(os.path.join(pay, "Lights", f"{opt}.usda"))
         st.OverridePrim(ROOT)
-        if opt == "off":
+        if keep is not None:
             for s in lights:
-                st.OverridePrim(f"{paths[s['link']]}/{s['name']}/emitter").SetActive(False)
+                if s["attrs"].get("group") not in keep:
+                    st.OverridePrim(f"{paths[s['link']]}/{s['name']}/emitter").SetActive(False)
         st.GetRootLayer().Save()
-    return True
+    write_light_models(pay, lights, paths)
+    return list(opts)
+
+
+def write_light_models(pay, lights, paths):
+    import photometry as PH
+    spectral = [s for s in lights if "peak_nm" in s["attrs"]]
+    if not spectral:
+        return
+    t = Sdf.ValueTypeNames
+    for opt in ("spectral", "rgb"):
+        st = new_stage(os.path.join(pay, "LightModel", f"{opt}.usda"))
+        st.OverridePrim(ROOT)
+        if opt == "rgb":
+            for s in spectral:
+                L = PH.light_spec(s["attrs"])
+                if L["lumens"]:
+                    prim = st.OverridePrim(f"{paths[s['link']]}/{s['name']}/emitter")
+                    set_attr(prim, "photometric:power", t.Float, float(L["lumens"] / max(L["rgb_luminance"], 1e-4)))
+        st.GetRootLayer().Save()
 
 
 def write_attachments(pay, cfg, links, paths, sites):
@@ -777,8 +876,12 @@ def write_interface(path, cfg, links, extents, lods):
         sets.append((ms, {"none": None, **{s: f"Propellant/{s}.usda" for s in cfg.MASS}}, cfg.DEFAULT_MASS_STATE))
     for set_name, options in getattr(cfg, "GEOMETRY_VARIANTS", {}).items():
         sets.append((set_name, {o: f"{set_name}/{o}.usda" for o in options}, options[0]))
-    if os.path.exists(os.path.join(os.path.dirname(path), "payloads", "Lights", "off.usda")):
-        sets.append(("Lights", {"on": "Lights/on.usda", "off": "Lights/off.usda"}, "on"))
+    ldir = os.path.join(os.path.dirname(path), "payloads", "Lights")
+    if os.path.exists(os.path.join(ldir, "off.usda")):
+        lopts = ["on", "off"] + sorted(f[:-5] for f in os.listdir(ldir) if f.endswith(".usda") and f[:-5] not in ("on", "off"))
+        sets.append(("Lights", {o: f"Lights/{o}.usda" for o in lopts}, "on"))
+    if os.path.exists(os.path.join(os.path.dirname(path), "payloads", "LightModel", "spectral.usda")):
+        sets.append(("LightModel", {"spectral": "LightModel/spectral.usda", "rgb": "LightModel/rgb.usda"}, "spectral"))
     for set_name, options in getattr(cfg, "JOINT_VARIANTS", {}).items():
         sets.append((set_name, {o: f"{set_name}/{o}.usda" for o in options}, next(iter(options))))
     for set_name, options in getattr(cfg, "ATTACHMENTS", {}).items():

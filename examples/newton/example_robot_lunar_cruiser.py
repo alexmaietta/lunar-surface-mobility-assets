@@ -6,6 +6,7 @@ import warp as wp
 import newton
 import newton.examples
 from example_robot_rover import Example as RoverExample
+from example_robot_rover import draw_light_beams, find_light_sites
 
 RAILS = [f"rear_stair{f}_rail_{s}" for f in ("", "_lower") for s in ("l", "r")]
 WINGS = ("solar_wing_l", "solar_wing_r")
@@ -59,25 +60,7 @@ class Example(RoverExample):
         return {n: v for n, v in STOWED.items() if n in self.coord}
 
     def _find_light_sites(self):
-        from pxr import Usd, UsdGeom
-
-        cache = UsdGeom.XformCache(Usd.TimeCode.Default())
-        out = []
-        for prim in Usd.PrimRange(self.stage.GetDefaultPrim()):
-            if not prim.HasAttribute("site:kind") or prim.GetAttribute("site:kind").Get() != "light":
-                continue
-            body = prim.GetParent()
-            while body and body.GetName() not in self.blabels:
-                body = body.GetParent()
-            if not body:
-                continue
-            local = cache.GetLocalToWorldTransform(prim) * cache.GetLocalToWorldTransform(body).GetInverse()
-            t = local.ExtractTranslation()
-            z = local.TransformDir((0, 0, 1))
-            r = prim.GetAttribute("site:radius_m").Get() if prim.HasAttribute("site:radius_m") else 0.05
-            out.append({"body": self.blabels.index(body.GetName()), "p": np.array(t), "d": np.array(z) / max(np.linalg.norm(z), 1e-9),
-                        "r": float(r or 0.05), "name": prim.GetName()})
-        return out
+        return find_light_sites(self.stage, self.blabels)
 
     def yaw(self):
         x, y, z, w = self.state_0.body_q.numpy()[0][3:7]
@@ -144,22 +127,7 @@ class Example(RoverExample):
             self.poses["hga_elevation"] += (self.earth[1] - HGA_BORESIGHT_EL - self.poses["hga_elevation"]) * 0.05
 
     def render_extra(self):
-        if not self.light_sites or not self.lights_on:
-            self.viewer.log_points("lights", None)
-            self.viewer.log_lines("light_beams", None, None, None)
-            return
-        bq = self.state_0.body_q.numpy()
-        pts, ends, radii = [], [], []
-        for s in self.light_sites:
-            q = bq[s["body"]]
-            tf = wp.transform(wp.vec3(*q[:3]), wp.quat(*q[3:7]))
-            p = np.array(wp.transform_point(tf, wp.vec3(*s["p"])))
-            d = np.array(wp.transform_vector(tf, wp.vec3(*s["d"])))
-            pts.append(p)
-            ends.append(p + d * (0.6 if s["r"] < 0.05 else 3.0))
-            radii.append(max(0.04, s["r"] * 1.4))
-        self.viewer.log_points("lights", wp.array(pts, dtype=wp.vec3), wp.array(radii, dtype=wp.float32), (1.0, 0.92, 0.65))
-        self.viewer.log_lines("light_beams", wp.array(pts, dtype=wp.vec3), wp.array(ends, dtype=wp.vec3), (1.0, 0.85, 0.5), width=0.02)
+        draw_light_beams(self.viewer, self.state_0, self.light_sites if self.lights_on else [])
 
     def gui(self, ui):
         super().gui(ui)
