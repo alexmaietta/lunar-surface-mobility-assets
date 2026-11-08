@@ -10,7 +10,7 @@ PY=${PY:-.venv/bin/python}
 
 usage() {
   cat <<EOF
-usage: ./pipeline.sh <asset> [step ...]   steps: textures build export thumb package blend mesh simple assets gallery sim (default: all)
+usage: ./pipeline.sh <asset> [step ...]   steps: textures build export thumb package blend mesh simple urdf assets gallery sim (default: all)
        ./pipeline.sh <command>            commands: update hero release list scene web serve
 assets: $(order | tr '\n' ' ')
 EOF
@@ -47,7 +47,8 @@ package()  { $PY scripts/package.py --asset "$asset"; }
 blend_()   { $BLENDER -b "$blend" -P scripts/export_blend.py -- --asset "$asset"; }
 mesh()     { $BLENDER -b "$blend" -P scripts/export_mesh.py -- --asset "$asset"; }
 simple()   { $BLENDER -b "$blend" -P scripts/export_simple.py -- --asset "$asset"; }
-assets()   { $PY scripts/publish.py --asset "$asset" && blend_ && mesh && simple; }
+urdf()     { $PY scripts/export_urdf.py --asset "$asset"; }
+assets()   { $PY scripts/publish.py --asset "$asset" && blend_ && mesh && simple && urdf; }
 gallery()  { local dst="docs/images/$(asset_path "$asset")"
              rm -rf "build/$asset/gallery"
              $BLENDER -b "$blend" -P scripts/render.py -- --asset "$asset" --samples 256 --res 1600x1200 \

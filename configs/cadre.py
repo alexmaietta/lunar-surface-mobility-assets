@@ -90,6 +90,7 @@ INERTIA_BOX = (0.55, 0.39, 0.12)
 
 SEMANTIC_CLASS = ["lunar_rover", "vehicle"]
 ROBOT_TYPE = "Wheeled"
+URDF = True
 COLLIDERS, PHYSICS_MATERIAL, PHYSICS_MATERIALS = K.standard_physics(hull=("mli_silver", "kapton"))
 SIMPLE_TRIS = 8000
 RENDER_VIEWS = K.views(0.55, 0.80, 0.40, centre_z=0.14)

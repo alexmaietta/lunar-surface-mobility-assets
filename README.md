@@ -223,6 +223,7 @@ Build the models and serve the site locally:
   | Blender | `blender/<id>.blend` | Source model with all textures packed |
   | Simple USD | `simple/usd/<id>_simple.usd` | One decimated mesh, flat materials, one rigid body with mass, inertia and per-link convex-hull colliders |
   | Simple glTF / OBJ | `simple/gltf/<id>_simple.glb`, `simple/obj/<id>_simple.obj` | The same mesh, Y-up, no textures |
+  | URDF (`viper`, `cadre`) | `urdf/<id>.urdf` + `urdf/meshes/` | Z-up, one link per USD link with mass, centre of mass and full inertia tensor, per-link OBJ visuals (textures shared with `obj/`), convex-hull colliders, joint limits and efforts. VIPER's four-bar loops become `<mimic>` joints (exact for its parallelogram arms). Cameras, lights and tool sites are fixed `<name>_frame` links with +X forward |
 
   Paths are inside each asset folder, `assets/<vendor>/<family>/<name>/`, which also holds that asset's `LICENSE` and `NOTICE`. glTF and OBJ carry the default configuration only (no variants, physics or sites); texture tiling is baked into their UVs.
 

@@ -1,0 +1,256 @@
+<?xml version="1.0" ?>
+<robot name="cadre">
+  <link name="base_link"/>
+  <joint name="base_link_to_chassis" type="fixed">
+    <parent link="base_link"/>
+    <child link="chassis"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="chassis">
+    <inertial>
+      <origin xyz="0 0 0.16" rpy="0 0 0"/>
+      <mass value="7.06"/>
+      <inertia ixx="0.0979575" ixy="0" ixz="0" iyy="0.186443" iyz="0" izz="0.267456"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/chassis.obj"/>
+      </geometry>
+    </visual>
+    <collision name="chassis_hull_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/chassis_hull_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="fl_wheel">
+    <inertial>
+      <origin xyz="3.72529e-09 0.00236 0" rpy="0 0 0"/>
+      <mass value="0.25"/>
+      <inertia ixx="0.000591048" ixy="0" ixz="0" iyy="0.00109674" iyz="0" izz="0.000591048"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fl_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="fl_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/fl_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="fl_wheel" type="continuous">
+    <parent link="chassis"/>
+    <child link="fl_wheel"/>
+    <origin xyz="0.15 0.16 0.078" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="0.327015" velocity="6.28319"/>
+    <dynamics damping="12.9" friction="0"/>
+  </joint>
+  <link name="fr_wheel">
+    <inertial>
+      <origin xyz="3.72529e-09 -0.002305 0" rpy="0 0 0"/>
+      <mass value="0.25"/>
+      <inertia ixx="0.000569572" ixy="0" ixz="0" iyy="0.00105338" iyz="0" izz="0.000569572"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fr_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="fr_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/fr_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="fr_wheel" type="continuous">
+    <parent link="chassis"/>
+    <child link="fr_wheel"/>
+    <origin xyz="0.15 -0.16 0.078" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="0.327015" velocity="6.28319"/>
+    <dynamics damping="12.9" friction="0"/>
+  </joint>
+  <link name="front_camera_cover">
+    <inertial>
+      <origin xyz="0.002 0 -0.027" rpy="0 0 0"/>
+      <mass value="0.02"/>
+      <inertia ixx="3.6375e-05" ixy="0" ixz="0" iyy="6.66667e-06" iyz="0" izz="3.10417e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/front_camera_cover.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="front_camera_cover" type="revolute">
+    <parent link="chassis"/>
+    <child link="front_camera_cover"/>
+    <origin xyz="0.26 0 0.197" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+    <limit effort="0.2" velocity="6.28319" lower="0" upper="1.6"/>
+    <dynamics damping="0.02" friction="0"/>
+  </joint>
+  <link name="rear_camera_cover">
+    <inertial>
+      <origin xyz="-0.002 0 -0.027" rpy="0 0 0"/>
+      <mass value="0.02"/>
+      <inertia ixx="3.50883e-05" ixy="0" ixz="0" iyy="6.27333e-06" iyz="0" izz="3.01483e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rear_camera_cover.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rear_camera_cover" type="revolute">
+    <parent link="chassis"/>
+    <child link="rear_camera_cover"/>
+    <origin xyz="-0.26 0 0.197" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="0.2" velocity="6.28319" lower="0" upper="1.6"/>
+    <dynamics damping="0.02" friction="0"/>
+  </joint>
+  <link name="rl_wheel">
+    <inertial>
+      <origin xyz="-3.72529e-09 0.00267 0" rpy="0 0 0"/>
+      <mass value="0.25"/>
+      <inertia ixx="0.000581536" ixy="0" ixz="0" iyy="0.00108004" iyz="0" izz="0.000581536"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rl_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="rl_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/rl_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rl_wheel" type="continuous">
+    <parent link="chassis"/>
+    <child link="rl_wheel"/>
+    <origin xyz="-0.15 0.16 0.078" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="0.327015" velocity="6.28319"/>
+    <dynamics damping="12.9" friction="0"/>
+  </joint>
+  <link name="rr_wheel">
+    <inertial>
+      <origin xyz="-3.72529e-09 -0.002305 0" rpy="0 0 0"/>
+      <mass value="0.25"/>
+      <inertia ixx="0.000556405" ixy="0" ixz="0" iyy="0.00102704" iyz="0" izz="0.000556405"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rr_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="rr_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/rr_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rr_wheel" type="continuous">
+    <parent link="chassis"/>
+    <child link="rr_wheel"/>
+    <origin xyz="-0.15 -0.16 0.078" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="0.327015" velocity="6.28319"/>
+    <dynamics damping="12.9" friction="0"/>
+  </joint>
+  <link name="solar_wing_l">
+    <inertial>
+      <origin xyz="0 0.107 0" rpy="0 0 0"/>
+      <mass value="0.25"/>
+      <inertia ixx="0.00106302" ixy="0" ixz="0" iyy="0.00583835" iyz="0" izz="0.00688471"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/solar_wing_l.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="solar_wing_l" type="revolute">
+    <parent link="chassis"/>
+    <child link="solar_wing_l"/>
+    <origin xyz="0 0.1925 0.225" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="1" velocity="6.28319" lower="0" upper="3.14159"/>
+    <dynamics damping="0.2" friction="0"/>
+  </joint>
+  <link name="solar_wing_r">
+    <inertial>
+      <origin xyz="0 -0.1055 0" rpy="0 0 0"/>
+      <mass value="0.25"/>
+      <inertia ixx="0.00105367" ixy="0" ixz="0" iyy="0.00575052" iyz="0" izz="0.00678752"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/solar_wing_r.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="solar_wing_r" type="revolute">
+    <parent link="chassis"/>
+    <child link="solar_wing_r"/>
+    <origin xyz="0 -0.1925 0.233" rpy="0 0 0"/>
+    <axis xyz="-1 0 0"/>
+    <limit effort="1" velocity="6.28319" lower="0" upper="3.14159"/>
+    <dynamics damping="0.2" friction="0"/>
+  </joint>
+  <link name="front_stereo_cam_0_frame"/>
+  <joint name="front_stereo_cam_0_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="front_stereo_cam_0_frame"/>
+    <origin xyz="0.278 -0.035 0.17" rpy="0 -0 0"/>
+  </joint>
+  <link name="front_stereo_cam_1_frame"/>
+  <joint name="front_stereo_cam_1_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="front_stereo_cam_1_frame"/>
+    <origin xyz="0.278 0.035 0.17" rpy="0 -0 0"/>
+  </joint>
+  <link name="rear_stereo_cam_0_frame"/>
+  <joint name="rear_stereo_cam_0_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="rear_stereo_cam_0_frame"/>
+    <origin xyz="-0.278 0.035 0.17" rpy="0 -0 3.14159"/>
+  </joint>
+  <link name="rear_stereo_cam_1_frame"/>
+  <joint name="rear_stereo_cam_1_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="rear_stereo_cam_1_frame"/>
+    <origin xyz="-0.278 -0.035 0.17" rpy="0 -0 3.14159"/>
+  </joint>
+  <link name="gpr_phase_centre_frame"/>
+  <joint name="gpr_phase_centre_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="gpr_phase_centre_frame"/>
+    <origin xyz="0 0 0.081" rpy="0 1.5708 2.35619"/>
+  </joint>
+  <link name="imu_frame"/>
+  <joint name="imu_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="imu_frame"/>
+    <origin xyz="0 0 0.17" rpy="0 -1.5708 0"/>
+  </joint>
+</robot>
