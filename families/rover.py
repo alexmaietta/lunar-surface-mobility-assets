@@ -427,8 +427,12 @@ def _wheel_geo(n, link, wc, W, side, m):
             rb = r - gh + 0.004
             lathe([(ri, s * w / 2), (rb, s * w / 2), (rb, s * (w / 2 - 0.02)), (ri, s * (w / 2 - 0.02))], "titanium", f"bead_{s + 1}")
     else:
-        lathe([(r - gh - 0.006, -w / 2), (r - gh, -w / 2), (r - gh, w / 2), (r - gh - 0.006, w / 2), (r - gh - 0.006, -w / 2)],
-              W.get("drum_mat", "aluminium"), "drum")
+        nb, gap = W.get("bands", 1), W.get("band_gap", 0.0)
+        bw = (w - gap * (nb - 1)) / nb
+        for b in range(nb):
+            y0, y1 = -w / 2 + b * (bw + gap), -w / 2 + b * (bw + gap) + bw
+            lathe([(r - gh - 0.006, y0), (r - gh, y0), (r - gh, y1), (r - gh - 0.006, y1), (r - gh - 0.006, y0)],
+                  W.get("drum_mat", "aluminium"), "drum" if nb == 1 else f"drum_{b}")
     ng = W.get("grousers", 24)
     gmat = W.get("grouser_mat", "tread" if style in ("spring", "airless", "solid") else "titanium")
     geos = []
@@ -442,6 +446,12 @@ def _wheel_geo(n, link, wc, W, side, m):
                 ang = math.radians(28)
                 ax = (tdir * math.sin(ang) + Vector((0, s, 0)) * math.cos(ang)).normalized()
                 geos.append(obox_geo(cc + Vector((0, s * w / 4, 0)) + tdir * 0.0, ax, d, (w / 2 / math.cos(ang) * 0.95, gh, 0.018 + 0.02 * r)))
+        elif W.get("bands", 1) > 1:
+            nb, gap = W["bands"], W.get("band_gap", 0.0)
+            bw = (w - gap * (nb - 1)) / nb
+            for b in range(nb):
+                yc = -w / 2 + b * (bw + gap) + bw / 2
+                geos.append(obox_geo(cc + Vector((0, yc, 0)), Vector((0, 1, 0)), d, (bw * 0.96, gh, 0.012 + 0.012 * r)))
         else:
             geos.append(obox_geo(cc, Vector((0, 1, 0)), d, (w * 0.98, gh, 0.012 + 0.012 * r)))
     if geos:
@@ -454,6 +464,14 @@ def _wheel_geo(n, link, wc, W, side, m):
         for s_ in (-1, 1):
             lathe([(r - gh - fw, s_ * w / 2), (r - gh + 0.002, s_ * w / 2), (r - gh + 0.002, s_ * (w / 2 - 0.003)),
                    (r - gh - fw, s_ * (w / 2 - 0.003))][::s_], fmat, f"flange_{s_ + 1}")
+        if W.get("bands", 1) > 1:
+            nb, gap = W["bands"], W.get("band_gap", 0.0)
+            bw = (w - gap * (nb - 1)) / nb
+            for b in range(nb - 1):
+                for k, y in enumerate((-w / 2 + (b + 1) * bw + b * gap, -w / 2 + (b + 1) * (bw + gap))):
+                    s_ = 1 if k == 0 else -1
+                    lathe([(r - gh - fw, y), (r - gh + 0.002, y), (r - gh + 0.002, y - s_ * 0.003), (r - gh - fw, y - s_ * 0.003)][::s_],
+                          fmat, f"flange_mid_{b}_{k}")
     if W.get("gussets"):
         (gl, gh_, gt), gmat_, rv = W["gussets"]
         tabs, rivets = [], []
@@ -481,7 +499,8 @@ def _wheel_geo(n, link, wc, W, side, m):
             hub = hub_c + Vector((rh * 0.8 * math.cos(a0), 0, -rh * 0.8 * math.sin(a0)))
             sp.append(G.tube_uv(hub, rim, wr, 5, caps=False))
         G.add_mesh_uv(f"{n}_wire_spokes", G.merge_geo(*sp), m(W.get("spoke_mat", "titanium")), link)
-        G.add_mesh_uv(f"{n}_hub_flange", G.tube_uv(hub_c - Vector((0, 0.006, 0)), hub_c + Vector((0, 0.006, 0)), rh, 32),
+        hw = W.get("hub_w", 0.012) / 2
+        G.add_mesh_uv(f"{n}_hub_flange", G.tube_uv(hub_c - Vector((0, hw, 0)), hub_c + Vector((0, hw, 0)), rh, 32),
                       m(W.get("hub_mat", "anodised_dark")), link)
         G.add_mesh_uv(f"{n}_drive_motor", G.tube_uv(hub_c - Vector((0, side * 0.006, 0)), c0 - Vector((0, side * w * 0.42, 0)), rh * 0.5, 24),
                       m(W.get("motor_mat", "anodised_dark")), link)

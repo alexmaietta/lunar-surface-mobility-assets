@@ -1,0 +1,655 @@
+<?xml version="1.0" ?>
+<robot name="mph">
+  <link name="base_link"/>
+  <joint name="base_link_to_chassis" type="fixed">
+    <parent link="base_link"/>
+    <child link="chassis"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="chassis">
+    <inertial>
+      <origin xyz="0 0 2.35" rpy="0 0 0"/>
+      <mass value="11566"/>
+      <inertia ixx="17349" ixy="0" ixz="0" iyy="49396.5" iyz="0" izz="49396.5"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/chassis.obj"/>
+      </geometry>
+    </visual>
+    <collision name="chassis_hull_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/chassis_hull_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="bogie_fl">
+    <inertial>
+      <origin xyz="-0.0322164 0.07075 -0.0900443" rpy="0 0 0"/>
+      <mass value="180"/>
+      <inertia ixx="7.02534" ixy="0" ixz="0" iyy="44.3369" iyz="0" izz="40.6803"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/bogie_fl.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="bogie_fl" type="revolute">
+    <parent link="chassis"/>
+    <child link="bogie_fl"/>
+    <origin xyz="2 1.45 1" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="1e+06" velocity="6.28319" lower="-0.3" upper="0.3"/>
+    <dynamics damping="8000" friction="0"/>
+  </joint>
+  <link name="bogie_fr">
+    <inertial>
+      <origin xyz="-0.0318164 -0.07035 -0.0920443" rpy="0 0 0"/>
+      <mass value="180"/>
+      <inertia ixx="6.98434" ixy="0" ixz="0" iyy="44.3572" iyz="0" izz="40.7739"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/bogie_fr.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="bogie_fr" type="revolute">
+    <parent link="chassis"/>
+    <child link="bogie_fr"/>
+    <origin xyz="2 -1.45 1" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="1e+06" velocity="6.28319" lower="-0.3" upper="0.3"/>
+    <dynamics damping="8000" friction="0"/>
+  </joint>
+  <link name="bogie_rl">
+    <inertial>
+      <origin xyz="0.0340164 0.07235 -0.0940443" rpy="0 0 0"/>
+      <mass value="180"/>
+      <inertia ixx="7.05148" ixy="0" ixz="0" iyy="44.4969" iyz="0" izz="40.8951"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/bogie_rl.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="bogie_rl" type="revolute">
+    <parent link="chassis"/>
+    <child link="bogie_rl"/>
+    <origin xyz="-2 1.45 1" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="1e+06" velocity="6.28319" lower="-0.3" upper="0.3"/>
+    <dynamics damping="8000" friction="0"/>
+  </joint>
+  <link name="bogie_rr">
+    <inertial>
+      <origin xyz="0.0336164 -0.071925 -0.0936443" rpy="0 0 0"/>
+      <mass value="180"/>
+      <inertia ixx="7.09593" ixy="0" ixz="0" iyy="44.6031" iyz="0" izz="40.9885"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/bogie_rr.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="bogie_rr" type="revolute">
+    <parent link="chassis"/>
+    <child link="bogie_rr"/>
+    <origin xyz="-2 -1.45 1" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="1e+06" velocity="6.28319" lower="-0.3" upper="0.3"/>
+    <dynamics damping="8000" friction="0"/>
+  </joint>
+  <link name="dock_door">
+    <inertial>
+      <origin xyz="-0.0681755 -0.665 -1.19209e-07" rpy="0 0 0"/>
+      <mass value="90"/>
+      <inertia ixx="40.2759" ixy="0" ixz="0" iyy="28.7775" iyz="0" izz="11.9691"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/dock_door.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="dock_door" type="revolute">
+    <parent link="chassis"/>
+    <child link="dock_door"/>
+    <origin xyz="-3.205 0.665 2.63" rpy="0 0 0"/>
+    <axis xyz="0 0 -1"/>
+    <limit effort="1500" velocity="6.28319" lower="0" upper="1.91986"/>
+    <dynamics damping="600" friction="0"/>
+  </joint>
+  <link name="eva_door">
+    <inertial>
+      <origin xyz="0.0681755 0.665 -1.19209e-07" rpy="0 0 0"/>
+      <mass value="90"/>
+      <inertia ixx="40.2759" ixy="0" ixz="0" iyy="28.7775" iyz="0" izz="11.9691"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/eva_door.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="eva_door" type="revolute">
+    <parent link="chassis"/>
+    <child link="eva_door"/>
+    <origin xyz="3.205 -0.665 2.63" rpy="0 0 0"/>
+    <axis xyz="0 0 -1"/>
+    <limit effort="1500" velocity="6.28319" lower="0" upper="1.91986"/>
+    <dynamics damping="600" friction="0"/>
+  </joint>
+  <link name="hga_azimuth">
+    <inertial>
+      <origin xyz="0 0 0.0876002" rpy="0 0 0"/>
+      <mass value="3.2"/>
+      <inertia ixx="0.0125028" ixy="0" ixz="0" iyy="0.0125028" iyz="0" izz="0.00672841"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/hga_azimuth.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="hga_azimuth" type="revolute">
+    <parent link="chassis"/>
+    <child link="hga_azimuth"/>
+    <origin xyz="2.825 -1.02 4.48" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="30" velocity="6.28319" lower="-3.14159" upper="3.14159"/>
+    <dynamics damping="4" friction="0"/>
+  </joint>
+  <link name="porch">
+    <inertial>
+      <origin xyz="0.411215 0.000200003 0.836764" rpy="0 0 0"/>
+      <mass value="35"/>
+      <inertia ixx="21.3621" ixy="0" ixz="0" iyy="13.1452" iyz="0" izz="13.874"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/porch.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="porch" type="revolute">
+    <parent link="chassis"/>
+    <child link="porch"/>
+    <origin xyz="3.285 0 1.615" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="4000" velocity="6.28319" lower="0" upper="1.6057"/>
+    <dynamics damping="800" friction="0"/>
+  </joint>
+  <link name="radiator_wing_l">
+    <inertial>
+      <origin xyz="0.00059998 0.744782 -0.43" rpy="0 0 0"/>
+      <mass value="120"/>
+      <inertia ixx="28.8236" ixy="0" ixz="0" iyy="562.539" iyz="0" izz="576.096"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/radiator_wing_l.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="radiator_wing_l" type="revolute">
+    <parent link="chassis"/>
+    <child link="radiator_wing_l"/>
+    <origin xyz="0 0.85 4.08" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="10000" velocity="6.28319" lower="0" upper="2.05949"/>
+    <dynamics damping="20000" friction="0"/>
+  </joint>
+  <link name="radiator_wing_r">
+    <inertial>
+      <origin xyz="-0.00200009 -0.744782 -0.43" rpy="0 0 0"/>
+      <mass value="120"/>
+      <inertia ixx="28.8236" ixy="0" ixz="0" iyy="562.003" iyz="0" izz="575.56"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/radiator_wing_r.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="radiator_wing_r" type="revolute">
+    <parent link="chassis"/>
+    <child link="radiator_wing_r"/>
+    <origin xyz="0 -0.85 4.08" rpy="0 0 0"/>
+    <axis xyz="-1 0 0"/>
+    <limit effort="10000" velocity="6.28319" lower="0" upper="2.05949"/>
+    <dynamics damping="20000" friction="0"/>
+  </joint>
+  <link name="solar_yaw">
+    <inertial>
+      <origin xyz="0.000800014 0 4.1896" rpy="0 0 0"/>
+      <mass value="260"/>
+      <inertia ixx="1528.72" ixy="0" ixz="0" iyy="1861.75" iyz="0" izz="341.027"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/solar_yaw.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="solar_yaw" type="revolute">
+    <parent link="chassis"/>
+    <child link="solar_yaw"/>
+    <origin xyz="0 0 4.55" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="3000" velocity="6.28319" lower="-3.14159" upper="3.14159"/>
+    <dynamics damping="6000" friction="0"/>
+  </joint>
+  <link name="f0l_wheel">
+    <inertial>
+      <origin xyz="-2.98023e-08 0.000199944 -2.98023e-08" rpy="0 0 0"/>
+      <mass value="80"/>
+      <inertia ixx="15.3594" ixy="0" ixz="0" iyy="27.956" iyz="0" izz="15.3594"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/f0l_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="f0l_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/f0l_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="f0l_wheel" type="continuous">
+    <parent link="bogie_fl"/>
+    <child link="f0l_wheel"/>
+    <origin xyz="-0.76 0.35 -0.28" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="2457" velocity="6.28319"/>
+    <dynamics damping="10500" friction="0"/>
+  </joint>
+  <link name="f1l_steer">
+    <inertial>
+      <origin xyz="0 0.05575 0.2094" rpy="0 0 0"/>
+      <mass value="84"/>
+      <inertia ixx="3.78345" ixy="0" ixz="0" iyy="3.29806" iyz="0" izz="1.39717"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/f1l_steer.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="f1l_steer" type="revolute">
+    <parent link="bogie_fl"/>
+    <child link="f1l_steer"/>
+    <origin xyz="0.76 -1.19209e-07 -0.28" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="5250" velocity="6.28319" lower="-0.436332" upper="0.436332"/>
+    <dynamics damping="7000" friction="0"/>
+  </joint>
+  <link name="f0r_wheel">
+    <inertial>
+      <origin xyz="-2.98023e-08 0.000200056 -2.98023e-08" rpy="0 0 0"/>
+      <mass value="80"/>
+      <inertia ixx="15.3797" ixy="0" ixz="0" iyy="27.9869" iyz="0" izz="15.3797"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/f0r_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="f0r_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/f0r_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="f0r_wheel" type="continuous">
+    <parent link="bogie_fr"/>
+    <child link="f0r_wheel"/>
+    <origin xyz="-0.76 -0.35 -0.28" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="2457" velocity="6.28319"/>
+    <dynamics damping="10500" friction="0"/>
+  </joint>
+  <link name="f1r_steer">
+    <inertial>
+      <origin xyz="0 -0.05575 0.2094" rpy="0 0 0"/>
+      <mass value="84"/>
+      <inertia ixx="3.81726" ixy="0" ixz="0" iyy="3.32812" iyz="0" izz="1.41815"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/f1r_steer.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="f1r_steer" type="revolute">
+    <parent link="bogie_fr"/>
+    <child link="f1r_steer"/>
+    <origin xyz="0.76 1.19209e-07 -0.28" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="5250" velocity="6.28319" lower="-0.436332" upper="0.436332"/>
+    <dynamics damping="7000" friction="0"/>
+  </joint>
+  <link name="r0l_steer">
+    <inertial>
+      <origin xyz="0 0.05575 0.2094" rpy="0 0 0"/>
+      <mass value="84"/>
+      <inertia ixx="3.7947" ixy="0" ixz="0" iyy="3.30806" iyz="0" izz="1.40415"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/r0l_steer.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="r0l_steer" type="revolute">
+    <parent link="bogie_rl"/>
+    <child link="r0l_steer"/>
+    <origin xyz="-0.76 -1.19209e-07 -0.28" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="5250" velocity="6.28319" lower="-0.436332" upper="0.436332"/>
+    <dynamics damping="7000" friction="0"/>
+  </joint>
+  <link name="r1l_wheel">
+    <inertial>
+      <origin xyz="2.98023e-08 -0.00110959 -2.98023e-08" rpy="0 0 0"/>
+      <mass value="80"/>
+      <inertia ixx="15.3158" ixy="0" ixz="0" iyy="27.8326" iyz="0" izz="15.3158"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/r1l_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="r1l_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/r1l_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="r1l_wheel" type="continuous">
+    <parent link="bogie_rl"/>
+    <child link="r1l_wheel"/>
+    <origin xyz="0.76 0.35 -0.28" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="2457" velocity="6.28319"/>
+    <dynamics damping="10500" friction="0"/>
+  </joint>
+  <link name="r0r_steer">
+    <inertial>
+      <origin xyz="0 -0.05575 0.2094" rpy="0 0 0"/>
+      <mass value="84"/>
+      <inertia ixx="3.82857" ixy="0" ixz="0" iyy="3.33818" iyz="0" izz="1.42518"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/r0r_steer.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="r0r_steer" type="revolute">
+    <parent link="bogie_rr"/>
+    <child link="r0r_steer"/>
+    <origin xyz="-0.76 1.19209e-07 -0.28" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="5250" velocity="6.28319" lower="-0.436332" upper="0.436332"/>
+    <dynamics damping="7000" friction="0"/>
+  </joint>
+  <link name="r1r_wheel">
+    <inertial>
+      <origin xyz="2.98023e-08 -4.17233e-07 -2.98023e-08" rpy="0 0 0"/>
+      <mass value="80"/>
+      <inertia ixx="15.3226" ixy="0" ixz="0" iyy="27.8635" iyz="0" izz="15.3226"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/r1r_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="r1r_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/r1r_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="r1r_wheel" type="continuous">
+    <parent link="bogie_rr"/>
+    <child link="r1r_wheel"/>
+    <origin xyz="0.76 -0.35 -0.28" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="2457" velocity="6.28319"/>
+    <dynamics damping="10500" friction="0"/>
+  </joint>
+  <link name="hga_elevation">
+    <inertial>
+      <origin xyz="0.0503043 -0.0302626 0.122809" rpy="0 0 0"/>
+      <mass value="4.8"/>
+      <inertia ixx="0.167282" ixy="0" ixz="0" iyy="0.152578" iyz="0" izz="0.227056"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/hga_elevation.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="hga_elevation" type="revolute">
+    <parent link="hga_azimuth"/>
+    <child link="hga_elevation"/>
+    <origin xyz="0 0 0.178" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+    <limit effort="30" velocity="6.28319" lower="-0.349066" upper="1.5708"/>
+    <dynamics damping="4" friction="0"/>
+  </joint>
+  <link name="ladder">
+    <inertial>
+      <origin xyz="0.250242 0 -0.7775" rpy="0 0 0"/>
+      <mass value="15"/>
+      <inertia ixx="3.58158" ixy="0" ixz="0" iyy="3.49228" iyz="0" izz="0.874185"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/ladder.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="ladder" type="revolute">
+    <parent link="porch"/>
+    <child link="ladder"/>
+    <origin xyz="0.84 0 -0.04" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="1500" velocity="6.28319" lower="0" upper="1.8326"/>
+    <dynamics damping="300" friction="0"/>
+  </joint>
+  <link name="f1l_wheel">
+    <inertial>
+      <origin xyz="0 0.000199944 -2.98023e-08" rpy="0 0 0"/>
+      <mass value="80"/>
+      <inertia ixx="15.4" ixy="0" ixz="0" iyy="28.0179" iyz="0" izz="15.4"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/f1l_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="f1l_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/f1l_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="f1l_wheel" type="continuous">
+    <parent link="f1l_steer"/>
+    <child link="f1l_wheel"/>
+    <origin xyz="0 0.35 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="2457" velocity="6.28319"/>
+    <dynamics damping="10500" friction="0"/>
+  </joint>
+  <link name="f1r_wheel">
+    <inertial>
+      <origin xyz="0 0.000200063 -2.98023e-08" rpy="0 0 0"/>
+      <mass value="80"/>
+      <inertia ixx="15.2605" ixy="0" ixz="0" iyy="27.7095" iyz="0" izz="15.2605"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/f1r_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="f1r_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/f1r_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="f1r_wheel" type="continuous">
+    <parent link="f1r_steer"/>
+    <child link="f1r_wheel"/>
+    <origin xyz="0 -0.35 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="2457" velocity="6.28319"/>
+    <dynamics damping="10500" friction="0"/>
+  </joint>
+  <link name="r0l_wheel">
+    <inertial>
+      <origin xyz="0 0.000199936 -2.98023e-08" rpy="0 0 0"/>
+      <mass value="80"/>
+      <inertia ixx="15.4204" ixy="0" ixz="0" iyy="28.0488" iyz="0" izz="15.4204"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/r0l_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="r0l_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/r0l_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="r0l_wheel" type="continuous">
+    <parent link="r0l_steer"/>
+    <child link="r0l_wheel"/>
+    <origin xyz="0 0.35 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="2457" velocity="6.28319"/>
+    <dynamics damping="10500" friction="0"/>
+  </joint>
+  <link name="r0r_wheel">
+    <inertial>
+      <origin xyz="0 0.000200056 -2.98023e-08" rpy="0 0 0"/>
+      <mass value="80"/>
+      <inertia ixx="15.2808" ixy="0" ixz="0" iyy="27.7402" iyz="0" izz="15.2808"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/r0r_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="r0r_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/r0r_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="r0r_wheel" type="continuous">
+    <parent link="r0r_steer"/>
+    <child link="r0r_wheel"/>
+    <origin xyz="0 -0.35 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="2457" velocity="6.28319"/>
+    <dynamics damping="10500" friction="0"/>
+  </joint>
+  <link name="hga_boresight_frame"/>
+  <joint name="hga_boresight_frame_joint" type="fixed">
+    <parent link="hga_elevation"/>
+    <child link="hga_boresight_frame"/>
+    <origin xyz="0.142538 -0.085523 0.285077" rpy="0 -1.0429 -0.54042"/>
+  </joint>
+  <link name="eva_flood_l_frame"/>
+  <joint name="eva_flood_l_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="eva_flood_l_frame"/>
+    <origin xyz="3.26345 0.94831 3.62493" rpy="0 0.531808 -0.197396"/>
+  </joint>
+  <link name="eva_flood_r_frame"/>
+  <joint name="eva_flood_r_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="eva_flood_r_frame"/>
+    <origin xyz="3.26345 -0.94831 3.62493" rpy="0 0.531808 0.197396"/>
+  </joint>
+  <link name="dock_flood_l_frame"/>
+  <joint name="dock_flood_l_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="dock_flood_l_frame"/>
+    <origin xyz="-3.26345 0.94831 3.62493" rpy="0 0.531808 -2.9442"/>
+  </joint>
+  <link name="dock_flood_r_frame"/>
+  <joint name="dock_flood_r_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="dock_flood_r_frame"/>
+    <origin xyz="-3.26345 -0.94831 3.62493" rpy="0 0.531808 2.9442"/>
+  </joint>
+  <link name="flank_light_l_frame"/>
+  <joint name="flank_light_l_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="flank_light_l_frame"/>
+    <origin xyz="0 1.47894 2.82553" rpy="0 0.463648 1.5708"/>
+  </joint>
+  <link name="flank_light_r_frame"/>
+  <joint name="flank_light_r_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="flank_light_r_frame"/>
+    <origin xyz="0 -1.47894 2.82553" rpy="0 0.463648 -1.5708"/>
+  </joint>
+  <link name="porch_light_frame"/>
+  <joint name="porch_light_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="porch_light_frame"/>
+    <origin xyz="3.30281 0 1.44875" rpy="0 0.674741 0"/>
+  </joint>
+  <link name="imu_frame"/>
+  <joint name="imu_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="imu_frame"/>
+    <origin xyz="0 0 1.63" rpy="0 -1.5708 0"/>
+  </joint>
+</robot>

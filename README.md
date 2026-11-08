@@ -38,6 +38,7 @@ These are simulation-ready models of lunar landers, rovers and their friends. Ea
 | Concept | [Lunar Terrain Vehicle](assets/concepts/ltv/rover), crewed or uncrewed | `ltv_concept` | v0.1: concept, packaged, Newton-tested |
 | Concept | [Pressurised rover](assets/concepts/pressurized/rover) | `pr_concept` | v0.1: concept, packaged, Newton-tested |
 | Blue Origin | [Blue Moon MK2](assets/blue_origin/mk2/lander) crewed lander (Artemis HLS) | `mk2` | v0.1: render- and drawing-matched, packaged, Newton-tested |
+| ASI / Thales Alenia Space | [Multi-Purpose Habitation (MPH)](assets/asi_thales/mph/habitat) mobile surface habitat (2025 reference design) | `mph` | v0.1 (unreleased): CAD camera-matched, packaged, Newton-tested |
 
 All assets share one frame and are built to scale (Z up, metres, origin on the ground under the centerline), so they can be placed side by side:
 
@@ -67,6 +68,7 @@ The rovers use the same frame, with the origin on the ground under the chassis c
 | `viper` | 1.72 × 1.77 × 2.59 m (with LGA whip) | 447 kg roving, 490 launch | 4 × 0.50 m wire-spoked drum, 20 grousers | active four-bar (360 mm stroke, wheel walking, 7–43 cm clearance); ±50° offset-kingpin steer | TRIDENT drill (0.38 m deploy, 1.24 m feed, auger spin), pan-tilt mast with lens covers, flat HGA, 8 photometric 457 nm lights, 9 spectral cameras |
 | `mapp` | 0.45 × 0.39 × 0.44 m | 10 kg | 4 × 0.12 m paddle | rockers; skid steer | – |
 | `cadre` | 0.56 × 0.81 × 0.35 m (wings open) | 8.6 kg | 4 × 0.16 m grousered | rigid; skid steer | hinged solar wings, flip-up camera covers |
+| `mph` | 8.38 × 4.65 × 4.9 m (porch and ladder deployed, radiators out, blanket canisters; 12.9 m with the solar blankets raised); 3.0 × 6.55 m hull | 14,000 kg launch (15,000 heavy) | 8 × 1.44 m all-metal twin-band, tensioned-cable spokes | two passive walking-beam bogies per side; the four corner wheels steer | EVA door and docking-end door, fold-down porch and ladder, sun-tracking pedestal with two 1.8 × 8 m roll-out blankets, two folding radiator wings, gimballed dish |
 
 ## Quick Start
 
@@ -165,6 +167,15 @@ VIPER in the dark under its own 457 nm NavLights and HazLights (Cycles), and wha
 | ![NASA VIPER driving at night under its NavLights](docs/images/nasa/viper/rover/night_drive.jpg) | ![VIPER left NavCam view, RTX spectral](docs/images/nasa/viper/rover/nav_cam_left_spectral.jpg) | ![VIPER front-left HazCam view, RTX spectral](docs/images/nasa/viper/rover/haz_cam_fl_spectral.jpg) |
 | ![NASA VIPER mast head, NavCams, NavLights and HGA](docs/images/nasa/viper/rover/mast.jpg) | ![NASA VIPER wheel module](docs/images/nasa/viper/rover/wheel.jpg) | |
 
+### Habitats
+
+The ASI / Thales Alenia Space Multi-Purpose Habitation module, likely the first habitat on the lunar surface. It drives itself off its delivery lander on eight Astrobotic wheels, then raises its solar blankets. The overall proportions and wheel size come from a two-view camera match of the ICES-2025-60 CAD figures, scaled to the 3 m hull.
+
+| | | |
+|---|---|---|
+| ![MPH front three-quarter, solar blankets raised](docs/images/asi_thales/mph/habitat/front_three_quarter.jpg) | ![MPH docking end and rear three-quarter](docs/images/asi_thales/mph/habitat/rear_three_quarter.jpg) | ![MPH stowed for driving](docs/images/asi_thales/mph/habitat/stowed_for_driving.jpg) |
+| ![MPH EVA door open above the porch and ladder](docs/images/asi_thales/mph/habitat/eva_door_open.jpg) | ![MPH EVA end at night under its own lights](docs/images/asi_thales/mph/habitat/eva_end_night.jpg) | ![MPH wheels and bogies](docs/images/asi_thales/mph/habitat/wheel.jpg) |
+
 ## Web viewer
 
 `web/` is a static, interactive 3D viewer of every asset, to scale on the lunar surface. It needs no build step and has no CDN calls: three.js r170 and lil-gui are vendored under `web/vendor/three/` (MIT), and it runs from any static file server, offline included.
@@ -236,7 +247,7 @@ Build the models and serve the site locally:
 | `Offloader` (`mk1`) | **none**, crane (bundled `mk1_offloader`, fixed to the deck mount) |
 | `Payload` (rovers) | per rover, e.g. **unloaded**, crewed, uncrewed (`ltv_concept`); **loaded**, launch (`lunar_cruiser`) |
 | `Crew` (LTVs) | **crewed** (seats or standing stations, console, hand-holds), cargo or uncrewed (pallet and boxes instead) |
-| `Solar` (`lunar_cruiser`, `pr_concept`, `flex`, `cadre`) | **stowed**, deployed (also drives the wing joints to their deployed angles; on `cadre` the default is deployed) |
+| `Solar` (`lunar_cruiser`, `pr_concept`, `flex`, `cadre`, `mph`) | **stowed**, deployed (also drives the wing joints to their deployed angles; on `cadre` the default is deployed; on `mph` the default is deployed and stowed retracts the blankets and folds the radiator wings up for driving) |
 | `Ports` (`pr_concept`) | **suitports**, airlock |
 | `SuitportCover` (`sev`), `Antennas` (`mapp`) | the 2010 inflatable suitport cover; the field-test whip antennas |
 | `Lights` (rovers) | **on**, off; on `viper` also nav, haz and nirvss (one light group each) |

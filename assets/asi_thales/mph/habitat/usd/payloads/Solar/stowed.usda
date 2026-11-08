@@ -1,0 +1,62 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "mph"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "mph"
+{
+    over "Geometry"
+    {
+        over "chassis"
+        {
+            over "solar_yaw"
+            {
+                over "solar_yaw__solar_cells__Solar_deployed" (
+                    active = false
+                )
+                {
+                }
+
+                over "solar_yaw__aluminium__Solar_deployed" (
+                    active = false
+                )
+                {
+                }
+
+                over "solar_yaw__beta_white__Solar_deployed" (
+                    active = false
+                )
+                {
+                }
+
+                over "solar_yaw__anodised_dark__Solar_deployed" (
+                    active = false
+                )
+                {
+                }
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "radiator_wing_l"
+        {
+            float drive:angular:physics:targetPosition = 115
+            float state:angular:physics:position = 115
+        }
+
+        over "radiator_wing_r"
+        {
+            float drive:angular:physics:targetPosition = 115
+            float state:angular:physics:position = 115
+        }
+    }
+}
+

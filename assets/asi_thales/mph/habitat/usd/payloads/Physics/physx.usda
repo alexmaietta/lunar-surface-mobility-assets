@@ -1,0 +1,207 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "mph"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./physics.usda@
+    ]
+    upAxis = "Z"
+)
+
+over "mph"
+{
+    over "Geometry"
+    {
+        over "chassis" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI", "PhysxArticulationAPI"]
+        )
+        {
+            bool physxArticulation:enabledSelfCollisions = 0
+            int physxArticulation:solverPositionIterationCount = 32
+            int physxArticulation:solverVelocityIterationCount = 1
+        }
+    }
+
+    over "Physics"
+    {
+        over "bogie_fl" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "f0l_wheel" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "f1l_steer" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "f1l_wheel" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "bogie_fr" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "f0r_wheel" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "f1r_steer" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "f1r_wheel" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "bogie_rl" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "r0l_steer" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "r0l_wheel" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "r1l_wheel" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "bogie_rr" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "r0r_steer" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "r0r_wheel" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "r1r_wheel" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "dock_door" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "eva_door" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "hga_azimuth" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "hga_elevation" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "porch" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "ladder" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "radiator_wing_l" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "radiator_wing_r" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "solar_yaw" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 180
+        }
+    }
+}
+
