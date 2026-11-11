@@ -1,0 +1,839 @@
+<?xml version="1.0" ?>
+<robot name="moon_racer">
+  <link name="base_link"/>
+  <joint name="base_link_to_chassis" type="fixed">
+    <parent link="base_link"/>
+    <child link="chassis"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="chassis">
+    <inertial>
+      <origin xyz="0 0 0.7" rpy="0 0 0"/>
+      <mass value="869"/>
+      <inertia ixx="244.044" ixy="0" ixz="0" iyy="1217.32" iyz="0" izz="1344.05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/chassis.obj"/>
+      </geometry>
+    </visual>
+    <collision name="chassis_hull_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/chassis_hull_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="arm_yaw">
+    <inertial>
+      <origin xyz="0 0 0.044" rpy="0 0 0"/>
+      <mass value="4.5"/>
+      <inertia ixx="0.00822" ixy="0" ixz="0" iyy="0.00821999" iyz="0" izz="0.010092"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/arm_yaw.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="arm_yaw" type="revolute">
+    <parent link="chassis"/>
+    <child link="arm_yaw"/>
+    <origin xyz="-1.55 0 1.08" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="160" velocity="6.28319" lower="-3.14159" upper="3.14159"/>
+    <dynamics damping="240" friction="0"/>
+  </joint>
+  <link name="fl_lower_arm">
+    <inertial>
+      <origin xyz="0 0.180811 0" rpy="0 0 0"/>
+      <mass value="6.6"/>
+      <inertia ixx="0.0979391" ixy="0" ixz="0" iyy="0.0741744" iyz="0" izz="0.168232"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fl_lower_arm.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="fl_lower_arm" type="revolute">
+    <parent link="chassis"/>
+    <child link="fl_lower_arm"/>
+    <origin xyz="1.35 0.5 0.34" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="1e+06" velocity="6.28319" lower="-0.339837" upper="0.429775"/>
+    <dynamics damping="196.727" friction="0"/>
+  </joint>
+  <link name="fl_strut">
+    <inertial>
+      <origin xyz="0 0.05643 -0.081675" rpy="0 0 0"/>
+      <mass value="1.65"/>
+      <inertia ixx="0.00994195" ixy="0" ixz="0" iyy="0.00658205" iyz="0" izz="0.00477716"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fl_strut.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="fl_strut" type="revolute">
+    <parent link="chassis"/>
+    <child link="fl_strut"/>
+    <origin xyz="1.35 0.5108 0.637" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="1000" velocity="6.28319" lower="-1" upper="1"/>
+    <dynamics damping="0" friction="0"/>
+    <mimic joint="fl_lower_arm" multiplier="0.326175" offset="0"/>
+  </joint>
+  <link name="fl_upper_arm">
+    <inertial>
+      <origin xyz="0.000350006 0.153811 0" rpy="0 0 0"/>
+      <mass value="4.4"/>
+      <inertia ixx="0.0498177" ixy="0" ixz="0" iyy="0.0492638" iyz="0" izz="0.0964936"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fl_upper_arm.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="fl_upper_arm" type="revolute">
+    <parent link="chassis"/>
+    <child link="fl_upper_arm"/>
+    <origin xyz="1.35 0.554 0.56" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="1000" velocity="6.28319" lower="-1.2" upper="1.2"/>
+    <dynamics damping="0" friction="0"/>
+    <mimic joint="fl_lower_arm" multiplier="1.18436" offset="0"/>
+  </joint>
+  <link name="fr_lower_arm">
+    <inertial>
+      <origin xyz="0.000350006 -0.180811 0" rpy="0 0 0"/>
+      <mass value="6.6"/>
+      <inertia ixx="0.0979391" ixy="0" ixz="0" iyy="0.0738957" iyz="0" izz="0.167953"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fr_lower_arm.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="fr_lower_arm" type="revolute">
+    <parent link="chassis"/>
+    <child link="fr_lower_arm"/>
+    <origin xyz="1.35 -0.5 0.34" rpy="0 0 0"/>
+    <axis xyz="-1 0 0"/>
+    <limit effort="1e+06" velocity="6.28319" lower="-0.339837" upper="0.429775"/>
+    <dynamics damping="196.727" friction="0"/>
+  </joint>
+  <link name="fr_strut">
+    <inertial>
+      <origin xyz="0 -0.05643 -0.081675" rpy="0 0 0"/>
+      <mass value="1.65"/>
+      <inertia ixx="0.00963722" ixy="0" ixz="0" iyy="0.0063586" iyz="0" izz="0.00458182"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fr_strut.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="fr_strut" type="revolute">
+    <parent link="chassis"/>
+    <child link="fr_strut"/>
+    <origin xyz="1.35 -0.5108 0.637" rpy="0 0 0"/>
+    <axis xyz="-1 0 0"/>
+    <limit effort="1000" velocity="6.28319" lower="-1" upper="1"/>
+    <dynamics damping="0" friction="0"/>
+    <mimic joint="fr_lower_arm" multiplier="0.326175" offset="0"/>
+  </joint>
+  <link name="fr_upper_arm">
+    <inertial>
+      <origin xyz="0 -0.15349 0" rpy="0 0 0"/>
+      <mass value="4.4"/>
+      <inertia ixx="0.0495911" ixy="0" ixz="0" iyy="0.0493943" iyz="0" izz="0.0965083"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fr_upper_arm.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="fr_upper_arm" type="revolute">
+    <parent link="chassis"/>
+    <child link="fr_upper_arm"/>
+    <origin xyz="1.35 -0.554 0.56" rpy="0 0 0"/>
+    <axis xyz="-1 0 0"/>
+    <limit effort="1000" velocity="6.28319" lower="-1.2" upper="1.2"/>
+    <dynamics damping="0" friction="0"/>
+    <mimic joint="fr_lower_arm" multiplier="1.18436" offset="0"/>
+  </joint>
+  <link name="hga_azimuth">
+    <inertial>
+      <origin xyz="0 0 0.0774" rpy="0 0 0"/>
+      <mass value="1.2"/>
+      <inertia ixx="0.00385414" ixy="0" ixz="0" iyy="0.00385414" iyz="0" izz="0.0023762"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/hga_azimuth.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="hga_azimuth" type="revolute">
+    <parent link="chassis"/>
+    <child link="hga_azimuth"/>
+    <origin xyz="-0.2 0.7 2.36" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="30" velocity="6.28319" lower="-3.14159" upper="3.14159"/>
+    <dynamics damping="4" friction="0"/>
+  </joint>
+  <link name="rl_lower_arm">
+    <inertial>
+      <origin xyz="0.000100002 0.180811 0" rpy="0 0 0"/>
+      <mass value="6.6"/>
+      <inertia ixx="0.0979391" ixy="0" ixz="0" iyy="0.0740947" iyz="0" izz="0.168152"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rl_lower_arm.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rl_lower_arm" type="revolute">
+    <parent link="chassis"/>
+    <child link="rl_lower_arm"/>
+    <origin xyz="-1.35 0.5 0.34" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="1e+06" velocity="6.28319" lower="-0.339837" upper="0.429775"/>
+    <dynamics damping="196.727" friction="0"/>
+  </joint>
+  <link name="rl_strut">
+    <inertial>
+      <origin xyz="0 0.05643 -0.081675" rpy="0 0 0"/>
+      <mass value="1.65"/>
+      <inertia ixx="0.00984335" ixy="0" ixz="0" iyy="0.00650962" iyz="0" izz="0.00471377"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rl_strut.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rl_strut" type="revolute">
+    <parent link="chassis"/>
+    <child link="rl_strut"/>
+    <origin xyz="-1.35 0.5108 0.637" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="1000" velocity="6.28319" lower="-1" upper="1"/>
+    <dynamics damping="0" friction="0"/>
+    <mimic joint="rl_lower_arm" multiplier="0.326175" offset="0"/>
+  </joint>
+  <link name="rl_upper_arm">
+    <inertial>
+      <origin xyz="0 0.154161 0" rpy="0 0 0"/>
+      <mass value="4.4"/>
+      <inertia ixx="0.0496312" ixy="0" ixz="0" iyy="0.0490783" iyz="0" izz="0.0961216"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rl_upper_arm.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rl_upper_arm" type="revolute">
+    <parent link="chassis"/>
+    <child link="rl_upper_arm"/>
+    <origin xyz="-1.35 0.554 0.56" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="1000" velocity="6.28319" lower="-1.2" upper="1.2"/>
+    <dynamics damping="0" friction="0"/>
+    <mimic joint="rl_lower_arm" multiplier="1.18436" offset="0"/>
+  </joint>
+  <link name="rr_lower_arm">
+    <inertial>
+      <origin xyz="0.000100002 -0.180811 0" rpy="0 0 0"/>
+      <mass value="6.6"/>
+      <inertia ixx="0.0979391" ixy="0" ixz="0" iyy="0.0740947" iyz="0" izz="0.168152"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rr_lower_arm.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rr_lower_arm" type="revolute">
+    <parent link="chassis"/>
+    <child link="rr_lower_arm"/>
+    <origin xyz="-1.35 -0.5 0.34" rpy="0 0 0"/>
+    <axis xyz="-1 0 0"/>
+    <limit effort="1e+06" velocity="6.28319" lower="-0.339837" upper="0.429775"/>
+    <dynamics damping="196.727" friction="0"/>
+  </joint>
+  <link name="rr_strut">
+    <inertial>
+      <origin xyz="0 -0.05643 -0.081675" rpy="0 0 0"/>
+      <mass value="1.65"/>
+      <inertia ixx="0.00933214" ixy="0" ixz="0" iyy="0.00613621" iyz="0" izz="0.00438802"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rr_strut.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rr_strut" type="revolute">
+    <parent link="chassis"/>
+    <child link="rr_strut"/>
+    <origin xyz="-1.35 -0.5108 0.637" rpy="0 0 0"/>
+    <axis xyz="-1 0 0"/>
+    <limit effort="1000" velocity="6.28319" lower="-1" upper="1"/>
+    <dynamics damping="0" friction="0"/>
+    <mimic joint="rr_lower_arm" multiplier="0.326175" offset="0"/>
+  </joint>
+  <link name="rr_upper_arm">
+    <inertial>
+      <origin xyz="-0.000350006 -0.153811 0" rpy="0 0 0"/>
+      <mass value="4.4"/>
+      <inertia ixx="0.0498177" ixy="0" ixz="0" iyy="0.0492638" iyz="0" izz="0.0964936"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rr_upper_arm.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rr_upper_arm" type="revolute">
+    <parent link="chassis"/>
+    <child link="rr_upper_arm"/>
+    <origin xyz="-1.35 -0.554 0.56" rpy="0 0 0"/>
+    <axis xyz="-1 0 0"/>
+    <limit effort="1000" velocity="6.28319" lower="-1.2" upper="1.2"/>
+    <dynamics damping="0" friction="0"/>
+    <mimic joint="rr_lower_arm" multiplier="1.18436" offset="0"/>
+  </joint>
+  <link name="arm_shoulder">
+    <inertial>
+      <origin xyz="0.32521 0 0" rpy="0 0 0"/>
+      <mass value="9"/>
+      <inertia ixx="0.0175479" ixy="0" ixz="0" iyy="0.440357" iyz="0" izz="0.440357"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/arm_shoulder.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="arm_shoulder" type="revolute">
+    <parent link="arm_yaw"/>
+    <child link="arm_shoulder"/>
+    <origin xyz="0 0 0.0879999" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="160" velocity="6.28319" lower="-0.174533" upper="2.61799"/>
+    <dynamics damping="240" friction="0"/>
+  </joint>
+  <link name="fl_upright">
+    <inertial>
+      <origin xyz="0 0 0.11" rpy="0 0 0"/>
+      <mass value="6.6"/>
+      <inertia ixx="0.0292719" ixy="0" ixz="0" iyy="0.0292718" iyz="0" izz="0.00236009"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fl_upright.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="fl_upright" type="revolute">
+    <parent link="fl_lower_arm"/>
+    <child link="fl_upright"/>
+    <origin xyz="0 0.36 0" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="1000" velocity="6.28319" lower="-1.2" upper="1.2"/>
+    <dynamics damping="0" friction="0"/>
+    <mimic joint="fl_lower_arm" multiplier="-0.983731" offset="0"/>
+  </joint>
+  <link name="fl_strut_rod">
+    <inertial>
+      <origin xyz="-1.68979e-05 0.105121 -0.170302" rpy="0 0 0"/>
+      <mass value="1.65"/>
+      <inertia ixx="0.0180292" ixy="0" ixz="0" iyy="0.0123411" iyz="0" izz="0.00914662"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fl_strut_rod.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="fl_strut_rod" type="prismatic">
+    <parent link="fl_strut"/>
+    <child link="fl_strut_rod"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0.568432 -0.82273"/>
+    <limit effort="1000" velocity="0.5" lower="-0.216596" upper="0.216596"/>
+    <dynamics damping="0" friction="0"/>
+    <mimic joint="fl_lower_arm" multiplier="-0.180857" offset="0"/>
+  </joint>
+  <link name="fr_upright">
+    <inertial>
+      <origin xyz="0 0 0.11" rpy="0 0 0"/>
+      <mass value="6.6"/>
+      <inertia ixx="0.0289734" ixy="0" ixz="0" iyy="0.0289734" iyz="0" izz="0.00225929"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fr_upright.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="fr_upright" type="revolute">
+    <parent link="fr_lower_arm"/>
+    <child link="fr_upright"/>
+    <origin xyz="0 -0.36 0" rpy="0 0 0"/>
+    <axis xyz="-1 0 0"/>
+    <limit effort="1000" velocity="6.28319" lower="-1.2" upper="1.2"/>
+    <dynamics damping="0" friction="0"/>
+    <mimic joint="fr_lower_arm" multiplier="-0.983731" offset="0"/>
+  </joint>
+  <link name="fr_strut_rod">
+    <inertial>
+      <origin xyz="1.68979e-05 -0.105371 -0.170552" rpy="0 0 0"/>
+      <mass value="1.65"/>
+      <inertia ixx="0.0179591" ixy="0" ixz="0" iyy="0.0122722" iyz="0" izz="0.00908401"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fr_strut_rod.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="fr_strut_rod" type="prismatic">
+    <parent link="fr_strut"/>
+    <child link="fr_strut_rod"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 -0.568432 -0.82273"/>
+    <limit effort="1000" velocity="0.5" lower="-0.216596" upper="0.216596"/>
+    <dynamics damping="0" friction="0"/>
+    <mimic joint="fr_lower_arm" multiplier="-0.180857" offset="0"/>
+  </joint>
+  <link name="hga_elevation">
+    <inertial>
+      <origin xyz="0.031183 -1.49012e-08 0.123608" rpy="0 0 0"/>
+      <mass value="1.8"/>
+      <inertia ixx="0.0362977" ixy="0" ixz="0" iyy="0.0338993" iyz="0" izz="0.0575443"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/hga_elevation.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="hga_elevation" type="revolute">
+    <parent link="hga_azimuth"/>
+    <child link="hga_elevation"/>
+    <origin xyz="0 0 0.157" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+    <limit effort="30" velocity="6.28319" lower="-0.349066" upper="1.5708"/>
+    <dynamics damping="4" friction="0"/>
+  </joint>
+  <link name="rl_upright">
+    <inertial>
+      <origin xyz="0.0720598 0.18275 0.252668" rpy="0 0 0"/>
+      <mass value="6.6"/>
+      <inertia ixx="0.250528" ixy="0" ixz="0" iyy="0.431694" iyz="0" izz="0.39461"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rl_upright.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rl_upright" type="revolute">
+    <parent link="rl_lower_arm"/>
+    <child link="rl_upright"/>
+    <origin xyz="0 0.36 0" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="1000" velocity="6.28319" lower="-1.2" upper="1.2"/>
+    <dynamics damping="0" friction="0"/>
+    <mimic joint="rl_lower_arm" multiplier="-0.983731" offset="0"/>
+  </joint>
+  <link name="rl_strut_rod">
+    <inertial>
+      <origin xyz="-1.68979e-05 0.104621 -0.169802" rpy="0 0 0"/>
+      <mass value="1.65"/>
+      <inertia ixx="0.0181697" ixy="0" ixz="0" iyy="0.0124799" iyz="0" izz="0.00927285"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rl_strut_rod.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rl_strut_rod" type="prismatic">
+    <parent link="rl_strut"/>
+    <child link="rl_strut_rod"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0.568432 -0.82273"/>
+    <limit effort="1000" velocity="0.5" lower="-0.216596" upper="0.216596"/>
+    <dynamics damping="0" friction="0"/>
+    <mimic joint="rl_lower_arm" multiplier="-0.180857" offset="0"/>
+  </joint>
+  <link name="rr_upright">
+    <inertial>
+      <origin xyz="0.0720598 -0.18225 0.252418" rpy="0 0 0"/>
+      <mass value="6.6"/>
+      <inertia ixx="0.250247" ixy="0" ixz="0" iyy="0.430617" iyz="0" izz="0.393815"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rr_upright.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rr_upright" type="revolute">
+    <parent link="rr_lower_arm"/>
+    <child link="rr_upright"/>
+    <origin xyz="0 -0.36 0" rpy="0 0 0"/>
+    <axis xyz="-1 0 0"/>
+    <limit effort="1000" velocity="6.28319" lower="-1.2" upper="1.2"/>
+    <dynamics damping="0" friction="0"/>
+    <mimic joint="rr_lower_arm" multiplier="-0.983731" offset="0"/>
+  </joint>
+  <link name="rr_strut_rod">
+    <inertial>
+      <origin xyz="1.68979e-05 -0.104621 -0.169802" rpy="0 0 0"/>
+      <mass value="1.65"/>
+      <inertia ixx="0.0181697" ixy="0" ixz="0" iyy="0.0124799" iyz="0" izz="0.00927285"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rr_strut_rod.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rr_strut_rod" type="prismatic">
+    <parent link="rr_strut"/>
+    <child link="rr_strut_rod"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 -0.568432 -0.82273"/>
+    <limit effort="1000" velocity="0.5" lower="-0.216596" upper="0.216596"/>
+    <dynamics damping="0" friction="0"/>
+    <mimic joint="rr_lower_arm" multiplier="-0.180857" offset="0"/>
+  </joint>
+  <link name="arm_elbow">
+    <inertial>
+      <origin xyz="-0.302571 0 0.0401363" rpy="0 0 0"/>
+      <mass value="7.5"/>
+      <inertia ixx="0.0265053" ixy="0" ixz="0" iyy="0.3309" iyz="0" izz="0.316854"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/arm_elbow.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="arm_elbow" type="revolute">
+    <parent link="arm_shoulder"/>
+    <child link="arm_elbow"/>
+    <origin xyz="0.7 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="96" velocity="6.28319" lower="-2.96706" upper="0.0872665"/>
+    <dynamics damping="144" friction="0"/>
+  </joint>
+  <link name="fl_steer">
+    <inertial>
+      <origin xyz="0.0720598 0.1619 0.192918" rpy="0 0 0"/>
+      <mass value="13.2"/>
+      <inertia ixx="0.538458" ixy="0" ixz="0" iyy="0.857403" iyz="0" izz="0.826248"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fl_steer.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="fl_steer" type="revolute">
+    <parent link="fl_upright"/>
+    <child link="fl_steer"/>
+    <origin xyz="0 0 0.06" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="825" velocity="6.28319" lower="-0.610865" upper="0.610865"/>
+    <dynamics damping="1100" friction="0"/>
+  </joint>
+  <link name="fr_steer">
+    <inertial>
+      <origin xyz="0.0720598 -0.16215 0.192918" rpy="0 0 0"/>
+      <mass value="13.2"/>
+      <inertia ixx="0.540107" ixy="0" ixz="0" iyy="0.860112" iyz="0" izz="0.828365"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fr_steer.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="fr_steer" type="revolute">
+    <parent link="fr_upright"/>
+    <child link="fr_steer"/>
+    <origin xyz="0 0 0.06" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="825" velocity="6.28319" lower="-0.610865" upper="0.610865"/>
+    <dynamics damping="1100" friction="0"/>
+  </joint>
+  <link name="rl_wheel">
+    <inertial>
+      <origin xyz="0 -2.98023e-08 1.49012e-08" rpy="0 0 0"/>
+      <mass value="22"/>
+      <inertia ixx="1.34245" ixy="0" ixz="0" iyy="2.37609" iyz="0" izz="1.34245"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rl_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="rl_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/rl_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rl_wheel" type="continuous">
+    <parent link="rl_upright"/>
+    <child link="rl_wheel"/>
+    <origin xyz="0 0.24 0.06" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="214.5" velocity="6.28319"/>
+    <dynamics damping="1650" friction="0"/>
+  </joint>
+  <link name="rr_wheel">
+    <inertial>
+      <origin xyz="0 0 1.49012e-08" rpy="0 0 0"/>
+      <mass value="22"/>
+      <inertia ixx="1.32939" ixy="0" ixz="0" iyy="2.35254" iyz="0" izz="1.32939"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rr_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="rr_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/rr_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rr_wheel" type="continuous">
+    <parent link="rr_upright"/>
+    <child link="rr_wheel"/>
+    <origin xyz="0 -0.24 0.06" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="214.5" velocity="6.28319"/>
+    <dynamics damping="1650" friction="0"/>
+  </joint>
+  <link name="arm_wrist_pitch">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="4.5"/>
+      <inertia ixx="0.00519168" ixy="0" ixz="0" iyy="0.00519167" iyz="0" izz="0.00519168"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/arm_wrist_pitch.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="arm_wrist_pitch" type="revolute">
+    <parent link="arm_elbow"/>
+    <child link="arm_wrist_pitch"/>
+    <origin xyz="-0.65 0 0.096" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="48" velocity="6.28319" lower="-1.5708" upper="1.5708"/>
+    <dynamics damping="72" friction="0"/>
+  </joint>
+  <link name="fl_wheel">
+    <inertial>
+      <origin xyz="0 -2.98023e-08 1.49012e-08" rpy="0 0 0"/>
+      <mass value="22"/>
+      <inertia ixx="1.35049" ixy="0" ixz="0" iyy="2.38791" iyz="0" izz="1.35049"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fl_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="fl_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/fl_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="fl_wheel" type="continuous">
+    <parent link="fl_steer"/>
+    <child link="fl_wheel"/>
+    <origin xyz="0 0.24 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="214.5" velocity="6.28319"/>
+    <dynamics damping="1650" friction="0"/>
+  </joint>
+  <link name="fr_wheel">
+    <inertial>
+      <origin xyz="0 2.98023e-08 1.49012e-08" rpy="0 0 0"/>
+      <mass value="22"/>
+      <inertia ixx="1.33443" ixy="0" ixz="0" iyy="2.3643" iyz="0" izz="1.33443"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fr_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="fr_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/fr_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="fr_wheel" type="continuous">
+    <parent link="fr_steer"/>
+    <child link="fr_wheel"/>
+    <origin xyz="0 -0.24 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="214.5" velocity="6.28319"/>
+    <dynamics damping="1650" friction="0"/>
+  </joint>
+  <link name="arm_wrist_roll">
+    <inertial>
+      <origin xyz="-0.12575 -0.000749998 0" rpy="0 0 0"/>
+      <mass value="4.5"/>
+      <inertia ixx="0.00325922" ixy="0" ixz="0" iyy="0.0260675" iyz="0" izz="0.0265359"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/arm_wrist_roll.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="arm_wrist_roll" type="revolute">
+    <parent link="arm_wrist_pitch"/>
+    <child link="arm_wrist_roll"/>
+    <origin xyz="-0.048 0 0" rpy="0 0 0"/>
+    <axis xyz="-1 -0 -0"/>
+    <limit effort="32" velocity="6.28319" lower="-3.14159" upper="3.14159"/>
+    <dynamics damping="48" friction="0"/>
+  </joint>
+  <link name="hga_boresight_frame"/>
+  <joint name="hga_boresight_frame_joint" type="fixed">
+    <parent link="hga_elevation"/>
+    <child link="hga_boresight_frame"/>
+    <origin xyz="0.0670478 0 0.223493" rpy="0 -1.27934 0"/>
+  </joint>
+  <link name="arm_tool_point_frame"/>
+  <joint name="arm_tool_point_frame_joint" type="fixed">
+    <parent link="arm_wrist_roll"/>
+    <child link="arm_tool_point_frame"/>
+    <origin xyz="-0.252 0 0" rpy="0 -1.34359e-07 3.14159"/>
+  </joint>
+  <link name="headlight_l_frame"/>
+  <joint name="headlight_l_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="headlight_l_frame"/>
+    <origin xyz="2.30999 0.45 0.469501" rpy="0 0.0499584 0"/>
+  </joint>
+  <link name="headlight_r_frame"/>
+  <joint name="headlight_r_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="headlight_r_frame"/>
+    <origin xyz="2.30999 -0.45 0.469501" rpy="0 0.0499584 0"/>
+  </joint>
+  <link name="tower_light_l_frame"/>
+  <joint name="tower_light_l_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="tower_light_l_frame"/>
+    <origin xyz="0.429578 0.95 1.65713" rpy="0 0.291457 0"/>
+  </joint>
+  <link name="tower_light_r_frame"/>
+  <joint name="tower_light_r_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="tower_light_r_frame"/>
+    <origin xyz="0.429578 -0.95 1.65713" rpy="0 0.291457 0"/>
+  </joint>
+  <link name="deck_light_frame"/>
+  <joint name="deck_light_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="deck_light_frame"/>
+    <origin xyz="-0.568944 0 1.69553" rpy="0 0.463648 3.14159"/>
+  </joint>
+  <link name="tower_hazcam_l_frame"/>
+  <joint name="tower_hazcam_l_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="tower_hazcam_l_frame"/>
+    <origin xyz="0.56 0.62 1.7" rpy="0 -1.34359e-07 0"/>
+  </joint>
+  <link name="tower_hazcam_r_frame"/>
+  <joint name="tower_hazcam_r_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="tower_hazcam_r_frame"/>
+    <origin xyz="0.56 -0.62 1.7" rpy="0 -1.34359e-07 0"/>
+  </joint>
+  <link name="tower_stereo_frame"/>
+  <joint name="tower_stereo_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="tower_stereo_frame"/>
+    <origin xyz="0.58 -0.1 1.82" rpy="0 -1.34359e-07 0"/>
+  </joint>
+  <link name="beacon_l_frame"/>
+  <joint name="beacon_l_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="beacon_l_frame"/>
+    <origin xyz="0.2 0.3 2.4" rpy="0 -1.5708 0"/>
+  </joint>
+  <link name="beacon_r_frame"/>
+  <joint name="beacon_r_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="beacon_r_frame"/>
+    <origin xyz="0.25 -0.95 2.4" rpy="0 -1.5708 0"/>
+  </joint>
+  <link name="imu_frame"/>
+  <joint name="imu_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="imu_frame"/>
+    <origin xyz="0 0 0.6" rpy="0 -1.5708 0"/>
+  </joint>
+</robot>

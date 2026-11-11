@@ -1,0 +1,103 @@
+<?xml version="1.0" ?>
+<robot name="mk1_offloader">
+  <link name="base_link"/>
+  <joint name="base_link_to_base" type="fixed">
+    <parent link="base_link"/>
+    <child link="base"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="base">
+    <inertial>
+      <origin xyz="0 0 0.05375" rpy="0 0 0"/>
+      <mass value="6"/>
+      <inertia ixx="0.19078" ixy="0" ixz="0" iyy="0.19078" iyz="0" izz="0.368449"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/base.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="crane_slew">
+    <inertial>
+      <origin xyz="0.389099 0.000249997 0.56025" rpy="0 0 0"/>
+      <mass value="18"/>
+      <inertia ixx="2.81364" ixy="0" ixz="0" iyy="3.60885" iyz="0" izz="2.60873"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/crane_slew.obj"/>
+      </geometry>
+    </visual>
+    <collision name="crane_slew_mast_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/crane_slew_mast_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="crane_slew" type="revolute">
+    <parent link="base"/>
+    <child link="crane_slew"/>
+    <origin xyz="0 0 0.11" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2000" velocity="6.28319" lower="-3.14159" upper="3.14159"/>
+    <dynamics damping="2500" friction="0"/>
+  </joint>
+  <link name="crane_luff">
+    <inertial>
+      <origin xyz="1.9048 0 -0.0313" rpy="0 0 0"/>
+      <mass value="30"/>
+      <inertia ixx="2.06844" ixy="0" ixz="0" iyy="63.4804" iyz="0" izz="64.4696"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/crane_luff.obj"/>
+      </geometry>
+    </visual>
+    <collision name="crane_luff_jib_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/crane_luff_jib_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="crane_luff" type="revolute">
+    <parent link="crane_slew"/>
+    <child link="crane_luff"/>
+    <origin xyz="0 0 1.07" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="5000" velocity="6.28319" lower="-0.523599" upper="1.0472"/>
+    <dynamics damping="4500" friction="0"/>
+  </joint>
+  <link name="crane_hoist">
+    <inertial>
+      <origin xyz="0 0 -0.31075" rpy="0 0 0"/>
+      <mass value="6"/>
+      <inertia ixx="0.35075" ixy="0" ixz="0" iyy="0.35075" iyz="0" izz="0.310249"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/crane_hoist.obj"/>
+      </geometry>
+    </visual>
+    <collision name="crane_hoist_spreader_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/crane_hoist_spreader_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="crane_hoist" type="prismatic">
+    <parent link="crane_luff"/>
+    <child link="crane_hoist"/>
+    <origin xyz="4.32 0 -0.26" rpy="0 0 0"/>
+    <axis xyz="0 0 -1"/>
+    <limit effort="6000" velocity="0.5" lower="0" upper="9"/>
+    <dynamics damping="500" friction="0"/>
+  </joint>
+</robot>

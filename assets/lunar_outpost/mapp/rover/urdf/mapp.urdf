@@ -1,0 +1,190 @@
+<?xml version="1.0" ?>
+<robot name="mapp">
+  <link name="base_link"/>
+  <joint name="base_link_to_chassis" type="fixed">
+    <parent link="base_link"/>
+    <child link="chassis"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="chassis">
+    <inertial>
+      <origin xyz="0 0 0.15" rpy="0 0 0"/>
+      <mass value="7.8"/>
+      <inertia ixx="0.056225" ixy="0" ixz="0" iyy="0.085345" iyz="0" izz="0.104"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/chassis.obj"/>
+      </geometry>
+    </visual>
+    <collision name="chassis_hull_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/chassis_hull_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="rocker_l">
+    <inertial>
+      <origin xyz="-0.000130005 -0.02293 0" rpy="0 0 0"/>
+      <mass value="0.3"/>
+      <inertia ixx="0.000134095" ixy="0" ixz="0" iyy="0.00274935" iyz="0" izz="0.00280535"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rocker_l.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rocker_l" type="revolute">
+    <parent link="chassis"/>
+    <child link="rocker_l"/>
+    <origin xyz="0 0.125 0.0575" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="1e+06" velocity="6.28319" lower="-0.3" upper="0.3"/>
+    <dynamics damping="0.3" friction="0"/>
+  </joint>
+  <link name="rocker_r">
+    <inertial>
+      <origin xyz="0 0.02293 0" rpy="0 0 0"/>
+      <mass value="0.3"/>
+      <inertia ixx="0.000134095" ixy="0" ixz="0" iyy="0.00275363" iyz="0" izz="0.00280963"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rocker_r.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rocker_r" type="revolute">
+    <parent link="chassis"/>
+    <child link="rocker_r"/>
+    <origin xyz="0 -0.125 0.0575" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="1e+06" velocity="6.28319" lower="-0.3" upper="0.3"/>
+    <dynamics damping="0.3" friction="0"/>
+  </joint>
+  <link name="fl_wheel">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.4"/>
+      <inertia ixx="0.000737762" ixy="0" ixz="0" iyy="0.000953611" iyz="0" izz="0.000737762"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fl_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="fl_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/fl_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="fl_wheel" type="continuous">
+    <parent link="rocker_l"/>
+    <child link="fl_wheel"/>
+    <origin xyz="0.145 0.025 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="0.280313" velocity="6.28319"/>
+    <dynamics damping="15" friction="0"/>
+  </joint>
+  <link name="rl_wheel">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.4"/>
+      <inertia ixx="0.000734939" ixy="0" ixz="0" iyy="0.000953611" iyz="0" izz="0.000734939"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rl_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="rl_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/rl_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rl_wheel" type="continuous">
+    <parent link="rocker_l"/>
+    <child link="rl_wheel"/>
+    <origin xyz="-0.145 0.025 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="0.280313" velocity="6.28319"/>
+    <dynamics damping="15" friction="0"/>
+  </joint>
+  <link name="fr_wheel">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.4"/>
+      <inertia ixx="0.00072509" ixy="0" ixz="0" iyy="0.000928267" iyz="0" izz="0.00072509"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fr_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="fr_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/fr_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="fr_wheel" type="continuous">
+    <parent link="rocker_r"/>
+    <child link="fr_wheel"/>
+    <origin xyz="0.145 -0.025 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="0.280313" velocity="6.28319"/>
+    <dynamics damping="15" friction="0"/>
+  </joint>
+  <link name="rr_wheel">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.4"/>
+      <inertia ixx="0.00070949" ixy="0" ixz="0" iyy="0.000897067" iyz="0" izz="0.000709491"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rr_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="rr_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/rr_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rr_wheel" type="continuous">
+    <parent link="rocker_r"/>
+    <child link="rr_wheel"/>
+    <origin xyz="-0.145 -0.025 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="0.280313" velocity="6.28319"/>
+    <dynamics damping="15" friction="0"/>
+  </joint>
+  <link name="front_cameras_frame"/>
+  <joint name="front_cameras_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="front_cameras_frame"/>
+    <origin xyz="0.165 0 0.19" rpy="0 -0.135393 0"/>
+  </joint>
+  <link name="imu_frame"/>
+  <joint name="imu_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="imu_frame"/>
+    <origin xyz="0 0 0.15" rpy="0 -1.5708 0"/>
+  </joint>
+</robot>

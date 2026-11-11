@@ -1,0 +1,550 @@
+<?xml version="1.0" ?>
+<robot name="clv1">
+  <link name="base_link"/>
+  <joint name="base_link_to_chassis" type="fixed">
+    <parent link="base_link"/>
+    <child link="chassis"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="chassis">
+    <inertial>
+      <origin xyz="0 0 0.95" rpy="0 0 0"/>
+      <mass value="772.4"/>
+      <inertia ixx="290.937" ixy="0" ixz="0" iyy="827.112" iyz="0" izz="865.732"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/chassis.obj"/>
+      </geometry>
+    </visual>
+    <collision name="chassis_hull_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/chassis_hull_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="fl_arm">
+    <inertial>
+      <origin xyz="0.248351 0 0.0864469" rpy="0 0 0"/>
+      <mass value="9.5"/>
+      <inertia ixx="0.107048" ixy="0" ixz="0" iyy="0.408126" iyz="0" izz="0.353756"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fl_arm.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="fl_arm" type="revolute">
+    <parent link="chassis"/>
+    <child link="fl_arm"/>
+    <origin xyz="0.975 0.845 0.915" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+    <limit effort="4245.31" velocity="6.28319" lower="-0.971862" upper="0.576931"/>
+    <dynamics damping="1405.84" friction="0"/>
+  </joint>
+  <link name="fr_arm">
+    <inertial>
+      <origin xyz="0.248351 0 0.0864469" rpy="0 0 0"/>
+      <mass value="9.5"/>
+      <inertia ixx="0.110897" ixy="0" ixz="0" iyy="0.415477" iyz="0" izz="0.360066"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fr_arm.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="fr_arm" type="revolute">
+    <parent link="chassis"/>
+    <child link="fr_arm"/>
+    <origin xyz="0.975 -0.845 0.915" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+    <limit effort="4245.31" velocity="6.28319" lower="-0.971862" upper="0.576931"/>
+    <dynamics damping="1405.84" friction="0"/>
+  </joint>
+  <link name="hga_azimuth">
+    <inertial>
+      <origin xyz="0 0 0.0620999" rpy="0 0 0"/>
+      <mass value="1.2"/>
+      <inertia ixx="0.00295795" ixy="0" ixz="0" iyy="0.00295795" iyz="0" izz="0.0025088"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/hga_azimuth.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="hga_azimuth" type="revolute">
+    <parent link="chassis"/>
+    <child link="hga_azimuth"/>
+    <origin xyz="-0.8 -0.38 2.34" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="30" velocity="6.28319" lower="-3.14159" upper="3.14159"/>
+    <dynamics damping="4" friction="0"/>
+  </joint>
+  <link name="nav_mast_pan">
+    <inertial>
+      <origin xyz="0 0 0.03" rpy="0 0 0"/>
+      <mass value="0.6"/>
+      <inertia ixx="0.000545824" ixy="0" ixz="0" iyy="0.000545824" iyz="0" izz="0.000692225"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/nav_mast_pan.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="nav_mast_pan" type="revolute">
+    <parent link="chassis"/>
+    <child link="nav_mast_pan"/>
+    <origin xyz="0.9 0.56 2.435" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="20" velocity="6.28319" lower="-3.14159" upper="3.14159"/>
+    <dynamics damping="3" friction="0"/>
+  </joint>
+  <link name="rear_mast_pan">
+    <inertial>
+      <origin xyz="0 0 0.03" rpy="0 0 0"/>
+      <mass value="0.6"/>
+      <inertia ixx="0.000417199" ixy="0" ixz="0" iyy="0.000417199" iyz="0" izz="0.000443023"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rear_mast_pan.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rear_mast_pan" type="revolute">
+    <parent link="chassis"/>
+    <child link="rear_mast_pan"/>
+    <origin xyz="-0.6 0.5 2.42" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="20" velocity="6.28319" lower="-3.14159" upper="3.14159"/>
+    <dynamics damping="3" friction="0"/>
+  </joint>
+  <link name="rl_arm">
+    <inertial>
+      <origin xyz="-0.250951 0 0.0890469" rpy="0 0 0"/>
+      <mass value="9.5"/>
+      <inertia ixx="0.108418" ixy="0" ixz="0" iyy="0.413632" iyz="0" izz="0.356971"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rl_arm.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rl_arm" type="revolute">
+    <parent link="chassis"/>
+    <child link="rl_arm"/>
+    <origin xyz="-0.975 0.845 0.915" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="4245.31" velocity="6.28319" lower="-0.971862" upper="0.576931"/>
+    <dynamics damping="1405.84" friction="0"/>
+  </joint>
+  <link name="rr_arm">
+    <inertial>
+      <origin xyz="-0.248951 0 0.0870469" rpy="0 0 0"/>
+      <mass value="9.5"/>
+      <inertia ixx="0.111514" ixy="0" ixz="0" iyy="0.417326" iyz="0" izz="0.361298"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rr_arm.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rr_arm" type="revolute">
+    <parent link="chassis"/>
+    <child link="rr_arm"/>
+    <origin xyz="-0.975 -0.845 0.915" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="4245.31" velocity="6.28319" lower="-0.971862" upper="0.576931"/>
+    <dynamics damping="1405.84" friction="0"/>
+  </joint>
+  <link name="fl_steer">
+    <inertial>
+      <origin xyz="0 0.0141025 0.341625" rpy="0 0 0"/>
+      <mass value="11.4"/>
+      <inertia ixx="0.693024" ixy="0" ixz="0" iyy="0.68333" iyz="0" izz="0.0625498"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fl_steer.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="fl_steer" type="revolute">
+    <parent link="fl_arm"/>
+    <child link="fl_steer"/>
+    <origin xyz="0.55 0 -0.45" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="712.5" velocity="6.28319" lower="-1.5708" upper="1.5708"/>
+    <dynamics damping="950" friction="0"/>
+  </joint>
+  <link name="fr_steer">
+    <inertial>
+      <origin xyz="0 -0.0135666 0.343861" rpy="0 0 0"/>
+      <mass value="11.4"/>
+      <inertia ixx="0.692089" ixy="0" ixz="0" iyy="0.682619" iyz="0" izz="0.0644666"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fr_steer.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="fr_steer" type="revolute">
+    <parent link="fr_arm"/>
+    <child link="fr_steer"/>
+    <origin xyz="0.55 0 -0.45" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="712.5" velocity="6.28319" lower="-1.5708" upper="1.5708"/>
+    <dynamics damping="950" friction="0"/>
+  </joint>
+  <link name="hga_elevation">
+    <inertial>
+      <origin xyz="0 0 0.1111" rpy="0 0 0"/>
+      <mass value="1.8"/>
+      <inertia ixx="0.0136488" ixy="0" ixz="0" iyy="0.0136488" iyz="0" izz="0.021163"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/hga_elevation.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="hga_elevation" type="revolute">
+    <parent link="hga_azimuth"/>
+    <child link="hga_elevation"/>
+    <origin xyz="0 0 0.1255" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+    <limit effort="30" velocity="6.28319" lower="-0.349066" upper="1.5708"/>
+    <dynamics damping="4" friction="0"/>
+  </joint>
+  <link name="nav_mast_tilt">
+    <inertial>
+      <origin xyz="0.01484 0 0" rpy="0 0 0"/>
+      <mass value="0.9"/>
+      <inertia ixx="0.00567326" ixy="0" ixz="0" iyy="0.00181762" iyz="0" izz="0.00647242"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/nav_mast_tilt.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="nav_mast_tilt" type="revolute">
+    <parent link="nav_mast_pan"/>
+    <child link="nav_mast_tilt"/>
+    <origin xyz="0 0 0.11" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+    <limit effort="20" velocity="6.28319" lower="-1.0472" upper="1.0472"/>
+    <dynamics damping="3" friction="0"/>
+  </joint>
+  <link name="rear_mast_tilt">
+    <inertial>
+      <origin xyz="-0.01384 -1.49012e-08 0" rpy="0 0 0"/>
+      <mass value="0.9"/>
+      <inertia ixx="0.00240734" ixy="0" ixz="0" iyy="0.00130674" iyz="0" izz="0.00305274"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rear_mast_tilt.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rear_mast_tilt" type="revolute">
+    <parent link="rear_mast_pan"/>
+    <child link="rear_mast_tilt"/>
+    <origin xyz="0 0 0.0999999" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+    <limit effort="20" velocity="6.28319" lower="-1.0472" upper="1.0472"/>
+    <dynamics damping="3" friction="0"/>
+  </joint>
+  <link name="rl_steer">
+    <inertial>
+      <origin xyz="0 0.0141025 0.341625" rpy="0 0 0"/>
+      <mass value="11.4"/>
+      <inertia ixx="0.689908" ixy="0" ixz="0" iyy="0.6803" iyz="0" izz="0.0614549"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rl_steer.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rl_steer" type="revolute">
+    <parent link="rl_arm"/>
+    <child link="rl_steer"/>
+    <origin xyz="-0.55 0 -0.45" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="712.5" velocity="6.28319" lower="-1.5708" upper="1.5708"/>
+    <dynamics damping="950" friction="0"/>
+  </joint>
+  <link name="rr_steer">
+    <inertial>
+      <origin xyz="0 -0.0135666 0.343261" rpy="0 0 0"/>
+      <mass value="11.4"/>
+      <inertia ixx="0.693984" ixy="0" ixz="0" iyy="0.684513" iyz="0" izz="0.0644666"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rr_steer.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rr_steer" type="revolute">
+    <parent link="rr_arm"/>
+    <child link="rr_steer"/>
+    <origin xyz="-0.55 0 -0.45" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="712.5" velocity="6.28319" lower="-1.5708" upper="1.5708"/>
+    <dynamics damping="950" friction="0"/>
+  </joint>
+  <link name="fl_wheel">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="22"/>
+      <inertia ixx="1.75941" ixy="0" ixz="0" iyy="3.20961" iyz="0" izz="1.75941"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fl_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="fl_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/fl_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="fl_wheel" type="continuous">
+    <parent link="fl_steer"/>
+    <child link="fl_wheel"/>
+    <origin xyz="0 0.18 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="215.353" velocity="6.28319"/>
+    <dynamics damping="1425" friction="0"/>
+  </joint>
+  <link name="fr_wheel">
+    <inertial>
+      <origin xyz="0 0.000200003 0" rpy="0 0 0"/>
+      <mass value="22"/>
+      <inertia ixx="1.77465" ixy="0" ixz="0" iyy="3.24262" iyz="0" izz="1.77465"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/fr_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="fr_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/fr_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="fr_wheel" type="continuous">
+    <parent link="fr_steer"/>
+    <child link="fr_wheel"/>
+    <origin xyz="0 -0.18 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="215.353" velocity="6.28319"/>
+    <dynamics damping="1425" friction="0"/>
+  </joint>
+  <link name="rl_wheel">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="22"/>
+      <inertia ixx="1.75223" ixy="0" ixz="0" iyy="3.19864" iyz="0" izz="1.75223"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rl_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="rl_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/rl_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rl_wheel" type="continuous">
+    <parent link="rl_steer"/>
+    <child link="rl_wheel"/>
+    <origin xyz="0 0.18 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="215.353" velocity="6.28319"/>
+    <dynamics damping="1425" friction="0"/>
+  </joint>
+  <link name="rr_wheel">
+    <inertial>
+      <origin xyz="0 -2.98023e-08 0" rpy="0 0 0"/>
+      <mass value="22"/>
+      <inertia ixx="1.74591" ixy="0" ixz="0" iyy="3.18769" iyz="0" izz="1.74591"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rr_wheel.obj"/>
+      </geometry>
+    </visual>
+    <collision name="rr_wheel_tyre_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/rr_wheel_tyre_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rr_wheel" type="continuous">
+    <parent link="rr_steer"/>
+    <child link="rr_wheel"/>
+    <origin xyz="0 -0.18 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="215.353" velocity="6.28319"/>
+    <dynamics damping="1425" friction="0"/>
+  </joint>
+  <link name="nav_mast_cam_0_frame"/>
+  <joint name="nav_mast_cam_0_frame_joint" type="fixed">
+    <parent link="nav_mast_tilt"/>
+    <child link="nav_mast_cam_0_frame"/>
+    <origin xyz="0.08 -0.09 0" rpy="0 -0 0"/>
+  </joint>
+  <link name="nav_mast_cam_1_frame"/>
+  <joint name="nav_mast_cam_1_frame_joint" type="fixed">
+    <parent link="nav_mast_tilt"/>
+    <child link="nav_mast_cam_1_frame"/>
+    <origin xyz="0.08 0.09 0" rpy="0 -0 0"/>
+  </joint>
+  <link name="rear_mast_cam_0_frame"/>
+  <joint name="rear_mast_cam_0_frame_joint" type="fixed">
+    <parent link="rear_mast_tilt"/>
+    <child link="rear_mast_cam_0_frame"/>
+    <origin xyz="-0.07 0.05 0" rpy="0 -0 3.14159"/>
+  </joint>
+  <link name="rear_mast_cam_1_frame"/>
+  <joint name="rear_mast_cam_1_frame_joint" type="fixed">
+    <parent link="rear_mast_tilt"/>
+    <child link="rear_mast_cam_1_frame"/>
+    <origin xyz="-0.07 -0.05 0" rpy="0 -0 3.14159"/>
+  </joint>
+  <link name="hga_boresight_frame"/>
+  <joint name="hga_boresight_frame_joint" type="fixed">
+    <parent link="hga_elevation"/>
+    <child link="hga_boresight_frame"/>
+    <origin xyz="0 0 0.18" rpy="0 -1.5708 0"/>
+  </joint>
+  <link name="head_lamp_r0_frame"/>
+  <joint name="head_lamp_r0_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="head_lamp_r0_frame"/>
+    <origin xyz="1.64998 -0.36 1.0194" rpy="0 0.0599283 0"/>
+  </joint>
+  <link name="head_lamp_r1_frame"/>
+  <joint name="head_lamp_r1_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="head_lamp_r1_frame"/>
+    <origin xyz="1.64998 -0.5 1.0194" rpy="0 0.0599283 0"/>
+  </joint>
+  <link name="head_lamp_r2_frame"/>
+  <joint name="head_lamp_r2_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="head_lamp_r2_frame"/>
+    <origin xyz="1.64998 -0.64 1.0194" rpy="0 0.0599283 0"/>
+  </joint>
+  <link name="head_lamp_l0_frame"/>
+  <joint name="head_lamp_l0_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="head_lamp_l0_frame"/>
+    <origin xyz="1.64998 0.36 1.0194" rpy="0 0.0599283 0"/>
+  </joint>
+  <link name="head_lamp_l1_frame"/>
+  <joint name="head_lamp_l1_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="head_lamp_l1_frame"/>
+    <origin xyz="1.64998 0.5 1.0194" rpy="0 0.0599283 0"/>
+  </joint>
+  <link name="head_lamp_l2_frame"/>
+  <joint name="head_lamp_l2_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="head_lamp_l2_frame"/>
+    <origin xyz="1.64998 0.64 1.0194" rpy="0 0.0599283 0"/>
+  </joint>
+  <link name="roof_lamp_0_frame"/>
+  <joint name="roof_lamp_0_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="roof_lamp_0_frame"/>
+    <origin xyz="1.0847 -0.48 2.36757" rpy="0 0.244979 0"/>
+  </joint>
+  <link name="roof_lamp_1_frame"/>
+  <joint name="roof_lamp_1_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="roof_lamp_1_frame"/>
+    <origin xyz="1.0847 -0.16 2.36757" rpy="0 0.244979 0"/>
+  </joint>
+  <link name="roof_lamp_2_frame"/>
+  <joint name="roof_lamp_2_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="roof_lamp_2_frame"/>
+    <origin xyz="1.0847 0.16 2.36757" rpy="0 0.244979 0"/>
+  </joint>
+  <link name="roof_lamp_3_frame"/>
+  <joint name="roof_lamp_3_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="roof_lamp_3_frame"/>
+    <origin xyz="1.0847 0.48 2.36757" rpy="0 0.244979 0"/>
+  </joint>
+  <link name="tail_lamp_l_frame"/>
+  <joint name="tail_lamp_l_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="tail_lamp_l_frame"/>
+    <origin xyz="-1.645 0.58 0.74" rpy="0 -1.34359e-07 3.14159"/>
+  </joint>
+  <link name="tail_lamp_r_frame"/>
+  <joint name="tail_lamp_r_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="tail_lamp_r_frame"/>
+    <origin xyz="-1.645 -0.58 0.74" rpy="0 -1.34359e-07 3.14159"/>
+  </joint>
+  <link name="cargo_lamp_l_frame"/>
+  <joint name="cargo_lamp_l_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="cargo_lamp_l_frame"/>
+    <origin xyz="-1.06958 0.5 2.11713" rpy="0 0.291457 3.14159"/>
+  </joint>
+  <link name="cargo_lamp_r_frame"/>
+  <joint name="cargo_lamp_r_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="cargo_lamp_r_frame"/>
+    <origin xyz="-1.06958 -0.5 2.11713" rpy="0 0.291457 3.14159"/>
+  </joint>
+  <link name="imu_frame"/>
+  <joint name="imu_frame_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="imu_frame"/>
+    <origin xyz="0 0 0.8" rpy="0 -1.5708 0"/>
+  </joint>
+</robot>

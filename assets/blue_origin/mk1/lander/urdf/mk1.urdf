@@ -1,0 +1,376 @@
+<?xml version="1.0" ?>
+<robot name="mk1">
+  <link name="base_link"/>
+  <joint name="base_link_to_body" type="fixed">
+    <parent link="base_link"/>
+    <child link="body"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="body">
+    <inertial>
+      <origin xyz="0 0 4.1" rpy="0 0 0"/>
+      <mass value="7900"/>
+      <inertia ixx="38341.3" ixy="0" ixz="0" iyy="38341.3" iyz="0" izz="15800"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/body.obj"/>
+      </geometry>
+    </visual>
+    <collision name="body_hull_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/body_hull_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="be7_gimbal_x">
+    <inertial>
+      <origin xyz="0 0 1.19209e-07" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx="0.0160728" ixy="0" ixz="0" iyy="0.0160728" iyz="0" izz="0.0228528"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/be7_gimbal_x.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="be7_gimbal_x" type="revolute">
+    <parent link="body"/>
+    <child link="be7_gimbal_x"/>
+    <origin xyz="0 0 2.62" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="4000" velocity="6.28319" lower="-0.10472" upper="0.10472"/>
+    <dynamics damping="400" friction="0"/>
+  </joint>
+  <link name="hga_azimuth">
+    <inertial>
+      <origin xyz="0 0 0.1138" rpy="0 0 0"/>
+      <mass value="3"/>
+      <inertia ixx="0.0461398" ixy="0" ixz="0" iyy="0.0188955" iyz="0" izz="0.037844"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/hga_azimuth.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="hga_azimuth" type="revolute">
+    <parent link="body"/>
+    <child link="hga_azimuth"/>
+    <origin xyz="0.9 -0.95 8.45" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="20" velocity="6.28319" lower="-3.14159" upper="3.14159"/>
+    <dynamics damping="5" friction="0"/>
+  </joint>
+  <link name="leg_0_piston">
+    <inertial>
+      <origin xyz="0.22304 0.223065 -0.733257" rpy="0 0 0"/>
+      <mass value="12"/>
+      <inertia ixx="3.93165" ixy="0" ixz="0" iyy="3.93172" iyz="0" izz="0.789419"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_0_piston.obj"/>
+      </geometry>
+    </visual>
+    <collision name="leg_0_piston_foot_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/leg_0_piston_foot_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="leg_0_piston" type="prismatic">
+    <parent link="body"/>
+    <child link="leg_0_piston"/>
+    <origin xyz="1.80029 1.80029 1.6728" rpy="0 0 0"/>
+    <axis xyz="-0.210912 -0.210912 0.95448"/>
+    <limit effort="200000" velocity="0.5" lower="0" upper="0.3"/>
+    <dynamics damping="8000" friction="0"/>
+  </joint>
+  <link name="leg_1_piston">
+    <inertial>
+      <origin xyz="-0.22564 0.225665 -0.735857" rpy="0 0 0"/>
+      <mass value="12"/>
+      <inertia ixx="3.94572" ixy="0" ixz="0" iyy="3.94578" iyz="0" izz="0.796471"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_1_piston.obj"/>
+      </geometry>
+    </visual>
+    <collision name="leg_1_piston_foot_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/leg_1_piston_foot_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="leg_1_piston" type="prismatic">
+    <parent link="body"/>
+    <child link="leg_1_piston"/>
+    <origin xyz="-1.80029 1.80029 1.6728" rpy="0 0 0"/>
+    <axis xyz="0.210912 -0.210912 0.95448"/>
+    <limit effort="200000" velocity="0.5" lower="0" upper="0.3"/>
+    <dynamics damping="8000" friction="0"/>
+  </joint>
+  <link name="leg_2_piston">
+    <inertial>
+      <origin xyz="-0.22304 -0.223065 -0.733257" rpy="0 0 0"/>
+      <mass value="12"/>
+      <inertia ixx="3.95982" ixy="0" ixz="0" iyy="3.95988" iyz="0" izz="0.803555"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_2_piston.obj"/>
+      </geometry>
+    </visual>
+    <collision name="leg_2_piston_foot_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/leg_2_piston_foot_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="leg_2_piston" type="prismatic">
+    <parent link="body"/>
+    <child link="leg_2_piston"/>
+    <origin xyz="-1.80029 -1.80029 1.6728" rpy="0 0 0"/>
+    <axis xyz="0.210912 0.210912 0.95448"/>
+    <limit effort="200000" velocity="0.5" lower="0" upper="0.3"/>
+    <dynamics damping="8000" friction="0"/>
+  </joint>
+  <link name="leg_3_piston">
+    <inertial>
+      <origin xyz="0.22304 -0.223065 -0.733257" rpy="0 0 0"/>
+      <mass value="12"/>
+      <inertia ixx="3.94773" ixy="0" ixz="0" iyy="3.9478" iyz="0" izz="0.797481"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_3_piston.obj"/>
+      </geometry>
+    </visual>
+    <collision name="leg_3_piston_foot_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/leg_3_piston_foot_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="leg_3_piston" type="prismatic">
+    <parent link="body"/>
+    <child link="leg_3_piston"/>
+    <origin xyz="1.80029 -1.80029 1.6728" rpy="0 0 0"/>
+    <axis xyz="-0.210912 0.210912 0.95448"/>
+    <limit effort="200000" velocity="0.5" lower="0" upper="0.3"/>
+    <dynamics damping="8000" friction="0"/>
+  </joint>
+  <link name="solar_array_0">
+    <inertial>
+      <origin xyz="0 0.0904698 1.43248" rpy="0 0 0"/>
+      <mass value="18"/>
+      <inertia ixx="13.5719" ixy="0" ixz="0" iyy="14.6442" iyz="0" izz="3.32296"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/solar_array_0.obj"/>
+      </geometry>
+    </visual>
+    <collision name="solar_array_0_panel_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/solar_array_0_panel_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="solar_array_0" type="revolute">
+    <parent link="body"/>
+    <child link="solar_array_0"/>
+    <origin xyz="1.22465e-16 2 4.05" rpy="0 0 0"/>
+    <axis xyz="1 -6.12323e-17 -0"/>
+    <limit effort="400" velocity="6.28319" lower="-0.261799" upper="1.65806"/>
+    <dynamics damping="50" friction="0"/>
+  </joint>
+  <link name="solar_array_1">
+    <inertial>
+      <origin xyz="0 -0.0888698 1.43408" rpy="0 0 0"/>
+      <mass value="18"/>
+      <inertia ixx="13.5899" ixy="0" ixz="0" iyy="14.6522" iyz="0" izz="3.32132"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/solar_array_1.obj"/>
+      </geometry>
+    </visual>
+    <collision name="solar_array_1_panel_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/solar_array_1_panel_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="solar_array_1" type="revolute">
+    <parent link="body"/>
+    <child link="solar_array_1"/>
+    <origin xyz="-3.67394e-16 -2 4.05" rpy="0 0 0"/>
+    <axis xyz="-1 1.83697e-16 -0"/>
+    <limit effort="400" velocity="6.28319" lower="-0.261799" upper="1.65806"/>
+    <dynamics damping="50" friction="0"/>
+  </joint>
+  <link name="be7">
+    <inertial>
+      <origin xyz="0.0440085 0.0438085 -0.516091" rpy="0 0 0"/>
+      <mass value="180"/>
+      <inertia ixx="53.7704" ixy="0" ixz="0" iyy="53.78" iyz="0" izz="19.2296"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/be7.obj"/>
+      </geometry>
+    </visual>
+    <collision name="be7_nozzle_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/be7_nozzle_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="be7" type="revolute">
+    <parent link="be7_gimbal_x"/>
+    <child link="be7"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="4000" velocity="6.28319" lower="-0.10472" upper="0.10472"/>
+    <dynamics damping="400" friction="0"/>
+  </joint>
+  <link name="hga_elevation">
+    <inertial>
+      <origin xyz="0.1814 0 0" rpy="0 0 0"/>
+      <mass value="4"/>
+      <inertia ixx="0.215689" ixy="0" ixz="0" iyy="0.132289" iyz="0" izz="0.132289"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/hga_elevation.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="hga_elevation" type="revolute">
+    <parent link="hga_azimuth"/>
+    <child link="hga_elevation"/>
+    <origin xyz="0 0 0.26" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="20" velocity="6.28319" lower="-0.174533" upper="1.74533"/>
+    <dynamics damping="5" friction="0"/>
+  </joint>
+  <link name="scalpss_cam_0_frame"/>
+  <joint name="scalpss_cam_0_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="scalpss_cam_0_frame"/>
+    <origin xyz="1.83986 0.762094 1.3799" rpy="0 1.06795 -2.74889"/>
+  </joint>
+  <link name="scalpss_cam_1_frame"/>
+  <joint name="scalpss_cam_1_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="scalpss_cam_1_frame"/>
+    <origin xyz="-0.762094 1.83986 1.3799" rpy="0 1.06795 -1.1781"/>
+  </joint>
+  <link name="scalpss_cam_2_frame"/>
+  <joint name="scalpss_cam_2_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="scalpss_cam_2_frame"/>
+    <origin xyz="-1.83986 -0.762094 1.3799" rpy="0 1.06795 0.392699"/>
+  </joint>
+  <link name="scalpss_cam_3_frame"/>
+  <joint name="scalpss_cam_3_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="scalpss_cam_3_frame"/>
+    <origin xyz="0.762094 -1.83986 1.3799" rpy="0 1.06795 1.9635"/>
+  </joint>
+  <link name="leg_0_touchdown_sensor_frame"/>
+  <joint name="leg_0_touchdown_sensor_frame_joint" type="fixed">
+    <parent link="leg_0_piston"/>
+    <child link="leg_0_touchdown_sensor_frame"/>
+    <origin xyz="0.0210912 0.0210912 -0.095448" rpy="0 1.26791 0.785398"/>
+  </joint>
+  <link name="leg_1_touchdown_sensor_frame"/>
+  <joint name="leg_1_touchdown_sensor_frame_joint" type="fixed">
+    <parent link="leg_1_piston"/>
+    <child link="leg_1_touchdown_sensor_frame"/>
+    <origin xyz="-0.0210912 0.0210912 -0.095448" rpy="0 1.26791 2.35619"/>
+  </joint>
+  <link name="leg_2_touchdown_sensor_frame"/>
+  <joint name="leg_2_touchdown_sensor_frame_joint" type="fixed">
+    <parent link="leg_2_piston"/>
+    <child link="leg_2_touchdown_sensor_frame"/>
+    <origin xyz="-0.0210912 -0.0210912 -0.095448" rpy="0 1.26791 -2.35619"/>
+  </joint>
+  <link name="leg_3_touchdown_sensor_frame"/>
+  <joint name="leg_3_touchdown_sensor_frame_joint" type="fixed">
+    <parent link="leg_3_piston"/>
+    <child link="leg_3_touchdown_sensor_frame"/>
+    <origin xyz="0.0210912 -0.0210912 -0.095448" rpy="0 1.26791 -0.785398"/>
+  </joint>
+  <link name="star_tracker_0_frame"/>
+  <joint name="star_tracker_0_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="star_tracker_0_frame"/>
+    <origin xyz="-1.85842 0.769785 8.35963" rpy="0 -1.03907 2.74889"/>
+  </joint>
+  <link name="star_tracker_1_frame"/>
+  <joint name="star_tracker_1_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="star_tracker_1_frame"/>
+    <origin xyz="0.769785 -1.85842 8.35963" rpy="0 -1.03907 -1.1781"/>
+  </joint>
+  <link name="omni_antenna_0_frame"/>
+  <joint name="omni_antenna_0_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="omni_antenna_0_frame"/>
+    <origin xyz="2.17714 0 8.29" rpy="0 -1.5708 0"/>
+  </joint>
+  <link name="omni_antenna_1_frame"/>
+  <joint name="omni_antenna_1_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="omni_antenna_1_frame"/>
+    <origin xyz="1.33312e-16 2.17714 8.29" rpy="0 -1.5708 0"/>
+  </joint>
+  <link name="omni_antenna_2_frame"/>
+  <joint name="omni_antenna_2_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="omni_antenna_2_frame"/>
+    <origin xyz="-2.17714 2.66623e-16 8.29" rpy="0 -1.5708 0"/>
+  </joint>
+  <link name="omni_antenna_3_frame"/>
+  <joint name="omni_antenna_3_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="omni_antenna_3_frame"/>
+    <origin xyz="-3.99935e-16 -2.17714 8.29" rpy="0 -1.5708 0"/>
+  </joint>
+  <link name="hga_boresight_frame"/>
+  <joint name="hga_boresight_frame_joint" type="fixed">
+    <parent link="hga_elevation"/>
+    <child link="hga_boresight_frame"/>
+    <origin xyz="0.312 0 0" rpy="0 -1.34359e-07 0"/>
+  </joint>
+  <link name="imu_frame"/>
+  <joint name="imu_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="imu_frame"/>
+    <origin xyz="0 0 7.55" rpy="0 -1.5708 0"/>
+  </joint>
+</robot>

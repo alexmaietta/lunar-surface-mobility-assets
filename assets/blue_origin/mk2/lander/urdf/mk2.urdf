@@ -1,0 +1,607 @@
+<?xml version="1.0" ?>
+<robot name="mk2">
+  <link name="base_link"/>
+  <joint name="base_link_to_body" type="fixed">
+    <parent link="base_link"/>
+    <child link="body"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="body">
+    <inertial>
+      <origin xyz="0 0 7.2" rpy="0 0 0"/>
+      <mass value="30000"/>
+      <inertia ixx="652725" ixy="0" ixz="0" iyy="652725" iyz="0" izz="135000"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/body.obj"/>
+      </geometry>
+    </visual>
+    <collision name="body_hull_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/body_hull_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="be7_0_gimbal_x">
+    <inertial>
+      <origin xyz="0 2.98023e-08 0" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx="0.0151821" ixy="0" ixz="0" iyy="0.0151821" iyz="0" izz="0.0217621"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/be7_0_gimbal_x.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="be7_0_gimbal_x" type="revolute">
+    <parent link="body"/>
+    <child link="be7_0_gimbal_x"/>
+    <origin xyz="6.12323e-17 1 2.79" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="4000" velocity="6.28319" lower="-0.10472" upper="0.10472"/>
+    <dynamics damping="400" friction="0"/>
+  </joint>
+  <link name="be7_1_gimbal_x">
+    <inertial>
+      <origin xyz="0 1.49012e-08 0" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx="0.0162541" ixy="0" ixz="0" iyy="0.0162541" iyz="0" izz="0.0230741"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/be7_1_gimbal_x.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="be7_1_gimbal_x" type="revolute">
+    <parent link="body"/>
+    <child link="be7_1_gimbal_x"/>
+    <origin xyz="-0.866025 -0.5 2.79" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="4000" velocity="6.28319" lower="-0.10472" upper="0.10472"/>
+    <dynamics damping="400" friction="0"/>
+  </joint>
+  <link name="be7_2_gimbal_x">
+    <inertial>
+      <origin xyz="0 1.49012e-08 0" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx="0.0153581" ixy="0" ixz="0" iyy="0.0153581" iyz="0" izz="0.0219781"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/be7_2_gimbal_x.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="be7_2_gimbal_x" type="revolute">
+    <parent link="body"/>
+    <child link="be7_2_gimbal_x"/>
+    <origin xyz="0.866025 -0.5 2.79" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="4000" velocity="6.28319" lower="-0.10472" upper="0.10472"/>
+    <dynamics damping="400" friction="0"/>
+  </joint>
+  <link name="crew_door">
+    <inertial>
+      <origin xyz="-0.339411 -0.367696 0" rpy="0 0 0"/>
+      <mass value="45"/>
+      <inertia ixx="15.1156" ixy="0" ixz="0" iyy="15.1156" iyz="0" izz="4.42916"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/crew_door.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="crew_door" type="revolute">
+    <parent link="body"/>
+    <child link="crew_door"/>
+    <origin xyz="-1.75597 2.46308 3.425" rpy="0 0 0"/>
+    <axis xyz="-0 0 -1"/>
+    <limit effort="600" velocity="6.28319" lower="0" upper="1.91986"/>
+    <dynamics damping="300" friction="0"/>
+  </joint>
+  <link name="crew_stair">
+    <inertial>
+      <origin xyz="-0.795695 0.795295 -0.744697" rpy="0 0 0"/>
+      <mass value="55"/>
+      <inertia ixx="81.5509" ixy="0" ixz="0" iyy="81.5509" iyz="0" izz="55.0832"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/crew_stair.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="crew_stair" type="revolute">
+    <parent link="body"/>
+    <child link="crew_stair"/>
+    <origin xyz="-3.05705 3.05705 2.45" rpy="0 0 0"/>
+    <axis xyz="0.707107 0.707107 -0"/>
+    <limit effort="8000" velocity="6.28319" lower="0" upper="1.74533"/>
+    <dynamics damping="2000" friction="0"/>
+  </joint>
+  <link name="dish_0_azimuth">
+    <inertial>
+      <origin xyz="0 0 0.149" rpy="0 0 0"/>
+      <mass value="6"/>
+      <inertia ixx="0.0684497" ixy="0" ixz="0" iyy="0.0684498" iyz="0" izz="0.043264"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/dish_0_azimuth.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="dish_0_azimuth" type="revolute">
+    <parent link="body"/>
+    <child link="dish_0_azimuth"/>
+    <origin xyz="1.34711e-16 2.2 15.05" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="40" velocity="6.28319" lower="-3.14159" upper="3.14159"/>
+    <dynamics damping="6" friction="0"/>
+  </joint>
+  <link name="dish_1_azimuth">
+    <inertial>
+      <origin xyz="0 0 0.15" rpy="0 0 0"/>
+      <mass value="6"/>
+      <inertia ixx="0.06865" ixy="0" ixz="0" iyy="0.06865" iyz="0" izz="0.041943"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/dish_1_azimuth.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="dish_1_azimuth" type="revolute">
+    <parent link="body"/>
+    <child link="dish_1_azimuth"/>
+    <origin xyz="-4.04133e-16 -2.2 15.05" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="40" velocity="6.28319" lower="-3.14159" upper="3.14159"/>
+    <dynamics damping="6" friction="0"/>
+  </joint>
+  <link name="docking_hatch">
+    <inertial>
+      <origin xyz="-0.370134 -0.408779 0" rpy="0 0 0"/>
+      <mass value="35"/>
+      <inertia ixx="5.52321" ixy="0" ixz="0" iyy="4.73052" iyz="0" izz="3.66969"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/docking_hatch.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="docking_hatch" type="revolute">
+    <parent link="body"/>
+    <child link="docking_hatch"/>
+    <origin xyz="2.93378 -1.59416 3.3" rpy="0 0 0"/>
+    <axis xyz="-0 0 1"/>
+    <limit effort="600" velocity="6.28319" lower="0" upper="1.91986"/>
+    <dynamics damping="300" friction="0"/>
+  </joint>
+  <link name="leg_0_piston">
+    <inertial>
+      <origin xyz="0.527385 0 -1.08648" rpy="0 0 0"/>
+      <mass value="60"/>
+      <inertia ixx="39.8796" ixy="0" ixz="0" iyy="45.7239" iyz="0" izz="13.0353"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_0_piston.obj"/>
+      </geometry>
+    </visual>
+    <collision name="leg_0_piston_foot_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/leg_0_piston_foot_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="leg_0_piston" type="prismatic">
+    <parent link="body"/>
+    <child link="leg_0_piston"/>
+    <origin xyz="4.4096 0 2.4444" rpy="0 0 0"/>
+    <axis xyz="-0.309962 -0 0.950749"/>
+    <limit effort="2e+06" velocity="0.5" lower="0" upper="0.4"/>
+    <dynamics damping="60000" friction="0"/>
+  </joint>
+  <link name="leg_1_piston">
+    <inertial>
+      <origin xyz="0 0.527385 -1.08648" rpy="0 0 0"/>
+      <mass value="60"/>
+      <inertia ixx="45.5288" ixy="0" ixz="0" iyy="39.7098" iyz="0" izz="12.9289"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_1_piston.obj"/>
+      </geometry>
+    </visual>
+    <collision name="leg_1_piston_foot_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/leg_1_piston_foot_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="leg_1_piston" type="prismatic">
+    <parent link="body"/>
+    <child link="leg_1_piston"/>
+    <origin xyz="2.7001e-16 4.4096 2.4444" rpy="0 0 0"/>
+    <axis xyz="-1.89797e-17 -0.309962 0.950749"/>
+    <limit effort="2e+06" velocity="0.5" lower="0" upper="0.4"/>
+    <dynamics damping="60000" friction="0"/>
+  </joint>
+  <link name="leg_2_piston">
+    <inertial>
+      <origin xyz="-0.527385 0 -1.08648" rpy="0 0 0"/>
+      <mass value="60"/>
+      <inertia ixx="39.9079" ixy="0" ixz="0" iyy="45.7564" iyz="0" izz="13.0531"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_2_piston.obj"/>
+      </geometry>
+    </visual>
+    <collision name="leg_2_piston_foot_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/leg_2_piston_foot_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="leg_2_piston" type="prismatic">
+    <parent link="body"/>
+    <child link="leg_2_piston"/>
+    <origin xyz="-4.4096 5.4002e-16 2.4444" rpy="0 0 0"/>
+    <axis xyz="0.309962 -3.79594e-17 0.950749"/>
+    <limit effort="2e+06" velocity="0.5" lower="0" upper="0.4"/>
+    <dynamics damping="60000" friction="0"/>
+  </joint>
+  <link name="leg_3_piston">
+    <inertial>
+      <origin xyz="0 -0.527385 -1.08648" rpy="0 0 0"/>
+      <mass value="60"/>
+      <inertia ixx="45.5613" ixy="0" ixz="0" iyy="39.7381" iyz="0" izz="12.9466"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_3_piston.obj"/>
+      </geometry>
+    </visual>
+    <collision name="leg_3_piston_foot_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/leg_3_piston_foot_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="leg_3_piston" type="prismatic">
+    <parent link="body"/>
+    <child link="leg_3_piston"/>
+    <origin xyz="-8.1003e-16 -4.4096 2.4444" rpy="0 0 0"/>
+    <axis xyz="5.69391e-17 0.309962 0.950749"/>
+    <limit effort="2e+06" velocity="0.5" lower="0" upper="0.4"/>
+    <dynamics damping="60000" friction="0"/>
+  </joint>
+  <link name="sunshield_0">
+    <inertial>
+      <origin xyz="-0.125033 -0.125033 -2.25" rpy="0 0 0"/>
+      <mass value="60"/>
+      <inertia ixx="150.811" ixy="0" ixz="0" iyy="150.811" iyz="0" izz="98.8333"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/sunshield_0.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="sunshield_0" type="revolute">
+    <parent link="body"/>
+    <child link="sunshield_0"/>
+    <origin xyz="1.99404 1.99404 13.5" rpy="0 0 0"/>
+    <axis xyz="0.707107 -0.707107 -0"/>
+    <limit effort="20000" velocity="6.28319" lower="-0.10472" upper="0.523599"/>
+    <dynamics damping="6000" friction="0"/>
+  </joint>
+  <link name="sunshield_1">
+    <inertial>
+      <origin xyz="0.125033 -0.125033 -2.25" rpy="0 0 0"/>
+      <mass value="60"/>
+      <inertia ixx="151.117" ixy="0" ixz="0" iyy="151.117" iyz="0" izz="99.0849"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/sunshield_1.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="sunshield_1" type="revolute">
+    <parent link="body"/>
+    <child link="sunshield_1"/>
+    <origin xyz="-1.99404 1.99404 13.5" rpy="0 0 0"/>
+    <axis xyz="0.707107 0.707107 -0"/>
+    <limit effort="20000" velocity="6.28319" lower="-0.10472" upper="0.523599"/>
+    <dynamics damping="6000" friction="0"/>
+  </joint>
+  <link name="sunshield_2">
+    <inertial>
+      <origin xyz="0.125033 0.125033 -2.25" rpy="0 0 0"/>
+      <mass value="60"/>
+      <inertia ixx="150.627" ixy="0" ixz="0" iyy="150.627" iyz="0" izz="98.6824"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/sunshield_2.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="sunshield_2" type="revolute">
+    <parent link="body"/>
+    <child link="sunshield_2"/>
+    <origin xyz="-1.99404 -1.99404 13.5" rpy="0 0 0"/>
+    <axis xyz="-0.707107 0.707107 -0"/>
+    <limit effort="20000" velocity="6.28319" lower="-0.10472" upper="0.523599"/>
+    <dynamics damping="6000" friction="0"/>
+  </joint>
+  <link name="sunshield_3">
+    <inertial>
+      <origin xyz="-0.125033 0.125033 -2.25" rpy="0 0 0"/>
+      <mass value="60"/>
+      <inertia ixx="150.933" ixy="0" ixz="0" iyy="150.933" iyz="0" izz="98.9339"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/sunshield_3.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="sunshield_3" type="revolute">
+    <parent link="body"/>
+    <child link="sunshield_3"/>
+    <origin xyz="1.99404 -1.99404 13.5" rpy="0 0 0"/>
+    <axis xyz="-0.707107 -0.707107 -0"/>
+    <limit effort="20000" velocity="6.28319" lower="-0.10472" upper="0.523599"/>
+    <dynamics damping="6000" friction="0"/>
+  </joint>
+  <link name="be7_0">
+    <inertial>
+      <origin xyz="0 0 -0.6141" rpy="0 0 0"/>
+      <mass value="180"/>
+      <inertia ixx="41.9667" ixy="0" ixz="0" iyy="41.9667" iyz="0" izz="15.004"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/be7_0.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="be7_0" type="revolute">
+    <parent link="be7_0_gimbal_x"/>
+    <child link="be7_0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="4000" velocity="6.28319" lower="-0.10472" upper="0.10472"/>
+    <dynamics damping="400" friction="0"/>
+  </joint>
+  <link name="be7_1">
+    <inertial>
+      <origin xyz="-2.98023e-08 0 -0.6143" rpy="0 0 0"/>
+      <mass value="180"/>
+      <inertia ixx="42.3229" ixy="0" ixz="0" iyy="42.3229" iyz="0" izz="15.2425"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/be7_1.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="be7_1" type="revolute">
+    <parent link="be7_1_gimbal_x"/>
+    <child link="be7_1"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="4000" velocity="6.28319" lower="-0.10472" upper="0.10472"/>
+    <dynamics damping="400" friction="0"/>
+  </joint>
+  <link name="be7_2">
+    <inertial>
+      <origin xyz="2.98023e-08 0 -0.6141" rpy="0 0 0"/>
+      <mass value="180"/>
+      <inertia ixx="42.0201" ixy="0" ixz="0" iyy="42.0201" iyz="0" izz="15.0379"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/be7_2.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="be7_2" type="revolute">
+    <parent link="be7_2_gimbal_x"/>
+    <child link="be7_2"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="4000" velocity="6.28319" lower="-0.10472" upper="0.10472"/>
+    <dynamics damping="400" friction="0"/>
+  </joint>
+  <link name="dish_0_elevation">
+    <inertial>
+      <origin xyz="0 0.1532 0.115" rpy="0 0 0"/>
+      <mass value="8"/>
+      <inertia ixx="0.551974" ixy="0" ixz="0" iyy="0.894655" iyz="0" izz="0.743087"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/dish_0_elevation.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="dish_0_elevation" type="revolute">
+    <parent link="dish_0_azimuth"/>
+    <child link="dish_0_elevation"/>
+    <origin xyz="0 0 0.3" rpy="0 0 0"/>
+    <axis xyz="1 -6.12323e-17 -0"/>
+    <limit effort="40" velocity="6.28319" lower="-0.349066" upper="1.5708"/>
+    <dynamics damping="6" friction="0"/>
+  </joint>
+  <link name="dish_1_elevation">
+    <inertial>
+      <origin xyz="0 -0.1532 0.115" rpy="0 0 0"/>
+      <mass value="8"/>
+      <inertia ixx="0.560161" ixy="0" ixz="0" iyy="0.90511" iyz="0" izz="0.7524"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/dish_1_elevation.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="dish_1_elevation" type="revolute">
+    <parent link="dish_1_azimuth"/>
+    <child link="dish_1_elevation"/>
+    <origin xyz="0 0 0.3" rpy="0 0 0"/>
+    <axis xyz="-1 1.83697e-16 -0"/>
+    <limit effort="40" velocity="6.28319" lower="-0.349066" upper="1.5708"/>
+    <dynamics damping="6" friction="0"/>
+  </joint>
+  <link name="window_cam_0_frame"/>
+  <joint name="window_cam_0_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="window_cam_0_frame"/>
+    <origin xyz="2.96332 -0.45 3.5" rpy="0 0.291457 0"/>
+  </joint>
+  <link name="window_cam_2_frame"/>
+  <joint name="window_cam_2_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="window_cam_2_frame"/>
+    <origin xyz="2.96332 0.45 3.5" rpy="0 0.291457 0"/>
+  </joint>
+  <link name="leg_0_touchdown_sensor_frame"/>
+  <joint name="leg_0_touchdown_sensor_frame_joint" type="fixed">
+    <parent link="leg_0_piston"/>
+    <child link="leg_0_touchdown_sensor_frame"/>
+    <origin xyz="0.0309963 0 -0.0950749" rpy="0 1.25564 0"/>
+  </joint>
+  <link name="leg_1_touchdown_sensor_frame"/>
+  <joint name="leg_1_touchdown_sensor_frame_joint" type="fixed">
+    <parent link="leg_1_piston"/>
+    <child link="leg_1_touchdown_sensor_frame"/>
+    <origin xyz="1.89796e-18 0.0309963 -0.0950749" rpy="0 1.25564 1.5708"/>
+  </joint>
+  <link name="leg_2_touchdown_sensor_frame"/>
+  <joint name="leg_2_touchdown_sensor_frame_joint" type="fixed">
+    <parent link="leg_2_piston"/>
+    <child link="leg_2_touchdown_sensor_frame"/>
+    <origin xyz="-0.0309963 3.79593e-18 -0.0950749" rpy="0 1.25564 3.14159"/>
+  </joint>
+  <link name="leg_3_touchdown_sensor_frame"/>
+  <joint name="leg_3_touchdown_sensor_frame_joint" type="fixed">
+    <parent link="leg_3_piston"/>
+    <child link="leg_3_touchdown_sensor_frame"/>
+    <origin xyz="-5.69391e-18 -0.0309963 -0.0950749" rpy="0 1.25564 -1.5708"/>
+  </joint>
+  <link name="dish_0_boresight_frame"/>
+  <joint name="dish_0_boresight_frame_joint" type="fixed">
+    <parent link="dish_0_elevation"/>
+    <child link="dish_0_boresight_frame"/>
+    <origin xyz="2.13088e-17 0.348 0.261001" rpy="0 -0.643501 1.5708"/>
+  </joint>
+  <link name="dish_1_boresight_frame"/>
+  <joint name="dish_1_boresight_frame_joint" type="fixed">
+    <parent link="dish_1_elevation"/>
+    <child link="dish_1_boresight_frame"/>
+    <origin xyz="-6.39266e-17 -0.348 0.261001" rpy="0 -0.643501 -1.5708"/>
+  </joint>
+  <link name="dome_flood_0_frame"/>
+  <joint name="dome_flood_0_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="dome_flood_0_frame"/>
+    <origin xyz="2.09539 -1.46721 14.744" rpy="0 0.643501 -0.610865"/>
+  </joint>
+  <link name="dome_flood_1_frame"/>
+  <joint name="dome_flood_1_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="dome_flood_1_frame"/>
+    <origin xyz="2.09539 1.46721 14.744" rpy="0 0.643501 0.610865"/>
+  </joint>
+  <link name="dome_flood_2_frame"/>
+  <joint name="dome_flood_2_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="dome_flood_2_frame"/>
+    <origin xyz="-2.09539 1.46721 14.744" rpy="0 0.643501 2.53073"/>
+  </joint>
+  <link name="dome_flood_3_frame"/>
+  <joint name="dome_flood_3_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="dome_flood_3_frame"/>
+    <origin xyz="-2.09539 -1.46721 14.744" rpy="0 0.643501 -2.53073"/>
+  </joint>
+  <link name="cabin_flood_front_frame"/>
+  <joint name="cabin_flood_front_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="cabin_flood_front_frame"/>
+    <origin xyz="2.93226 0 4.24553" rpy="0 0.463648 0"/>
+  </joint>
+  <link name="door_flood_frame"/>
+  <joint name="door_flood_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="door_flood_frame"/>
+    <origin xyz="-2.63885 1.50747 4.69485" rpy="0 0.54042 2.35619"/>
+  </joint>
+  <link name="leg_flood_0_frame"/>
+  <joint name="leg_flood_0_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="leg_flood_0_frame"/>
+    <origin xyz="2.78514 0 1.19553" rpy="0 0.463648 0"/>
+  </joint>
+  <link name="leg_flood_1_frame"/>
+  <joint name="leg_flood_1_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="leg_flood_1_frame"/>
+    <origin xyz="1.70541e-16 2.78514 1.19553" rpy="0 0.463648 1.5708"/>
+  </joint>
+  <link name="leg_flood_2_frame"/>
+  <joint name="leg_flood_2_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="leg_flood_2_frame"/>
+    <origin xyz="-2.78514 3.41082e-16 1.19553" rpy="0 0.463648 3.14159"/>
+  </joint>
+  <link name="leg_flood_3_frame"/>
+  <joint name="leg_flood_3_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="leg_flood_3_frame"/>
+    <origin xyz="-5.11622e-16 -2.78514 1.19553" rpy="0 0.463648 -1.5708"/>
+  </joint>
+  <link name="imu_frame"/>
+  <joint name="imu_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="imu_frame"/>
+    <origin xyz="0 0 6" rpy="0 -1.5708 0"/>
+  </joint>
+</robot>

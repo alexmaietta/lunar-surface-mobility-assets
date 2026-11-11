@@ -1,0 +1,1114 @@
+<?xml version="1.0" ?>
+<robot name="apollo_lm">
+  <link name="base_link"/>
+  <joint name="base_link_to_body" type="fixed">
+    <parent link="base_link"/>
+    <child link="body"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="body">
+    <inertial>
+      <origin xyz="0 0 3.69" rpy="0 0 0"/>
+      <mass value="7507"/>
+      <inertia ixx="23916.1" ixy="0" ixz="0" iyy="23916.1" iyz="0" izz="16552.9"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/body.obj"/>
+      </geometry>
+    </visual>
+    <collision name="body_hull_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/body_hull_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="dps_gimbal_x">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="10"/>
+      <inertia ixx="0.400007" ixy="0" ixz="0" iyy="0.400007" iyz="0" izz="0.775207"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/dps_gimbal_x.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="dps_gimbal_x" type="revolute">
+    <parent link="body"/>
+    <child link="dps_gimbal_x"/>
+    <origin xyz="0 0 2.678" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="8000" velocity="6.28319" lower="-0.10472" upper="0.10472"/>
+    <dynamics damping="800" friction="0"/>
+  </joint>
+  <link name="leg_0_primary">
+    <inertial>
+      <origin xyz="0.47978 0 -0.881004" rpy="0 0 0"/>
+      <mass value="18"/>
+      <inertia ixx="5.12014" ixy="0" ixz="0" iyy="6.88189" iyz="0" izz="1.85154"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_0_primary.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_0_primary" type="fixed">
+    <parent link="body"/>
+    <child link="leg_0_primary"/>
+    <origin xyz="2.72 0 3" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_0_secondary_a_inner">
+    <inertial>
+      <origin xyz="0.575719 0.223348 -0.0994024" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx="0.137489" ixy="0" ixz="0" iyy="0.611087" iyz="0" izz="0.690037"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_0_secondary_a_inner.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_0_secondary_a_inner" type="fixed">
+    <parent link="body"/>
+    <child link="leg_0_secondary_a_inner"/>
+    <origin xyz="2.057 -0.6174 1.56" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_0_secondary_b_inner">
+    <inertial>
+      <origin xyz="0.575719 -0.223348 -0.0994024" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx="0.134282" ixy="0" ixz="0" iyy="0.60508" iyz="0" izz="0.68301"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_0_secondary_b_inner.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_0_secondary_b_inner" type="fixed">
+    <parent link="body"/>
+    <child link="leg_0_secondary_b_inner"/>
+    <origin xyz="2.057 0.6174 1.56" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_1_primary">
+    <inertial>
+      <origin xyz="0.000249997 0.662628 -1.10865" rpy="0 0 0"/>
+      <mass value="18"/>
+      <inertia ixx="11.0649" ixy="0" ixz="0" iyy="8.21605" iyz="0" izz="3.53861"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_1_primary.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_1_primary" type="fixed">
+    <parent link="body"/>
+    <child link="leg_1_primary"/>
+    <origin xyz="1.66552e-16 2.72 3" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_1_secondary_a_inner">
+    <inertial>
+      <origin xyz="-0.223348 0.575719 -0.0994024" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx="0.608679" ixy="0" ixz="0" iyy="0.136201" iyz="0" izz="0.687221"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_1_secondary_a_inner.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_1_secondary_a_inner" type="fixed">
+    <parent link="body"/>
+    <child link="leg_1_secondary_a_inner"/>
+    <origin xyz="0.6174 2.057 1.56" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_1_secondary_b_inner">
+    <inertial>
+      <origin xyz="0.223348 0.575719 -0.0994024" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx="0.60508" ixy="0" ixz="0" iyy="0.134282" iyz="0" izz="0.68301"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_1_secondary_b_inner.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_1_secondary_b_inner" type="fixed">
+    <parent link="body"/>
+    <child link="leg_1_secondary_b_inner"/>
+    <origin xyz="-0.6174 2.057 1.56" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_2_primary">
+    <inertial>
+      <origin xyz="-0.47878 0 -0.880004" rpy="0 0 0"/>
+      <mass value="18"/>
+      <inertia ixx="5.1191" ixy="0" ixz="0" iyy="6.88189" iyz="0" izz="1.85051"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_2_primary.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_2_primary" type="fixed">
+    <parent link="body"/>
+    <child link="leg_2_primary"/>
+    <origin xyz="-2.72 3.33104e-16 3" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_2_secondary_a_inner">
+    <inertial>
+      <origin xyz="-0.575719 -0.223348 -0.0994024" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx="0.137489" ixy="0" ixz="0" iyy="0.611087" iyz="0" izz="0.690037"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_2_secondary_a_inner.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_2_secondary_a_inner" type="fixed">
+    <parent link="body"/>
+    <child link="leg_2_secondary_a_inner"/>
+    <origin xyz="-2.057 0.6174 1.56" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_2_secondary_b_inner">
+    <inertial>
+      <origin xyz="-0.575719 0.223348 -0.0994024" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx="0.13492" ixy="0" ixz="0" iyy="0.606278" iyz="0" izz="0.684412"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_2_secondary_b_inner.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_2_secondary_b_inner" type="fixed">
+    <parent link="body"/>
+    <child link="leg_2_secondary_b_inner"/>
+    <origin xyz="-2.057 -0.6174 1.56" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_3_primary">
+    <inertial>
+      <origin xyz="0 -0.48028 -0.881504" rpy="0 0 0"/>
+      <mass value="18"/>
+      <inertia ixx="6.88189" ixy="0" ixz="0" iyy="5.12066" iyz="0" izz="1.85206"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_3_primary.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_3_primary" type="fixed">
+    <parent link="body"/>
+    <child link="leg_3_primary"/>
+    <origin xyz="-4.99656e-16 -2.72 3" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_3_secondary_a_inner">
+    <inertial>
+      <origin xyz="0.223348 -0.575719 -0.0994024" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx="0.60508" ixy="0" ixz="0" iyy="0.134282" iyz="0" izz="0.68301"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_3_secondary_a_inner.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_3_secondary_a_inner" type="fixed">
+    <parent link="body"/>
+    <child link="leg_3_secondary_a_inner"/>
+    <origin xyz="-0.6174 -2.057 1.56" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_3_secondary_b_inner">
+    <inertial>
+      <origin xyz="-0.223348 -0.575719 -0.0994024" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx="0.60508" ixy="0" ixz="0" iyy="0.134282" iyz="0" izz="0.68301"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_3_secondary_b_inner.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_3_secondary_b_inner" type="fixed">
+    <parent link="body"/>
+    <child link="leg_3_secondary_b_inner"/>
+    <origin xyz="0.6174 -2.057 1.56" rpy="0 0 0"/>
+  </joint>
+  <link name="rr_shaft">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="4"/>
+      <inertia ixx="0.00281668" ixy="0" ixz="0" iyy="0.0560834" iyz="0" izz="0.0560833"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rr_shaft.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rr_shaft" type="revolute">
+    <parent link="body"/>
+    <child link="rr_shaft"/>
+    <origin xyz="0 1.35 6.06" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="20" velocity="6.28319" lower="-1.22173" upper="1.22173"/>
+    <dynamics damping="4" friction="0"/>
+  </joint>
+  <link name="sband_azimuth">
+    <inertial>
+      <origin xyz="0 0 0.1805" rpy="0 0 0"/>
+      <mass value="2"/>
+      <inertia ixx="0.0249302" ixy="0" ixz="0" iyy="0.0249302" iyz="0" izz="0.00520832"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/sband_azimuth.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="sband_azimuth" type="revolute">
+    <parent link="body"/>
+    <child link="sband_azimuth"/>
+    <origin xyz="2.15 2 6.23" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="15" velocity="6.28319" lower="-3.03687" upper="3.03687"/>
+    <dynamics damping="3" friction="0"/>
+  </joint>
+  <link name="dps">
+    <inertial>
+      <origin xyz="0 0 -1.17465" rpy="0 0 0"/>
+      <mass value="180"/>
+      <inertia ixx="139.704" ixy="0" ixz="0" iyy="139.704" iyz="0" izz="79.6092"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/dps.obj"/>
+      </geometry>
+    </visual>
+    <collision name="dps_nozzle_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/dps_nozzle_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="dps" type="revolute">
+    <parent link="dps_gimbal_x"/>
+    <child link="dps"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="8000" velocity="6.28319" lower="-0.10472" upper="0.10472"/>
+    <dynamics damping="800" friction="0"/>
+  </joint>
+  <link name="leg_0_primary_stage1">
+    <inertial>
+      <origin xyz="-0.138079 0 0.255018" rpy="0 0 0"/>
+      <mass value="2"/>
+      <inertia ixx="0.00461848" ixy="0" ixz="0" iyy="0.00430188" iyz="0" izz="0.00635182"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_0_primary_stage1.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_0_primary_stage1" type="prismatic">
+    <parent link="leg_0_primary"/>
+    <child link="leg_0_primary_stage1"/>
+    <origin xyz="0.952266 0 -1.75875" rpy="0 0 0"/>
+    <axis xyz="-0.476133 -0 0.879373"/>
+    <limit effort="400000" velocity="0.5" lower="0" upper="0.813"/>
+    <dynamics damping="15000" friction="0"/>
+  </joint>
+  <link name="leg_0_secondary_a_compression">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.5"/>
+      <inertia ixx="0.00171006" ixy="0" ixz="0" iyy="0.00139136" iyz="0" izz="0.00147336"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_0_secondary_a_compression.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_0_secondary_a_compression" type="fixed">
+    <parent link="leg_0_secondary_a_inner"/>
+    <child link="leg_0_secondary_a_compression"/>
+    <origin xyz="0.875303 0.33957 -0.151128" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_0_secondary_b_compression">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.5"/>
+      <inertia ixx="0.00171006" ixy="0" ixz="0" iyy="0.00139136" iyz="0" izz="0.00147336"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_0_secondary_b_compression.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_0_secondary_b_compression" type="fixed">
+    <parent link="leg_0_secondary_b_inner"/>
+    <child link="leg_0_secondary_b_compression"/>
+    <origin xyz="0.875303 -0.33957 -0.151128" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_1_primary_stage1">
+    <inertial>
+      <origin xyz="0 -0.138079 0.255018" rpy="0 0 0"/>
+      <mass value="2"/>
+      <inertia ixx="0.00405088" ixy="0" ixz="0" iyy="0.00435959" iyz="0" izz="0.00603929"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_1_primary_stage1.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_1_primary_stage1" type="prismatic">
+    <parent link="leg_1_primary"/>
+    <child link="leg_1_primary_stage1"/>
+    <origin xyz="5.83095e-17 0.952266 -1.75875" rpy="0 0 0"/>
+    <axis xyz="-2.91548e-17 -0.476133 0.879373"/>
+    <limit effort="400000" velocity="0.5" lower="0" upper="0.813"/>
+    <dynamics damping="15000" friction="0"/>
+  </joint>
+  <link name="leg_1_secondary_a_compression">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.5"/>
+      <inertia ixx="0.00130878" ixy="0" ixz="0" iyy="0.00161805" iyz="0" izz="0.00138854"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_1_secondary_a_compression.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_1_secondary_a_compression" type="fixed">
+    <parent link="leg_1_secondary_a_inner"/>
+    <child link="leg_1_secondary_a_compression"/>
+    <origin xyz="-0.33957 0.875303 -0.151128" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_1_secondary_b_compression">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.5"/>
+      <inertia ixx="0.00139136" ixy="0" ixz="0" iyy="0.00171006" iyz="0" izz="0.00147336"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_1_secondary_b_compression.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_1_secondary_b_compression" type="fixed">
+    <parent link="leg_1_secondary_b_inner"/>
+    <child link="leg_1_secondary_b_compression"/>
+    <origin xyz="0.33957 0.875303 -0.151128" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_2_primary_stage1">
+    <inertial>
+      <origin xyz="0.138079 0 0.255018" rpy="0 0 0"/>
+      <mass value="2"/>
+      <inertia ixx="0.00461848" ixy="0" ixz="0" iyy="0.00430188" iyz="0" izz="0.00635182"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_2_primary_stage1.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_2_primary_stage1" type="prismatic">
+    <parent link="leg_2_primary"/>
+    <child link="leg_2_primary_stage1"/>
+    <origin xyz="-0.952266 1.16619e-16 -1.75875" rpy="0 0 0"/>
+    <axis xyz="0.476133 -5.83095e-17 0.879373"/>
+    <limit effort="400000" velocity="0.5" lower="0" upper="0.813"/>
+    <dynamics damping="15000" friction="0"/>
+  </joint>
+  <link name="leg_2_secondary_a_compression">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.5"/>
+      <inertia ixx="0.00171006" ixy="0" ixz="0" iyy="0.00139136" iyz="0" izz="0.00147336"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_2_secondary_a_compression.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_2_secondary_a_compression" type="fixed">
+    <parent link="leg_2_secondary_a_inner"/>
+    <child link="leg_2_secondary_a_compression"/>
+    <origin xyz="-0.875303 -0.33957 -0.151128" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_2_secondary_b_compression">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.5"/>
+      <inertia ixx="0.00161805" ixy="0" ixz="0" iyy="0.00130878" iyz="0" izz="0.00138854"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_2_secondary_b_compression.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_2_secondary_b_compression" type="fixed">
+    <parent link="leg_2_secondary_b_inner"/>
+    <child link="leg_2_secondary_b_compression"/>
+    <origin xyz="-0.875303 0.33957 -0.151128" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_3_primary_stage1">
+    <inertial>
+      <origin xyz="0 0.138079 0.255018" rpy="0 0 0"/>
+      <mass value="2"/>
+      <inertia ixx="0.00430188" ixy="0" ixz="0" iyy="0.00461848" iyz="0" izz="0.00635182"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_3_primary_stage1.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_3_primary_stage1" type="prismatic">
+    <parent link="leg_3_primary"/>
+    <child link="leg_3_primary_stage1"/>
+    <origin xyz="-1.74929e-16 -0.952266 -1.75875" rpy="0 0 0"/>
+    <axis xyz="8.74643e-17 0.476133 0.879373"/>
+    <limit effort="400000" velocity="0.5" lower="0" upper="0.813"/>
+    <dynamics damping="15000" friction="0"/>
+  </joint>
+  <link name="leg_3_secondary_a_compression">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.5"/>
+      <inertia ixx="0.00139136" ixy="0" ixz="0" iyy="0.00171006" iyz="0" izz="0.00147336"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_3_secondary_a_compression.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_3_secondary_a_compression" type="fixed">
+    <parent link="leg_3_secondary_a_inner"/>
+    <child link="leg_3_secondary_a_compression"/>
+    <origin xyz="0.33957 -0.875303 -0.151128" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_3_secondary_b_compression">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.5"/>
+      <inertia ixx="0.00139136" ixy="0" ixz="0" iyy="0.00171006" iyz="0" izz="0.00147336"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_3_secondary_b_compression.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_3_secondary_b_compression" type="fixed">
+    <parent link="leg_3_secondary_b_inner"/>
+    <child link="leg_3_secondary_b_compression"/>
+    <origin xyz="-0.33957 -0.875303 -0.151128" rpy="0 0 0"/>
+  </joint>
+  <link name="rr_trunnion">
+    <inertial>
+      <origin xyz="0 0.149136 0.208632" rpy="0 0 0"/>
+      <mass value="6"/>
+      <inertia ixx="0.211973" ixy="0" ixz="0" iyy="0.240582" iyz="0" izz="0.333795"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/rr_trunnion.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rr_trunnion" type="revolute">
+    <parent link="rr_shaft"/>
+    <child link="rr_trunnion"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="20" velocity="6.28319" lower="-1.22173" upper="1.22173"/>
+    <dynamics damping="4" friction="0"/>
+  </joint>
+  <link name="sband_elevation">
+    <inertial>
+      <origin xyz="0.0177431 0.0532293 0.128311" rpy="0 0 0"/>
+      <mass value="3"/>
+      <inertia ixx="0.117018" ixy="0" ixz="0" iyy="0.151418" iyz="0" izz="0.176805"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/sband_elevation.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="sband_elevation" type="revolute">
+    <parent link="sband_azimuth"/>
+    <child link="sband_elevation"/>
+    <origin xyz="0 0 0.36" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="15" velocity="6.28319" lower="-1.309" upper="1.309"/>
+    <dynamics damping="3" friction="0"/>
+  </joint>
+  <link name="leg_0_primary_inner">
+    <inertial>
+      <origin xyz="0.0929971 0 -0.176042" rpy="0 0 0"/>
+      <mass value="14"/>
+      <inertia ixx="4.27217" ixy="0" ixz="0" iyy="5.6688" iyz="0" izz="1.44434"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_0_primary_inner.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_0_primary_inner" type="fixed">
+    <parent link="leg_0_primary_stage1"/>
+    <child link="leg_0_primary_inner"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_0_secondary_a_tension1">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.5"/>
+      <inertia ixx="0.000964401" ixy="0" ixz="0" iyy="0.00142883" iyz="0" izz="0.00166893"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_0_secondary_a_tension1.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_0_secondary_a_tension1" type="fixed">
+    <parent link="leg_0_secondary_a_compression"/>
+    <child link="leg_0_secondary_a_tension1"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_0_secondary_b_tension1">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.5"/>
+      <inertia ixx="0.000964401" ixy="0" ixz="0" iyy="0.00142883" iyz="0" izz="0.00166893"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_0_secondary_b_tension1.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_0_secondary_b_tension1" type="fixed">
+    <parent link="leg_0_secondary_b_compression"/>
+    <child link="leg_0_secondary_b_tension1"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_1_primary_inner">
+    <inertial>
+      <origin xyz="0 0.0937471 -0.176792" rpy="0 0 0"/>
+      <mass value="14"/>
+      <inertia ixx="5.67231" ixy="0" ixz="0" iyy="4.27507" iyz="0" izz="1.4463"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_1_primary_inner.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_1_primary_inner" type="fixed">
+    <parent link="leg_1_primary_stage1"/>
+    <child link="leg_1_primary_inner"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_1_secondary_a_tension1">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.5"/>
+      <inertia ixx="0.0014087" ixy="0" ixz="0" iyy="0.000947441" iyz="0" izz="0.00164664"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_1_secondary_a_tension1.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_1_secondary_a_tension1" type="fixed">
+    <parent link="leg_1_secondary_a_compression"/>
+    <child link="leg_1_secondary_a_tension1"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_1_secondary_b_tension1">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.5"/>
+      <inertia ixx="0.0014087" ixy="0" ixz="0" iyy="0.000947441" iyz="0" izz="0.00164664"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_1_secondary_b_tension1.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_1_secondary_b_tension1" type="fixed">
+    <parent link="leg_1_secondary_b_compression"/>
+    <child link="leg_1_secondary_b_tension1"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_2_primary_inner">
+    <inertial>
+      <origin xyz="-0.0917471 0 -0.174792" rpy="0 0 0"/>
+      <mass value="14"/>
+      <inertia ixx="4.27374" ixy="0" ixz="0" iyy="5.67231" iyz="0" izz="1.44496"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_2_primary_inner.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_2_primary_inner" type="fixed">
+    <parent link="leg_2_primary_stage1"/>
+    <child link="leg_2_primary_inner"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_2_secondary_a_tension1">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.5"/>
+      <inertia ixx="0.000917158" ixy="0" ixz="0" iyy="0.00137267" iyz="0" izz="0.00160672"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_2_secondary_a_tension1.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_2_secondary_a_tension1" type="fixed">
+    <parent link="leg_2_secondary_a_compression"/>
+    <child link="leg_2_secondary_a_tension1"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_2_secondary_b_tension1">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.5"/>
+      <inertia ixx="0.000964401" ixy="0" ixz="0" iyy="0.00142883" iyz="0" izz="0.00166893"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_2_secondary_b_tension1.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_2_secondary_b_tension1" type="fixed">
+    <parent link="leg_2_secondary_b_compression"/>
+    <child link="leg_2_secondary_b_tension1"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_3_primary_inner">
+    <inertial>
+      <origin xyz="0 -0.0924971 -0.175542" rpy="0 0 0"/>
+      <mass value="14"/>
+      <inertia ixx="5.67583" ixy="0" ixz="0" iyy="4.27663" iyz="0" izz="1.44691"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_3_primary_inner.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_3_primary_inner" type="fixed">
+    <parent link="leg_3_primary_stage1"/>
+    <child link="leg_3_primary_inner"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_3_secondary_a_tension1">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.5"/>
+      <inertia ixx="0.00133715" ixy="0" ixz="0" iyy="0.000887375" iyz="0" izz="0.0015673"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_3_secondary_a_tension1.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_3_secondary_a_tension1" type="fixed">
+    <parent link="leg_3_secondary_a_compression"/>
+    <child link="leg_3_secondary_a_tension1"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_3_secondary_b_tension1">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.5"/>
+      <inertia ixx="0.00142883" ixy="0" ixz="0" iyy="0.000964401" iyz="0" izz="0.00166893"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_3_secondary_b_tension1.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_3_secondary_b_tension1" type="fixed">
+    <parent link="leg_3_secondary_b_compression"/>
+    <child link="leg_3_secondary_b_tension1"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_0_footpad">
+    <inertial>
+      <origin xyz="-1.19209e-07 0 -0.0575" rpy="0 0 0"/>
+      <mass value="12"/>
+      <inertia ixx="0.950633" ixy="0" ixz="0" iyy="0.950633" iyz="0" izz="1.79362"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_0_footpad.obj"/>
+      </geometry>
+    </visual>
+    <collision name="leg_0_footpad_foot_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/leg_0_footpad_foot_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="leg_0_footpad" type="fixed">
+    <parent link="leg_0_primary_inner"/>
+    <child link="leg_0_footpad"/>
+    <origin xyz="0.582734 0 -1.07625" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_0_secondary_a_outer">
+    <inertial>
+      <origin xyz="0.328012 0.124834 -0.0564148" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx="0.0790121" ixy="0" ixz="0" iyy="0.27953" iyz="0" izz="0.317258"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_0_secondary_a_outer.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_0_secondary_a_outer" type="fixed">
+    <parent link="leg_0_secondary_a_tension1"/>
+    <child link="leg_0_secondary_a_outer"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_0_secondary_b_outer">
+    <inertial>
+      <origin xyz="0.327762 -0.124584 -0.0561648" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx="0.079261" ixy="0" ixz="0" iyy="0.279951" iyz="0" izz="0.317742"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_0_secondary_b_outer.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_0_secondary_b_outer" type="fixed">
+    <parent link="leg_0_secondary_b_tension1"/>
+    <child link="leg_0_secondary_b_outer"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_1_footpad">
+    <inertial>
+      <origin xyz="0 -1.19209e-07 -0.0575" rpy="0 0 0"/>
+      <mass value="12"/>
+      <inertia ixx="0.936557" ixy="0" ixz="0" iyy="0.936557" iyz="0" izz="1.77096"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_1_footpad.obj"/>
+      </geometry>
+    </visual>
+    <collision name="leg_1_footpad_foot_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/leg_1_footpad_foot_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="leg_1_footpad" type="fixed">
+    <parent link="leg_1_primary_inner"/>
+    <child link="leg_1_footpad"/>
+    <origin xyz="3.56821e-17 0.582734 -1.07625" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_1_secondary_a_outer">
+    <inertial>
+      <origin xyz="-0.124834 0.328012 -0.0564148" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx="0.27953" ixy="0" ixz="0" iyy="0.0790121" iyz="0" izz="0.317258"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_1_secondary_a_outer.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_1_secondary_a_outer" type="fixed">
+    <parent link="leg_1_secondary_a_tension1"/>
+    <child link="leg_1_secondary_a_outer"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_1_secondary_b_outer">
+    <inertial>
+      <origin xyz="0.124084 0.327262 -0.0556648" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx="0.280795" ixy="0" ixz="0" iyy="0.0797601" iyz="0" izz="0.318713"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_1_secondary_b_outer.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_1_secondary_b_outer" type="fixed">
+    <parent link="leg_1_secondary_b_tension1"/>
+    <child link="leg_1_secondary_b_outer"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_2_footpad">
+    <inertial>
+      <origin xyz="1.19209e-07 0 -0.0575" rpy="0 0 0"/>
+      <mass value="12"/>
+      <inertia ixx="0.948277" ixy="0" ixz="0" iyy="0.948277" iyz="0" izz="1.78983"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_2_footpad.obj"/>
+      </geometry>
+    </visual>
+    <collision name="leg_2_footpad_foot_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/leg_2_footpad_foot_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="leg_2_footpad" type="fixed">
+    <parent link="leg_2_primary_inner"/>
+    <child link="leg_2_footpad"/>
+    <origin xyz="-0.582734 7.13643e-17 -1.07625" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_2_secondary_a_outer">
+    <inertial>
+      <origin xyz="-0.327012 -0.123834 -0.0554148" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx="0.0800103" ixy="0" ixz="0" iyy="0.281218" iyz="0" izz="0.319199"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_2_secondary_a_outer.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_2_secondary_a_outer" type="fixed">
+    <parent link="leg_2_secondary_a_tension1"/>
+    <child link="leg_2_secondary_a_outer"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_2_secondary_b_outer">
+    <inertial>
+      <origin xyz="-0.327012 0.123834 -0.0554148" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx="0.0800103" ixy="0" ixz="0" iyy="0.281218" iyz="0" izz="0.319199"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_2_secondary_b_outer.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_2_secondary_b_outer" type="fixed">
+    <parent link="leg_2_secondary_b_tension1"/>
+    <child link="leg_2_secondary_b_outer"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_3_footpad">
+    <inertial>
+      <origin xyz="0 1.19209e-07 -0.0575" rpy="0 0 0"/>
+      <mass value="12"/>
+      <inertia ixx="0.950633" ixy="0" ixz="0" iyy="0.950633" iyz="0" izz="1.79362"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_3_footpad.obj"/>
+      </geometry>
+    </visual>
+    <collision name="leg_3_footpad_foot_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/leg_3_footpad_foot_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="leg_3_footpad" type="fixed">
+    <parent link="leg_3_primary_inner"/>
+    <child link="leg_3_footpad"/>
+    <origin xyz="-1.07046e-16 -0.582734 -1.07625" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_3_secondary_a_outer">
+    <inertial>
+      <origin xyz="0.123084 -0.326262 -0.0546648" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx="0.279951" ixy="0" ixz="0" iyy="0.079261" iyz="0" izz="0.317742"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_3_secondary_a_outer.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_3_secondary_a_outer" type="fixed">
+    <parent link="leg_3_secondary_a_tension1"/>
+    <child link="leg_3_secondary_a_outer"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_3_secondary_b_outer">
+    <inertial>
+      <origin xyz="-0.125084 -0.328262 -0.0566648" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx="0.279109" ixy="0" ixz="0" iyy="0.0787637" iyz="0" izz="0.316774"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_3_secondary_b_outer.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="leg_3_secondary_b_outer" type="fixed">
+    <parent link="leg_3_secondary_b_tension1"/>
+    <child link="leg_3_secondary_b_outer"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_0_touchdown_sensor_frame"/>
+  <joint name="leg_0_touchdown_sensor_frame_joint" type="fixed">
+    <parent link="leg_0_primary_inner"/>
+    <child link="leg_0_touchdown_sensor_frame"/>
+    <origin xyz="0 0 0" rpy="0 -1.07454 3.14159"/>
+  </joint>
+  <link name="leg_1_touchdown_sensor_frame"/>
+  <joint name="leg_1_touchdown_sensor_frame_joint" type="fixed">
+    <parent link="leg_1_primary_inner"/>
+    <child link="leg_1_touchdown_sensor_frame"/>
+    <origin xyz="0 0 0" rpy="0 -1.07454 -1.5708"/>
+  </joint>
+  <link name="leg_2_touchdown_sensor_frame"/>
+  <joint name="leg_2_touchdown_sensor_frame_joint" type="fixed">
+    <parent link="leg_2_primary_inner"/>
+    <child link="leg_2_touchdown_sensor_frame"/>
+    <origin xyz="0 0 0" rpy="0 -1.07454 -1.22465e-16"/>
+  </joint>
+  <link name="leg_3_touchdown_sensor_frame"/>
+  <joint name="leg_3_touchdown_sensor_frame_joint" type="fixed">
+    <parent link="leg_3_primary_inner"/>
+    <child link="leg_3_touchdown_sensor_frame"/>
+    <origin xyz="0 0 0" rpy="0 -1.07454 1.5708"/>
+  </joint>
+  <link name="sband_boresight_frame"/>
+  <joint name="sband_boresight_frame_joint" type="fixed">
+    <parent link="sband_elevation"/>
+    <child link="sband_boresight_frame"/>
+    <origin xyz="0.0591388 0.177417 0.287684" rpy="0 -0.88316 1.24905"/>
+  </joint>
+  <link name="rr_boresight_frame"/>
+  <joint name="rr_boresight_frame_joint" type="fixed">
+    <parent link="rr_trunnion"/>
+    <child link="rr_boresight_frame"/>
+    <origin xyz="0 0.243109 0.373576" rpy="0 -1.14794 1.5708"/>
+  </joint>
+  <link name="vhf_0_frame"/>
+  <joint name="vhf_0_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="vhf_0_frame"/>
+    <origin xyz="-1.07951 -0.679512 6.33337" rpy="0 -1.16955 -2.35619"/>
+  </joint>
+  <link name="vhf_1_frame"/>
+  <joint name="vhf_1_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="vhf_1_frame"/>
+    <origin xyz="1.07441 -1.83255 6.03138" rpy="0 -1.10715 -0.927295"/>
+  </joint>
+  <link name="imu_frame"/>
+  <joint name="imu_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="imu_frame"/>
+    <origin xyz="0 0.8 5.2" rpy="0 -1.5708 0"/>
+  </joint>
+</robot>

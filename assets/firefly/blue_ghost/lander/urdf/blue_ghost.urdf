@@ -1,0 +1,268 @@
+<?xml version="1.0" ?>
+<robot name="blue_ghost">
+  <link name="base_link"/>
+  <joint name="base_link_to_body" type="fixed">
+    <parent link="base_link"/>
+    <child link="body"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="body">
+    <inertial>
+      <origin xyz="0 0 1.15" rpy="0 0 0"/>
+      <mass value="560"/>
+      <inertia ixx="308.467" ixy="0" ixz="0" iyy="308.467" iyz="0" izz="280"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/body.obj"/>
+      </geometry>
+    </visual>
+    <collision name="body_hull_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/body_hull_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="leg_0_piston">
+    <inertial>
+      <origin xyz="0.112006 0.112006 -0.180579" rpy="0 0 0"/>
+      <mass value="2"/>
+      <inertia ixx="0.0895632" ixy="0" ixz="0" iyy="0.0895632" iyz="0" izz="0.0932803"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_0_piston.obj"/>
+      </geometry>
+    </visual>
+    <collision name="leg_0_piston_foot_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/leg_0_piston_foot_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="leg_0_piston" type="prismatic">
+    <parent link="body"/>
+    <child link="leg_0_piston"/>
+    <origin xyz="1.19614 1.19614 0.43382" rpy="0 0 0"/>
+    <axis xyz="-0.24704 -0.24704 0.936986"/>
+    <limit effort="20000" velocity="0.5" lower="0" upper="0.1"/>
+    <dynamics damping="1200" friction="0"/>
+  </joint>
+  <link name="leg_1_piston">
+    <inertial>
+      <origin xyz="-0.112006 0.112006 -0.178579" rpy="0 0 0"/>
+      <mass value="2"/>
+      <inertia ixx="0.0878311" ixy="0" ixz="0" iyy="0.0878311" iyz="0" izz="0.090828"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_1_piston.obj"/>
+      </geometry>
+    </visual>
+    <collision name="leg_1_piston_foot_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/leg_1_piston_foot_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="leg_1_piston" type="prismatic">
+    <parent link="body"/>
+    <child link="leg_1_piston"/>
+    <origin xyz="-1.19614 1.19614 0.43382" rpy="0 0 0"/>
+    <axis xyz="0.24704 -0.24704 0.936986"/>
+    <limit effort="20000" velocity="0.5" lower="0" upper="0.1"/>
+    <dynamics damping="1200" friction="0"/>
+  </joint>
+  <link name="leg_2_piston">
+    <inertial>
+      <origin xyz="-0.112006 -0.112006 -0.178329" rpy="0 0 0"/>
+      <mass value="2"/>
+      <inertia ixx="0.0886012" ixy="0" ixz="0" iyy="0.0886012" iyz="0" izz="0.0915253"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_2_piston.obj"/>
+      </geometry>
+    </visual>
+    <collision name="leg_2_piston_foot_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/leg_2_piston_foot_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="leg_2_piston" type="prismatic">
+    <parent link="body"/>
+    <child link="leg_2_piston"/>
+    <origin xyz="-1.19614 -1.19614 0.43382" rpy="0 0 0"/>
+    <axis xyz="0.24704 0.24704 0.936986"/>
+    <limit effort="20000" velocity="0.5" lower="0" upper="0.1"/>
+    <dynamics damping="1200" friction="0"/>
+  </joint>
+  <link name="leg_3_piston">
+    <inertial>
+      <origin xyz="0.112006 -0.112006 -0.179579" rpy="0 0 0"/>
+      <mass value="2"/>
+      <inertia ixx="0.0888667" ixy="0" ixz="0" iyy="0.0888667" iyz="0" izz="0.0922253"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/leg_3_piston.obj"/>
+      </geometry>
+    </visual>
+    <collision name="leg_3_piston_foot_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/leg_3_piston_foot_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="leg_3_piston" type="prismatic">
+    <parent link="body"/>
+    <child link="leg_3_piston"/>
+    <origin xyz="1.19614 -1.19614 0.43382" rpy="0 0 0"/>
+    <axis xyz="-0.24704 0.24704 0.936986"/>
+    <limit effort="20000" velocity="0.5" lower="0" upper="0.1"/>
+    <dynamics damping="1200" friction="0"/>
+  </joint>
+  <link name="xband_azimuth">
+    <inertial>
+      <origin xyz="0 -1.49012e-08 0.0644999" rpy="0 0 0"/>
+      <mass value="1.5"/>
+      <inertia ixx="0.00837162" ixy="0" ixz="0" iyy="0.00356312" iyz="0" izz="0.0075125"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/xband_azimuth.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="xband_azimuth" type="revolute">
+    <parent link="body"/>
+    <child link="xband_azimuth"/>
+    <origin xyz="0.45 -0.45 2.18" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6.28319" lower="-3.14159" upper="3.14159"/>
+    <dynamics damping="2" friction="0"/>
+  </joint>
+  <link name="xband_elevation">
+    <inertial>
+      <origin xyz="0.04 0 0" rpy="0 0 0"/>
+      <mass value="2"/>
+      <inertia ixx="0.0763696" ixy="0" ixz="0" iyy="0.0343616" iyz="0" izz="0.0423283"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/xband_elevation.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="xband_elevation" type="revolute">
+    <parent link="xband_azimuth"/>
+    <child link="xband_elevation"/>
+    <origin xyz="0 0 0.14" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="10" velocity="6.28319" lower="-0.174533" upper="1.74533"/>
+    <dynamics damping="2" friction="0"/>
+  </joint>
+  <link name="camera_0_frame"/>
+  <joint name="camera_0_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="camera_0_frame"/>
+    <origin xyz="0.73087 0 1.89855" rpy="0 1.03038 0"/>
+  </joint>
+  <link name="camera_1_frame"/>
+  <joint name="camera_1_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="camera_1_frame"/>
+    <origin xyz="-5.67068e-18 -0.73087 1.89855" rpy="0 1.03038 -1.5708"/>
+  </joint>
+  <link name="camera_2_frame"/>
+  <joint name="camera_2_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="camera_2_frame"/>
+    <origin xyz="-0.73087 3.78045e-18 1.89855" rpy="0 1.03038 3.14159"/>
+  </joint>
+  <link name="camera_3_frame"/>
+  <joint name="camera_3_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="camera_3_frame"/>
+    <origin xyz="1.89023e-18 0.73087 1.89855" rpy="0 1.03038 1.5708"/>
+  </joint>
+  <link name="leg_0_touchdown_sensor_frame"/>
+  <joint name="leg_0_touchdown_sensor_frame_joint" type="fixed">
+    <parent link="leg_0_piston"/>
+    <child link="leg_0_touchdown_sensor_frame"/>
+    <origin xyz="0.0197632 0.0197632 -0.0749589" rpy="0 1.2139 0.785398"/>
+  </joint>
+  <link name="leg_1_touchdown_sensor_frame"/>
+  <joint name="leg_1_touchdown_sensor_frame_joint" type="fixed">
+    <parent link="leg_1_piston"/>
+    <child link="leg_1_touchdown_sensor_frame"/>
+    <origin xyz="-0.0197632 0.0197632 -0.0749589" rpy="0 1.2139 2.35619"/>
+  </joint>
+  <link name="leg_2_touchdown_sensor_frame"/>
+  <joint name="leg_2_touchdown_sensor_frame_joint" type="fixed">
+    <parent link="leg_2_piston"/>
+    <child link="leg_2_touchdown_sensor_frame"/>
+    <origin xyz="-0.0197632 -0.0197632 -0.0749589" rpy="0 1.2139 -2.35619"/>
+  </joint>
+  <link name="leg_3_touchdown_sensor_frame"/>
+  <joint name="leg_3_touchdown_sensor_frame_joint" type="fixed">
+    <parent link="leg_3_piston"/>
+    <child link="leg_3_touchdown_sensor_frame"/>
+    <origin xyz="0.0197632 -0.0197632 -0.0749589" rpy="0 1.2139 -0.785398"/>
+  </joint>
+  <link name="xband_boresight_frame"/>
+  <joint name="xband_boresight_frame_joint" type="fixed">
+    <parent link="xband_elevation"/>
+    <child link="xband_boresight_frame"/>
+    <origin xyz="0.06 0 0" rpy="0 -1.34359e-07 0"/>
+  </joint>
+  <link name="star_tracker_0_frame"/>
+  <joint name="star_tracker_0_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="star_tracker_0_frame"/>
+    <origin xyz="-0.679201 -0.547742 2.22929" rpy="0 -1.03907 -2.46293"/>
+  </joint>
+  <link name="star_tracker_1_frame"/>
+  <joint name="star_tracker_1_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="star_tracker_1_frame"/>
+    <origin xyz="0.603778 0.603778 2.22929" rpy="0 -1.03907 0.785398"/>
+  </joint>
+  <link name="omni_antenna_0_frame"/>
+  <joint name="omni_antenna_0_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="omni_antenna_0_frame"/>
+    <origin xyz="0.770548 0.280457 2.14" rpy="0 -1.5708 0"/>
+  </joint>
+  <link name="omni_antenna_1_frame"/>
+  <joint name="omni_antenna_1_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="omni_antenna_1_frame"/>
+    <origin xyz="-0.280457 0.770548 2.14" rpy="0 -1.5708 0"/>
+  </joint>
+  <link name="omni_antenna_2_frame"/>
+  <joint name="omni_antenna_2_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="omni_antenna_2_frame"/>
+    <origin xyz="-0.770548 -0.280457 2.14" rpy="0 -1.5708 0"/>
+  </joint>
+  <link name="imu_frame"/>
+  <joint name="imu_frame_joint" type="fixed">
+    <parent link="body"/>
+    <child link="imu_frame"/>
+    <origin xyz="0 0 1.4" rpy="0 -1.5708 0"/>
+  </joint>
+</robot>
