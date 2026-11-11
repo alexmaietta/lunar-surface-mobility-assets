@@ -2,6 +2,7 @@
 [![Code: Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-blue.svg)](LICENSE)
 [![Assets: CC BY 4.0](https://img.shields.io/badge/assets-CC%20BY%204.0-lightgrey.svg)](LICENSE-ASSETS)
 ![USD](https://img.shields.io/badge/format-OpenUSD-6a5acd.svg)
+![URDF](https://img.shields.io/badge/format-URDF-22314e.svg?logo=ros&logoColor=white)
 ![Blender](https://img.shields.io/badge/format-Blender-e87d0d.svg?logo=blender&logoColor=white)
 ![glTF](https://img.shields.io/badge/format-glTF-87c540.svg)
 ![OBJ](https://img.shields.io/badge/format-OBJ-555555.svg)
@@ -12,7 +13,7 @@
 
 ![Every asset in this repo on the lunar surface, Cycles render](docs/images/hero.jpg)
 
-These are simulation-ready models of lunar landers, rovers and their friends. Each one is built procedurally in Blender from public references and gets generated, high-resolution, tileable PBR textures. It ships as an Isaac Sim / SimReady-style **USD** asset with physics, joints, colliders and named sites for engines, RCS thrusters, sensors and antennas. The rovers add drive, steering and suspension joints, working hatches, stairs and arms, and real `UsdLux` lights. Each asset also comes in various formats, such as **glTF**, **OBJ** and **Blender**.
+These are simulation-ready models of lunar landers, rovers and their friends. Each one is built procedurally in Blender from public references and gets generated, high-resolution, tileable PBR textures. It ships as an Isaac Sim / SimReady-style **USD** asset with physics, joints, colliders and named sites for engines, RCS thrusters, sensors and antennas. The rovers add drive, steering and suspension joints, working hatches, stairs and arms, and real `UsdLux` lights. Every asset is also a **URDF** robot description with per-link mass and inertia, colliders, joint limits and closed suspension linkages, and comes as **glTF**, **OBJ** and **Blender** too.
 
 **[Explore every model in 3D](https://alexmaietta.github.io/lunar-surface-mobility-assets/)** The interactive viewer puts all of the landers and rovers on the lunar surface at true scale, next to a 1.8 m human. Orbit around them, click any vehicle for its specs, and drive its moving parts, such as engine gimbals, antennas, arms, hatches, stairs, steering and wheels. It runs in the browser with nothing to install (see [Web viewer](#web-viewer)).
 
@@ -74,11 +75,13 @@ The rovers use the same frame, with the origin on the ground under the chassis c
 
 ## Quick Start
 
-Each asset is released as `<asset>-usd.zip`, `<asset>-gltf.zip`, `<asset>-obj.zip` and `<asset>-blend.zip` on the [latest release](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest). For small downloads, `<asset>-simple-usd.zip`, `<asset>-simple-gltf.zip` and `<asset>-simple-obj.zip` hold a single simplified mesh of a few hundred kB (see [Simple versions](#simple-versions)). To pin a version, use `download/v0.1.0` instead of `latest/download`; each release includes `SHA256SUMS`.
+Each asset is released as `<asset>-usd.zip`, `<asset>-urdf.zip`, `<asset>-gltf.zip`, `<asset>-obj.zip` and `<asset>-blend.zip` on the [latest release](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest). For small downloads, `<asset>-simple-usd.zip`, `<asset>-simple-gltf.zip` and `<asset>-simple-obj.zip` hold a single simplified mesh of a few hundred kB (see [Simple versions](#simple-versions)). To pin a version, use `download/v0.1.0` instead of `latest/download`; each release includes `SHA256SUMS`.
 
 ```sh
 curl -LO https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/mk1-usd.zip
 unzip mk1-usd.zip # -> mk1/mk1.usda
+curl -LO https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/eagle-urdf.zip
+unzip eagle-urdf.zip # -> eagle/urdf/eagle.urdf (+ meshes, eagle/obj textures)
 curl -LO https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/mk1-simple-gltf.zip
 unzip mk1-simple-gltf.zip # -> mk1_simple/mk1_simple.glb
 ```
@@ -243,9 +246,9 @@ Build the models and serve the site locally:
   | Blender | `blender/<id>.blend` | Source model with all textures packed |
   | Simple USD | `simple/usd/<id>_simple.usd` | One decimated mesh, flat materials, one rigid body with mass, inertia and per-link convex-hull colliders |
   | Simple glTF / OBJ | `simple/gltf/<id>_simple.glb`, `simple/obj/<id>_simple.obj` | The same mesh, Y-up, no textures |
-  | URDF (`viper`, `cadre`, `ipex`) | `urdf/<id>.urdf` + `urdf/meshes/` | Z-up, one link per USD link with mass, centre of mass and full inertia tensor, per-link OBJ visuals (textures shared with `obj/`), convex-hull colliders, joint limits and efforts. VIPER's four-bar loops become `<mimic>` joints (exact for its parallelogram arms). Cameras, lights and tool sites are fixed `<name>_frame` links with +X forward |
+  | URDF | `urdf/<id>.urdf` + `urdf/meshes/` + `urdf/<id>.urdf.json` | Z-up, one link per USD link with mass, centre of mass and full inertia tensor, per-link OBJ visuals (textures shared with `obj/`), convex-hull colliders, joint limits, efforts and damping. Closed suspension loops become `<mimic>` joints and the sidecar keeps what URDF can't hold (see [URDF](#urdf)). Cameras, lights and tool sites are fixed `<name>_frame` links with +X forward |
 
-  Paths are inside each asset folder, `assets/<vendor>/<family>/<name>/`, which also holds that asset's `LICENSE` and `NOTICE`. glTF and OBJ carry the default configuration only (no variants, physics or sites); texture tiling is baked into their UVs.
+  Paths are inside each asset folder, `assets/<vendor>/<family>/<name>/`, which also holds that asset's `LICENSE` and `NOTICE`. The URDF carries the default mass state and the articulated rest pose. glTF and OBJ carry the default configuration only (no variants, physics or sites); texture tiling is baked into their UVs.
 
 ### USD variants
 
@@ -276,7 +279,37 @@ Every asset also ships a standalone simple version, built from the same model, f
 | Geometry | every part, 4096 px PBR textures | one mesh decimated to a triangle budget (`SIMPLE_TRIS`, default 8,000), flat colour, roughness and metallic per material |
 | Physics | articulated, per-link colliders, joints and drives | one rigid body: mass, centre of mass and inertia of the default mass state, one convex hull per original link |
 | Sites, cameras, variants | yes | no |
-| Formats | USD, glTF, OBJ, Blender | USD, glTF, OBJ |
+| Formats | USD, URDF, glTF, OBJ, Blender | USD, glTF, OBJ |
+
+### URDF
+
+Every asset has a URDF generated from its packaged USD by `scripts/export_urdf.py`. URDF is a tree, so the exporter has to cut each closed loop and keep the linkage moving together with `<mimic>` joints. It does this the same way for every loop rather than per suspension type.
+
+- **Driver and passive joints.** In each loop the joint whose role is not `linkage` drives it (on every rover today that's the `suspension` lower arm). The `linkage` joints mimic it. Every mimic points straight at a driver, never at another mimic, and the exporter stops with an error if a loop has no driver or two.
+- **Fitted mimics.** The exporter solves the real loop closure across the driver's whole travel, then fits each passive joint as a straight line through the exact rest-pose solution. The rest pose is therefore exactly closed, and the gap only grows toward full bump and droop. The upper wishbone arm, the upright, and the coil-over strut's angle and stroke all follow the lower arm this way.
+- **Joints URDF can't express.** Spherical joints become `fixed`, as do prismatic joints with under 1 mm of travel. On the Apollo LM that locks the landing-gear truss, whose secondary struts already hold the primaries in place, so its 8 truss loops are dropped and only the primary strut stroke stays a real joint.
+- **Sidecar.** `<id>.urdf.json` lists every joint's role and drive (spring stiffness, damping and target, servo gains), every mimic fit, every loop with its worst closure gap, and the joints collapsed to `fixed`. URDF has no springs, so this is where suspension spring rates live.
+
+The table gives loop closure with the fitted mimics, worst case over the full suspension travel.
+
+| Assets | Loops | Max gap at full travel |
+|---|---|---|
+| `viper` | 4 parallelogram wishbones | 0 mm (exact) |
+| `moon_racer`, `pegasus`, `eagle` | 8 each (wishbone and coil-over strut) | 8.0, 8.4, 13.0 mm |
+| `pr_concept`, `lunar_cruiser`, `ltv_concept` | 12, 12, 8 | 16.5, 17.3, 19.3 mm |
+| `apollo_lm` | 8 rigid truss loops | dropped (truss locked) |
+
+The other assets have no closed loops. `scripts/check_urdf.py` checks every URDF and runs in the `urdf` pipeline step and before each release. It checks for a single tree rooted at `base_link`, no mimic-of-mimic, a limit on every revolute and prismatic joint, and that every mesh and texture exists. It checks that inertias are positive definite and meet the triangle inequality, and that the total mass matches the USD. It checks that every link's rest pose matches the USD rigid body to 0.1 mm. It re-measures each loop gap from the URDF alone and compares it with the sidecar, and it loads the file in MuJoCo.
+
+Notes on loading it.
+- Mesh paths are relative to the `.urdf` file. PyBullet and MuJoCo load the file as it is. ROS tools such as `robot_state_publisher` and rviz want absolute URIs, so rewrite them first, for example `sed "s#filename=\"meshes/#filename=\"file://$PWD/eagle/urdf/meshes/#" eagle/urdf/eagle.urdf > eagle_ros.urdf`.
+- `joint_state_publisher_gui` shows one slider per driver, and the whole wheel corner follows it.
+- MuJoCo's URDF importer ignores `<mimic>` and leaves those joints free. Couple them yourself from the sidecar's multipliers, or use the USD, which keeps the loop-closing joints. Treat any other importer the same way unless it documents mimic support.
+
+```python
+import mujoco
+m = mujoco.MjModel.from_xml_path("eagle/urdf/eagle.urdf")
+```
 
 ## USD asset structure
 
@@ -308,6 +341,7 @@ Conventions:
 | Validator | Result |
 |---|---|
 | `nvidia_usd_validate` (usd-validation-nvidia 1.22) | 0 errors and 0 failures on `mk1`, `mk1_offloader`, `apollo_lm`, `nova_c`, `blue_ghost` and `peregrine`, with the mesh-weld and indexed-primvar checks off; only non-manifold and zero-area-face warnings remain |
+| `scripts/check_urdf.py` | All 22 URDFs pass the structure, file, inertia and MuJoCo 3.12 load checks, rest poses are within 0.005 mm of the USD, and loop gaps are as listed under [URDF](#urdf) |
 | Newton 1.6 (`SolverMuJoCo`) | `mk1` settles level on all four legs in lunar gravity, tracks the gimbal and antenna servos and lifts off under BE-7 thrust; with `Offloader = crane` (15 bodies) it also tracks slew, luff and hoist targets. `apollo_lm`, `nova_c`, `blue_ghost` and `peregrine` pass every check that applies to them. All 14 rovers settle level on every wheel, track every servo (steering, active suspension, hatches, latches, stairs, railings, wings, arms, masts) and drive; the 18 t Lunar Cruiser also passes its scripted showcase |
 
 `scripts/sim_newton.py` works on any asset. It reads each joint's `joint:role` and `joint:driveKind` from the USD and runs the checks that apply, exiting non-zero if any fails:
@@ -445,6 +479,7 @@ cd examples/newton
 ```bash
 .venv/bin/nvidia_usd_validate -D WeldChecker -D IndexedPrimvarChecker assets/blue_origin/mk1/lander/usd/mk1.usda
 ./pipeline.sh mk1 sim
+.venv/bin/python scripts/check_urdf.py # every asset, or --asset eagle
 .venv/bin/python scripts/sim_newton.py --asset mk1 --variants Offloader=crane --checks settle,servo
 .venv/bin/python scripts/sim_newton.py --asset apollo_lm --variants LandingGear=crush --checks touchdown --drop 0 --td-vz 1.0 --td-vh 0.6 --slope 10
 ```
@@ -460,7 +495,7 @@ uv venv --python 3.13 && uv pip install -r requirements.txt
 ```bash
 ./pipeline.sh list # assets, attachments first
 ./pipeline.sh mk1 # textures -> build -> export -> thumbnail -> USD package -> assets/ (full and simple)
-./pipeline.sh mk1 package assets # selected steps: textures build export thumb package blend mesh simple assets gallery sim
+./pipeline.sh mk1 package assets # selected steps: textures build export thumb package blend mesh simple urdf assets gallery sim
 ./pipeline.sh update # every asset, attachments before their hosts
 ./pipeline.sh hero # every asset together -> docs/images/hero.jpg
 ./pipeline.sh lunar_cruiser gallery # Cycles renders -> docs/images/<asset path>/ (VIEWS=front_three_quarter,rear_three_quarter,wheel for rovers)
@@ -483,8 +518,8 @@ Texture sets are cached by spec, so only changed sets regenerate. The 4096 px ML
 | `configs/<id>.py` | One config per asset: dimensions, materials, features, masses, colliders, `ASSET_PATH` |
 | `families/` | Family builders shared by an asset family (`mk1`, `offloader`, `apollo_lm`, `nova_c`, `blue_ghost`, `peregrine`), plus `parts.py`: shared nozzles, sprung legs, thruster clusters, panels, dishes and lofts. `rover.py` builds every rover from its config: wheel modules (double wishbone, trailing arm, rocker, steering column, prismatic leg), wheel styles (airless spring, wire mesh, grousered, slat), extra jointed links and loop closures, a parts vocabulary (boxes, lofts, extrusions, panels, rails, chunked walls swept along a 2D path), crew stations, masts, dishes, solar arrays, arms and lights; `rover_kit.py` has the shared materials and helpers |
 | `examples/newton/` | Newton examples: lander touchdown, any-rover driving, Lunar Cruiser, VIPER and IPEx showcases, IPEx regolith digging with MPM |
-| `scripts/` | Pipeline: texture generation, Blender build, export, USD packaging, simple versions, renders, hero, release |
-| `assets/<vendor>/<family>/<name>/` | Generated by the pipeline and committed with Git LFS: `usd/`, `gltf/`, `obj/`, `blender/`, `simple/`, `LICENSE`, `NOTICE` |
+| `scripts/` | Pipeline: texture generation, Blender build, export, USD packaging, URDF export and check, simple versions, renders, hero, release |
+| `assets/<vendor>/<family>/<name>/` | Generated by the pipeline and committed with Git LFS: `usd/`, `urdf/`, `gltf/`, `obj/`, `blender/`, `simple/`, `LICENSE`, `NOTICE` |
 | `web/` | Static three.js viewer: `index.html`, `src/` (viewer and lil-gui panel), `vendor/three/` (pinned three.js r170 and lil-gui), `models/` (generated by `./pipeline.sh web`, git-ignored) |
 | `docs/images/` | Hero and gallery renders |
 | `refs/` | Local reference library (git-ignored) |
