@@ -504,7 +504,8 @@ blender -b build/lunar_cruiser/lunar_cruiser.blend -P scripts/render.py -- --ass
 ./pipeline.sh scene # local assets/lunar_vehicles.usda referencing every asset's USD, to scale in one row (git-ignored)
 ./pipeline.sh web # web viewer models -> web/models/ (git-ignored)
 ./pipeline.sh serve # serve web/ at http://localhost:8000
-./pipeline.sh release # update, then build the release zips in build/release/v<VERSION>/
+./pipeline.sh bump 0.4.0 # set VERSION and restamp the committed assets, no rebuild
+./pipeline.sh release # full rebuild of every asset, then the release zips in build/release/v<VERSION>/ for a local check
 ```
 
 `render.py` takes `--pose joint=value,...` for joint poses, `--variant Set:option` for geometry variants, `--night --lights` for a dark scene lit only by the asset's own lights, and `--sun az,el` for the sun direction. `pipeline.sh` points Blender's EEVEE/OpenGL at the NVIDIA GPU on hybrid-graphics laptops (Cycles uses OptiX either way).
@@ -533,9 +534,10 @@ The version lives in `VERSION` and covers every asset. The packager stamps it in
 
 To cut a release:
 
-1. Bump `VERSION` and run `./pipeline.sh release`. It rebuilds every asset, refreshes `assets/`, and builds the release zips in `build/release/v<VERSION>/` so you can check them.
-2. Commit `assets/` and `VERSION`, tag the commit `v<VERSION>`, and push the tag.
-3. The [release workflow](.github/workflows/release.yml) runs on the tag. It checks that the tag matches `VERSION` and every stamped USD, zips the committed assets, builds `web-models.zip` for the web viewer, publishes the GitHub release with `SHA256SUMS`, and starts the pages workflow to deploy the viewer for that release.
+1. Rebuild and commit any asset whose model changed with `./pipeline.sh <asset>`, as you go. A release doesn't need a full rebuild.
+2. Run `./pipeline.sh bump <x.y.z>`. It sets `VERSION` and restamps the committed assets in place (the USD layers, simple USDs, `NOTICE` files and URDF sidecars) without rebuilding anything, then checks that every stamp matches.
+3. Commit with `git add -u`, tag the commit `v<VERSION>`, and push the commit and the tag.
+4. The [release workflow](.github/workflows/release.yml) runs on the tag. It checks that the tag matches `VERSION` and every stamped USD, runs `scripts/check_urdf.py`, zips the committed assets, builds `web-models.zip` for the web viewer, publishes the GitHub release with `SHA256SUMS`, and starts the pages workflow to deploy the viewer for that release.
 
 ## Roadmap
 

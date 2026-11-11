@@ -12,6 +12,7 @@ usage() {
   cat <<EOF
 usage: ./pipeline.sh <asset> [step ...]   steps: textures build export thumb package blend mesh simple urdf assets gallery sim (default: all)
        ./pipeline.sh <command>            commands: update hero release list scene web serve
+       ./pipeline.sh bump <x.y.z>         set VERSION and restamp the committed assets without rebuilding
 assets: $(order | tr '\n' ' ')
 EOF
   exit 1
@@ -68,6 +69,7 @@ hero()    { $BLENDER -b --factory-startup -P scripts/hero.py -- --out docs/image
 release() { update; $PY scripts/make_release.py; v=$(cat VERSION)
             echo "next: git add -A assets VERSION && git commit -m \"Release v$v\" && git tag v$v && git push origin main v$v"; }
 list()    { order; }
+bump()    { [ -n "${1:-}" ] || usage; $PY scripts/bump_version.py "$1"; }
 scene()   { $PY scripts/scene.py; }
 web()     { $PY scripts/web_export.py; }
 serve()   { echo "web viewer: http://localhost:${PORT:-8000}"; $PY -m http.server -d web "${PORT:-8000}"; }
@@ -75,6 +77,7 @@ serve()   { echo "web viewer: http://localhost:${PORT:-8000}"; $PY -m http.serve
 [ $# -ge 1 ] || usage
 case $1 in
   update|hero|release|list|scene|web|serve) $1; exit ;;
+  bump) bump "${2:-}"; exit ;;
 esac
 [ -f "configs/$1.py" ] || usage
 asset=$1; shift
