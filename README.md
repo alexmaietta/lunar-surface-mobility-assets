@@ -15,30 +15,30 @@ These are simulation-ready models of lunar landers, rovers and their friends. Ea
 
 **[Explore every model in 3D](https://alexmaietta.github.io/lunar-surface-mobility-assets/)** The interactive viewer puts all of the landers and rovers on the lunar surface at true scale, next to a 1.8 m human. Orbit around them, click any vehicle for its specs, and drive its moving parts, such as engine gimbals, antennas, arms, hatches, stairs, steering and wheels. It runs in the browser with nothing to install (see [Web viewer](#web-viewer)).
 
-| Vendor | Vehicle | Asset | Status |
-|---|---|---|---|
-| Blue Origin | [Blue Moon MK1](assets/blue_origin/mk1/lander) lander | `mk1` | v0.1: photo-matched, packaged, Newton-tested |
-| Blue Origin | [Blue Moon MK1](assets/blue_origin/mk1/offloader) payload offloader | `mk1_offloader` | v0.1: packaged, Newton-tested on `mk1` |
-| Grumman / NASA | [Apollo Lunar Module](assets/grumman/apollo_lm/lander) (J-mission) | `apollo_lm` | v0.1: drawing-matched, packaged, Newton-tested |
-| Intuitive Machines | [Nova-C](assets/intuitive_machines/nova_c/lander) (IM-1 / IM-2) | `nova_c` | v0.1: photo-matched, packaged, Newton-tested |
-| Firefly Aerospace | [Blue Ghost](assets/firefly/blue_ghost/lander) (Mission 1) | `blue_ghost` | v0.1: photo-matched, packaged, Newton-tested |
-| Astrobotic | [Peregrine](assets/astrobotic/peregrine/lander) (Mission One) | `peregrine` | v0.1: photo-matched, packaged, Newton-tested |
-| Toyota / JAXA | [Lunar Cruiser](assets/toyota_jaxa/lunar_cruiser/rover) pressurised rover (2025 design) | `lunar_cruiser` | v0.1: spec-matched, packaged, Newton-tested |
-| NASA | [Space Exploration Vehicle](assets/nasa/sev/rover) (SEV / LER, 2010) | `sev` | v0.1: photo-matched, packaged, Newton-tested |
-| NASA | [VIPER](assets/nasa/viper/rover) | `viper` | v0.2: flight-matched to lab photos and CAD, photometric lights, packaged, Newton-tested |
-| NASA | [IPEx](assets/nasa/ipex/rover) regolith excavator (TRL 5/6) | `ipex` | v0.2: CAD-matched, packaged, Newton-tested |
-| NASA / JPL | [CADRE](assets/nasa_jpl/cadre/rover) rover (IM-3) | `cadre` | v0.1: photo-matched, packaged, Newton-tested |
-| Astrolab | [FLEX](assets/astrolab/flex/rover) prototype | `flex` | v0.1: photo-matched, packaged, Newton-tested |
-| Astrolab | [CLV-1](assets/astrolab/clv1/rover) LTV (NASA task order 2026) | `clv1` | v0.1: render-matched, packaged, Newton-tested |
-| Astrolab | [FLIP](assets/astrolab/flip/rover) (Griffin-1) | `flip` | v0.1: render-matched, packaged, Newton-tested |
-| Lunar Outpost | [Pegasus](assets/lunar_outpost/pegasus/rover) LTV (NASA task order 2026) | `pegasus` | v0.1: photo-matched, packaged, Newton-tested |
-| Lunar Outpost | [Eagle](assets/lunar_outpost/eagle/rover) LTV bid | `eagle` | v0.1: photo-matched, packaged, Newton-tested |
-| Lunar Outpost | [MAPP](assets/lunar_outpost/mapp/rover) (IM-2) | `mapp` | v0.1: photo-matched, packaged, Newton-tested |
-| Intuitive Machines | [Moon RACER](assets/intuitive_machines/moon_racer/rover) LTV bid | `moon_racer` | v0.1: photo-matched, packaged, Newton-tested |
-| Concept | [Lunar Terrain Vehicle](assets/concepts/ltv/rover), crewed or uncrewed | `ltv_concept` | v0.1: concept, packaged, Newton-tested |
-| Concept | [Pressurised rover](assets/concepts/pressurized/rover) | `pr_concept` | v0.1: concept, packaged, Newton-tested |
-| Blue Origin | [Blue Moon MK2](assets/blue_origin/mk2/lander) crewed lander (Artemis HLS) | `mk2` | v0.1: render- and drawing-matched, packaged, Newton-tested |
-| ASI / Thales Alenia Space | [Multi-Purpose Habitation (MPH)](assets/asi_thales/mph/habitat) mobile surface habitat (2025 reference design) | `mph` | v0.1: CAD camera-matched, packaged, Newton-tested |
+| Vendor | Vehicle | Asset |
+|---|---|---|
+| Blue Origin | [Blue Moon MK1](assets/blue_origin/mk1/lander) lander | `mk1` |
+| Blue Origin | [Blue Moon MK1](assets/blue_origin/mk1/offloader) payload offloader | `mk1_offloader` |
+| Grumman / NASA | [Apollo Lunar Module](assets/grumman/apollo_lm/lander) (J-mission) | `apollo_lm` |
+| Intuitive Machines | [Nova-C](assets/intuitive_machines/nova_c/lander) (IM-1 / IM-2) | `nova_c` |
+| Firefly Aerospace | [Blue Ghost](assets/firefly/blue_ghost/lander) (Mission 1) | `blue_ghost` |
+| Astrobotic | [Peregrine](assets/astrobotic/peregrine/lander) (Mission One) | `peregrine` |
+| Toyota / JAXA | [Lunar Cruiser](assets/toyota_jaxa/lunar_cruiser/rover) pressurised rover (2025 design) | `lunar_cruiser` |
+| NASA | [Space Exploration Vehicle](assets/nasa/sev/rover) (SEV / LER, 2010) | `sev` |
+| NASA | [VIPER](assets/nasa/viper/rover) | `viper` |
+| NASA | [IPEx](assets/nasa/ipex/rover) regolith excavator (TRL 5/6) | `ipex` |
+| NASA / JPL | [CADRE](assets/nasa_jpl/cadre/rover) rover (IM-3) | `cadre` |
+| Astrolab | [FLEX](assets/astrolab/flex/rover) prototype | `flex` |
+| Astrolab | [CLV-1](assets/astrolab/clv1/rover) LTV (NASA task order 2026) | `clv1` |
+| Astrolab | [FLIP](assets/astrolab/flip/rover) (Griffin-1) | `flip` |
+| Lunar Outpost | [Pegasus](assets/lunar_outpost/pegasus/rover) LTV (NASA task order 2026) | `pegasus` |
+| Lunar Outpost | [Eagle](assets/lunar_outpost/eagle/rover) LTV bid | `eagle` |
+| Lunar Outpost | [MAPP](assets/lunar_outpost/mapp/rover) (IM-2) | `mapp` |
+| Intuitive Machines | [Moon RACER](assets/intuitive_machines/moon_racer/rover) LTV bid | `moon_racer` |
+| Concept | [Lunar Terrain Vehicle](assets/concepts/ltv/rover), crewed or uncrewed | `ltv_concept` |
+| Concept | [Pressurised rover](assets/concepts/pressurized/rover) | `pr_concept` |
+| Blue Origin | [Blue Moon MK2](assets/blue_origin/mk2/lander) crewed lander (Artemis HLS) | `mk2` |
+| ASI / Thales Alenia Space | [Multi-Purpose Habitation (MPH)](assets/asi_thales/mph/habitat) mobile surface habitat (2025 reference design) | `mph` |
 
 All assets share one frame and are built to scale (Z up, metres, origin on the ground under the centerline), so they can be placed side by side:
 
