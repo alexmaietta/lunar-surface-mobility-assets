@@ -26,8 +26,8 @@ def main():
                 f"Copyright {datetime.date.today().year} Alex Maietta\n\n"
                 "Dedicated to the public domain under CC0 1.0 Universal; see LICENSE.\n"
                 f"Credit is appreciated but not required: \"{cfg.TITLE} model by Alex Maietta\" ({REPO})\n\n"
-                "Built from public sources; dimensions and performance figures not published by the manufacturer are\n"
-                "estimates. Not affiliated with or endorsed by the vehicle manufacturer or NASA. Vehicle and company names\n"
+                "Built from public sources; dimensions and performance figures not published by the manufacturer are "
+                "estimates. Not affiliated with or endorsed by the vehicle manufacturer or NASA. Vehicle and company names "
                 "are trademarks of their owners; manufacturer logos and wordmarks are left off the model.\n")
     print(f"published {asset} -> {os.path.relpath(dst, assetcfg.ROOT)}")
 
