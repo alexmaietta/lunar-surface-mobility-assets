@@ -1,6 +1,6 @@
 [![Latest release](https://img.shields.io/github/v/release/alexmaietta/lunar-surface-mobility-assets?label=release)](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest)
-[![Code: Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-blue.svg)](LICENSE)
-[![Assets: CC BY 4.0](https://img.shields.io/badge/assets-CC%20BY%204.0-lightgrey.svg)](LICENSE-ASSETS)
+[![Code: BSD-3-Clause](https://img.shields.io/badge/code-BSD--3--Clause-blue.svg)](LICENSE)
+[![Assets: CC0 1.0](https://img.shields.io/badge/assets-CC0%201.0-lightgrey.svg)](LICENSE-ASSETS)
 ![USD](https://img.shields.io/badge/format-OpenUSD-6a5acd.svg)
 ![URDF](https://img.shields.io/badge/format-URDF-22314e.svg?logo=ros&logoColor=white)
 ![Blender](https://img.shields.io/badge/format-Blender-e87d0d.svg?logo=blender&logoColor=white)
@@ -582,7 +582,7 @@ For the other landers:
 
 Copyright 2026 Alex Maietta (see [`NOTICE`](NOTICE)).
 
-- **Code** (`scripts/`, `families/`, `configs/`, `pipeline.sh`): [Apache License 2.0](LICENSE).
-- **Model assets** (`assets/`, each asset folder carries its own `LICENSE` and `NOTICE`) and **renders** (`docs/images/`): [Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE-ASSETS). Credit: "Lunar surface mobility assets by Alex Maietta".
+- **Code** (`scripts/`, `families/`, `configs/`, `examples/`, `web/` except `web/vendor/`, `pipeline.sh`) is under the [BSD 3-Clause License](LICENSE). Third-party code in `web/vendor/` keeps its own license.
+- **Model assets** (`assets/`, each asset folder carries its own `LICENSE` and `NOTICE`) and **renders** (`docs/images/`) are dedicated to the public domain under [CC0 1.0 Universal](LICENSE-ASSETS). Use them for anything without asking or crediting. A credit such as "Lunar surface mobility assets by Alex Maietta" is appreciated but not required.
 
 This project is not affiliated with or endorsed by Blue Origin, NASA or any other vehicle manufacturer. Vehicle and company names are trademarks of their owners and are used only to identify the vehicles modelled; manufacturer logos and wordmarks are left off the models.

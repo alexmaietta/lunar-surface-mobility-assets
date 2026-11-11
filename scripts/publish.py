@@ -24,8 +24,8 @@ def main():
     with open(os.path.join(dst, "NOTICE"), "w") as f:
         f.write(f"{cfg.TITLE} ({asset}), lunar surface mobility assets v{assetcfg.version()}\n"
                 f"Copyright {datetime.date.today().year} Alex Maietta\n\n"
-                "Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0); see LICENSE.\n"
-                f"Attribution: \"{cfg.TITLE} model by Alex Maietta\" ({REPO})\n\n"
+                "Dedicated to the public domain under CC0 1.0 Universal; see LICENSE.\n"
+                f"Credit is appreciated but not required: \"{cfg.TITLE} model by Alex Maietta\" ({REPO})\n\n"
                 "Built from public sources; dimensions and performance figures not published by the manufacturer are\n"
                 "estimates. Not affiliated with or endorsed by the vehicle manufacturer or NASA. Vehicle and company names\n"
                 "are trademarks of their owners; manufacturer logos and wordmarks are left off the model.\n")

@@ -86,7 +86,7 @@ def main():
         f.write("\n".join(sums) + "\n")
     with open(os.path.join(out, "RELEASE_NOTES.md"), "w") as f:
         f.write(f"Lunar surface mobility assets v{version}.\n\n| File | Contents |\n|---|---|\n" + "\n".join(rows) + "\n\n"
-                "Assets are licensed CC BY 4.0 (LICENSE and NOTICE in each zip). Checksums: `SHA256SUMS`.\n")
+                "Assets are dedicated to the public domain under CC0 1.0 (LICENSE and NOTICE in each zip). Checksums: `SHA256SUMS`.\n")
     print(f"release files in {out}")
 
 

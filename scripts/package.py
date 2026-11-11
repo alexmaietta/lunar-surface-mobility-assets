@@ -939,7 +939,7 @@ def write_interface(path, cfg, links, extents, lods):
         vs.SetVariantSelection(default)
     today = datetime.date.today().isoformat()
     meta = {"asset_name": ROOT[1:], "asset_version": assetcfg.version(), "usd_version": ".".join(map(str, Usd.GetVersion())),
-            "asset_type": "robot", "category": "spacecraft", "asset_license": "CC-BY-4.0",
+            "asset_type": "robot", "category": "spacecraft", "asset_license": "CC0-1.0",
             "source_file": f"build/{ROOT[1:]}/{ROOT[1:]}.blend (scripts/build.py)", "usd_date_generated": today,
             "rigid_body_count": len(links), "asset_extents": Gf.Vec3f(*extents),
             "mass": float(cfg.MASS[cfg.DEFAULT_MASS_STATE]["mass"]) if getattr(cfg, "MASS", None)
