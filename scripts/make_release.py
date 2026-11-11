@@ -9,10 +9,11 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import assetcfg
 
-FORMATS = {"usd": "usd", "blend": "blender", "gltf": "gltf", "obj": "obj",
+FORMATS = {"usd": "usd", "urdf": "urdf", "blend": "blender", "gltf": "gltf", "obj": "obj",
            "simple-usd": "simple/usd", "simple-gltf": "simple/gltf", "simple-obj": "simple/obj"}
 DESCRIBE = {
     "usd": "USD asset (`{a}/{a}.usda`) with all variants and textures",
+    "urdf": "URDF (`{a}/urdf/{a}.urdf`), Z-up, per-link OBJ meshes and colliders, mimic-closed suspension loops, `{a}.urdf.json` sidecar",
     "blend": "Blender model (`{a}/{a}.blend`), textures packed",
     "gltf": "glTF binary (`{a}/{a}.glb`), Y-up, textures embedded, one node per link",
     "obj": "OBJ (`{a}/{a}.obj`, `.mtl` and textures), Y-up, rest pose",
@@ -22,8 +23,10 @@ DESCRIBE = {
 }
 
 
-def zip_dir(src_dir, arc_root, zip_path, extras):
+def zip_dir(src_dir, arc_root, zip_path, extras, linked=()):
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED, compresslevel=6) as z:
+        for p, arc in linked:
+            z.write(p, arc)
         for dirpath, dirnames, files in os.walk(src_dir):
             dirnames.sort()
             for f in sorted(x for x in files if not x.endswith(".blend1")):
@@ -31,6 +34,19 @@ def zip_dir(src_dir, arc_root, zip_path, extras):
                 z.write(p, os.path.join(arc_root, os.path.relpath(p, src_dir)))
         for p in extras:
             z.write(p, os.path.basename(p))
+
+
+def urdf_textures(urdf_dir, asset_root):
+    out = set()
+    for mtl in glob.glob(os.path.join(urdf_dir, "meshes", "**", "*.mtl"), recursive=True):
+        with open(mtl) as f:
+            for ln in f:
+                if ln.startswith("map_Kd"):
+                    tex = os.path.normpath(os.path.join(os.path.dirname(mtl), ln.split(None, 1)[1].strip()))
+                    if not os.path.isfile(tex):
+                        raise SystemExit(f"{os.path.relpath(mtl, assetcfg.ROOT)} references missing {os.path.relpath(tex, assetcfg.ROOT)}")
+                    out.add((tex, os.path.relpath(tex, asset_root)))
+    return sorted(out)
 
 
 def sha256(path):
@@ -58,7 +74,11 @@ def main():
             if not os.path.isdir(src):
                 raise SystemExit(f"missing assets/{cfg.ASSET_PATH}/{folder}: run ./pipeline.sh update first")
             zp = os.path.join(out, f"{asset}-{name}.zip")
-            zip_dir(src, f"{asset}_simple" if name.startswith("simple") else asset, zp, extras)
+            if name == "urdf":
+                linked = [(p, os.path.join(asset, rel)) for p, rel in urdf_textures(src, assetcfg.asset_dir(cfg))]
+                zip_dir(src, os.path.join(asset, "urdf"), zp, extras, linked)
+            else:
+                zip_dir(src, f"{asset}_simple" if name.startswith("simple") else asset, zp, extras)
             sums.append(f"{sha256(zp)}  {os.path.basename(zp)}")
             rows.append(f"| `{os.path.basename(zp)}` | {cfg.TITLE}: {DESCRIBE[name].format(a=asset)} |")
             print(f"wrote {zp} ({os.path.getsize(zp) / 1e6:.0f} MB)")

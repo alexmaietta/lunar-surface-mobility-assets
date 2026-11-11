@@ -47,7 +47,7 @@ package()  { $PY scripts/package.py --asset "$asset"; }
 blend_()   { $BLENDER -b "$blend" -P scripts/export_blend.py -- --asset "$asset"; }
 mesh()     { $BLENDER -b "$blend" -P scripts/export_mesh.py -- --asset "$asset"; }
 simple()   { $BLENDER -b "$blend" -P scripts/export_simple.py -- --asset "$asset"; }
-urdf()     { $PY scripts/export_urdf.py --asset "$asset"; }
+urdf()     { $PY scripts/export_urdf.py --asset "$asset" && $PY scripts/check_urdf.py --asset "$asset"; }
 assets()   { $PY scripts/publish.py --asset "$asset" && blend_ && mesh && simple && urdf; }
 gallery()  { local dst="docs/images/$(asset_path "$asset")"
              rm -rf "build/$asset/gallery"

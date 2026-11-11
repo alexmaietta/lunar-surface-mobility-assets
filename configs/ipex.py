@@ -345,7 +345,6 @@ INERTIA_BOX = (0.40, 0.35, 0.15)
 
 SEMANTIC_CLASS = ["lunar_rover", "excavator", "vehicle"]
 ROBOT_TYPE = "Wheeled"
-URDF = True
 COLLIDERS, PHYSICS_MATERIAL, PHYSICS_MATERIALS = K.standard_physics(hull=("ipex_white",))
 COLLIDERS["(front|rear)_drums"] = [("drum", ["drum_anodise"], {"islands": True})]
 PHYSICS_MATERIAL["drum"] = "anodised_aluminium"

@@ -411,7 +411,6 @@ GEOMETRY_VARIANT_JOINTS = {"Solar": {"stowed": {"radiator_wing_l": math.radians(
 
 SEMANTIC_CLASS = ["lunar_habitat", "surface_habitat", "vehicle"]
 ROBOT_TYPE = "Wheeled"
-URDF = True
 COLLIDERS, PHYSICS_MATERIAL, PHYSICS_MATERIALS = K.standard_physics(hull=("hull_mdps", "ring_grey"))
 SIMPLE_TRIS = 40000
 RENDER_VIEWS = {

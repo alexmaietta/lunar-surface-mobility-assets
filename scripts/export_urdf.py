@@ -11,6 +11,7 @@ import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import assetcfg
+import kinematics
 
 from pxr import Gf, Usd, UsdGeom, UsdPhysics, UsdShade
 
@@ -130,23 +131,11 @@ def inertial(prim):
     return float(mass), tuple(com), tensor
 
 
-def mimic_four_bar(links, loops):
-    mimic = {}
-    for lp in loops:
-        upper, upright = lp["parent"], lp["child"]
-        lower = links[upright]["parent"]
-        if links[upper]["parent"] != links[lower]["parent"]:
-            continue
-        mimic[upper] = (lower, 1.0)
-        mimic[upright] = (lower, -1.0)
-    return mimic
-
-
 def main(argv):
     asset = assetcfg.arg(argv, "--asset")
     cfg = assetcfg.load(asset)
-    if not getattr(cfg, "URDF", False) and "--force" not in argv:
-        print(f"urdf {asset}: skipped (set URDF = True in configs/{asset}.py)")
+    if not getattr(cfg, "URDF", True):
+        print(f"urdf {asset}: skipped (URDF = False in configs/{asset}.py)")
         return
     root_dir = os.path.join(assetcfg.ROOT, "assets", cfg.ASSET_PATH)
     build = os.path.join(assetcfg.ROOT, "build", asset)
@@ -163,7 +152,11 @@ def main(argv):
     os.makedirs(os.path.join(out, "meshes", "collision"))
     tex_dir = os.path.join(root_dir, "obj")
     tex_names = set(os.listdir(tex_dir)) if os.path.isdir(tex_dir) else set()
-    mimic = mimic_four_bar(links, loops)
+    mimic, loop_report, rigid, tol = kinematics.solve_loops(links, loops, getattr(cfg, "URDF_LOOP_TOLERANCE", None))
+    failed = [r for r in loop_report if r["status"] == "fail"]
+    if failed:
+        raise SystemExit(f"urdf {asset}: loop closure out of tolerance: " +
+                         ", ".join(f"{r['loop']} {r['max_gap_mm']} mm {r['max_angle_deg']} deg" for r in failed))
 
     robot = ET.Element("robot", name=asset)
     root_link = next(n for n, L in links.items() if L["parent"] is None)
@@ -208,9 +201,7 @@ def main(argv):
         if L["parent"] is None:
             continue
         J = L["joint"]
-        jt = J["type"]
-        if jt == "revolute" and "limit" not in J:
-            jt = "continuous"
+        jt = kinematics.urdf_type(J)
         joint = ET.SubElement(robot, "joint", name=name, type=jt)
         ET.SubElement(joint, "parent", link=L["parent"])
         ET.SubElement(joint, "child", link=name)
@@ -227,7 +218,8 @@ def main(argv):
             ET.SubElement(joint, "limit", **attrs)
             ET.SubElement(joint, "dynamics", damping=f"{float(drive.get('damping') or 0.0):.6g}", friction="0")
             if name in mimic:
-                ET.SubElement(joint, "mimic", joint=mimic[name][0], multiplier=f"{mimic[name][1]:g}", offset="0")
+                m = mimic[name]
+                ET.SubElement(joint, "mimic", joint=m["joint"], multiplier=f"{m['multiplier']:.6g}", offset=f"{m['offset']:.6g}")
     frames = [(c["name"], c["link"], c["pos"], c["forward"], c.get("up", (0, 0, 1))) for c in graph.get("cameras", [])]
     for s in graph.get("sites", []):
         if s["kind"] in ("light", "sensor", "tool", "antenna"):
@@ -249,9 +241,22 @@ def main(argv):
     xml = minidom.parseString(ET.tostring(robot)).toprettyxml(indent="  ")
     with open(os.path.join(out, f"{asset}.urdf"), "w") as f:
         f.write(xml)
-    n_joints = sum(1 for n in links if links[n]["parent"] is not None)
-    print(f"urdf {asset}: {len(links)} links, {n_joints} joints ({len(mimic)} mimic), {len(frames)} sensor/light frames, "
-          f"{n_tris} visual triangles -> {os.path.relpath(out, assetcfg.ROOT)}")
+    joints = {n: {"type": L["joint"]["type"], "urdf_type": kinematics.urdf_type(L["joint"]), "role": L["joint"].get("role"),
+                  "drive": L["joint"].get("drive")} for n, L in links.items() if L["parent"] is not None}
+    sidecar = {"asset": asset, "version": assetcfg.version(), "joints": joints, "mimic": mimic, "loops": loop_report,
+               "rigid_loops": rigid, "collapsed_to_fixed": sorted(n for n, j in joints.items() if j["urdf_type"] == "fixed"),
+               "loop_tolerance": tol}
+    with open(os.path.join(out, f"{asset}.urdf.json"), "w") as f:
+        json.dump(sidecar, f, indent=2)
+    n_joints = len(joints)
+    worst = max(loop_report, key=lambda r: r["max_gap_mm"], default=None)
+    print(f"urdf {asset}: {len(links)} links, {n_joints} joints ({len(mimic)} mimic, {len(sidecar['collapsed_to_fixed'])} fixed), "
+          f"{len(loop_report)} loops" + (f" (worst {worst['loop']} {worst['max_gap_mm']} mm {worst['max_angle_deg']} deg)" if worst else "") +
+          (f", {len(rigid)} rigid loops dropped" if rigid else "") +
+          f", {len(frames)} sensor/light frames, {n_tris} visual triangles -> {os.path.relpath(out, assetcfg.ROOT)}")
+    for r in loop_report:
+        if r["status"] == "warn":
+            print(f"  warn {r['loop']}: {r['max_gap_mm']} mm {r['max_angle_deg']} deg over driver range {r['driver_range']}")
 
 
 if __name__ == "__main__":
