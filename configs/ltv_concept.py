@@ -1,6 +1,7 @@
 import math
 
 import rover_kit as K
+import tool_kit as TK
 
 ASSET_ID = "ltv_concept"
 ASSET_PATH = "concepts/ltv/rover"
@@ -119,3 +120,8 @@ PHYSICS_MATERIAL = {"tyre": "tyre", "hull": "structure"}
 PHYSICS_MATERIALS = {"tyre": (0.9, 0.8, 0.0), "structure": (0.5, 0.4, 0.05)}
 SIMPLE_TRIS = 20000
 RENDER_VIEWS = K.views(4.0, 2.8, 2.2)
+
+TOOL_FRONT, TOOL_REAR = (1.88, 0.0, 0.60), (-1.98, 0.0, 0.60)
+ROVER["parts"] += TK.mount_brackets(1.85, TOOL_FRONT, 1) + TK.mount_brackets(-1.85, TOOL_REAR, -1, z=0.66)
+ROVER["sites"] += TK.mount_sites(TOOL_FRONT, TOOL_REAR)
+ATTACHMENTS = TK.attachments()

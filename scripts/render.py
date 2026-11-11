@@ -125,10 +125,10 @@ def _plane(name, size, z, mat):
     return ob
 
 
-def lunar(tex_dir):
+def lunar(tex_dir, ground_z=0.0):
     _clear_env()
     _world((0.02, 0.02, 0.025), 0.6, camera_black=True)
-    g = _plane("ground", 400, 0.0, _ground_material(tex_dir))
+    g = _plane("ground", 400, ground_z, _ground_material(tex_dir))
     g.data.uv_layers.new()
     sun = bpy.data.objects.new("env_sun", bpy.data.lights.new("env_sun", "SUN"))
     sun.data.energy = 6.0
@@ -239,7 +239,7 @@ def main():
         set_name, opt = spec.split(":")
         attach(cfg, *cfg.ATTACHMENTS[set_name][opt])
     setup_render(int(assetcfg.arg(a, "--samples", "128")), tuple(int(x) for x in assetcfg.arg(a, "--res", "1600x1200").split("x")))
-    lunar(tex_dir)
+    lunar(tex_dir, getattr(cfg, "RENDER_GROUND_Z", 0.0))
     if "--lights" in a:
         groups = [g for g in assetcfg.arg(a, "--light-groups", "").split(",") if g]
         add_lights(float(assetcfg.arg(a, "--light-scale", "1.0")), groups or None)

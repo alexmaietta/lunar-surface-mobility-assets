@@ -1,6 +1,7 @@
 import math
 
 import rover_kit as K
+import tool_kit as TK
 
 ASSET_ID = "clv1"
 ASSET_PATH = "astrolab/clv1/rover"
@@ -169,3 +170,8 @@ COLLIDERS, PHYSICS_MATERIAL, PHYSICS_MATERIALS = K.standard_physics()
 SIMPLE_TRIS = 24000
 RENDER_VIEWS = {**K.views(4.0, 2.4, 2.6, centre_z=1.1), "front": ((10.0, 0.0, 1.5), (0, 0, 1.3), 35),
                 "rear": ((-10.0, 0.0, 2.0), (0, 0, 1.3), 35)}
+
+TOOL_FRONT, TOOL_REAR = (1.67, 0.0, 0.62), (-1.66, 0.0, 0.62)
+ROVER["parts"] += TK.mount_brackets(1.64, TOOL_FRONT, 1) + TK.mount_brackets(-1.62, TOOL_REAR, -1)
+ROVER["sites"] += TK.mount_sites(TOOL_FRONT, TOOL_REAR)
+ATTACHMENTS = TK.attachments()

@@ -1,6 +1,7 @@
 import math
 
 import rover_kit as K
+import tool_kit as TK
 
 ASSET_ID = "flex"
 ASSET_PATH = "astrolab/flex/rover"
@@ -158,3 +159,8 @@ COLLIDERS, PHYSICS_MATERIAL, PHYSICS_MATERIALS = K.standard_physics(hull=("panel
 SIMPLE_TRIS = 24000
 RENDER_VIEWS = {**K.views(3.4, 2.5, 2.4, centre_z=1.2), "front": ((8.5, 0.0, 1.6), (0, 0, 1.2), 35),
                 "rear": ((-8.5, 0.0, 1.8), (0, 0, 1.2), 35)}
+
+TOOL_FRONT, TOOL_REAR = (1.14, 0.0, 0.60), (-1.62, 0.0, 0.60)
+ROVER["parts"] += TK.mount_brackets(0.95, TOOL_FRONT, 1, z=0.58) + TK.mount_brackets(-1.01, TOOL_REAR, -1, z=0.56)
+ROVER["sites"] += TK.mount_sites(TOOL_FRONT, TOOL_REAR)
+ATTACHMENTS = TK.attachments()

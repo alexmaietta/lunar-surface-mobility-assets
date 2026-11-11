@@ -1,6 +1,7 @@
 import math
 
 import rover_kit as K
+import tool_kit as TK
 
 ASSET_ID = "pegasus"
 ASSET_PATH = "lunar_outpost/pegasus/rover"
@@ -114,3 +115,8 @@ ROBOT_TYPE = "Wheeled"
 COLLIDERS, PHYSICS_MATERIAL, PHYSICS_MATERIALS = K.standard_physics(hull=("brushed_panel",))
 SIMPLE_TRIS = 20000
 RENDER_VIEWS = K.views(3.6, 2.6, 2.8, centre_z=1.0)
+
+TOOL_FRONT, TOOL_REAR = (1.85, 0.0, 0.58), (-1.70, 0.0, 0.58)
+ROVER["parts"] += TK.mount_brackets(1.82, TOOL_FRONT, 1) + TK.mount_brackets(-1.60, TOOL_REAR, -1, z=0.50)
+ROVER["sites"] += TK.mount_sites(TOOL_FRONT, TOOL_REAR)
+ATTACHMENTS = TK.attachments()
