@@ -9,7 +9,7 @@
 
 # Lunar Surface Mobility Assets
 
-![Every asset in this repo on the lunar surface, Cycles render](docs/images/hero.jpg)
+![Lunar surface mobility assets on the lunar surface](docs/images/hero.jpg)
 
 These are simulation-ready models of lunar landers, rovers and their friends. Each one is built procedurally in Blender from public references and gets generated, high-resolution, tileable PBR textures. It ships as an Isaac Sim / SimReady-style **USD** asset with physics, joints, colliders and named sites for engines, RCS thrusters, sensors and antennas. The rovers add drive, steering and suspension joints, working hatches, stairs and arms, and real `UsdLux` lights. Every asset is also a **URDF** robot description with per-link mass and inertia, colliders, joint limits and closed suspension linkages, and comes as **glTF**, **OBJ** and **Blender** too.
 
@@ -17,28 +17,28 @@ These are simulation-ready models of lunar landers, rovers and their friends. Ea
 
 | Vendor | Vehicle | Asset |
 |---|---|---|
-| Blue Origin | [Blue Moon MK1](assets/blue_origin/mk1/lander) lander | `mk1` |
-| Blue Origin | [Blue Moon MK1](assets/blue_origin/mk1/offloader) payload offloader | `mk1_offloader` |
-| Grumman / NASA | [Apollo Lunar Module](assets/grumman/apollo_lm/lander) (J-mission) | `apollo_lm` |
-| Intuitive Machines | [Nova-C](assets/intuitive_machines/nova_c/lander) (IM-1 / IM-2) | `nova_c` |
-| Firefly Aerospace | [Blue Ghost](assets/firefly/blue_ghost/lander) (Mission 1) | `blue_ghost` |
-| Astrobotic | [Peregrine](assets/astrobotic/peregrine/lander) (Mission One) | `peregrine` |
-| Toyota / JAXA | [Lunar Cruiser](assets/toyota_jaxa/lunar_cruiser/rover) pressurised rover (2025 design) | `lunar_cruiser` |
-| NASA | [Space Exploration Vehicle](assets/nasa/sev/rover) (SEV / LER, 2010) | `sev` |
-| NASA | [VIPER](assets/nasa/viper/rover) | `viper` |
-| NASA | [IPEx](assets/nasa/ipex/rover) regolith excavator (TRL 5/6) | `ipex` |
-| NASA / JPL | [CADRE](assets/nasa_jpl/cadre/rover) rover (IM-3) | `cadre` |
-| Astrolab | [FLEX](assets/astrolab/flex/rover) prototype | `flex` |
-| Astrolab | [CLV-1](assets/astrolab/clv1/rover) LTV (NASA task order 2026) | `clv1` |
-| Astrolab | [FLIP](assets/astrolab/flip/rover) (Griffin-1) | `flip` |
-| Lunar Outpost | [Pegasus](assets/lunar_outpost/pegasus/rover) LTV (NASA task order 2026) | `pegasus` |
-| Lunar Outpost | [Eagle](assets/lunar_outpost/eagle/rover) LTV bid | `eagle` |
-| Lunar Outpost | [MAPP](assets/lunar_outpost/mapp/rover) (IM-2) | `mapp` |
-| Intuitive Machines | [Moon RACER](assets/intuitive_machines/moon_racer/rover) LTV bid | `moon_racer` |
-| Concept | [Lunar Terrain Vehicle](assets/concepts/ltv/rover), crewed or uncrewed | `ltv_concept` |
-| Concept | [Pressurised rover](assets/concepts/pressurized/rover) | `pr_concept` |
-| Blue Origin | [Blue Moon MK2](assets/blue_origin/mk2/lander) crewed lander (Artemis HLS) | `mk2` |
-| ASI / Thales Alenia Space | [Multi-Purpose Habitation (MPH)](assets/asi_thales/mph/habitat) mobile surface habitat (2025 reference design) | `mph` |
+| Blue Origin | [Blue Moon MK1](assets/blue_origin/mk1/lander) lander | [`mk1`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/mk1-usd.zip) |
+| Blue Origin | [Blue Moon MK1](assets/blue_origin/mk1/offloader) payload offloader | [`mk1_offloader`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/mk1_offloader-usd.zip) |
+| Grumman / NASA | [Apollo Lunar Module](assets/grumman/apollo_lm/lander) (J-mission) | [`apollo_lm`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/apollo_lm-usd.zip) |
+| Intuitive Machines | [Nova-C](assets/intuitive_machines/nova_c/lander) (IM-1 / IM-2) | [`nova_c`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/nova_c-usd.zip) |
+| Firefly Aerospace | [Blue Ghost](assets/firefly/blue_ghost/lander) (Mission 1) | [`blue_ghost`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/blue_ghost-usd.zip) |
+| Astrobotic | [Peregrine](assets/astrobotic/peregrine/lander) (Mission One) | [`peregrine`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/peregrine-usd.zip) |
+| Toyota / JAXA | [Lunar Cruiser](assets/toyota_jaxa/lunar_cruiser/rover) pressurised rover (2025 design) | [`lunar_cruiser`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/lunar_cruiser-usd.zip) |
+| NASA | [Space Exploration Vehicle](assets/nasa/sev/rover) (SEV / LER, 2010) | [`sev`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/sev-usd.zip) |
+| NASA | [VIPER](assets/nasa/viper/rover) | [`viper`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/viper-usd.zip) |
+| NASA | [IPEx](assets/nasa/ipex/rover) regolith excavator (TRL 5/6) | [`ipex`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/ipex-usd.zip) |
+| NASA / JPL | [CADRE](assets/nasa_jpl/cadre/rover) rover (IM-3) | [`cadre`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/cadre-usd.zip) |
+| Astrolab | [FLEX](assets/astrolab/flex/rover) prototype | [`flex`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/flex-usd.zip) |
+| Astrolab | [CLV-1](assets/astrolab/clv1/rover) LTV (NASA task order 2026) | [`clv1`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/clv1-usd.zip) |
+| Astrolab | [FLIP](assets/astrolab/flip/rover) (Griffin-1) | [`flip`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/flip-usd.zip) |
+| Lunar Outpost | [Pegasus](assets/lunar_outpost/pegasus/rover) LTV (NASA task order 2026) | [`pegasus`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/pegasus-usd.zip) |
+| Lunar Outpost | [Eagle](assets/lunar_outpost/eagle/rover) LTV bid | [`eagle`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/eagle-usd.zip) |
+| Lunar Outpost | [MAPP](assets/lunar_outpost/mapp/rover) (IM-2) | [`mapp`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/mapp-usd.zip) |
+| Intuitive Machines | [Moon RACER](assets/intuitive_machines/moon_racer/rover) LTV bid | [`moon_racer`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/moon_racer-usd.zip) |
+| Concept | [Lunar Terrain Vehicle](assets/concepts/ltv/rover), crewed or uncrewed | [`ltv_concept`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/ltv_concept-usd.zip) |
+| Concept | [Pressurised rover](assets/concepts/pressurized/rover) | [`pr_concept`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/pr_concept-usd.zip) |
+| Blue Origin | [Blue Moon MK2](assets/blue_origin/mk2/lander) crewed lander (Artemis HLS) | [`mk2`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/mk2-usd.zip) |
+| ASI / Thales Alenia Space | [Multi-Purpose Habitation (MPH)](assets/asi_thales/mph/habitat) mobile surface habitat (2025 reference design) | [`mph`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/mph-usd.zip) |
 
 All assets share one frame and are built to scale (Z up, metres, origin on the ground under the centerline), so they can be placed side by side:
 
