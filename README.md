@@ -6,8 +6,6 @@
 ![Blender](https://img.shields.io/badge/format-Blender-e87d0d.svg?logo=blender&logoColor=white)
 ![glTF](https://img.shields.io/badge/format-glTF-87c540.svg)
 ![OBJ](https://img.shields.io/badge/format-OBJ-555555.svg)
-![Isaac Sim](https://img.shields.io/badge/Isaac%20Sim-robot%20layout-76b900.svg?logo=nvidia&logoColor=white)
-![Newton](https://img.shields.io/badge/Newton-1.6-76b900.svg)
 
 # Lunar Surface Mobility Assets
 
