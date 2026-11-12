@@ -11,9 +11,11 @@
 
 ![Lunar surface mobility assets on the lunar surface](docs/images/hero.jpg)
 
-These are simulation-ready models of lunar landers, rovers and their friends. Each one is built procedurally in Blender from public references and gets generated, high-resolution, tileable PBR textures. It ships as an Isaac Sim / SimReady-style **USD** asset with physics, joints, colliders and named sites for engines, RCS thrusters, sensors and antennas. The rovers add drive, steering and suspension joints, working hatches, stairs and arms, and real `UsdLux` lights. Every asset is also a **URDF** robot description with per-link mass and inertia, colliders, joint limits and closed suspension linkages, and comes as **glTF**, **OBJ** and **Blender** too.
+These are simulation-ready models of lunar landers, rovers and their friends. 
 
-**[Explore every model in 3D](https://alexmaietta.github.io/lunar-surface-mobility-assets/)** The interactive viewer puts all of the landers and rovers on the lunar surface at true scale, next to a 1.8 m human. Orbit around them, click any vehicle for its specs, and drive its moving parts, such as engine gimbals, antennas, arms, hatches, stairs, steering and wheels. It runs in the browser with nothing to install (see [Web viewer](#web-viewer)).
+Each one is built procedurally in Blender from public references and gets generated, high-resolution, tileable PBR textures. It ships as an Isaac Sim / SimReady-style **USD** asset with physics, joints, colliders and named sites for engines, RCS thrusters, sensors and antennas. The rovers add drive, steering and suspension joints, working hatches, stairs and arms, and real lights. Every asset is also a **URDF** robot description with per-link mass and inertia, colliders, joint limits and closed suspension linkages, and comes as **glTF**, **OBJ** and **Blender** too.
+
+**[Explore every model in 3D](https://alexmaietta.github.io/lunar-surface-mobility-assets/)** We also provide an interactive viewer to orbit around the assets, select any vehicle for its specs, and drive its moving parts, such as antennas, arms, hatches, stairs, steering and wheels.
 
 | Vendor | Vehicle | Asset |
 |---|---|---|
@@ -40,40 +42,11 @@ These are simulation-ready models of lunar landers, rovers and their friends. Ea
 | Blue Origin | [Blue Moon MK2](assets/blue_origin/mk2/lander) crewed lander (Artemis HLS) | [`mk2`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/mk2-usd.zip) |
 | ASI / Thales Alenia Space | [Multi-Purpose Habitation (MPH)](assets/asi_thales/mph/habitat) mobile surface habitat (2025 reference design) | [`mph`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/mph-usd.zip) |
 
-All assets share one frame and are built to scale (Z up, metres, origin on the ground under the centerline), so they can be placed side by side:
-
-| Asset | Height | Footpad span | Legs | Launch / touchdown / dry mass | Main propulsion |
-|---|---|---|---|---|---|
-| `mk2` | 15.3 m (Blue Origin drawing), 15.8 m with dishes (NASA: about 52 ft) | about 10 m pad centres | 4 | 45,000 / 30,000 / 16,000 kg | 3 × BE-7, 133 kN, LOX/LH2, gimballed |
-| `mk1` | 8.05 m | 6.1 m | 4 | 21,350 / 7,900 / 7,000 kg | 1 × BE-7, 44.5 kN, LOX/LH2, gimballed |
-| `apollo_lm` | 7.04 m (drawing), model 6.92 m | 8.51 m pad centres (31 ft over pads) | 4 | 16,400 / 8,000 / 4,900 kg | DPS 43.9 kN, throttled 10–65 %, gimballed; APS 15.6 kN fixed |
-| `nova_c` | 4.30 m (official), model 4.23 m | 4.6 m | 6 | 1,908 / 860 / 775 kg | 1 × VR900, 3.1 kN, LOX/LCH4, gimballed |
-| `blue_ghost` | 2.0 m deck, 2.77 m with stowed antenna | 3.7 m pad centres (diagonal) | 4 | 1,517 / 560 / 469 kg | 1 × LEROS 4-ET, 1.31 kN, MMH/MON-3, fixed |
-| `peregrine` | 1.90 m | 2.47 m face-on, 3.5 m diagonal | 4 | 1,283 / 580 / 503 kg | 5 × 667 N, MMH/MON-25, pulsed |
-
-The rovers use the same frame, with the origin on the ground under the chassis centre at nominal ride height:
-
-| Asset | L × W × H | Mass | Wheels | Suspension and steering | Mechanisms |
-|---|---|---|---|---|---|
-| `lunar_cruiser` | 7.96 × 4.86 × 4.98 m (with folded stair and dish) | 18,000 kg loaded, 15,000 launch | 6 × 1.18 m metal slat | double wishbone with coilover struts; front axle steers | hinged airlock hatch with hand-wheel latch and 4 sliding latch bolts, two-flight folding stair with fold-flat railings, swing-out solar wings (4 × 10 m blankets), rear arm, Ka-band dish |
-| `pr_concept` | 7.55 × 3.52 × 4.30 m | 9,000 kg (7,800 dry, 10,000 loaded) | 6 × 1.10 m | active double wishbone; every wheel steers (crab) | suitport hatches or airlock door, IDSS-style docking hatch, roof solar wings, 2.6 m arm |
-| `sev` | 5.16 × 4.12 × 3.57 m | 3,000 kg (4,000 loaded) | 12 × 0.80 m on 6 columns | active prismatic legs; 360° steering columns (crab, turn in place) | suitport hatches, side docking hatch |
-| `ltv_concept` | 3.88 × 2.76 × 2.35 m | 1,100 kg (1,900 crewed, 2,700 uncrewed) | 4 × 0.90 m airless | active double wishbone; all-wheel steer | 5-axis arm, tilting solar array, pan-tilt mast, dish |
-| `flex` | 3.41 × 2.48 × 3.92 m | 500 kg prototype (1,500 with cargo) | 4 × 0.67 m airless | active wheel-on-limb legs; all-wheel and crab steer | 6-axis 2.4 m arm, hinged 3 m² solar array |
-| `clv1` | 3.98 × 2.34 × 2.65 m | 950 kg (1,490 crewed) | 4 × 0.93 m Venturi | active limbs; all-wheel steer | pan-tilt mast, dish |
-| `pegasus` | 3.62 × 2.56 (3.04 with wings) × 2.90 m | 1,000 kg (1,540 crewed) | 4 × 0.82 m spring mesh | double wishbone; all-wheel steer | hinged solar wings, dish |
-| `eagle` | 4.00 × 2.48 × 2.58 m | 1,600 kg (2,140 crewed) | 4 × 1.0 m | double wishbone; all-wheel steer | tilting solar panel, arm |
-| `moon_racer` | 4.46 × 2.52 × 2.74 m | 1,100 kg (1,650 crewed, 2,050 loaded) | 4 × 0.80 m airless | double wishbone with coilovers; front steer | arm, dish |
-| `flip` | 2.33 × 1.91 × 2.30 m | 480 kg | 4 × 0.93 m Venturi | active swing arms; all-wheel steer | – |
-| `viper` | 1.72 × 1.77 × 2.59 m (with LGA whip) | 447 kg roving, 490 launch | 4 × 0.50 m wire-spoked drum, 20 grousers | active four-bar (360 mm stroke, wheel walking, 7–43 cm clearance); ±50° offset-kingpin steer | TRIDENT drill (0.38 m deploy, 1.24 m feed, auger spin), pan-tilt mast with lens covers, flat HGA, 8 photometric 457 nm lights, 9 spectral cameras |
-| `ipex` | 1.33 × 0.64 × 0.57 m (arms at the 40° driving pose; 1.51 m long with arms level) | 30 kg (60 kg with a full 30 kg drum load) | 4 × 0.305 m perforated cleat, 24 grousers | rigid, no suspension; skid steer | two arms (20° below level to 100°, enough to dig, dump and lift the chassis), each turning a pair of counter-rotating 0.30 × 0.26 m hollow bucket drums (spiral baffles, 34 mm scoop mouths, 7 kg per pair) on one through-shaft actuator; actuated radiator cover with wireless-charging coil, 6 LED lights, 8 cameras |
-| `mapp` | 0.45 × 0.39 × 0.44 m | 10 kg | 4 × 0.12 m paddle | rockers; skid steer | – |
-| `cadre` | 0.56 × 0.81 × 0.35 m (wings open) | 8.6 kg | 4 × 0.16 m grousered | rigid; skid steer | hinged solar wings, flip-up camera covers |
-| `mph` | 8.38 × 4.65 × 4.9 m (porch and ladder deployed, radiators out, blanket canisters; 12.9 m with the solar blankets raised); 3.0 × 6.55 m hull | 14,000 kg launch (15,000 heavy) | 8 × 1.44 m all-metal twin-band, tensioned-cable spokes | two passive walking-beam bogies per side; the four corner wheels steer | EVA door and docking-end door, fold-down porch and ladder, sun-tracking pedestal with two 1.8 × 8 m roll-out blankets, two folding radiator wings, gimballed dish |
-
 ## Quick Start
 
-Each asset is released as `<asset>-usd.zip`, `<asset>-urdf.zip`, `<asset>-gltf.zip`, `<asset>-obj.zip` and `<asset>-blend.zip` on the [latest release](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest). For small downloads, `<asset>-simple-usd.zip`, `<asset>-simple-gltf.zip` and `<asset>-simple-obj.zip` hold a single simplified mesh of a few hundred kB (see [Simple versions](#simple-versions)). To pin a version, use `download/v0.1.0` instead of `latest/download`; each release includes `SHA256SUMS`.
+Each asset is released as `<asset>-usd.zip`, `<asset>-urdf.zip`, `<asset>-gltf.zip`, `<asset>-obj.zip` and `<asset>-blend.zip` on the [latest release](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest). 
+
+For small downloads, `<asset>-simple-usd.zip`, `<asset>-simple-gltf.zip` and `<asset>-simple-obj.zip` hold a single simplified mesh of a few hundred kB (see [Simple versions](#simple-versions)). To pin a version, use `download/v0.1.0` instead of `latest/download`; each release includes `SHA256SUMS`.
 
 ```sh
 curl -LO https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/mk1-usd.zip
@@ -87,39 +60,12 @@ unzip mk1-simple-gltf.zip # -> mk1_simple/mk1_simple.glb
 Or clone the repo. The same assets are in `assets/`, stored with Git LFS (set `GIT_LFS_SKIP_SMUDGE=1` to skip them):
 
 ```sh
-git clone git@github.com:alexmaietta/lunar-surface-mobility-assets.git && cd lunar-surface-mobility-assets && git lfs pull
-```
-
-To contribute, enable the repo hooks once per clone. They run Git LFS and `scripts/check_large_files.py`, which blocks a commit if any file over 4 MB would go into git instead of LFS (the `size-guard` workflow runs the same check on every push):
-
-```sh
-git config core.hooksPath .githooks && git lfs install --local
-```
-
-Open `assets/blue_origin/mk1/lander/usd/mk1.usda` in Isaac Sim or another Omniverse app and switch variants in the Variant Presenter, or select one in code:
-
-```python
-from pxr import Usd
-stage = Usd.Stage.Open("assets/blue_origin/mk1/lander/usd/mk1.usda")
-root = stage.GetPrimAtPath("/mk1")
-root.GetVariantSet("Offloader").SetVariantSelection("crane")
-root.GetVariantSet("Propellant").SetVariantSelection("launch")
-```
-
-Rovers work the same way:
-
-```python
-stage = Usd.Stage.Open("assets/toyota_jaxa/lunar_cruiser/rover/usd/lunar_cruiser.usda")
-root = stage.GetPrimAtPath("/lunar_cruiser")
-root.GetVariantSet("Solar").SetVariantSelection("deployed")   # wing boxes swung out, 4 x 10 m blankets raised
-root.GetVariantSet("Lights").SetVariantSelection("on")
+git clone git@github.com:alexmaietta/lunar-surface-mobility-assets.git
+cd lunar-surface-mobility-assets
+git lfs pull
 ```
 
 ## Gallery
-
-Cycles renders on the lunar surface.
-
-Blue Moon MK2 to scale with (left to right) the LTV concept, the Apollo LM, Blue Moon MK1 and the JAXA / Toyota Lunar Cruiser:
 
 ![Blue Moon MK2 to scale next to the LTV concept, Apollo LM, Blue Moon MK1 and Lunar Cruiser](docs/images/blue_origin/mk2/lander/scale_lineup.jpg)
 
@@ -137,16 +83,12 @@ Blue Moon MK2 to scale with (left to right) the LTV concept, the Apollo LM, Blue
 
 ### Rovers
 
-The JAXA / Toyota Lunar Cruiser running its full sequence in Newton, played back in Blender ([MP4](docs/videos/lunar_cruiser_sequence.mp4)). It drives, swings its solar wings out to face a low polar sun while the dish tracks Earth, switches its lights on, unfolds the stair, turns the hand wheel to retract the latch bolts, opens the airlock and reaches with the arm:
-
 ![Lunar Cruiser sequence](docs/images/toyota_jaxa/lunar_cruiser/rover/sequence.gif)
 
 | | | |
 |---|---|---|
 | ![Lunar Cruiser front three-quarter](docs/images/toyota_jaxa/lunar_cruiser/rover/front_three_quarter.jpg) | ![Lunar Cruiser rear patio, stair deployed](docs/images/toyota_jaxa/lunar_cruiser/rover/rear_patio.jpg) | ![Lunar Cruiser airlock open, latch bolts retracted](docs/images/toyota_jaxa/lunar_cruiser/rover/airlock_open.jpg) |
 | ![Lunar Cruiser solar wings deployed toward a low sun](docs/images/toyota_jaxa/lunar_cruiser/rover/solar_deployed.jpg) | ![Lunar Cruiser rear patio at night under its own lights](docs/images/toyota_jaxa/lunar_cruiser/rover/rear_patio_night.jpg) | ![Lunar Cruiser wheels and sponson](docs/images/toyota_jaxa/lunar_cruiser/rover/wheel.jpg) |
-
-Each rover from the front, the rear and at night under its own lights:
 
 | | | |
 |---|---|---|
@@ -164,22 +106,16 @@ Each rover from the front, the rear and at night under its own lights:
 | ![NASA IPEx front three-quarter](docs/images/nasa/ipex/rover/front_three_quarter.jpg) | ![NASA IPEx rear three-quarter](docs/images/nasa/ipex/rover/rear_three_quarter.jpg) | ![NASA IPEx at night](docs/images/nasa/ipex/rover/night.jpg) |
 | ![NASA JPL CADRE front three-quarter](docs/images/nasa_jpl/cadre/rover/front_three_quarter.jpg) | ![NASA JPL CADRE rear three-quarter](docs/images/nasa_jpl/cadre/rover/rear_three_quarter.jpg) | ![NASA JPL CADRE at night](docs/images/nasa_jpl/cadre/rover/night.jpg) |
 
-VIPER in the dark under its own 457 nm NavLights and HazLights (Cycles), and what its left NavCam and front-left HazCam see in Omniverse RTX spectral path tracing through the flight cameras' spectral response:
-
 | | | |
 |---|---|---|
 | ![NASA VIPER driving at night under its NavLights](docs/images/nasa/viper/rover/night_drive.jpg) | ![VIPER left NavCam view, RTX spectral](docs/images/nasa/viper/rover/nav_cam_left_spectral.jpg) | ![VIPER front-left HazCam view, RTX spectral](docs/images/nasa/viper/rover/haz_cam_fl_spectral.jpg) |
 | ![NASA VIPER mast head, NavCams, NavLights and HGA](docs/images/nasa/viper/rover/mast.jpg) | ![NASA VIPER wheel module](docs/images/nasa/viper/rover/wheel.jpg) | |
-
-IPEx digging, with both arms lowered so the drums bite into the regolith and the radiator cover open, and its five-spoke cleated wheels.
 
 | | |
 |---|---|
 | ![NASA IPEx digging with the radiator cover open](docs/images/nasa/ipex/rover/digging.jpg) | ![NASA IPEx wheels and bucket drums](docs/images/nasa/ipex/rover/wheel.jpg) |
 
 ### Habitats
-
-The ASI / Thales Alenia Space Multi-Purpose Habitation module, likely the first habitat on the lunar surface. It drives itself off its delivery lander on eight Astrobotic wheels, then raises its solar blankets. The overall proportions and wheel size come from a two-view camera match of the ICES-2025-60 CAD figures, scaled to the 3 m hull.
 
 | | | |
 |---|---|---|
@@ -188,7 +124,7 @@ The ASI / Thales Alenia Space Multi-Purpose Habitation module, likely the first 
 
 ## Web viewer
 
-`web/` is a static, interactive 3D viewer of every asset, to scale on the lunar surface. It needs no build step and has no CDN calls: three.js r170 and lil-gui are vendored under `web/vendor/three/` (MIT), and it runs from any static file server, offline included.
+`web/` is a static, interactive 3D viewer of every asset.
 
 - **Fast first load.** It loads the simple version of every asset (11 MB for all of them) in the same line-up as the hero render, with a 1.8 m human for scale.
 - **Detailed models.** Once the previews are up, every web-optimised model loads in the background, smallest first, and replaces its preview (85 MB in total; 0.8–5.9 MB each: the full glTF with textures resized to 1024 px and re-encoded as WebP via `EXT_texture_webp`). Clicking a vehicle, choosing it in the panel, or opening `#<asset id>` moves it to the front of the queue and flies the camera to it. Add `?lite` to the URL to load detailed models only on demand.
@@ -203,381 +139,6 @@ Build the models and serve the site locally:
 ./pipeline.sh serve # http://localhost:8000 (PORT=8080 to change)
 ```
 
-`scripts/web_export.py` reads only `assets/` and `configs/`, so it runs without Blender or `build/`. GitHub Pages can't serve LFS files, so the site is published from releases. The [release workflow](.github/workflows/release.yml) builds `web-models.zip` and attaches it to the release, then starts the [pages workflow](.github/workflows/pages.yml), which unpacks it next to `web/` and deploys. Run the pages workflow by hand (Actions → pages → Run workflow, optionally with a tag) to redeploy. Before the first deploy, set the repository's Pages source to GitHub Actions in Settings → Pages.
-
-## Capabilities
-
-- **Articulation.** The MK1 lander has 11 links and 10 joints, with the offloader attached 15 and 14:
-  - BE-7 2-axis gimbal (±6°, position servos)
-  - four landing-leg pistons (0.30 m stroke, spring-damper)
-  - two solar-array hinges
-  - high-gain antenna azimuth and elevation
-  - offloader slew, luff and hoist (0–9 m)
-
-  The other landers use the same joint roles: `apollo_lm` has a ±6° DPS gimbal, four crush-strut legs (see [Apollo LM landing gear](#apollo-lm-landing-gear)), the steerable S-band dish and the rendezvous radar (shaft and trunnion); `nova_c` a ±5° VR900 gimbal and six crush-core legs; `blue_ghost` four crush-core legs and a 2-axis X-band panel; `peregrine` four legs.
-- **Rover articulation.** Every rover is one articulation rooted at the chassis:
-  - Each wheel is a velocity-driven drive joint (`joint:role` `drive`).
-  - Steerable wheels and steering columns are position servos (`steer`).
-  - The suspension is a real mechanism:
-    - **Double wishbones:** the upper arm closes the four-bar with an excluded loop joint, and a coilover strut follows as a cylinder and rod pair closed by a ball joint.
-    - **Trailing or swing arms.**
-    - **Rockers.**
-    - **Prismatic legs.**
-  - Passive suspension springs are tuned to each rover's mass for about 7° of static sag. Active suspension (`active_suspension`) is a stiff position servo that sets ride height.
-  - Hatches, latches, stairs, railings, solar wings, masts, dishes, drills and arms are position servos with their own roles (`hatch`, `latch`, `stair`, `railing`, `solar`, `camera`, `antenna`, `arm`). That's 46–71 joints on the crewed rovers. IPEx's bucket-drum pairs are velocity-driven joints with the `excavate` role, so they spin like wheels and reverse to dump. Each drum is hollow: the shells and inner baffles are two interleaved spirals per slice, so a granular solver can fill and empty them.
-- **Lights.** Every lamp is a site with a `UsdLux.DiskLight` just in front of its lens, with radius, intensity, colour temperature and a 60° cone. The lens also has an emissive material. The `Lights` variant switches them all off. On the Lunar Cruiser the stair-tread LED lights ride on the stair links, so they fold with it.
-- **Photometric lights (`viper`).** Lights given in physical units become `RectLight` or `DiskLight` prims with the Omniverse RTX `PhotometricAreaLightAPI` (lumens) and `PhysicalLightIlluminantAPI` (a sampled LED emission spectrum), plus a generated LM-63 IES beam profile on `UsdLux.ShapingAPI`. `inputs:color` and `inputs:intensity` carry the matching Rec.709 colour and luminance for other renderers. `scripts/photometry.py` converts radiant watts to lumens with the CIE 1931 observer. VIPER's 190 W NavLights and 32 W HazLights at 457 nm come out at 7,307 lm and 1,231 lm, and an RTX render measures 598 lux on the NavLight axis at 2.29 m against 596 lux predicted. The lens windows are plain glass, so the blue shows only in the light the lamps throw.
-- **Spectral cameras (`viper`).** Each VIS camera carries `PhysicalCameraResponsivityAPI` with the CMV4000 response behind the 425–495 nm filter, so RTX spectral path tracing renders the greyscale image the flight cameras would see.
-- **Thrusters.** Every engine and RCS nozzle is a site at the nozzle exit plane, with +Z along the exhaust flow and its thrust, Isp, mass flow, exit radius and propellant as attributes. The same data is in `thrusters.json` for plume tools. The main-engine site rides on the gimbal links, so the plume follows the gimbal.
-- **Other sites.** Footpad contacts, touchdown sensors, star trackers, IMU, antennas, solar-array normals, payload interfaces, lift points and the offloader's cable endpoints.
-- **Sensors.** SCALPSS plume cameras, navigation and surface cameras as `UsdGeom.Camera` prims on the body.
-- **Colliders.** Convex hulls of at most 200 vertices, authored with `newton:maxHullVertices` and `physxConvexHullCollision:hullVertexLimit` set to 255 so neither engine re-simplifies them (PhysX defaults to 64, which can drop a footpad's bottom ring). A collider group can also be split into one hull per connected mesh piece (`COLLIDERS` option `islands`). IPEx uses this for its drums, so each drum pair carries 260 small hulls that follow the spiral walls instead of one solid hull, and particles can get inside. In URDF, links with more than 8 hulls are written as one compound OBJ with an `o` group per hull, which PyBullet loads as a compound of convex parts and Gazebo as a triangle mesh.
-- **Mass states.** `Propellant` variant: launch, touchdown (default) and dry, each with its own mass, centre of mass and inertia. Rovers use a `Payload` variant instead (e.g. empty, crewed, uncrewed cargo), with the chassis mass set so the whole vehicle matches each state.
-- **Materials.** Tileable PBR texture sets (base colour, roughness, metallic, normal), sized in real-world metres: 4096 px crinkled MLI, painted honeycomb panels, brushed and perforated aluminium (opacity cut-outs), titanium, a heat-tinted regen nozzle, OSR tiles, solar cells and beta cloth.
-- **Formats:**
-
-  | Format | Path | Notes |
-  |---|---|---|
-  | USD | `usd/<id>.usda` | Primary asset. Newton, Isaac Sim / PhysX and MuJoCo schemas, all variants |
-  | glTF | `gltf/<id>.glb` | Y-up, textures embedded, one node per link so moving parts can be posed |
-  | OBJ | `obj/<id>.obj` + `.mtl` + textures | Y-up, single rest-pose mesh |
-  | Blender | `blender/<id>.blend` | Source model with all textures packed |
-  | Simple USD | `simple/usd/<id>_simple.usd` | One decimated mesh, flat materials, one rigid body with mass, inertia and per-link convex-hull colliders |
-  | Simple glTF / OBJ | `simple/gltf/<id>_simple.glb`, `simple/obj/<id>_simple.obj` | The same mesh, Y-up, no textures |
-  | URDF | `urdf/<id>.urdf` + `urdf/meshes/` + `urdf/<id>.urdf.json` | Z-up, one link per USD link with mass, centre of mass and full inertia tensor, per-link OBJ visuals (textures shared with `obj/`), convex-hull colliders, joint limits, efforts and damping. Closed suspension loops become `<mimic>` joints and the sidecar keeps what URDF can't hold (see [URDF](#urdf)). Cameras, lights and tool sites are fixed `<name>_frame` links with +X forward |
-
-  Paths are inside each asset folder, `assets/<vendor>/<family>/<name>/`, which also holds that asset's `LICENSE` and `NOTICE`. The URDF carries the default mass state and the articulated rest pose. glTF and OBJ carry the default configuration only (no variants, physics or sites); texture tiling is baked into their UVs.
-
-### USD variants
-
-| Variant set | Options (**default**) |
-|---|---|
-| `Articulation` | **articulated**, rigid (one rigid body: joints and child bodies removed, child colliders join the root body) |
-| `Propellant` | launch, **touchdown**, dry |
-| `Offloader` (`mk1`) | **none**, crane (bundled `mk1_offloader`, fixed to the deck mount) |
-| `Payload` (rovers) | per rover, e.g. **unloaded**, crewed, uncrewed (`ltv_concept`); **loaded**, launch (`lunar_cruiser`); **empty**, loaded (`ipex`, 30 kg of regolith in the drums) |
-| `Crew` (LTVs) | **crewed** (seats or standing stations, console, hand-holds), cargo or uncrewed (pallet and boxes instead) |
-| `Solar` (`lunar_cruiser`, `pr_concept`, `flex`, `cadre`, `mph`) | **stowed**, deployed (also drives the wing joints to their deployed angles; on `cadre` the default is deployed; on `mph` the default is deployed and stowed retracts the blankets and folds the radiator wings up for driving) |
-| `Ports` (`pr_concept`) | **suitports**, airlock |
-| `SuitportCover` (`sev`), `Antennas` (`mapp`) | the 2010 inflatable suitport cover; the field-test whip antennas |
-| `Lights` (rovers) | **on**, off; on `viper` also nav, haz and nirvss (one light group each) |
-| `LightModel` (`viper`) | **spectral** (lumens and spectrum as measured, for RTX spectral path tracing, Storm and Blender), rgb (lumens raised to offset ovrtx 0.6 RGB modes, which ignore a custom spectrum's colour and then filter by `inputs:color`) |
-| `LandingGear` (`apollo_lm`) | **spring** (linear spring-damper primaries, secondaries locked), crush (honeycomb crush stages, see below) |
-| `Fidelity` | **full**, simple (decimated meshes, flat PBR colours), proxy (one box per part) |
-| `Physics` | none, physics (UsdPhysics + Newton), **physx**, mujoco |
-
-The sets are listed strongest first: `Articulation` and `Propellant` override what `Physics` authors. `Articulation` and `Fidelity` combine freely; `rigid` + `simple` is the lightest full-asset setup for crowds of vehicles or far-field rendering.
-
-### Simple versions
-
-Every asset also ships a standalone simple version, built from the same model, for small downloads and scenes with many vehicles. On MK1 it's 7,950 triangles instead of 44,404 and about 0.4 MB instead of 84 MB:
-
-| | Full asset | Simple version |
-|---|---|---|
-| Geometry | every part, 4096 px PBR textures | one mesh decimated to a triangle budget (`SIMPLE_TRIS`, default 8,000), flat colour, roughness and metallic per material |
-| Physics | articulated, per-link colliders, joints and drives | one rigid body: mass, centre of mass and inertia of the default mass state, one convex hull per original link |
-| Sites, cameras, variants | yes | no |
-| Formats | USD, URDF, glTF, OBJ, Blender | USD, glTF, OBJ |
-
-### URDF
-
-Every asset has a URDF generated from its packaged USD by `scripts/export_urdf.py`. URDF is a tree, so the exporter has to cut each closed loop and keep the linkage moving together with `<mimic>` joints. It does this the same way for every loop rather than per suspension type.
-
-- **Driver and passive joints.** In each loop the joint whose role is not `linkage` drives it (on every rover today that's the `suspension` lower arm). The `linkage` joints mimic it. Every mimic points straight at a driver, never at another mimic, and the exporter stops with an error if a loop has no driver or two.
-- **Fitted mimics.** The exporter solves the real loop closure across the driver's whole travel, then fits each passive joint as a straight line through the exact rest-pose solution. The rest pose is therefore exactly closed, and the gap only grows toward full bump and droop. The upper wishbone arm, the upright, and the coil-over strut's angle and stroke all follow the lower arm this way.
-- **Joints URDF can't express.** Spherical joints become `fixed`, as do prismatic joints with under 1 mm of travel. On the Apollo LM that locks the landing-gear truss, whose secondary struts already hold the primaries in place, so its 8 truss loops are dropped and only the primary strut stroke stays a real joint.
-- **Sidecar.** `<id>.urdf.json` lists every joint's role and drive (spring stiffness, damping and target, servo gains), every mimic fit, every loop with its worst closure gap, and the joints collapsed to `fixed`. URDF has no springs, so this is where suspension spring rates live.
-
-The table gives loop closure with the fitted mimics, worst case over the full suspension travel.
-
-| Assets | Loops | Max gap at full travel |
-|---|---|---|
-| `viper` | 4 parallelogram wishbones | 0 mm (exact) |
-| `moon_racer`, `pegasus`, `eagle` | 8 each (wishbone and coil-over strut) | 8.0, 8.4, 13.0 mm |
-| `pr_concept`, `lunar_cruiser`, `ltv_concept` | 12, 12, 8 | 16.5, 17.3, 19.3 mm |
-| `apollo_lm` | 8 rigid truss loops | dropped (truss locked) |
-
-The other assets have no closed loops. `scripts/check_urdf.py` checks every URDF and runs in the `urdf` pipeline step and before each release. It checks for a single tree rooted at `base_link`, no mimic-of-mimic, a limit on every revolute and prismatic joint, and that every mesh and texture exists. It checks that inertias are positive definite and meet the triangle inequality, and that the total mass matches the USD. It checks that every link's rest pose matches the USD rigid body to 0.1 mm. It re-measures each loop gap from the URDF alone and compares it with the sidecar, and it loads the file in MuJoCo.
-
-Notes on loading it.
-- Mesh paths are relative to the `.urdf` file. PyBullet and MuJoCo load the file as it is. ROS tools such as `robot_state_publisher` and rviz want absolute URIs, so rewrite them first, for example `sed "s#filename=\"meshes/#filename=\"file://$PWD/eagle/urdf/meshes/#" eagle/urdf/eagle.urdf > eagle_ros.urdf`.
-- `joint_state_publisher_gui` shows one slider per driver, and the whole wheel corner follows it.
-- MuJoCo's URDF importer ignores `<mimic>` and leaves those joints free. Couple them yourself from the sidecar's multipliers, or use the USD, which keeps the loop-closing joints. Treat any other importer the same way unless it documents mimic support.
-
-```python
-import mujoco
-m = mujoco.MjModel.from_xml_path("eagle/urdf/eagle.urdf")
-```
-
-## USD asset structure
-
-The layout follows the Isaac Sim robot asset convention. Inside `usd/`:
-
-| Path | Contents |
-|---|---|
-| `<id>.usda` | Interface layer: variant sets, `SimReady_Metadata`, `IsaacRobotAPI` |
-| `thrusters.json` | Every thruster: prim path, exit centre, flow direction, thrust, Isp, mass flow, exit radius |
-| `.thumbs/256x256/<id>.usda.png` | Thumbnail |
-| `payloads/base.usda` | Link tree under `/<id>/Geometry`: instanceable visuals, convex-hull colliders, sites, cameras |
-| `payloads/robot.usda` | `IsaacRobotAPI`, `IsaacLinkAPI`, `IsaacJointAPI`, `IsaacSiteAPI` |
-| `payloads/geometries.usd` | All meshes (binary crate) |
-| `payloads/instances.usda` | Instanceable prototypes with visual and physics materials |
-| `payloads/materials.usda` | `UsdPreviewSurface` materials; textures in `payloads/Textures/` |
-| `payloads/physics_materials.usda` | Friction and restitution per physics material |
-| `payloads/Physics/` | `physics.usda`, `physx.usda`, `mujoco.usda` |
-| `payloads/Articulation/`, `Fidelity/`, `Propellant/` | One layer per variant option |
-| `payloads/<attachment set>/`, `payloads/attachments/<dep>/` | Attachment variants and the bundled attachment packages |
-
-Conventions:
-- Z up, metres, kilograms.
-- The origin is on the ground under the centreline, with the legs at nominal stroke, so placing an asset at `(x, y, 0)` stands it on the surface.
-- Rigid parts are merged per link and material (`<link>__<material>`); only articulated parts are separate links.
-- Attachments are assets in their own right. A host lists them in its config, and the packager adds an optional variant set, off by default, that bundles a copy of the attachment, mounts it at a site and joins it to the host's articulation with a fixed joint.
-
-## Validation
-
-| Validator | Result |
-|---|---|
-| `nvidia_usd_validate` (usd-validation-nvidia 1.22) | 0 errors and 0 failures on `mk1`, `mk1_offloader`, `apollo_lm`, `nova_c`, `blue_ghost` and `peregrine`, with the mesh-weld and indexed-primvar checks off; only non-manifold and zero-area-face warnings remain |
-| `scripts/check_urdf.py` | All 22 URDFs pass the structure, file, inertia and MuJoCo 3.12 load checks, rest poses are within 0.005 mm of the USD, and loop gaps are as listed under [URDF](#urdf) |
-| Newton 1.6 (`SolverMuJoCo`) | `mk1` settles level on all four legs in lunar gravity, tracks the gimbal and antenna servos and lifts off under BE-7 thrust; with `Offloader = crane` (15 bodies) it also tracks slew, luff and hoist targets. `apollo_lm`, `nova_c`, `blue_ghost` and `peregrine` pass every check that applies to them. All 14 rovers settle level on every wheel, track every servo (steering, active suspension, hatches, latches, stairs, railings, wings, arms, masts) and drive; the 18 t Lunar Cruiser also passes its scripted showcase |
-
-`scripts/sim_newton.py` works on any asset. It reads each joint's `joint:role` and `joint:driveKind` from the USD and runs the checks that apply, exiting non-zero if any fails:
-
-| Check | Runs on | Pass condition |
-|---|---|---|
-| `settle` | every asset | dropped 0.5 m in lunar gravity, comes to rest under 2° tilt; reports passive joint travel (landing gear, suspension) |
-| `servo` | position-driven joints (gimbals, antennas, cranes, steering, hatches) | reaches a mid-range target within 1° or 5 cm |
-| `drive` | velocity-driven joints (wheels) | travels more than 0.1 m without tipping past 15° |
-| `thrust` | `main` thrusters in `thrusters.json` | thrust-to-weight above 1, and 1.05 × weight gives the expected acceleration |
-| `touchdown` | assets with prismatic landing-gear joints | reset just above the surface at `--td-vz` sink rate and `--td-vh` drift (default 1.0 and 0.3 m/s), lands below 10° tilt, comes to rest and no crush stage bottoms out; reports peak and final stroke per strut, summing in-series stages, and the minimum main-engine exit clearance |
-
-`--slope <deg>` tilts gravity about +Y, which is equivalent to landing on a slope, and `--mu` sets surface friction. The touchdown check is the lander counterpart to the rovers' `drive` check.
-
-### Apollo LM landing gear
-
-The `apollo_lm` legs are the real mechanism, not a single sprung piston. Each leg has a primary strut, ball-jointed to the descent-stage outrigger, whose inner cylinder carries the footpad on a ball joint (30° cone). Two telescoping secondary struts run from the deployment truss to a ball joint on the primary's outer cylinder; they close the loop as `physics:excludeFromArticulation` joints, which Newton and MuJoCo turn into equality constraints. That is 12 bodies and 2 loop closures per leg.
-
-Every honeycomb stage is its own prismatic joint, in series, with a one-sided limit and joint friction equal to its crush load. A stage does not move until its load is exceeded, then strokes at that load and stays crushed, so the weakest stage crushes first. This is the rigid-plastic load/stroke curve of NASA TN D-6850 (figs. 7 and 9):
-
-| Strut | Stage | Crush load | Stroke |
-|---|---|---|---|
-| Primary | compression 1 | 4,500 lbf (20.0 kN) | 0–12 in (0.305 m) |
-| Primary | compression 2 | 9,500 lbf (42.3 kN) | 12–32 in (0.508 m more) |
-| Secondary | compression | 4,500 lbf (20.0 kN) | 0–14 in (0.356 m) |
-| Secondary | tension 1 | 500 lbf (2.2 kN) | 0–6 in (0.152 m) |
-| Secondary | tension 2 | 5,000 lbf (22.2 kN) | 6–18 in (0.305 m more) |
-
-`LandingGear = crush` authors the loads as `newton:friction` and `mjc:frictionloss`, with a stiff friction impedance (`mjc:solimpfriction` 0.9999, `mjc:solreffriction` 4 ms) so the struts hold below their crush load instead of creeping, 20 kg of armature per stage, and `newton:limitStiffness` 1e7 N/m on the stage limits. `LandingGear = spring` keeps the same bodies with the secondaries locked and a 9e4 N/m spring on the primary, for simulators without joint friction. PhysX has no force-based joint friction, so under `Physics = physx` the crush stages behave as free strokes between their limits.
-
-Touchdowns of the touchdown-mass LM (8.0 t) on rigid, flat ground, `--variants LandingGear=crush --drop 0`:
-
-| Sink / drift | Slope | Primary crush, leading leg / side legs / trailing leg | Secondary tension | Nozzle clearance |
-|---|---|---|---|---|
-| 1.0 / 0.3 m/s | 0° | 78 / 54 / 35 mm | up to 32 mm | 0.15 m |
-| 1.0 / 0.6 m/s | 10° | 111 / 57 / 22 mm | up to 39 mm | 0.14 m |
-| 2.5 / 0.5 m/s | 0° | 221 / 189 / 162 mm | up to 68 mm | 0 (the J-mission nozzle extension, designed to crush, touches) |
-
-All three land stable. On Apollo 11 the primaries did not stroke at all and the secondaries stroked up to 4.5 in (114 mm) in tension, because the soil absorbed about 60 % of the touchdown energy. The sim's rigid ground puts that energy into the primaries instead; a deformable regolith model is the next step.
-
-### Touchdown example
-
-`examples/newton/example_robot_lander_touchdown.py` drops any lander onto the surface in the Newton viewer. Every world gets the same drift, heading and slope; with `--world-count N`, the worlds land side by side with sink rates spread from `--vz` to `--vz-max`. The GUI shows each world's tilt and largest strut stroke, `r` re-drops, and `--test` prints per-strut peak and final strokes, tilt and nozzle clearance per world and fails if a lander tips:
-
-```bash
-cd examples/newton
-../../.venv/bin/python example_robot_lander_touchdown.py --world-count 3 --vz 1.0 --vz-max 2.5 --vh 0.3
-../../.venv/bin/python example_robot_lander_touchdown.py --variants LandingGear=spring --slope 10 --vh 0.6
-../../.venv/bin/python example_robot_lander_touchdown.py --asset nova_c --variants "" --spacing 6 --vz 1.5 --slope 8
-../../.venv/bin/python example_robot_lander_touchdown.py --viewer null --test --world-count 3 --vz 1.0 --vz-max 2.5
-```
-
-It defaults to `apollo_lm` with `LandingGear=crush`. Pass `--variants ""` for landers without that variant set.
-
-The viewer panel has a control for every option:
-
-| Group | Controls | Takes effect |
-|---|---|---|
-| Lander | asset (every `*/lander` config), each variant set the USD offers (`LandingGear`, `Propellant`, `Articulation`), physics flavour | rebuilds immediately |
-| Lander | world count, substeps per frame | rebuilds on Rebuild |
-| Touchdown | sink rate (first and last world), drift, drift heading, release height | on the next re-drop (`r` or Re-drop) |
-| Touchdown | loop, re-drop every N s (`--loop N`) | live |
-| Surface | slope (gravity), friction, world spacing | live |
-| Surface | crush load scale (×0.1–3 on every crush stage, crush gear only) | live, for exploring softer or stiffer honeycomb |
-
-### Rover examples
-
-`examples/newton/example_robot_rover.py` drives any rover in the Newton viewer. It reads the joint roles from the USD:
-- **Steering:** wheels with a `<corner>_steer` joint get Ackermann, crab and turn-in-place modes. Rovers without steering joints skid-steer.
-- **Active suspension:** gets a ride-height control.
-- **Servos:** every other servo (hatches, stairs, railings, wings, masts, dishes, arms) gets a slider.
-
-Keys: `i`/`k` throttle, `j`/`l` steer, `space` stop, `m` steer mode, `u`/`o` ride height, `h` hatch, `t` stair, `g` latch.
-
-```bash
-cd examples/newton
-../../.venv/bin/python example_robot_rover.py --asset ltv_concept --variants Crew=uncrewed,Payload=uncrewed
-../../.venv/bin/python example_robot_rover.py --asset sev --speed 3
-../../.venv/bin/python example_robot_rover.py --asset viper --viewer null --num-frames 300 --speed 0.7 --steer 10 --test
-```
-
-`examples/newton/example_robot_lunar_cruiser.py` showcases every joint on the Lunar Cruiser. Its sequences ease each joint through several steps:
-- **Airlock:** spin the hand wheel two turns while the four latch bolts retract, then swing the hatch open.
-- **Stair:** lower the upper flight, unfold the lower flight at the knee, then raise the railings. Stowing runs the steps in reverse.
-- **Solar wings:** swing the wing boxes out to angles computed from the heading and a low polar sun (`--sun-az`, `--sun-el`).
-- **Arm:** reach and stow.
-
-The dish can track Earth, and the light sites are drawn as beams, because the Newton viewer does not render `UsdLux`. The GUI shows strut travel per wheel and ground speed. Keys: `1` airlock, `2` stair, `3` wings, `4` arm, `f` lights, `e` Earth tracking.
-
-`--demo` plays the scripted showcase and `--test` checks the end state. `--record` saves every body pose to an `.npz`, which `scripts/playback.py` renders in Blender (EEVEE, real spot lights at every light site) for the video above:
-
-```bash
-cd examples/newton
-../../.venv/bin/python example_robot_lunar_cruiser.py
-../../.venv/bin/python example_robot_lunar_cruiser.py --viewer null --demo --num-frames 2820 --test --record ../../build/lunar_cruiser/demo_run.npz
-cd ../.. && blender -b build/lunar_cruiser/lunar_cruiser.blend -P scripts/playback.py -- --asset lunar_cruiser --variant Solar:deployed --eevee --samples 32
-```
-
-`examples/newton/example_robot_viper.py` runs every VIPER joint (4 drive, 4 offset-kingpin steer, 4 active four-bar lifts with their passive links and loop joints, mast pan and tilt, two NavCam lens covers, HGA azimuth and elevation, TRIDENT deploy, feed and auger spin).
-- **Driving.** Ackermann, crab and turn-in-place at VIPER's 20 cm/s, with ride height across the 7–43 cm clearance range.
-- **Wheel walking.** One corner at a time (front-left, rear-right, front-right, rear-left) lifts on its suspension while the other three push.
-- **Survey.** The mast tilts down and pans a six-image panorama.
-- **Drill.** TRIDENT deploys 0.38 m and feeds in 20 cm bites to 1.0 m with the auger at 100 rpm, then retracts.
-- **Lights.** `f` cycles the nav, haz and nirvss groups (drawn as coloured beams). `e` makes the HGA track Earth.
-
-Keys: `1` lens covers, `2` survey panorama, `3` drill, `4` wheel walk, `5` auger, `f` lights, `e` Earth tracking, plus the rover keys. `--demo` plays the whole sequence and `--test` checks that it drove, walked, drilled past 0.9 m, spun the auger, opened the covers and kept the belly clear.
-
-```bash
-cd examples/newton
-../../.venv/bin/python example_robot_viper.py --lights nav
-../../.venv/bin/python example_robot_viper.py --viewer null --demo --num-frames 4920 --test
-```
-
-`examples/newton/example_robot_ipex.py` runs every IPEx joint on rigid ground (4 skid-steered wheels, 2 arms, 2 drum pairs and the radiator cover).
-- **Counter-rotating dig.** Both arms lower and both drum pairs dig at once. The two pairs turn in opposite directions, so their reactions cancel and the chassis stays within 2 cm. A single pair pushes the rover instead.
-- **Dig, dump, tilt and lift.** The front pair digs while the rover creeps forward, lifts and dumps by reversing. One arm alone tilts the chassis about 6°, and both arms pushed below level lift it about 6 cm (the "iron cross").
-- **Dock.** The radiator cover opens 90° for charging.
-
-Keys `1` to `6` run the sequences, `x` starts and stops the drums and `z` reverses them. `--demo` plays everything and `--test` checks it.
-
-`examples/newton/example_robot_ipex_dig.py` digs real regolith. It couples IPEx (MuJoCo) with a bed of about 343,000 MPM particles (`SolverImplicitMPM`, 10 mm voxels). The rover drives on rigid ground through a 6 cm bed, cuts 2 cm deep with the front drums, lifts the load, weighs what the drums hold and dumps it. The default regolith is GRC-1 as used in the Project Chrono RASSOR studies (1,700 kg/m³, 38° friction angle). `--two-way` feeds the regolith reaction back into the rover, `--dither-hz 2.66` adds the front-shoulder dither from SBEL TR-2024-04, and `--fill-revs`, `--transit` and `--dump-time` lengthen the sequence. A default run collects about 4.6 kg, keeps 2.4 kg through the lift and dumps all but 0.9 kg. `--record` saves body poses and grain positions.
-
-```bash
-cd examples/newton
-../../.venv/bin/python example_robot_ipex.py --viewer null --demo --num-frames 3700 --test
-../../.venv/bin/python example_robot_ipex_dig.py --viewer null --num-frames 1410 --test --record ../../build/ipex/dig_run.npz
-```
-
-`scripts/render_rtx.py` renders any asset in Omniverse RTX. `--mode RealTimePathTracing` and `--spectral` pick the renderer, `--pose joint=value` poses joints (degrees or metres) and `--sensors` renders through the asset's own cameras:
-
-```bash
-.venv/bin/python scripts/render_rtx.py --asset viper --views front_three_quarter --sensors nav_cam_left,haz_cam_fl --night --exposure -5 --spectral --pose nav_mast_tilt=-35 --variant Lights=nav
-```
-
-```bash
-.venv/bin/nvidia_usd_validate -D WeldChecker -D IndexedPrimvarChecker assets/blue_origin/mk1/lander/usd/mk1.usda
-./pipeline.sh mk1 sim
-.venv/bin/python scripts/check_urdf.py # every asset, or --asset eagle
-.venv/bin/python scripts/sim_newton.py --asset mk1 --variants Offloader=crane --checks settle,servo
-.venv/bin/python scripts/sim_newton.py --asset apollo_lm --variants LandingGear=crush --checks touchdown --drop 0 --td-vz 1.0 --td-vh 0.6 --slope 10
-```
-
-## Rebuild
-
-You need Blender 5.2 on `PATH` (or set `BLENDER=/path/to/blender`) and a [uv](https://docs.astral.sh/uv/) venv:
-
-```bash
-uv venv --python 3.13 && uv pip install -r requirements.txt
-```
-
-```bash
-./pipeline.sh list # assets, attachments first
-./pipeline.sh mk1 # textures -> build -> export -> thumbnail -> USD package -> assets/ (full and simple)
-./pipeline.sh mk1 package assets # selected steps: textures build export thumb package blend mesh simple urdf assets gallery sim
-./pipeline.sh update # every asset, attachments before their hosts
-./pipeline.sh hero # every asset together -> docs/images/hero.jpg
-./pipeline.sh lunar_cruiser gallery # Cycles renders -> docs/images/<asset path>/ (VIEWS=front_three_quarter,rear_three_quarter,wheel for rovers)
-blender -b build/lunar_cruiser/lunar_cruiser.blend -P scripts/render.py -- --asset lunar_cruiser --views rear_patio --night --lights --pose airlock_hatch=1.75
-.venv/bin/python scripts/render_rtx.py --asset lunar_cruiser --night --views rear_patio # Omniverse RTX path-traced render of the packaged USD (ovrtx)
-./pipeline.sh scene # local assets/lunar_vehicles.usda referencing every asset's USD, to scale in one row (git-ignored)
-./pipeline.sh web # web viewer models -> web/models/ (git-ignored)
-./pipeline.sh serve # serve web/ at http://localhost:8000
-./pipeline.sh bump 0.4.0 # set VERSION and restamp the committed assets, no rebuild
-./pipeline.sh release # full rebuild of every asset, then the release zips in build/release/v<VERSION>/ for a local check
-```
-
-`render.py` takes `--pose joint=value,...` for joint poses, `--variant Set:option` for geometry variants, `--night --lights` for a dark scene lit only by the asset's own lights, and `--sun az,el` for the sun direction. `pipeline.sh` points Blender's EEVEE/OpenGL at the NVIDIA GPU on hybrid-graphics laptops (Cycles uses OptiX either way).
-
-Texture sets are cached by spec, so only changed sets regenerate. The 4096 px MLI sets take about 1.5 min each and peak around 6 GB of RAM, so run assets one at a time.
-
-### Repository layout
-
-| Path | Contents |
-|---|---|
-| `configs/<id>.py` | One config per asset: dimensions, materials, features, masses, colliders, `ASSET_PATH` |
-| `families/` | Family builders shared by an asset family (`mk1`, `offloader`, `apollo_lm`, `nova_c`, `blue_ghost`, `peregrine`), plus `parts.py`: shared nozzles, sprung legs, thruster clusters, panels, dishes and lofts. `rover.py` builds every rover from its config: wheel modules (double wishbone, trailing arm, rocker, steering column, prismatic leg), wheel styles (airless spring, wire mesh, grousered, slat), extra jointed links and loop closures, a parts vocabulary (boxes, lofts, extrusions, panels, rails, chunked walls swept along a 2D path), crew stations, masts, dishes, solar arrays, arms and lights; `rover_kit.py` has the shared materials and helpers |
-| `examples/newton/` | Newton examples: lander touchdown, any-rover driving, Lunar Cruiser, VIPER and IPEx showcases, IPEx regolith digging with MPM |
-| `scripts/` | Pipeline: texture generation, Blender build, export, USD packaging, URDF export and check, simple versions, renders, hero, release |
-| `assets/<vendor>/<family>/<name>/` | Generated by the pipeline and committed with Git LFS: `usd/`, `urdf/`, `gltf/`, `obj/`, `blender/`, `simple/`, `LICENSE`, `NOTICE` |
-| `web/` | Static three.js viewer: `index.html`, `src/` (viewer and lil-gui panel), `vendor/three/` (pinned three.js r170 and lil-gui), `models/` (generated by `./pipeline.sh web`, git-ignored) |
-| `docs/images/` | Hero and gallery renders |
-| `refs/` | Local reference library (git-ignored) |
-| `build/` | Intermediate outputs (git-ignored) |
-
-To add a vehicle, write a family builder in `families/`, add `configs/<id>.py` with `FAMILY` and `ASSET_PATH = "<vendor>/<family>/<name>"`, and run `./pipeline.sh <id>`. It is picked up by `update`, `hero` and `release` automatically.
-
-### Versions and releases
-
-The version lives in `VERSION` and covers every asset. The packager stamps it into each USD as `assetInfo.version`, `isaac:version` and `asset_version` in the root layer's `customLayerData` and `SimReady_Metadata`.
-
-To cut a release:
-
-1. Rebuild and commit any asset whose model changed with `./pipeline.sh <asset>`, as you go. A release doesn't need a full rebuild.
-2. Run `./pipeline.sh bump <x.y.z>`. It sets `VERSION` and restamps the committed assets in place (the USD layers, simple USDs, `NOTICE` files and URDF sidecars) without rebuilding anything, then checks that every stamp matches.
-3. Commit with `git add -u`, tag the commit `v<VERSION>`, and push the commit and the tag.
-4. The [release workflow](.github/workflows/release.yml) runs on the tag. It checks that the tag matches `VERSION` and every stamped USD, runs `scripts/check_urdf.py`, zips the committed assets, builds `web-models.zip` for the web viewer, publishes the GitHub release with `SHA256SUMS`, and starts the pages workflow to deploy the viewer for that release.
-
-## Roadmap
-
-- **More landers**, such as Astrobotic Griffin, ispace / Draper APEX 1.0 and Intuitive Machines Nova-D, under their own vendor folders.
-
-## Sources
-
-Geometry and dimensions come from public sources: NASA public-domain photos, published manufacturer and NASA specifications, scale drawings and regulatory filings. Manufacturer renders are used only as visual references. Many details are inferred from photos and are estimates. For Blue Moon MK1:
-
-- **RCS.** Thruster count, thrust and pod geometry are not published; the layout follows photos and renders.
-- **BE-7.** Nozzle size and gimbal range are estimates.
-- **Mass and legs.** Leg stroke, spring rate, touchdown and dry masses are assumed; the launch mass is published.
-- **High-gain antenna.** Its existence comes from the FCC filing and press; placement and size are assumed.
-- **Offloader.** Its design is not published; the geometry follows a Blue Origin render and the dimensions are estimates.
-
-For the rovers, the most reliable numbers are official specifications. Elsewhere, positions are measured from photos and renders against a known dimension and are estimates (typically ±5–15 %):
-
-- **Lunar Cruiser.** Official figures come from JAXA's 2025 specification slide: 6.44 × 4.84 × 4.85 m, wheelbase 3.81 m, track 3.20 m, ≤ 15 t at launch and ≤ 18 t loaded, 4 × 10 m solar wings, and a 1.0 × 1.5 m hatch. Everything else is calibrated on those figures from the NASA/JAXA 2025 renders: windscreen, lamps, rear patio, stair, stowage, gas bottles and the arm. Suspension and steering are not published; independent wishbones with a steering front axle are assumed.
-- **LTVs.** CLV-1 and Pegasus dimensions are measured from NASA photos and renders; the mass caps are official. FLEX dimensions come from Astrolab's payload interface guide. The Moon RACER and Eagle are measured from photos, and the Moon RACER's published 3.9 m width is read as including its panels.
-- **SEV, VIPER, CADRE.** These come from NASA and JPL fact sheets and slides: SEV mass, wheelbase and height; VIPER's 1.7 × 1.7 × 2.5 m, 447 kg, 0.5 m wheels and mobility ranges; CADRE's 0.546 × 0.385 × 0.235 m and 8.6 kg. Suitport, docking hatch and instrument positions are measured from photos. VIPER's layout follows the LSIC 2024 CAD cutaway and the LPSC 2022 Visible Imaging System figure. Its lights and cameras follow LPSC 2022 #2466 and LPSC 2023 #2508, and its finishes follow JSC clean-room and thermal-vacuum photos of the flight rover.
-- **IPEx.** NASA does not publish overall dimensions or an as-built mass, only the 30 kg-class target, so the model is calibrated on three figures from the TRL 5 design work (ASCEND 2024, NTRS 20240008162), namely the 30.5 cm wheel (ASCE 2024 wheel paper), the 0.165 m stereo baseline printed on its end-view CAD and the 295 × 246 mm "medium" bucket drum (ASCE 2022 scaling paper). These agree within about 3 %. Wheelbase, track, shoulder pivots, arm length and body sizes are measured from the FY24 side orthographic CAD and the TRL 5 top and end views (±1–2 cm). Skid steering, no suspension, one through-shaft actuator per drum pair, counter-rotating digging, dumping by reversing the drums, the radiator cover and wireless charging come from the TRL 5 and IEEE 2025 actuator papers. The camera set follows the post-TRL 5 layout (two 5 cm stereo pairs, two mono cameras between the drums and two side cameras). The six LED positions are inferred. The drum spiral is the RASSOR 2.0 drum slice from Project Chrono (`data/robot/rassor`, BSD-3) scaled to IPEx's 0.30 m drum, which gives a 34 mm scoop mouth against the published 34.5 mm. Finishes follow the TRL 5 CAD, the FY24 finish list and colours measured from photos of the test unit (charcoal hard anodise on the drums and cleats, khaki-gold conversion coat on the wheel rings and spokes, matte white paint); the 2024 alpha test unit has bright silver drums and yellow wheels and is not flight-representative.
-- **FLIP and MAPP.** No official dimensions beyond mass and the Venturi wheel diameter (FLIP) or the 45 × 38 × 40 cm envelope (MAPP); the geometry is measured from renders.
-- **Concepts.** `ltv_concept` follows the NASA LTV requirements (2 suited crew plus 250 kg, or 1,600 kg uncrewed). `pr_concept` follows typical pressurised-rover features: 0.6 × 0.9 m suitports, an IDSS docking ring, a forward window band, radiators and a 2–3 m arm.
-
-For Blue Moon MK2:
-
-- **Size and mass.** Overall dimensions come from Blue Origin's LEM / MK-1 / MK-2 scale board (15.3 m, checked against the Apollo LM at the same scale) and NASA (about 52 ft). The masses are from press reports: more than 45 t fuelled and about 16 t dry; the 30 t touchdown mass is an estimate.
-- **Layout.** The layout follows the NASA HLS render and the full-size crew-cabin mockup at JSC:
-  - a crew cabin at the base with a side docking port and two windows
-  - a crew door with an egress platform and stair
-  - two oblate tanks in a triangulated truss cage
-  - the LH2 tank inside four hinged sunshield panels under a dome with two dishes
-  - four legs with large dish footpads
-- **Estimates.** Positions are measured from those images (±0.2–0.5 m). The BE-7 placement (three engines recessed in the skirt under the cabin), leg stroke, RCS layout and sunshield actuation are not published and are estimates.
-
-For the other landers:
-
-- **Apollo LM.** Landing-gear kinematics and crush loads follow NASA TN D-6850, "Apollo Experience Report: Lunar Module Landing Gear Subsystem" (Rogers, 1972), and the 1973 NASA landing-gear paper. Stage, deck and engine heights, the 31 ft gear span, 37 in pads, ascent-stage envelope and propulsion data come from the Grumman LM Structures Study Guide, the Apollo News Reference and a dimensioned NASA 3-view, converted from LM stations. The leg apex, RCS quad and antenna positions are measured from those drawings (±0.1–0.3 m), the touchdown mass is an estimate, and the lunar-surface sensing probes are left off so the asset stands at z = 0.
-- **Nova-C.** Height (4.3 m), 1.6 m hull, 4.6 m gear, masses, VR900 Isp and gimbal, helium cold-gas RCS, three arrays and the fixed high-gain antenna come from the IM-1 press kit and FCC filing. Leg stroke, RCS count, gimbal range and the faces carrying the nav pod and antennas are assumptions.
-- **Blue Ghost.** The 2 m height, 3.5 m span, 1,517 kg launch and 469 kg dry masses, LEROS 4-ET engine, 8 Spectre RCS and 12 cold-gas thrusters come from Firefly and NASA; the span is read as the footpad-centre diagonal. Body, tank and leg geometry is measured from Firefly renders (±10 %). The flight unit's MLI is copper, not the gold of the renders.
-- **Peregrine.** Height, 2.5 m width (read as face-on footpad spacing), 1,283 kg wet mass, engine and ACS counts and the payload-deck drawing come from Astrobotic's payload user's guide and post-mission report. Positions, tank sizes and the dry mass (a rocket-equation estimate) are inferred. The flown vehicle wore silver MLI.
-
 ## License
 
 Copyright 2026 Alex Maietta (see [`NOTICE`](NOTICE)).
@@ -585,4 +146,4 @@ Copyright 2026 Alex Maietta (see [`NOTICE`](NOTICE)).
 - **Code** (`scripts/`, `families/`, `configs/`, `examples/`, `web/` except `web/vendor/`, `pipeline.sh`) is under the [BSD 3-Clause License](LICENSE). Third-party code in `web/vendor/` keeps its own license.
 - **Model assets** (`assets/`, each asset folder carries its own `LICENSE` and `NOTICE`) and **renders** (`docs/images/`) are dedicated to the public domain under [CC0 1.0 Universal](LICENSE-ASSETS). Use them for anything without asking or crediting. A credit such as "Lunar surface mobility assets by Alex Maietta" is appreciated but not required.
 
-This project is not affiliated with or endorsed by Blue Origin, NASA or any other vehicle manufacturer. Vehicle and company names are trademarks of their owners and are used only to identify the vehicles modelled; manufacturer logos and wordmarks are left off the models.
+This project is not affiliated with or endorsed by Blue Origin, NASA or any other vehicle manufacturer. Vehicle and company names are trademarks of their owners and are used only to identify the vehicles modelled. Manufacturer logos and wordmarks are left off the models.
