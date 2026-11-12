@@ -10,182 +10,6 @@
 
 def Scope "Materials"
 {
-    def Material "tread" (
-        prepend apiSchemas = ["ColorSpaceAPI"]
-    )
-    {
-        uniform token colorSpace:name = "lin_rec709_scene"
-        token outputs:surface.connect = </Materials/tread/Principled_BSDF.outputs:surface>
-
-        def Shader "Principled_BSDF"
-        {
-            uniform token info:id = "UsdPreviewSurface"
-            float inputs:clearcoat = 0
-            float inputs:clearcoatRoughness = 0.03
-            color3f inputs:diffuseColor.connect = </Materials/tread/Image_Texture.outputs:rgb>
-            float inputs:ior = 1.5
-            float inputs:metallic.connect = </Materials/tread/Image_Texture_002.outputs:r>
-            normal3f inputs:normal.connect = </Materials/tread/Image_Texture_003.outputs:rgb>
-            float inputs:opacity = 1
-            float inputs:roughness.connect = </Materials/tread/Image_Texture_001.outputs:r>
-            float inputs:specular = 0.5
-            token outputs:surface
-        }
-
-        def Shader "Image_Texture" (
-            prepend apiSchemas = ["ColorSpaceAPI"]
-        )
-        {
-            uniform token colorSpace:name = "srgb_rec709_display"
-            uniform token info:id = "UsdUVTexture"
-            asset inputs:file = @./Textures/tread_basecolor.png@
-            token inputs:sourceColorSpace = "sRGB"
-            float2 inputs:st.connect = </Materials/tread/UV_Map.outputs:result>
-            token inputs:wrapS = "repeat"
-            token inputs:wrapT = "repeat"
-            float3 outputs:rgb
-        }
-
-        def Shader "UV_Map"
-        {
-            uniform token info:id = "UsdPrimvarReader_float2"
-            string inputs:varname = "st"
-            float2 outputs:result
-        }
-
-        def Shader "Image_Texture_002" (
-            prepend apiSchemas = ["ColorSpaceAPI"]
-        )
-        {
-            uniform token colorSpace:name = "data"
-            uniform token info:id = "UsdUVTexture"
-            asset inputs:file = @./Textures/tread_metallic.png@
-            token inputs:sourceColorSpace = "raw"
-            float2 inputs:st.connect = </Materials/tread/UV_Map.outputs:result>
-            token inputs:wrapS = "repeat"
-            token inputs:wrapT = "repeat"
-            float outputs:r
-        }
-
-        def Shader "Image_Texture_001" (
-            prepend apiSchemas = ["ColorSpaceAPI"]
-        )
-        {
-            uniform token colorSpace:name = "data"
-            uniform token info:id = "UsdUVTexture"
-            asset inputs:file = @./Textures/tread_roughness.png@
-            token inputs:sourceColorSpace = "raw"
-            float2 inputs:st.connect = </Materials/tread/UV_Map.outputs:result>
-            token inputs:wrapS = "repeat"
-            token inputs:wrapT = "repeat"
-            float outputs:r
-        }
-
-        def Shader "Image_Texture_003" (
-            prepend apiSchemas = ["ColorSpaceAPI"]
-        )
-        {
-            uniform token colorSpace:name = "data"
-            uniform token info:id = "UsdUVTexture"
-            float4 inputs:bias = (-1, -1, -1, -1)
-            asset inputs:file = @./Textures/tread_normal.png@
-            float4 inputs:scale = (2, 2, 2, 2)
-            token inputs:sourceColorSpace = "raw"
-            float2 inputs:st.connect = </Materials/tread/UV_Map.outputs:result>
-            token inputs:wrapS = "repeat"
-            token inputs:wrapT = "repeat"
-            float3 outputs:rgb
-        }
-    }
-
-    def Material "aluminium" (
-        prepend apiSchemas = ["ColorSpaceAPI"]
-    )
-    {
-        uniform token colorSpace:name = "lin_rec709_scene"
-        token outputs:surface.connect = </Materials/aluminium/Principled_BSDF.outputs:surface>
-
-        def Shader "Principled_BSDF"
-        {
-            uniform token info:id = "UsdPreviewSurface"
-            float inputs:clearcoat = 0
-            float inputs:clearcoatRoughness = 0.03
-            color3f inputs:diffuseColor.connect = </Materials/aluminium/Image_Texture.outputs:rgb>
-            float inputs:ior = 1.5
-            float inputs:metallic.connect = </Materials/aluminium/Image_Texture_002.outputs:r>
-            normal3f inputs:normal.connect = </Materials/aluminium/Image_Texture_003.outputs:rgb>
-            float inputs:opacity = 1
-            float inputs:roughness.connect = </Materials/aluminium/Image_Texture_001.outputs:r>
-            float inputs:specular = 0.5
-            token outputs:surface
-        }
-
-        def Shader "Image_Texture" (
-            prepend apiSchemas = ["ColorSpaceAPI"]
-        )
-        {
-            uniform token colorSpace:name = "srgb_rec709_display"
-            uniform token info:id = "UsdUVTexture"
-            asset inputs:file = @./Textures/aluminium_basecolor.png@
-            token inputs:sourceColorSpace = "sRGB"
-            float2 inputs:st.connect = </Materials/aluminium/UV_Map.outputs:result>
-            token inputs:wrapS = "repeat"
-            token inputs:wrapT = "repeat"
-            float3 outputs:rgb
-        }
-
-        def Shader "UV_Map"
-        {
-            uniform token info:id = "UsdPrimvarReader_float2"
-            string inputs:varname = "st"
-            float2 outputs:result
-        }
-
-        def Shader "Image_Texture_002" (
-            prepend apiSchemas = ["ColorSpaceAPI"]
-        )
-        {
-            uniform token colorSpace:name = "data"
-            uniform token info:id = "UsdUVTexture"
-            asset inputs:file = @./Textures/aluminium_metallic.png@
-            token inputs:sourceColorSpace = "raw"
-            float2 inputs:st.connect = </Materials/aluminium/UV_Map.outputs:result>
-            token inputs:wrapS = "repeat"
-            token inputs:wrapT = "repeat"
-            float outputs:r
-        }
-
-        def Shader "Image_Texture_001" (
-            prepend apiSchemas = ["ColorSpaceAPI"]
-        )
-        {
-            uniform token colorSpace:name = "data"
-            uniform token info:id = "UsdUVTexture"
-            asset inputs:file = @./Textures/aluminium_roughness.png@
-            token inputs:sourceColorSpace = "raw"
-            float2 inputs:st.connect = </Materials/aluminium/UV_Map.outputs:result>
-            token inputs:wrapS = "repeat"
-            token inputs:wrapT = "repeat"
-            float outputs:r
-        }
-
-        def Shader "Image_Texture_003" (
-            prepend apiSchemas = ["ColorSpaceAPI"]
-        )
-        {
-            uniform token colorSpace:name = "data"
-            uniform token info:id = "UsdUVTexture"
-            float4 inputs:bias = (-1, -1, -1, -1)
-            asset inputs:file = @./Textures/aluminium_normal.png@
-            float4 inputs:scale = (2, 2, 2, 2)
-            token inputs:sourceColorSpace = "raw"
-            float2 inputs:st.connect = </Materials/aluminium/UV_Map.outputs:result>
-            token inputs:wrapS = "repeat"
-            token inputs:wrapT = "repeat"
-            float3 outputs:rgb
-        }
-    }
-
     def Material "anodised_dark" (
         prepend apiSchemas = ["ColorSpaceAPI"]
     )
@@ -268,6 +92,94 @@ def Scope "Materials"
             float4 inputs:scale = (2, 2, 2, 2)
             token inputs:sourceColorSpace = "raw"
             float2 inputs:st.connect = </Materials/anodised_dark/UV_Map.outputs:result>
+            token inputs:wrapS = "repeat"
+            token inputs:wrapT = "repeat"
+            float3 outputs:rgb
+        }
+    }
+
+    def Material "titanium" (
+        prepend apiSchemas = ["ColorSpaceAPI"]
+    )
+    {
+        uniform token colorSpace:name = "lin_rec709_scene"
+        token outputs:surface.connect = </Materials/titanium/Principled_BSDF.outputs:surface>
+
+        def Shader "Principled_BSDF"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            float inputs:clearcoat = 0
+            float inputs:clearcoatRoughness = 0.03
+            color3f inputs:diffuseColor.connect = </Materials/titanium/Image_Texture.outputs:rgb>
+            float inputs:ior = 1.5
+            float inputs:metallic.connect = </Materials/titanium/Image_Texture_002.outputs:r>
+            normal3f inputs:normal.connect = </Materials/titanium/Image_Texture_003.outputs:rgb>
+            float inputs:opacity = 1
+            float inputs:roughness.connect = </Materials/titanium/Image_Texture_001.outputs:r>
+            float inputs:specular = 0.5
+            token outputs:surface
+        }
+
+        def Shader "Image_Texture" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "srgb_rec709_display"
+            uniform token info:id = "UsdUVTexture"
+            asset inputs:file = @./Textures/titanium_basecolor.png@
+            token inputs:sourceColorSpace = "sRGB"
+            float2 inputs:st.connect = </Materials/titanium/UV_Map.outputs:result>
+            token inputs:wrapS = "repeat"
+            token inputs:wrapT = "repeat"
+            float3 outputs:rgb
+        }
+
+        def Shader "UV_Map"
+        {
+            uniform token info:id = "UsdPrimvarReader_float2"
+            string inputs:varname = "st"
+            float2 outputs:result
+        }
+
+        def Shader "Image_Texture_002" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "data"
+            uniform token info:id = "UsdUVTexture"
+            asset inputs:file = @./Textures/titanium_metallic.png@
+            token inputs:sourceColorSpace = "raw"
+            float2 inputs:st.connect = </Materials/titanium/UV_Map.outputs:result>
+            token inputs:wrapS = "repeat"
+            token inputs:wrapT = "repeat"
+            float outputs:r
+        }
+
+        def Shader "Image_Texture_001" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "data"
+            uniform token info:id = "UsdUVTexture"
+            asset inputs:file = @./Textures/titanium_roughness.png@
+            token inputs:sourceColorSpace = "raw"
+            float2 inputs:st.connect = </Materials/titanium/UV_Map.outputs:result>
+            token inputs:wrapS = "repeat"
+            token inputs:wrapT = "repeat"
+            float outputs:r
+        }
+
+        def Shader "Image_Texture_003" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "data"
+            uniform token info:id = "UsdUVTexture"
+            float4 inputs:bias = (-1, -1, -1, -1)
+            asset inputs:file = @./Textures/titanium_normal.png@
+            float4 inputs:scale = (2, 2, 2, 2)
+            token inputs:sourceColorSpace = "raw"
+            float2 inputs:st.connect = </Materials/titanium/UV_Map.outputs:result>
             token inputs:wrapS = "repeat"
             token inputs:wrapT = "repeat"
             float3 outputs:rgb
@@ -362,23 +274,244 @@ def Scope "Materials"
         }
     }
 
-    def Material "glass" (
+    def Material "mli_gold" (
         prepend apiSchemas = ["ColorSpaceAPI"]
     )
     {
         uniform token colorSpace:name = "lin_rec709_scene"
-        token outputs:surface.connect = </Materials/glass/Principled_BSDF.outputs:surface>
+        token outputs:surface.connect = </Materials/mli_gold/Principled_BSDF.outputs:surface>
 
         def Shader "Principled_BSDF"
         {
             uniform token info:id = "UsdPreviewSurface"
             float inputs:clearcoat = 0
             float inputs:clearcoatRoughness = 0.03
-            color3f inputs:diffuseColor = (0.02, 0.025, 0.03)
+            color3f inputs:diffuseColor.connect = </Materials/mli_gold/Image_Texture.outputs:rgb>
+            float inputs:ior = 1.5
+            float inputs:metallic.connect = </Materials/mli_gold/Image_Texture_002.outputs:r>
+            normal3f inputs:normal.connect = </Materials/mli_gold/Image_Texture_003.outputs:rgb>
+            float inputs:opacity = 1
+            float inputs:roughness.connect = </Materials/mli_gold/Image_Texture_001.outputs:r>
+            float inputs:specular = 0.5
+            token outputs:surface
+        }
+
+        def Shader "Image_Texture" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "srgb_rec709_display"
+            uniform token info:id = "UsdUVTexture"
+            asset inputs:file = @./Textures/mli_gold_basecolor.png@
+            token inputs:sourceColorSpace = "sRGB"
+            float2 inputs:st.connect = </Materials/mli_gold/UV_Map.outputs:result>
+            token inputs:wrapS = "repeat"
+            token inputs:wrapT = "repeat"
+            float3 outputs:rgb
+        }
+
+        def Shader "UV_Map"
+        {
+            uniform token info:id = "UsdPrimvarReader_float2"
+            string inputs:varname = "st"
+            float2 outputs:result
+        }
+
+        def Shader "Image_Texture_002" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "data"
+            uniform token info:id = "UsdUVTexture"
+            asset inputs:file = @./Textures/mli_gold_metallic.png@
+            token inputs:sourceColorSpace = "raw"
+            float2 inputs:st.connect = </Materials/mli_gold/UV_Map.outputs:result>
+            token inputs:wrapS = "repeat"
+            token inputs:wrapT = "repeat"
+            float outputs:r
+        }
+
+        def Shader "Image_Texture_001" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "data"
+            uniform token info:id = "UsdUVTexture"
+            asset inputs:file = @./Textures/mli_gold_roughness.png@
+            token inputs:sourceColorSpace = "raw"
+            float2 inputs:st.connect = </Materials/mli_gold/UV_Map.outputs:result>
+            token inputs:wrapS = "repeat"
+            token inputs:wrapT = "repeat"
+            float outputs:r
+        }
+
+        def Shader "Image_Texture_003" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "data"
+            uniform token info:id = "UsdUVTexture"
+            float4 inputs:bias = (-1, -1, -1, -1)
+            asset inputs:file = @./Textures/mli_gold_normal.png@
+            float4 inputs:scale = (2, 2, 2, 2)
+            token inputs:sourceColorSpace = "raw"
+            float2 inputs:st.connect = </Materials/mli_gold/UV_Map.outputs:result>
+            token inputs:wrapS = "repeat"
+            token inputs:wrapT = "repeat"
+            float3 outputs:rgb
+        }
+    }
+
+    def Material "frame_white" (
+        prepend apiSchemas = ["ColorSpaceAPI"]
+    )
+    {
+        uniform token colorSpace:name = "lin_rec709_scene"
+        token outputs:surface.connect = </Materials/frame_white/Principled_BSDF.outputs:surface>
+
+        def Shader "Principled_BSDF"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            float inputs:clearcoat = 0
+            float inputs:clearcoatRoughness = 0.03
+            color3f inputs:diffuseColor = (0.88, 0.88, 0.86)
             float inputs:ior = 1.5
             float inputs:metallic = 0
             float inputs:opacity = 1
-            float inputs:roughness = 0.04
+            float inputs:roughness = 0.35
+            float inputs:specular = 0.5
+            token outputs:surface
+        }
+    }
+
+    def Material "anodised_grey" (
+        prepend apiSchemas = ["ColorSpaceAPI"]
+    )
+    {
+        uniform token colorSpace:name = "lin_rec709_scene"
+        token outputs:surface.connect = </Materials/anodised_grey/Principled_BSDF.outputs:surface>
+
+        def Shader "Principled_BSDF"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            float inputs:clearcoat = 0
+            float inputs:clearcoatRoughness = 0.03
+            color3f inputs:diffuseColor.connect = </Materials/anodised_grey/Image_Texture.outputs:rgb>
+            float inputs:ior = 1.5
+            float inputs:metallic.connect = </Materials/anodised_grey/Image_Texture_002.outputs:r>
+            normal3f inputs:normal.connect = </Materials/anodised_grey/Image_Texture_003.outputs:rgb>
+            float inputs:opacity = 1
+            float inputs:roughness.connect = </Materials/anodised_grey/Image_Texture_001.outputs:r>
+            float inputs:specular = 0.5
+            token outputs:surface
+        }
+
+        def Shader "Image_Texture" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "srgb_rec709_display"
+            uniform token info:id = "UsdUVTexture"
+            asset inputs:file = @./Textures/anodised_grey_basecolor.png@
+            token inputs:sourceColorSpace = "sRGB"
+            float2 inputs:st.connect = </Materials/anodised_grey/UV_Map.outputs:result>
+            token inputs:wrapS = "repeat"
+            token inputs:wrapT = "repeat"
+            float3 outputs:rgb
+        }
+
+        def Shader "UV_Map"
+        {
+            uniform token info:id = "UsdPrimvarReader_float2"
+            string inputs:varname = "st"
+            float2 outputs:result
+        }
+
+        def Shader "Image_Texture_002" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "data"
+            uniform token info:id = "UsdUVTexture"
+            asset inputs:file = @./Textures/anodised_grey_metallic.png@
+            token inputs:sourceColorSpace = "raw"
+            float2 inputs:st.connect = </Materials/anodised_grey/UV_Map.outputs:result>
+            token inputs:wrapS = "repeat"
+            token inputs:wrapT = "repeat"
+            float outputs:r
+        }
+
+        def Shader "Image_Texture_001" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "data"
+            uniform token info:id = "UsdUVTexture"
+            asset inputs:file = @./Textures/anodised_grey_roughness.png@
+            token inputs:sourceColorSpace = "raw"
+            float2 inputs:st.connect = </Materials/anodised_grey/UV_Map.outputs:result>
+            token inputs:wrapS = "repeat"
+            token inputs:wrapT = "repeat"
+            float outputs:r
+        }
+
+        def Shader "Image_Texture_003" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "data"
+            uniform token info:id = "UsdUVTexture"
+            float4 inputs:bias = (-1, -1, -1, -1)
+            asset inputs:file = @./Textures/anodised_grey_normal.png@
+            float4 inputs:scale = (2, 2, 2, 2)
+            token inputs:sourceColorSpace = "raw"
+            float2 inputs:st.connect = </Materials/anodised_grey/UV_Map.outputs:result>
+            token inputs:wrapS = "repeat"
+            token inputs:wrapT = "repeat"
+            float3 outputs:rgb
+        }
+    }
+
+    def Material "radome" (
+        prepend apiSchemas = ["ColorSpaceAPI"]
+    )
+    {
+        uniform token colorSpace:name = "lin_rec709_scene"
+        token outputs:surface.connect = </Materials/radome/Principled_BSDF.outputs:surface>
+
+        def Shader "Principled_BSDF"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            float inputs:clearcoat = 0
+            float inputs:clearcoatRoughness = 0.03
+            color3f inputs:diffuseColor = (0.82, 0.81, 0.78)
+            float inputs:ior = 1.5
+            float inputs:metallic = 0
+            float inputs:opacity = 1
+            float inputs:roughness = 0.6
+            float inputs:specular = 0.5
+            token outputs:surface
+        }
+    }
+
+    def Material "lamp" (
+        prepend apiSchemas = ["ColorSpaceAPI"]
+    )
+    {
+        uniform token colorSpace:name = "lin_rec709_scene"
+        token outputs:surface.connect = </Materials/lamp/Principled_BSDF.outputs:surface>
+
+        def Shader "Principled_BSDF"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            float inputs:clearcoat = 0
+            float inputs:clearcoatRoughness = 0.03
+            color3f inputs:diffuseColor = (0.95, 0.95, 0.9)
+            color3f inputs:emissiveColor = (6, 5.82, 5.3999996)
+            float inputs:ior = 1.5
+            float inputs:metallic = 0
+            float inputs:opacity = 1
+            float inputs:roughness = 0.2
             float inputs:specular = 0.5
             token outputs:surface
         }
@@ -487,24 +620,24 @@ def Scope "Materials"
         }
     }
 
-    def Material "mli_gold" (
+    def Material "aluminium" (
         prepend apiSchemas = ["ColorSpaceAPI"]
     )
     {
         uniform token colorSpace:name = "lin_rec709_scene"
-        token outputs:surface.connect = </Materials/mli_gold/Principled_BSDF.outputs:surface>
+        token outputs:surface.connect = </Materials/aluminium/Principled_BSDF.outputs:surface>
 
         def Shader "Principled_BSDF"
         {
             uniform token info:id = "UsdPreviewSurface"
             float inputs:clearcoat = 0
             float inputs:clearcoatRoughness = 0.03
-            color3f inputs:diffuseColor.connect = </Materials/mli_gold/Image_Texture.outputs:rgb>
+            color3f inputs:diffuseColor.connect = </Materials/aluminium/Image_Texture.outputs:rgb>
             float inputs:ior = 1.5
-            float inputs:metallic.connect = </Materials/mli_gold/Image_Texture_002.outputs:r>
-            normal3f inputs:normal.connect = </Materials/mli_gold/Image_Texture_003.outputs:rgb>
+            float inputs:metallic.connect = </Materials/aluminium/Image_Texture_002.outputs:r>
+            normal3f inputs:normal.connect = </Materials/aluminium/Image_Texture_003.outputs:rgb>
             float inputs:opacity = 1
-            float inputs:roughness.connect = </Materials/mli_gold/Image_Texture_001.outputs:r>
+            float inputs:roughness.connect = </Materials/aluminium/Image_Texture_001.outputs:r>
             float inputs:specular = 0.5
             token outputs:surface
         }
@@ -515,9 +648,9 @@ def Scope "Materials"
         {
             uniform token colorSpace:name = "srgb_rec709_display"
             uniform token info:id = "UsdUVTexture"
-            asset inputs:file = @./Textures/mli_gold_basecolor.png@
+            asset inputs:file = @./Textures/aluminium_basecolor.png@
             token inputs:sourceColorSpace = "sRGB"
-            float2 inputs:st.connect = </Materials/mli_gold/UV_Map.outputs:result>
+            float2 inputs:st.connect = </Materials/aluminium/UV_Map.outputs:result>
             token inputs:wrapS = "repeat"
             token inputs:wrapT = "repeat"
             float3 outputs:rgb
@@ -536,9 +669,9 @@ def Scope "Materials"
         {
             uniform token colorSpace:name = "data"
             uniform token info:id = "UsdUVTexture"
-            asset inputs:file = @./Textures/mli_gold_metallic.png@
+            asset inputs:file = @./Textures/aluminium_metallic.png@
             token inputs:sourceColorSpace = "raw"
-            float2 inputs:st.connect = </Materials/mli_gold/UV_Map.outputs:result>
+            float2 inputs:st.connect = </Materials/aluminium/UV_Map.outputs:result>
             token inputs:wrapS = "repeat"
             token inputs:wrapT = "repeat"
             float outputs:r
@@ -550,9 +683,9 @@ def Scope "Materials"
         {
             uniform token colorSpace:name = "data"
             uniform token info:id = "UsdUVTexture"
-            asset inputs:file = @./Textures/mli_gold_roughness.png@
+            asset inputs:file = @./Textures/aluminium_roughness.png@
             token inputs:sourceColorSpace = "raw"
-            float2 inputs:st.connect = </Materials/mli_gold/UV_Map.outputs:result>
+            float2 inputs:st.connect = </Materials/aluminium/UV_Map.outputs:result>
             token inputs:wrapS = "repeat"
             token inputs:wrapT = "repeat"
             float outputs:r
@@ -565,123 +698,13 @@ def Scope "Materials"
             uniform token colorSpace:name = "data"
             uniform token info:id = "UsdUVTexture"
             float4 inputs:bias = (-1, -1, -1, -1)
-            asset inputs:file = @./Textures/mli_gold_normal.png@
+            asset inputs:file = @./Textures/aluminium_normal.png@
             float4 inputs:scale = (2, 2, 2, 2)
             token inputs:sourceColorSpace = "raw"
-            float2 inputs:st.connect = </Materials/mli_gold/UV_Map.outputs:result>
+            float2 inputs:st.connect = </Materials/aluminium/UV_Map.outputs:result>
             token inputs:wrapS = "repeat"
             token inputs:wrapT = "repeat"
             float3 outputs:rgb
-        }
-    }
-
-    def Material "panel_bronze" (
-        prepend apiSchemas = ["ColorSpaceAPI"]
-    )
-    {
-        uniform token colorSpace:name = "lin_rec709_scene"
-        token outputs:surface.connect = </Materials/panel_bronze/Principled_BSDF.outputs:surface>
-
-        def Shader "Principled_BSDF"
-        {
-            uniform token info:id = "UsdPreviewSurface"
-            float inputs:clearcoat = 0
-            float inputs:clearcoatRoughness = 0.03
-            color3f inputs:diffuseColor.connect = </Materials/panel_bronze/Image_Texture.outputs:rgb>
-            float inputs:ior = 1.5
-            float inputs:metallic.connect = </Materials/panel_bronze/Image_Texture_002.outputs:r>
-            normal3f inputs:normal.connect = </Materials/panel_bronze/Image_Texture_003.outputs:rgb>
-            float inputs:opacity = 1
-            float inputs:roughness.connect = </Materials/panel_bronze/Image_Texture_001.outputs:r>
-            float inputs:specular = 0.5
-            token outputs:surface
-        }
-
-        def Shader "Image_Texture" (
-            prepend apiSchemas = ["ColorSpaceAPI"]
-        )
-        {
-            uniform token colorSpace:name = "srgb_rec709_display"
-            uniform token info:id = "UsdUVTexture"
-            asset inputs:file = @./Textures/panel_bronze_basecolor.png@
-            token inputs:sourceColorSpace = "sRGB"
-            float2 inputs:st.connect = </Materials/panel_bronze/UV_Map.outputs:result>
-            token inputs:wrapS = "repeat"
-            token inputs:wrapT = "repeat"
-            float3 outputs:rgb
-        }
-
-        def Shader "UV_Map"
-        {
-            uniform token info:id = "UsdPrimvarReader_float2"
-            string inputs:varname = "st"
-            float2 outputs:result
-        }
-
-        def Shader "Image_Texture_002" (
-            prepend apiSchemas = ["ColorSpaceAPI"]
-        )
-        {
-            uniform token colorSpace:name = "data"
-            uniform token info:id = "UsdUVTexture"
-            asset inputs:file = @./Textures/panel_bronze_metallic.png@
-            token inputs:sourceColorSpace = "raw"
-            float2 inputs:st.connect = </Materials/panel_bronze/UV_Map.outputs:result>
-            token inputs:wrapS = "repeat"
-            token inputs:wrapT = "repeat"
-            float outputs:r
-        }
-
-        def Shader "Image_Texture_001" (
-            prepend apiSchemas = ["ColorSpaceAPI"]
-        )
-        {
-            uniform token colorSpace:name = "data"
-            uniform token info:id = "UsdUVTexture"
-            asset inputs:file = @./Textures/panel_bronze_roughness.png@
-            token inputs:sourceColorSpace = "raw"
-            float2 inputs:st.connect = </Materials/panel_bronze/UV_Map.outputs:result>
-            token inputs:wrapS = "repeat"
-            token inputs:wrapT = "repeat"
-            float outputs:r
-        }
-
-        def Shader "Image_Texture_003" (
-            prepend apiSchemas = ["ColorSpaceAPI"]
-        )
-        {
-            uniform token colorSpace:name = "data"
-            uniform token info:id = "UsdUVTexture"
-            float4 inputs:bias = (-1, -1, -1, -1)
-            asset inputs:file = @./Textures/panel_bronze_normal.png@
-            float4 inputs:scale = (2, 2, 2, 2)
-            token inputs:sourceColorSpace = "raw"
-            float2 inputs:st.connect = </Materials/panel_bronze/UV_Map.outputs:result>
-            token inputs:wrapS = "repeat"
-            token inputs:wrapT = "repeat"
-            float3 outputs:rgb
-        }
-    }
-
-    def Material "frame_white" (
-        prepend apiSchemas = ["ColorSpaceAPI"]
-    )
-    {
-        uniform token colorSpace:name = "lin_rec709_scene"
-        token outputs:surface.connect = </Materials/frame_white/Principled_BSDF.outputs:surface>
-
-        def Shader "Principled_BSDF"
-        {
-            uniform token info:id = "UsdPreviewSurface"
-            float inputs:clearcoat = 0
-            float inputs:clearcoatRoughness = 0.03
-            color3f inputs:diffuseColor = (0.88, 0.88, 0.86)
-            float inputs:ior = 1.5
-            float inputs:metallic = 0
-            float inputs:opacity = 1
-            float inputs:roughness = 0.35
-            float inputs:specular = 0.5
-            token outputs:surface
         }
     }
 
@@ -773,117 +796,6 @@ def Scope "Materials"
         }
     }
 
-    def Material "lamp" (
-        prepend apiSchemas = ["ColorSpaceAPI"]
-    )
-    {
-        uniform token colorSpace:name = "lin_rec709_scene"
-        token outputs:surface.connect = </Materials/lamp/Principled_BSDF.outputs:surface>
-
-        def Shader "Principled_BSDF"
-        {
-            uniform token info:id = "UsdPreviewSurface"
-            float inputs:clearcoat = 0
-            float inputs:clearcoatRoughness = 0.03
-            color3f inputs:diffuseColor = (0.95, 0.95, 0.9)
-            color3f inputs:emissiveColor = (6, 5.82, 5.3999996)
-            float inputs:ior = 1.5
-            float inputs:metallic = 0
-            float inputs:opacity = 1
-            float inputs:roughness = 0.2
-            float inputs:specular = 0.5
-            token outputs:surface
-        }
-    }
-
-    def Material "anodised_grey" (
-        prepend apiSchemas = ["ColorSpaceAPI"]
-    )
-    {
-        uniform token colorSpace:name = "lin_rec709_scene"
-        token outputs:surface.connect = </Materials/anodised_grey/Principled_BSDF.outputs:surface>
-
-        def Shader "Principled_BSDF"
-        {
-            uniform token info:id = "UsdPreviewSurface"
-            float inputs:clearcoat = 0
-            float inputs:clearcoatRoughness = 0.03
-            color3f inputs:diffuseColor.connect = </Materials/anodised_grey/Image_Texture.outputs:rgb>
-            float inputs:ior = 1.5
-            float inputs:metallic.connect = </Materials/anodised_grey/Image_Texture_002.outputs:r>
-            normal3f inputs:normal.connect = </Materials/anodised_grey/Image_Texture_003.outputs:rgb>
-            float inputs:opacity = 1
-            float inputs:roughness.connect = </Materials/anodised_grey/Image_Texture_001.outputs:r>
-            float inputs:specular = 0.5
-            token outputs:surface
-        }
-
-        def Shader "Image_Texture" (
-            prepend apiSchemas = ["ColorSpaceAPI"]
-        )
-        {
-            uniform token colorSpace:name = "srgb_rec709_display"
-            uniform token info:id = "UsdUVTexture"
-            asset inputs:file = @./Textures/anodised_grey_basecolor.png@
-            token inputs:sourceColorSpace = "sRGB"
-            float2 inputs:st.connect = </Materials/anodised_grey/UV_Map.outputs:result>
-            token inputs:wrapS = "repeat"
-            token inputs:wrapT = "repeat"
-            float3 outputs:rgb
-        }
-
-        def Shader "UV_Map"
-        {
-            uniform token info:id = "UsdPrimvarReader_float2"
-            string inputs:varname = "st"
-            float2 outputs:result
-        }
-
-        def Shader "Image_Texture_002" (
-            prepend apiSchemas = ["ColorSpaceAPI"]
-        )
-        {
-            uniform token colorSpace:name = "data"
-            uniform token info:id = "UsdUVTexture"
-            asset inputs:file = @./Textures/anodised_grey_metallic.png@
-            token inputs:sourceColorSpace = "raw"
-            float2 inputs:st.connect = </Materials/anodised_grey/UV_Map.outputs:result>
-            token inputs:wrapS = "repeat"
-            token inputs:wrapT = "repeat"
-            float outputs:r
-        }
-
-        def Shader "Image_Texture_001" (
-            prepend apiSchemas = ["ColorSpaceAPI"]
-        )
-        {
-            uniform token colorSpace:name = "data"
-            uniform token info:id = "UsdUVTexture"
-            asset inputs:file = @./Textures/anodised_grey_roughness.png@
-            token inputs:sourceColorSpace = "raw"
-            float2 inputs:st.connect = </Materials/anodised_grey/UV_Map.outputs:result>
-            token inputs:wrapS = "repeat"
-            token inputs:wrapT = "repeat"
-            float outputs:r
-        }
-
-        def Shader "Image_Texture_003" (
-            prepend apiSchemas = ["ColorSpaceAPI"]
-        )
-        {
-            uniform token colorSpace:name = "data"
-            uniform token info:id = "UsdUVTexture"
-            float4 inputs:bias = (-1, -1, -1, -1)
-            asset inputs:file = @./Textures/anodised_grey_normal.png@
-            float4 inputs:scale = (2, 2, 2, 2)
-            token inputs:sourceColorSpace = "raw"
-            float2 inputs:st.connect = </Materials/anodised_grey/UV_Map.outputs:result>
-            token inputs:wrapS = "repeat"
-            token inputs:wrapT = "repeat"
-            float3 outputs:rgb
-        }
-    }
-
     def Material "lamp_amber" (
         prepend apiSchemas = ["ColorSpaceAPI"]
     )
@@ -907,25 +819,201 @@ def Scope "Materials"
         }
     }
 
-    def Material "radome" (
+    def Material "glass" (
         prepend apiSchemas = ["ColorSpaceAPI"]
     )
     {
         uniform token colorSpace:name = "lin_rec709_scene"
-        token outputs:surface.connect = </Materials/radome/Principled_BSDF.outputs:surface>
+        token outputs:surface.connect = </Materials/glass/Principled_BSDF.outputs:surface>
 
         def Shader "Principled_BSDF"
         {
             uniform token info:id = "UsdPreviewSurface"
             float inputs:clearcoat = 0
             float inputs:clearcoatRoughness = 0.03
-            color3f inputs:diffuseColor = (0.82, 0.81, 0.78)
+            color3f inputs:diffuseColor = (0.02, 0.025, 0.03)
             float inputs:ior = 1.5
             float inputs:metallic = 0
             float inputs:opacity = 1
-            float inputs:roughness = 0.6
+            float inputs:roughness = 0.04
             float inputs:specular = 0.5
             token outputs:surface
+        }
+    }
+
+    def Material "panel_bronze" (
+        prepend apiSchemas = ["ColorSpaceAPI"]
+    )
+    {
+        uniform token colorSpace:name = "lin_rec709_scene"
+        token outputs:surface.connect = </Materials/panel_bronze/Principled_BSDF.outputs:surface>
+
+        def Shader "Principled_BSDF"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            float inputs:clearcoat = 0
+            float inputs:clearcoatRoughness = 0.03
+            color3f inputs:diffuseColor.connect = </Materials/panel_bronze/Image_Texture.outputs:rgb>
+            float inputs:ior = 1.5
+            float inputs:metallic.connect = </Materials/panel_bronze/Image_Texture_002.outputs:r>
+            normal3f inputs:normal.connect = </Materials/panel_bronze/Image_Texture_003.outputs:rgb>
+            float inputs:opacity = 1
+            float inputs:roughness.connect = </Materials/panel_bronze/Image_Texture_001.outputs:r>
+            float inputs:specular = 0.5
+            token outputs:surface
+        }
+
+        def Shader "Image_Texture" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "srgb_rec709_display"
+            uniform token info:id = "UsdUVTexture"
+            asset inputs:file = @./Textures/panel_bronze_basecolor.png@
+            token inputs:sourceColorSpace = "sRGB"
+            float2 inputs:st.connect = </Materials/panel_bronze/UV_Map.outputs:result>
+            token inputs:wrapS = "repeat"
+            token inputs:wrapT = "repeat"
+            float3 outputs:rgb
+        }
+
+        def Shader "UV_Map"
+        {
+            uniform token info:id = "UsdPrimvarReader_float2"
+            string inputs:varname = "st"
+            float2 outputs:result
+        }
+
+        def Shader "Image_Texture_002" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "data"
+            uniform token info:id = "UsdUVTexture"
+            asset inputs:file = @./Textures/panel_bronze_metallic.png@
+            token inputs:sourceColorSpace = "raw"
+            float2 inputs:st.connect = </Materials/panel_bronze/UV_Map.outputs:result>
+            token inputs:wrapS = "repeat"
+            token inputs:wrapT = "repeat"
+            float outputs:r
+        }
+
+        def Shader "Image_Texture_001" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "data"
+            uniform token info:id = "UsdUVTexture"
+            asset inputs:file = @./Textures/panel_bronze_roughness.png@
+            token inputs:sourceColorSpace = "raw"
+            float2 inputs:st.connect = </Materials/panel_bronze/UV_Map.outputs:result>
+            token inputs:wrapS = "repeat"
+            token inputs:wrapT = "repeat"
+            float outputs:r
+        }
+
+        def Shader "Image_Texture_003" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "data"
+            uniform token info:id = "UsdUVTexture"
+            float4 inputs:bias = (-1, -1, -1, -1)
+            asset inputs:file = @./Textures/panel_bronze_normal.png@
+            float4 inputs:scale = (2, 2, 2, 2)
+            token inputs:sourceColorSpace = "raw"
+            float2 inputs:st.connect = </Materials/panel_bronze/UV_Map.outputs:result>
+            token inputs:wrapS = "repeat"
+            token inputs:wrapT = "repeat"
+            float3 outputs:rgb
+        }
+    }
+
+    def Material "tread" (
+        prepend apiSchemas = ["ColorSpaceAPI"]
+    )
+    {
+        uniform token colorSpace:name = "lin_rec709_scene"
+        token outputs:surface.connect = </Materials/tread/Principled_BSDF.outputs:surface>
+
+        def Shader "Principled_BSDF"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            float inputs:clearcoat = 0
+            float inputs:clearcoatRoughness = 0.03
+            color3f inputs:diffuseColor.connect = </Materials/tread/Image_Texture.outputs:rgb>
+            float inputs:ior = 1.5
+            float inputs:metallic.connect = </Materials/tread/Image_Texture_002.outputs:r>
+            normal3f inputs:normal.connect = </Materials/tread/Image_Texture_003.outputs:rgb>
+            float inputs:opacity = 1
+            float inputs:roughness.connect = </Materials/tread/Image_Texture_001.outputs:r>
+            float inputs:specular = 0.5
+            token outputs:surface
+        }
+
+        def Shader "Image_Texture" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "srgb_rec709_display"
+            uniform token info:id = "UsdUVTexture"
+            asset inputs:file = @./Textures/tread_basecolor.png@
+            token inputs:sourceColorSpace = "sRGB"
+            float2 inputs:st.connect = </Materials/tread/UV_Map.outputs:result>
+            token inputs:wrapS = "repeat"
+            token inputs:wrapT = "repeat"
+            float3 outputs:rgb
+        }
+
+        def Shader "UV_Map"
+        {
+            uniform token info:id = "UsdPrimvarReader_float2"
+            string inputs:varname = "st"
+            float2 outputs:result
+        }
+
+        def Shader "Image_Texture_002" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "data"
+            uniform token info:id = "UsdUVTexture"
+            asset inputs:file = @./Textures/tread_metallic.png@
+            token inputs:sourceColorSpace = "raw"
+            float2 inputs:st.connect = </Materials/tread/UV_Map.outputs:result>
+            token inputs:wrapS = "repeat"
+            token inputs:wrapT = "repeat"
+            float outputs:r
+        }
+
+        def Shader "Image_Texture_001" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "data"
+            uniform token info:id = "UsdUVTexture"
+            asset inputs:file = @./Textures/tread_roughness.png@
+            token inputs:sourceColorSpace = "raw"
+            float2 inputs:st.connect = </Materials/tread/UV_Map.outputs:result>
+            token inputs:wrapS = "repeat"
+            token inputs:wrapT = "repeat"
+            float outputs:r
+        }
+
+        def Shader "Image_Texture_003" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "data"
+            uniform token info:id = "UsdUVTexture"
+            float4 inputs:bias = (-1, -1, -1, -1)
+            asset inputs:file = @./Textures/tread_normal.png@
+            float4 inputs:scale = (2, 2, 2, 2)
+            token inputs:sourceColorSpace = "raw"
+            float2 inputs:st.connect = </Materials/tread/UV_Map.outputs:result>
+            token inputs:wrapS = "repeat"
+            token inputs:wrapT = "repeat"
+            float3 outputs:rgb
         }
     }
 
@@ -948,94 +1036,6 @@ def Scope "Materials"
             float inputs:roughness = 0.05
             float inputs:specular = 0.5
             token outputs:surface
-        }
-    }
-
-    def Material "titanium" (
-        prepend apiSchemas = ["ColorSpaceAPI"]
-    )
-    {
-        uniform token colorSpace:name = "lin_rec709_scene"
-        token outputs:surface.connect = </Materials/titanium/Principled_BSDF.outputs:surface>
-
-        def Shader "Principled_BSDF"
-        {
-            uniform token info:id = "UsdPreviewSurface"
-            float inputs:clearcoat = 0
-            float inputs:clearcoatRoughness = 0.03
-            color3f inputs:diffuseColor.connect = </Materials/titanium/Image_Texture.outputs:rgb>
-            float inputs:ior = 1.5
-            float inputs:metallic.connect = </Materials/titanium/Image_Texture_002.outputs:r>
-            normal3f inputs:normal.connect = </Materials/titanium/Image_Texture_003.outputs:rgb>
-            float inputs:opacity = 1
-            float inputs:roughness.connect = </Materials/titanium/Image_Texture_001.outputs:r>
-            float inputs:specular = 0.5
-            token outputs:surface
-        }
-
-        def Shader "Image_Texture" (
-            prepend apiSchemas = ["ColorSpaceAPI"]
-        )
-        {
-            uniform token colorSpace:name = "srgb_rec709_display"
-            uniform token info:id = "UsdUVTexture"
-            asset inputs:file = @./Textures/titanium_basecolor.png@
-            token inputs:sourceColorSpace = "sRGB"
-            float2 inputs:st.connect = </Materials/titanium/UV_Map.outputs:result>
-            token inputs:wrapS = "repeat"
-            token inputs:wrapT = "repeat"
-            float3 outputs:rgb
-        }
-
-        def Shader "UV_Map"
-        {
-            uniform token info:id = "UsdPrimvarReader_float2"
-            string inputs:varname = "st"
-            float2 outputs:result
-        }
-
-        def Shader "Image_Texture_002" (
-            prepend apiSchemas = ["ColorSpaceAPI"]
-        )
-        {
-            uniform token colorSpace:name = "data"
-            uniform token info:id = "UsdUVTexture"
-            asset inputs:file = @./Textures/titanium_metallic.png@
-            token inputs:sourceColorSpace = "raw"
-            float2 inputs:st.connect = </Materials/titanium/UV_Map.outputs:result>
-            token inputs:wrapS = "repeat"
-            token inputs:wrapT = "repeat"
-            float outputs:r
-        }
-
-        def Shader "Image_Texture_001" (
-            prepend apiSchemas = ["ColorSpaceAPI"]
-        )
-        {
-            uniform token colorSpace:name = "data"
-            uniform token info:id = "UsdUVTexture"
-            asset inputs:file = @./Textures/titanium_roughness.png@
-            token inputs:sourceColorSpace = "raw"
-            float2 inputs:st.connect = </Materials/titanium/UV_Map.outputs:result>
-            token inputs:wrapS = "repeat"
-            token inputs:wrapT = "repeat"
-            float outputs:r
-        }
-
-        def Shader "Image_Texture_003" (
-            prepend apiSchemas = ["ColorSpaceAPI"]
-        )
-        {
-            uniform token colorSpace:name = "data"
-            uniform token info:id = "UsdUVTexture"
-            float4 inputs:bias = (-1, -1, -1, -1)
-            asset inputs:file = @./Textures/titanium_normal.png@
-            float4 inputs:scale = (2, 2, 2, 2)
-            token inputs:sourceColorSpace = "raw"
-            float2 inputs:st.connect = </Materials/titanium/UV_Map.outputs:result>
-            token inputs:wrapS = "repeat"
-            token inputs:wrapT = "repeat"
-            float3 outputs:rgb
         }
     }
 

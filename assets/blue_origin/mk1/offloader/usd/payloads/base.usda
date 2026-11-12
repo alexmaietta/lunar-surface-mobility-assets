@@ -23,7 +23,7 @@ def Xform "mk1_offloader" (
     kind = "component"
 )
 {
-    float3[] extentsHint = [(-0.60400003, -0.39099997, -0.0035), (4.5985, 0.39099997, 1.381), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-0.6035, -0.35350004, 0.1065), (4.5985, 0.35300002, 1.381)]
+    float3[] extentsHint = [(-0.6028, -0.3924, -0.0052), (4.5982, 0.3924, 1.3808), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-0.602, -0.35160002, 0.1064), (4.5982, 0.35200003, 1.3808)]
     token[] semantics:labels:class = ["crane", "payload_offloader"]
 
     def Scope "Geometry"
@@ -126,6 +126,17 @@ def Xform "mk1_offloader" (
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                     }
 
+                    def Xform "crane_luff__housing" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/crane_luff__housing>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
                     def Xform "crane_luff__steel" (
                         instanceable = true
                         prepend references = @./instances.usda@</Instances/crane_luff__steel>
@@ -140,17 +151,6 @@ def Xform "mk1_offloader" (
                     def Xform "crane_luff__aluminium" (
                         instanceable = true
                         prepend references = @./instances.usda@</Instances/crane_luff__aluminium>
-                    )
-                    {
-                        quatd xformOp:orient = (1, 0, 0, 0)
-                        double3 xformOp:scale = (1, 1, 1)
-                        double3 xformOp:translate = (0, 0, 0)
-                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-                    }
-
-                    def Xform "crane_luff__housing" (
-                        instanceable = true
-                        prepend references = @./instances.usda@</Instances/crane_luff__housing>
                     )
                     {
                         quatd xformOp:orient = (1, 0, 0, 0)

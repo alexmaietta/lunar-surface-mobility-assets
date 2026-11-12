@@ -32,28 +32,6 @@ def Scope "Instances"
         }
     }
 
-    def Xform "base__anodised_dark" (
-        prepend references = @./geometries.usd@</Geometries/base__anodised_dark>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_dark" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_dark>
-            )
-            {
-            }
-        }
-
-        over "base__anodised_dark" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/base__anodised_dark/VisualMaterials/anodised_dark>
-        }
-    }
-
     def Xform "base__white_panel" (
         prepend references = @./geometries.usd@</Geometries/base__white_panel>
     )
@@ -73,6 +51,28 @@ def Scope "Instances"
         )
         {
             rel material:binding = </Instances/base__white_panel/VisualMaterials/white_panel>
+        }
+    }
+
+    def Xform "base__anodised_dark" (
+        prepend references = @./geometries.usd@</Geometries/base__anodised_dark>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_dark" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_dark>
+            )
+            {
+            }
+        }
+
+        over "base__anodised_dark" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/base__anodised_dark/VisualMaterials/anodised_dark>
         }
     }
 
@@ -164,6 +164,28 @@ def Scope "Instances"
         }
     }
 
+    def Xform "bucket__white_panel" (
+        prepend references = @./geometries.usd@</Geometries/bucket__white_panel>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "white_panel" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/white_panel>
+            )
+            {
+            }
+        }
+
+        over "bucket__white_panel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/bucket__white_panel/VisualMaterials/white_panel>
+        }
+    }
+
     def Xform "bucket__steel" (
         prepend references = @./geometries.usd@</Geometries/bucket__steel>
     )
@@ -205,28 +227,6 @@ def Scope "Instances"
         )
         {
             rel material:binding = </Instances/bucket__grating/VisualMaterials/grating>
-        }
-    }
-
-    def Xform "bucket__white_panel" (
-        prepend references = @./geometries.usd@</Geometries/bucket__white_panel>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "white_panel" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/white_panel>
-            )
-            {
-            }
-        }
-
-        over "bucket__white_panel" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/bucket__white_panel/VisualMaterials/white_panel>
         }
     }
 

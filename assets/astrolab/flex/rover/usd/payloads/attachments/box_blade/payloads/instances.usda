@@ -32,28 +32,6 @@ def Scope "Instances"
         }
     }
 
-    def Xform "base__steel" (
-        prepend references = @./geometries.usd@</Geometries/base__steel>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "steel" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/steel>
-            )
-            {
-            }
-        }
-
-        over "base__steel" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/base__steel/VisualMaterials/steel>
-        }
-    }
-
     def Xform "base__anodised_dark" (
         prepend references = @./geometries.usd@</Geometries/base__anodised_dark>
     )
@@ -73,6 +51,28 @@ def Scope "Instances"
         )
         {
             rel material:binding = </Instances/base__anodised_dark/VisualMaterials/anodised_dark>
+        }
+    }
+
+    def Xform "base__steel" (
+        prepend references = @./geometries.usd@</Geometries/base__steel>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "steel" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/steel>
+            )
+            {
+            }
+        }
+
+        over "base__steel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/base__steel/VisualMaterials/steel>
         }
     }
 
@@ -98,30 +98,8 @@ def Scope "Instances"
         }
     }
 
-    def Xform "scarifier__steel" (
-        prepend references = @./geometries.usd@</Geometries/scarifier__steel>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "steel" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/steel>
-            )
-            {
-            }
-        }
-
-        over "scarifier__steel" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/scarifier__steel/VisualMaterials/steel>
-        }
-    }
-
-    def Xform "scarifier__wear_steel" (
-        prepend references = @./geometries.usd@</Geometries/scarifier__wear_steel>
+    def Xform "box_lift__wear_steel" (
+        prepend references = @./geometries.usd@</Geometries/box_lift__wear_steel>
     )
     {
         def Scope "VisualMaterials"
@@ -134,33 +112,33 @@ def Scope "Instances"
             }
         }
 
-        over "scarifier__wear_steel" (
+        over "box_lift__wear_steel" (
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Instances/scarifier__wear_steel/VisualMaterials/wear_steel>
+            rel material:binding = </Instances/box_lift__wear_steel/VisualMaterials/wear_steel>
         }
     }
 
-    def Xform "box_lift__composite" (
-        prepend references = @./geometries.usd@</Geometries/box_lift__composite>
+    def Xform "box_lift__anodised_grey" (
+        prepend references = @./geometries.usd@</Geometries/box_lift__anodised_grey>
     )
     {
         def Scope "VisualMaterials"
         {
-            def Material "composite" (
+            def Material "anodised_grey" (
                 instanceable = true
-                prepend references = @./materials.usda@</Materials/composite>
+                prepend references = @./materials.usda@</Materials/anodised_grey>
             )
             {
             }
         }
 
-        over "box_lift__composite" (
+        over "box_lift__anodised_grey" (
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Instances/box_lift__composite/VisualMaterials/composite>
+            rel material:binding = </Instances/box_lift__anodised_grey/VisualMaterials/anodised_grey>
         }
     }
 
@@ -208,8 +186,52 @@ def Scope "Instances"
         }
     }
 
-    def Xform "box_lift__wear_steel" (
-        prepend references = @./geometries.usd@</Geometries/box_lift__wear_steel>
+    def Xform "box_lift__composite" (
+        prepend references = @./geometries.usd@</Geometries/box_lift__composite>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "composite" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/composite>
+            )
+            {
+            }
+        }
+
+        over "box_lift__composite" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/box_lift__composite/VisualMaterials/composite>
+        }
+    }
+
+    def Xform "scarifier__steel" (
+        prepend references = @./geometries.usd@</Geometries/scarifier__steel>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "steel" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/steel>
+            )
+            {
+            }
+        }
+
+        over "scarifier__steel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/scarifier__steel/VisualMaterials/steel>
+        }
+    }
+
+    def Xform "scarifier__wear_steel" (
+        prepend references = @./geometries.usd@</Geometries/scarifier__wear_steel>
     )
     {
         def Scope "VisualMaterials"
@@ -222,33 +244,11 @@ def Scope "Instances"
             }
         }
 
-        over "box_lift__wear_steel" (
+        over "scarifier__wear_steel" (
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Instances/box_lift__wear_steel/VisualMaterials/wear_steel>
-        }
-    }
-
-    def Xform "box_lift__anodised_grey" (
-        prepend references = @./geometries.usd@</Geometries/box_lift__anodised_grey>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_grey" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_grey>
-            )
-            {
-            }
-        }
-
-        over "box_lift__anodised_grey" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/box_lift__anodised_grey/VisualMaterials/anodised_grey>
+            rel material:binding = </Instances/scarifier__wear_steel/VisualMaterials/wear_steel>
         }
     }
 

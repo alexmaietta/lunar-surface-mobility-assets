@@ -98,50 +98,6 @@ def Scope "Instances"
         }
     }
 
-    def Xform "drums__white_panel" (
-        prepend references = @./geometries.usd@</Geometries/drums__white_panel>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "white_panel" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/white_panel>
-            )
-            {
-            }
-        }
-
-        over "drums__white_panel" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/drums__white_panel/VisualMaterials/white_panel>
-        }
-    }
-
-    def Xform "drums__wear_steel" (
-        prepend references = @./geometries.usd@</Geometries/drums__wear_steel>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "wear_steel" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/wear_steel>
-            )
-            {
-            }
-        }
-
-        over "drums__wear_steel" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/drums__wear_steel/VisualMaterials/wear_steel>
-        }
-    }
-
     def Xform "drums__anodised_grey" (
         prepend references = @./geometries.usd@</Geometries/drums__anodised_grey>
     )
@@ -205,6 +161,50 @@ def Scope "Instances"
         )
         {
             rel material:binding = </Instances/drums__anodised_dark/VisualMaterials/anodised_dark>
+        }
+    }
+
+    def Xform "drums__wear_steel" (
+        prepend references = @./geometries.usd@</Geometries/drums__wear_steel>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "wear_steel" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/wear_steel>
+            )
+            {
+            }
+        }
+
+        over "drums__wear_steel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/drums__wear_steel/VisualMaterials/wear_steel>
+        }
+    }
+
+    def Xform "drums__white_panel" (
+        prepend references = @./geometries.usd@</Geometries/drums__white_panel>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "white_panel" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/white_panel>
+            )
+            {
+            }
+        }
+
+        over "drums__white_panel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/drums__white_panel/VisualMaterials/white_panel>
         }
     }
 

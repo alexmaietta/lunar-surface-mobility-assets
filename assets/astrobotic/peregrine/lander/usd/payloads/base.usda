@@ -23,7 +23,7 @@ def Xform "peregrine" (
     kind = "component"
 )
 {
-    float3[] extentsHint = [(-1.4294368, -1.4304368, -0.0024999976), (1.4319369, 1.4319369, 1.9015), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-1.4294368, -1.4304368, -0.0024999976), (1.4319369, 1.4319369, 1.9015)]
+    float3[] extentsHint = [(-1.4314368, -1.4326369, -0.0031999946), (1.4326369, 1.4314368, 1.9032), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-1.4314368, -1.4326369, -0.0031999946), (1.4326369, 1.4314368, 1.9032)]
     token[] semantics:labels:class = ["lunar_lander", "spacecraft"]
 
     def Scope "Geometry"
@@ -35,31 +35,9 @@ def Xform "peregrine" (
             double3 xformOp:translate = (0, 0, 0)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
-            def Xform "body__deck_box" (
+            def Xform "body__frame_dark" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/body__deck_box>
-            )
-            {
-                quatd xformOp:orient = (1, 0, 0, 0)
-                double3 xformOp:scale = (1, 1, 1)
-                double3 xformOp:translate = (0, 0, 0)
-                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-            }
-
-            def Xform "body__nozzle_ext" (
-                instanceable = true
-                prepend references = @./instances.usda@</Instances/body__nozzle_ext>
-            )
-            {
-                quatd xformOp:orient = (1, 0, 0, 0)
-                double3 xformOp:scale = (1, 1, 1)
-                double3 xformOp:translate = (0, 0, 0)
-                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-            }
-
-            def Xform "body__solar_cells" (
-                instanceable = true
-                prepend references = @./instances.usda@</Instances/body__solar_cells>
+                prepend references = @./instances.usda@</Instances/body__frame_dark>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -101,31 +79,9 @@ def Xform "peregrine" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "body__lens" (
-                instanceable = true
-                prepend references = @./instances.usda@</Instances/body__lens>
-            )
-            {
-                quatd xformOp:orient = (1, 0, 0, 0)
-                double3 xformOp:scale = (1, 1, 1)
-                double3 xformOp:translate = (0, 0, 0)
-                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-            }
-
             def Xform "body__radiator" (
                 instanceable = true
                 prepend references = @./instances.usda@</Instances/body__radiator>
-            )
-            {
-                quatd xformOp:orient = (1, 0, 0, 0)
-                double3 xformOp:scale = (1, 1, 1)
-                double3 xformOp:translate = (0, 0, 0)
-                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-            }
-
-            def Xform "body__baffle" (
-                instanceable = true
-                prepend references = @./instances.usda@</Instances/body__baffle>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -145,9 +101,31 @@ def Xform "peregrine" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "body__aluminium" (
+            def Xform "body__lens" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/body__aluminium>
+                prepend references = @./instances.usda@</Instances/body__lens>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__deck_box" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__deck_box>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__baffle" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__baffle>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -189,9 +167,9 @@ def Xform "peregrine" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "body__frame_dark" (
+            def Xform "body__deck_panel" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/body__frame_dark>
+                prepend references = @./instances.usda@</Instances/body__deck_panel>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -200,9 +178,31 @@ def Xform "peregrine" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "body__deck_panel" (
+            def Xform "body__solar_cells" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/body__deck_panel>
+                prepend references = @./instances.usda@</Instances/body__solar_cells>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__nozzle_ext" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__nozzle_ext>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__aluminium" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__aluminium>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)

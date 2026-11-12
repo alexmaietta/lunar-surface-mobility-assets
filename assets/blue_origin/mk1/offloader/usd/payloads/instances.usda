@@ -208,6 +208,28 @@ def Scope "Instances"
         }
     }
 
+    def Xform "crane_luff__housing" (
+        prepend references = @./geometries.usd@</Geometries/crane_luff__housing>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "housing" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/housing>
+            )
+            {
+            }
+        }
+
+        over "crane_luff__housing" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/crane_luff__housing/VisualMaterials/housing>
+        }
+    }
+
     def Xform "crane_luff__steel" (
         prepend references = @./geometries.usd@</Geometries/crane_luff__steel>
     )
@@ -249,28 +271,6 @@ def Scope "Instances"
         )
         {
             rel material:binding = </Instances/crane_luff__aluminium/VisualMaterials/aluminium>
-        }
-    }
-
-    def Xform "crane_luff__housing" (
-        prepend references = @./geometries.usd@</Geometries/crane_luff__housing>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "housing" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/housing>
-            )
-            {
-            }
-        }
-
-        over "crane_luff__housing" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/crane_luff__housing/VisualMaterials/housing>
         }
     }
 

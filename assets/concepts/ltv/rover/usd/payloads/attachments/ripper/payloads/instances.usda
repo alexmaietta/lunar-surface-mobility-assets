@@ -54,28 +54,6 @@ def Scope "Instances"
         }
     }
 
-    def Xform "base__anodised_dark" (
-        prepend references = @./geometries.usd@</Geometries/base__anodised_dark>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_dark" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_dark>
-            )
-            {
-            }
-        }
-
-        over "base__anodised_dark" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/base__anodised_dark/VisualMaterials/anodised_dark>
-        }
-    }
-
     def Xform "base__steel" (
         prepend references = @./geometries.usd@</Geometries/base__steel>
     )
@@ -95,6 +73,28 @@ def Scope "Instances"
         )
         {
             rel material:binding = </Instances/base__steel/VisualMaterials/steel>
+        }
+    }
+
+    def Xform "base__anodised_dark" (
+        prepend references = @./geometries.usd@</Geometries/base__anodised_dark>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_dark" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_dark>
+            )
+            {
+            }
+        }
+
+        over "base__anodised_dark" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/base__anodised_dark/VisualMaterials/anodised_dark>
         }
     }
 
@@ -142,28 +142,6 @@ def Scope "Instances"
         }
     }
 
-    def Xform "ripper_lift__wear_steel" (
-        prepend references = @./geometries.usd@</Geometries/ripper_lift__wear_steel>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "wear_steel" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/wear_steel>
-            )
-            {
-            }
-        }
-
-        over "ripper_lift__wear_steel" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/ripper_lift__wear_steel/VisualMaterials/wear_steel>
-        }
-    }
-
     def Xform "ripper_lift__anodised_grey" (
         prepend references = @./geometries.usd@</Geometries/ripper_lift__anodised_grey>
     )
@@ -183,6 +161,28 @@ def Scope "Instances"
         )
         {
             rel material:binding = </Instances/ripper_lift__anodised_grey/VisualMaterials/anodised_grey>
+        }
+    }
+
+    def Xform "ripper_lift__wear_steel" (
+        prepend references = @./geometries.usd@</Geometries/ripper_lift__wear_steel>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "wear_steel" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/wear_steel>
+            )
+            {
+            }
+        }
+
+        over "ripper_lift__wear_steel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/ripper_lift__wear_steel/VisualMaterials/wear_steel>
         }
     }
 

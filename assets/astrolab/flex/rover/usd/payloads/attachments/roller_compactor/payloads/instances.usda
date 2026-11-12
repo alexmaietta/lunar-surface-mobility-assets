@@ -76,6 +76,94 @@ def Scope "Instances"
         }
     }
 
+    def Xform "hitch_yaw__steel" (
+        prepend references = @./geometries.usd@</Geometries/hitch_yaw__steel>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "steel" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/steel>
+            )
+            {
+            }
+        }
+
+        over "hitch_yaw__steel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/hitch_yaw__steel/VisualMaterials/steel>
+        }
+    }
+
+    def Xform "roller__anodised_grey" (
+        prepend references = @./geometries.usd@</Geometries/roller__anodised_grey>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_grey" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_grey>
+            )
+            {
+            }
+        }
+
+        over "roller__anodised_grey" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/roller__anodised_grey/VisualMaterials/anodised_grey>
+        }
+    }
+
+    def Xform "roller__anodised_dark" (
+        prepend references = @./geometries.usd@</Geometries/roller__anodised_dark>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_dark" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_dark>
+            )
+            {
+            }
+        }
+
+        over "roller__anodised_dark" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/roller__anodised_dark/VisualMaterials/anodised_dark>
+        }
+    }
+
+    def Xform "roller__steel" (
+        prepend references = @./geometries.usd@</Geometries/roller__steel>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "steel" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/steel>
+            )
+            {
+            }
+        }
+
+        over "roller__steel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/roller__steel/VisualMaterials/steel>
+        }
+    }
+
     def Xform "hitch_pitch__steel" (
         prepend references = @./geometries.usd@</Geometries/hitch_pitch__steel>
     )
@@ -142,28 +230,6 @@ def Scope "Instances"
         }
     }
 
-    def Xform "hitch_pitch__anodised_dark" (
-        prepend references = @./geometries.usd@</Geometries/hitch_pitch__anodised_dark>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_dark" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_dark>
-            )
-            {
-            }
-        }
-
-        over "hitch_pitch__anodised_dark" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/hitch_pitch__anodised_dark/VisualMaterials/anodised_dark>
-        }
-    }
-
     def Xform "hitch_pitch__anodised_grey" (
         prepend references = @./geometries.usd@</Geometries/hitch_pitch__anodised_grey>
     )
@@ -186,74 +252,8 @@ def Scope "Instances"
         }
     }
 
-    def Xform "hitch_yaw__steel" (
-        prepend references = @./geometries.usd@</Geometries/hitch_yaw__steel>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "steel" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/steel>
-            )
-            {
-            }
-        }
-
-        over "hitch_yaw__steel" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/hitch_yaw__steel/VisualMaterials/steel>
-        }
-    }
-
-    def Xform "roller__anodised_grey" (
-        prepend references = @./geometries.usd@</Geometries/roller__anodised_grey>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_grey" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_grey>
-            )
-            {
-            }
-        }
-
-        over "roller__anodised_grey" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/roller__anodised_grey/VisualMaterials/anodised_grey>
-        }
-    }
-
-    def Xform "roller__steel" (
-        prepend references = @./geometries.usd@</Geometries/roller__steel>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "steel" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/steel>
-            )
-            {
-            }
-        }
-
-        over "roller__steel" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/roller__steel/VisualMaterials/steel>
-        }
-    }
-
-    def Xform "roller__anodised_dark" (
-        prepend references = @./geometries.usd@</Geometries/roller__anodised_dark>
+    def Xform "hitch_pitch__anodised_dark" (
+        prepend references = @./geometries.usd@</Geometries/hitch_pitch__anodised_dark>
     )
     {
         def Scope "VisualMaterials"
@@ -266,11 +266,11 @@ def Scope "Instances"
             }
         }
 
-        over "roller__anodised_dark" (
+        over "hitch_pitch__anodised_dark" (
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Instances/roller__anodised_dark/VisualMaterials/anodised_dark>
+            rel material:binding = </Instances/hitch_pitch__anodised_dark/VisualMaterials/anodised_dark>
         }
     }
 

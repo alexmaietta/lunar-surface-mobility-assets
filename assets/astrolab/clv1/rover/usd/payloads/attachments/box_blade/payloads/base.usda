@@ -46,9 +46,9 @@ def Xform "box_blade" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "base__steel" (
+            def Xform "base__anodised_dark" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/base__steel>
+                prepend references = @./instances.usda@</Instances/base__anodised_dark>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -57,9 +57,9 @@ def Xform "box_blade" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "base__anodised_dark" (
+            def Xform "base__steel" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/base__anodised_dark>
+                prepend references = @./instances.usda@</Instances/base__steel>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -86,9 +86,20 @@ def Xform "box_blade" (
                 double3 xformOp:translate = (-0.10000000149011612, 0, 0)
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
-                def Xform "box_lift__composite" (
+                def Xform "box_lift__wear_steel" (
                     instanceable = true
-                    prepend references = @./instances.usda@</Instances/box_lift__composite>
+                    prepend references = @./instances.usda@</Instances/box_lift__wear_steel>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "box_lift__anodised_grey" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/box_lift__anodised_grey>
                 )
                 {
                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -119,20 +130,9 @@ def Xform "box_blade" (
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                 }
 
-                def Xform "box_lift__wear_steel" (
+                def Xform "box_lift__composite" (
                     instanceable = true
-                    prepend references = @./instances.usda@</Instances/box_lift__wear_steel>
-                )
-                {
-                    quatd xformOp:orient = (1, 0, 0, 0)
-                    double3 xformOp:scale = (1, 1, 1)
-                    double3 xformOp:translate = (0, 0, 0)
-                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-                }
-
-                def Xform "box_lift__anodised_grey" (
-                    instanceable = true
-                    prepend references = @./instances.usda@</Instances/box_lift__anodised_grey>
+                    prepend references = @./instances.usda@</Instances/box_lift__composite>
                 )
                 {
                     quatd xformOp:orient = (1, 0, 0, 0)

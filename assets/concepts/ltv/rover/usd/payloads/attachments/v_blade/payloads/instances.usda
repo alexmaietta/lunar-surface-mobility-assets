@@ -120,6 +120,28 @@ def Scope "Instances"
         }
     }
 
+    def Xform "wing_l__steel" (
+        prepend references = @./geometries.usd@</Geometries/wing_l__steel>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "steel" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/steel>
+            )
+            {
+            }
+        }
+
+        over "wing_l__steel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/wing_l__steel/VisualMaterials/steel>
+        }
+    }
+
     def Xform "wing_l__white_panel" (
         prepend references = @./geometries.usd@</Geometries/wing_l__white_panel>
     )
@@ -161,28 +183,6 @@ def Scope "Instances"
         )
         {
             rel material:binding = </Instances/wing_l__wear_steel/VisualMaterials/wear_steel>
-        }
-    }
-
-    def Xform "wing_l__steel" (
-        prepend references = @./geometries.usd@</Geometries/wing_l__steel>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "steel" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/steel>
-            )
-            {
-            }
-        }
-
-        over "wing_l__steel" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/wing_l__steel/VisualMaterials/steel>
         }
     }
 
@@ -296,6 +296,28 @@ def Scope "Instances"
         }
     }
 
+    def Xform "wing_r__wear_steel" (
+        prepend references = @./geometries.usd@</Geometries/wing_r__wear_steel>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "wear_steel" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/wear_steel>
+            )
+            {
+            }
+        }
+
+        over "wing_r__wear_steel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/wing_r__wear_steel/VisualMaterials/wear_steel>
+        }
+    }
+
     def Xform "wing_r__steel" (
         prepend references = @./geometries.usd@</Geometries/wing_r__steel>
     )
@@ -337,28 +359,6 @@ def Scope "Instances"
         )
         {
             rel material:binding = </Instances/wing_r__white_panel/VisualMaterials/white_panel>
-        }
-    }
-
-    def Xform "wing_r__wear_steel" (
-        prepend references = @./geometries.usd@</Geometries/wing_r__wear_steel>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "wear_steel" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/wear_steel>
-            )
-            {
-            }
-        }
-
-        over "wing_r__wear_steel" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/wing_r__wear_steel/VisualMaterials/wear_steel>
         }
     }
 

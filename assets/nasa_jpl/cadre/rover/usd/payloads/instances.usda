@@ -10,91 +10,47 @@
 
 def Scope "Instances"
 {
-    def Xform "rear_camera_cover__kapton" (
-        prepend references = @./geometries.usd@</Geometries/rear_camera_cover__kapton>
+    def Xform "rl_wheel__aluminium" (
+        prepend references = @./geometries.usd@</Geometries/rl_wheel__aluminium>
     )
     {
         def Scope "VisualMaterials"
         {
-            def Material "kapton" (
+            def Material "aluminium" (
                 instanceable = true
-                prepend references = @./materials.usda@</Materials/kapton>
+                prepend references = @./materials.usda@</Materials/aluminium>
             )
             {
             }
         }
 
-        over "rear_camera_cover__kapton" (
+        over "rl_wheel__aluminium" (
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Instances/rear_camera_cover__kapton/VisualMaterials/kapton>
+            rel material:binding = </Instances/rl_wheel__aluminium/VisualMaterials/aluminium>
         }
     }
 
-    def Xform "solar_wing_r__solar_cells" (
-        prepend references = @./geometries.usd@</Geometries/solar_wing_r__solar_cells>
+    def Xform "rl_wheel__anodised_dark" (
+        prepend references = @./geometries.usd@</Geometries/rl_wheel__anodised_dark>
     )
     {
         def Scope "VisualMaterials"
         {
-            def Material "solar_cells" (
+            def Material "anodised_dark" (
                 instanceable = true
-                prepend references = @./materials.usda@</Materials/solar_cells>
+                prepend references = @./materials.usda@</Materials/anodised_dark>
             )
             {
             }
         }
 
-        over "solar_wing_r__solar_cells" (
+        over "rl_wheel__anodised_dark" (
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Instances/solar_wing_r__solar_cells/VisualMaterials/solar_cells>
-        }
-    }
-
-    def Xform "solar_wing_r__mli_silver" (
-        prepend references = @./geometries.usd@</Geometries/solar_wing_r__mli_silver>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "mli_silver" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/mli_silver>
-            )
-            {
-            }
-        }
-
-        over "solar_wing_r__mli_silver" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/solar_wing_r__mli_silver/VisualMaterials/mli_silver>
-        }
-    }
-
-    def Xform "solar_wing_r__brass" (
-        prepend references = @./geometries.usd@</Geometries/solar_wing_r__brass>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "brass" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/brass>
-            )
-            {
-            }
-        }
-
-        over "solar_wing_r__brass" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/solar_wing_r__brass/VisualMaterials/brass>
+            rel material:binding = </Instances/rl_wheel__anodised_dark/VisualMaterials/anodised_dark>
         }
     }
 
@@ -186,157 +142,25 @@ def Scope "Instances"
         }
     }
 
-    def Xform "fr_wheel__aluminium" (
-        prepend references = @./geometries.usd@</Geometries/fr_wheel__aluminium>
+    def Xform "chassis__composite" (
+        prepend references = @./geometries.usd@</Geometries/chassis__composite>
     )
     {
         def Scope "VisualMaterials"
         {
-            def Material "aluminium" (
+            def Material "composite" (
                 instanceable = true
-                prepend references = @./materials.usda@</Materials/aluminium>
+                prepend references = @./materials.usda@</Materials/composite>
             )
             {
             }
         }
 
-        over "fr_wheel__aluminium" (
+        over "chassis__composite" (
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Instances/fr_wheel__aluminium/VisualMaterials/aluminium>
-        }
-    }
-
-    def Xform "fr_wheel__anodised_dark" (
-        prepend references = @./geometries.usd@</Geometries/fr_wheel__anodised_dark>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_dark" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_dark>
-            )
-            {
-            }
-        }
-
-        over "fr_wheel__anodised_dark" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/fr_wheel__anodised_dark/VisualMaterials/anodised_dark>
-        }
-    }
-
-    def Xform "solar_wing_l__solar_cells" (
-        prepend references = @./geometries.usd@</Geometries/solar_wing_l__solar_cells>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "solar_cells" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/solar_cells>
-            )
-            {
-            }
-        }
-
-        over "solar_wing_l__solar_cells" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/solar_wing_l__solar_cells/VisualMaterials/solar_cells>
-        }
-    }
-
-    def Xform "solar_wing_l__brass" (
-        prepend references = @./geometries.usd@</Geometries/solar_wing_l__brass>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "brass" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/brass>
-            )
-            {
-            }
-        }
-
-        over "solar_wing_l__brass" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/solar_wing_l__brass/VisualMaterials/brass>
-        }
-    }
-
-    def Xform "solar_wing_l__mli_silver" (
-        prepend references = @./geometries.usd@</Geometries/solar_wing_l__mli_silver>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "mli_silver" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/mli_silver>
-            )
-            {
-            }
-        }
-
-        over "solar_wing_l__mli_silver" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/solar_wing_l__mli_silver/VisualMaterials/mli_silver>
-        }
-    }
-
-    def Xform "rl_wheel__aluminium" (
-        prepend references = @./geometries.usd@</Geometries/rl_wheel__aluminium>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "aluminium" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/aluminium>
-            )
-            {
-            }
-        }
-
-        over "rl_wheel__aluminium" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/rl_wheel__aluminium/VisualMaterials/aluminium>
-        }
-    }
-
-    def Xform "rl_wheel__anodised_dark" (
-        prepend references = @./geometries.usd@</Geometries/rl_wheel__anodised_dark>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_dark" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_dark>
-            )
-            {
-            }
-        }
-
-        over "rl_wheel__anodised_dark" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/rl_wheel__anodised_dark/VisualMaterials/anodised_dark>
+            rel material:binding = </Instances/chassis__composite/VisualMaterials/composite>
         }
     }
 
@@ -384,50 +208,6 @@ def Scope "Instances"
         }
     }
 
-    def Xform "chassis__anodised_dark" (
-        prepend references = @./geometries.usd@</Geometries/chassis__anodised_dark>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_dark" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_dark>
-            )
-            {
-            }
-        }
-
-        over "chassis__anodised_dark" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/chassis__anodised_dark/VisualMaterials/anodised_dark>
-        }
-    }
-
-    def Xform "chassis__composite" (
-        prepend references = @./geometries.usd@</Geometries/chassis__composite>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "composite" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/composite>
-            )
-            {
-            }
-        }
-
-        over "chassis__composite" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/chassis__composite/VisualMaterials/composite>
-        }
-    }
-
     def Xform "chassis__yellow" (
         prepend references = @./geometries.usd@</Geometries/chassis__yellow>
     )
@@ -472,69 +252,25 @@ def Scope "Instances"
         }
     }
 
-    def Xform "chassis__blue_paint" (
-        prepend references = @./geometries.usd@</Geometries/chassis__blue_paint>
+    def Xform "chassis__anodised_dark" (
+        prepend references = @./geometries.usd@</Geometries/chassis__anodised_dark>
     )
     {
         def Scope "VisualMaterials"
         {
-            def Material "blue_paint" (
+            def Material "anodised_dark" (
                 instanceable = true
-                prepend references = @./materials.usda@</Materials/blue_paint>
+                prepend references = @./materials.usda@</Materials/anodised_dark>
             )
             {
             }
         }
 
-        over "chassis__blue_paint" (
+        over "chassis__anodised_dark" (
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Instances/chassis__blue_paint/VisualMaterials/blue_paint>
-        }
-    }
-
-    def Xform "chassis__kapton" (
-        prepend references = @./geometries.usd@</Geometries/chassis__kapton>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "kapton" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/kapton>
-            )
-            {
-            }
-        }
-
-        over "chassis__kapton" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/chassis__kapton/VisualMaterials/kapton>
-        }
-    }
-
-    def Xform "chassis__mli_silver" (
-        prepend references = @./geometries.usd@</Geometries/chassis__mli_silver>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "mli_silver" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/mli_silver>
-            )
-            {
-            }
-        }
-
-        over "chassis__mli_silver" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/chassis__mli_silver/VisualMaterials/mli_silver>
+            rel material:binding = </Instances/chassis__anodised_dark/VisualMaterials/anodised_dark>
         }
     }
 
@@ -560,6 +296,160 @@ def Scope "Instances"
         }
     }
 
+    def Xform "chassis__kapton" (
+        prepend references = @./geometries.usd@</Geometries/chassis__kapton>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "kapton" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/kapton>
+            )
+            {
+            }
+        }
+
+        over "chassis__kapton" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/chassis__kapton/VisualMaterials/kapton>
+        }
+    }
+
+    def Xform "chassis__blue_paint" (
+        prepend references = @./geometries.usd@</Geometries/chassis__blue_paint>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "blue_paint" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/blue_paint>
+            )
+            {
+            }
+        }
+
+        over "chassis__blue_paint" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/chassis__blue_paint/VisualMaterials/blue_paint>
+        }
+    }
+
+    def Xform "chassis__mli_silver" (
+        prepend references = @./geometries.usd@</Geometries/chassis__mli_silver>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "mli_silver" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/mli_silver>
+            )
+            {
+            }
+        }
+
+        over "chassis__mli_silver" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/chassis__mli_silver/VisualMaterials/mli_silver>
+        }
+    }
+
+    def Xform "rear_camera_cover__kapton" (
+        prepend references = @./geometries.usd@</Geometries/rear_camera_cover__kapton>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "kapton" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/kapton>
+            )
+            {
+            }
+        }
+
+        over "rear_camera_cover__kapton" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/rear_camera_cover__kapton/VisualMaterials/kapton>
+        }
+    }
+
+    def Xform "solar_wing_r__solar_cells" (
+        prepend references = @./geometries.usd@</Geometries/solar_wing_r__solar_cells>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "solar_cells" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/solar_cells>
+            )
+            {
+            }
+        }
+
+        over "solar_wing_r__solar_cells" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/solar_wing_r__solar_cells/VisualMaterials/solar_cells>
+        }
+    }
+
+    def Xform "solar_wing_r__brass" (
+        prepend references = @./geometries.usd@</Geometries/solar_wing_r__brass>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "brass" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/brass>
+            )
+            {
+            }
+        }
+
+        over "solar_wing_r__brass" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/solar_wing_r__brass/VisualMaterials/brass>
+        }
+    }
+
+    def Xform "solar_wing_r__mli_silver" (
+        prepend references = @./geometries.usd@</Geometries/solar_wing_r__mli_silver>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "mli_silver" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/mli_silver>
+            )
+            {
+            }
+        }
+
+        over "solar_wing_r__mli_silver" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/solar_wing_r__mli_silver/VisualMaterials/mli_silver>
+        }
+    }
+
     def Xform "front_camera_cover__kapton" (
         prepend references = @./geometries.usd@</Geometries/front_camera_cover__kapton>
     )
@@ -579,6 +469,116 @@ def Scope "Instances"
         )
         {
             rel material:binding = </Instances/front_camera_cover__kapton/VisualMaterials/kapton>
+        }
+    }
+
+    def Xform "solar_wing_l__solar_cells" (
+        prepend references = @./geometries.usd@</Geometries/solar_wing_l__solar_cells>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "solar_cells" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/solar_cells>
+            )
+            {
+            }
+        }
+
+        over "solar_wing_l__solar_cells" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/solar_wing_l__solar_cells/VisualMaterials/solar_cells>
+        }
+    }
+
+    def Xform "solar_wing_l__mli_silver" (
+        prepend references = @./geometries.usd@</Geometries/solar_wing_l__mli_silver>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "mli_silver" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/mli_silver>
+            )
+            {
+            }
+        }
+
+        over "solar_wing_l__mli_silver" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/solar_wing_l__mli_silver/VisualMaterials/mli_silver>
+        }
+    }
+
+    def Xform "solar_wing_l__brass" (
+        prepend references = @./geometries.usd@</Geometries/solar_wing_l__brass>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "brass" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/brass>
+            )
+            {
+            }
+        }
+
+        over "solar_wing_l__brass" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/solar_wing_l__brass/VisualMaterials/brass>
+        }
+    }
+
+    def Xform "fr_wheel__aluminium" (
+        prepend references = @./geometries.usd@</Geometries/fr_wheel__aluminium>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "aluminium" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/aluminium>
+            )
+            {
+            }
+        }
+
+        over "fr_wheel__aluminium" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/fr_wheel__aluminium/VisualMaterials/aluminium>
+        }
+    }
+
+    def Xform "fr_wheel__anodised_dark" (
+        prepend references = @./geometries.usd@</Geometries/fr_wheel__anodised_dark>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_dark" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_dark>
+            )
+            {
+            }
+        }
+
+        over "fr_wheel__anodised_dark" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/fr_wheel__anodised_dark/VisualMaterials/anodised_dark>
         }
     }
 
