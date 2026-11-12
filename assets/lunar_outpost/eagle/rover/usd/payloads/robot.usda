@@ -69,6 +69,8 @@ over "eagle" (
         </eagle/Geometry/chassis/bed_light_r>,
         </eagle/Geometry/chassis/cargo_bed>,
         </eagle/Geometry/chassis/tow_hitch>,
+        </eagle/Geometry/chassis/tool_front>,
+        </eagle/Geometry/chassis/tool_rear>,
         </eagle/Geometry/chassis/vehicle_origin>,
         </eagle/Geometry/chassis/imu>,
         </eagle/Geometry/chassis/arm_yaw>,
@@ -503,6 +505,22 @@ over "eagle" (
             )
             {
                 string isaac:Description = "Rear tow hitch"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "tool_front" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Front tool interface (quick-attach coupler, mates with a construction tool's mount site)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "tool_rear" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Rear tool interface (quick-attach coupler, mates with a towed or three-point tool's mount site)"
                 uniform token isaac:forwardAxis = "Z"
             }
 

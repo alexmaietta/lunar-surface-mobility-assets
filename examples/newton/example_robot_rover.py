@@ -117,6 +117,7 @@ class Example:
         self.coord = {n: rover.joint_q_start[i] for i, n in enumerate(self.labels)}
         self.dof = {n: rover.joint_qd_start[i] for i, n in enumerate(self.labels)}
         self.role = {n: roles.get(n, "") for n in self.labels}
+        self.configure_rover(rover, blabels)
 
         q0 = np.array(rover.body_q)
         self.wheels = {}
@@ -132,7 +133,7 @@ class Example:
         fixed_x = [w["x"] for w in self.wheels.values() if not w["steer"]]
         self.turn_x = float(np.mean(fixed_x)) if fixed_x else 0.0
         self.all_steer = bool(self.wheels) and all(w["steer"] for w in self.wheels.values())
-        self.servo = [n for n in self.labels if self.role[n] in ("arm", "camera", "antenna", "solar", "hatch", "latch", "stair", "railing")]
+        self.servo = [n for n in self.labels if self.role[n] in ("arm", "camera", "antenna", "solar", "hatch", "latch", "stair", "railing", "tool")]
         self.active = [n for n in self.labels if self.role[n] == "active_suspension"]
         self.poses = {n: 0.0 for n in self.servo}
         self.args, self.stage, self.blabels = args, stage, blabels
@@ -144,10 +145,10 @@ class Example:
 
         builder = newton.ModelBuilder(up_axis=newton.Axis.Z, gravity=(0.0, 0.0, -g))
         builder.replicate(rover, self.world_count)
-        builder.add_ground_plane(color=(0.42, 0.41, 0.39))
+        self.add_terrain(builder)
         self.model = builder.finalize()
-        self.solver = newton.solvers.SolverMuJoCo(self.model, iterations=100, ls_iterations=50, cone="elliptic", impratio=10,
-                                                  njmax=1200, nconmax=512)
+        self.solver = newton.solvers.SolverMuJoCo(self.model, **{"iterations": 100, "ls_iterations": 50, "cone": "elliptic", "impratio": 10,
+                                                     "njmax": 1200, "nconmax": 512, **self.solver_options()})
         self.state_0, self.state_1 = self.model.state(), self.model.state()
         self.control = self.model.control()
         newton.eval_fk(self.model, self.model.joint_q, self.model.joint_qd, self.state_0)
@@ -269,6 +270,15 @@ class Example:
 
     def initial_pose(self):
         return {}
+
+    def configure_rover(self, rover, blabels):
+        pass
+
+    def solver_options(self):
+        return {}
+
+    def add_terrain(self, builder):
+        builder.add_ground_plane(color=(0.42, 0.41, 0.39))
 
     def update(self):
         pass

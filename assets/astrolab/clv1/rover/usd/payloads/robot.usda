@@ -58,6 +58,8 @@ over "clv1" (
         </clv1/Geometry/chassis/cargo_rack>,
         </clv1/Geometry/chassis/front_payload>,
         </clv1/Geometry/chassis/roof_point>,
+        </clv1/Geometry/chassis/tool_front>,
+        </clv1/Geometry/chassis/tool_rear>,
         </clv1/Geometry/chassis/vehicle_origin>,
         </clv1/Geometry/chassis/imu>,
         </clv1/Geometry/chassis/fl_arm>,
@@ -419,6 +421,22 @@ over "clv1" (
             )
             {
                 string isaac:Description = "Roll-cage lift point"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "tool_front" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Front tool interface (quick-attach coupler, mates with a construction tool's mount site)"
+                uniform token isaac:forwardAxis = "Z"
+            }
+
+            over "tool_rear" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Rear tool interface (quick-attach coupler, mates with a towed or three-point tool's mount site)"
                 uniform token isaac:forwardAxis = "Z"
             }
 

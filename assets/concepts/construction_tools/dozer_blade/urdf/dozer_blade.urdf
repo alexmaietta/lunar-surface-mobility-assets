@@ -1,0 +1,97 @@
+<?xml version="1.0" ?>
+<robot name="dozer_blade">
+  <link name="base_link"/>
+  <joint name="base_link_to_base" type="fixed">
+    <parent link="base_link"/>
+    <child link="base"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="base">
+    <inertial>
+      <origin xyz="0.135044 -0.000399992 0.021041" rpy="0 0 0"/>
+      <mass value="15"/>
+      <inertia ixx="0.887984" ixy="0" ixz="0" iyy="0.292494" iyz="0" izz="0.869869"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/base.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="blade_lift">
+    <inertial>
+      <origin xyz="0.3228 -0.000399992 -0.164071" rpy="0 0 0"/>
+      <mass value="40"/>
+      <inertia ixx="2.75378" ixy="0" ixz="0" iyy="2.27868" iyz="0" izz="3.89281"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/blade_lift.obj"/>
+      </geometry>
+    </visual>
+    <collision name="blade_lift_push_frame_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/blade_lift_push_frame_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="blade_lift" type="revolute">
+    <parent link="base"/>
+    <child link="blade_lift"/>
+    <origin xyz="0.1 0 0" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+    <limit effort="6000" velocity="6.28319" lower="-0.3" upper="0.45"/>
+    <dynamics damping="4000" friction="0"/>
+  </joint>
+  <link name="blade_angle">
+    <inertial>
+      <origin xyz="-0.0815395 0 0.0690516" rpy="0 0 0"/>
+      <mass value="12"/>
+      <inertia ixx="1.32405" ixy="0" ixz="0" iyy="0.139288" iyz="0" izz="1.25994"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/blade_angle.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="blade_angle" type="revolute">
+    <parent link="blade_lift"/>
+    <child link="blade_angle"/>
+    <origin xyz="0.72 0 -0.3" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="3000" velocity="6.28319" lower="-0.523599" upper="0.523599"/>
+    <dynamics damping="2000" friction="0"/>
+  </joint>
+  <link name="blade_tilt">
+    <inertial>
+      <origin xyz="0.0667 -0.000199974 0.138011" rpy="0 0 0"/>
+      <mass value="70"/>
+      <inertia ixx="45.8237" ixy="0" ixz="0" iyy="3.75723" iyz="0" izz="43.1095"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/blade_tilt.obj"/>
+      </geometry>
+    </visual>
+    <collision name="blade_tilt_moldboard_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/blade_tilt_moldboard_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="blade_tilt" type="revolute">
+    <parent link="blade_angle"/>
+    <child link="blade_tilt"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="3000" velocity="6.28319" lower="-0.139626" upper="0.139626"/>
+    <dynamics damping="2000" friction="0"/>
+  </joint>
+</robot>

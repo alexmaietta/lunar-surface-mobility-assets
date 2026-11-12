@@ -10,74 +10,30 @@
 
 def Scope "Instances"
 {
-    def Xform "chassis__frame_white__Crew_crewed" (
-        prepend references = @./geometries.usd@</Geometries/chassis__frame_white__Crew_crewed>
+    def Xform "fl_wheel__tread" (
+        prepend references = @./geometries.usd@</Geometries/fl_wheel__tread>
     )
     {
         def Scope "VisualMaterials"
         {
-            def Material "frame_white" (
+            def Material "tread" (
                 instanceable = true
-                prepend references = @./materials.usda@</Materials/frame_white>
+                prepend references = @./materials.usda@</Materials/tread>
             )
             {
             }
         }
 
-        over "chassis__frame_white__Crew_crewed" (
+        over "fl_wheel__tread" (
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Instances/chassis__frame_white__Crew_crewed/VisualMaterials/frame_white>
+            rel material:binding = </Instances/fl_wheel__tread/VisualMaterials/tread>
         }
     }
 
-    def Xform "chassis__anodised_grey" (
-        prepend references = @./geometries.usd@</Geometries/chassis__anodised_grey>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_grey" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_grey>
-            )
-            {
-            }
-        }
-
-        over "chassis__anodised_grey" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/chassis__anodised_grey/VisualMaterials/anodised_grey>
-        }
-    }
-
-    def Xform "chassis__frame_white" (
-        prepend references = @./geometries.usd@</Geometries/chassis__frame_white>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "frame_white" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/frame_white>
-            )
-            {
-            }
-        }
-
-        over "chassis__frame_white" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/chassis__frame_white/VisualMaterials/frame_white>
-        }
-    }
-
-    def Xform "chassis__aluminium__Crew_crewed" (
-        prepend references = @./geometries.usd@</Geometries/chassis__aluminium__Crew_crewed>
+    def Xform "fl_wheel__aluminium" (
+        prepend references = @./geometries.usd@</Geometries/fl_wheel__aluminium>
     )
     {
         def Scope "VisualMaterials"
@@ -90,11 +46,33 @@ def Scope "Instances"
             }
         }
 
-        over "chassis__aluminium__Crew_crewed" (
+        over "fl_wheel__aluminium" (
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Instances/chassis__aluminium__Crew_crewed/VisualMaterials/aluminium>
+            rel material:binding = </Instances/fl_wheel__aluminium/VisualMaterials/aluminium>
+        }
+    }
+
+    def Xform "fl_wheel__anodised_dark" (
+        prepend references = @./geometries.usd@</Geometries/fl_wheel__anodised_dark>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_dark" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_dark>
+            )
+            {
+            }
+        }
+
+        over "fl_wheel__anodised_dark" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/fl_wheel__anodised_dark/VisualMaterials/anodised_dark>
         }
     }
 
@@ -120,6 +98,72 @@ def Scope "Instances"
         }
     }
 
+    def Xform "chassis__aluminium" (
+        prepend references = @./geometries.usd@</Geometries/chassis__aluminium>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "aluminium" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/aluminium>
+            )
+            {
+            }
+        }
+
+        over "chassis__aluminium" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/chassis__aluminium/VisualMaterials/aluminium>
+        }
+    }
+
+    def Xform "chassis__glass__Crew_crewed" (
+        prepend references = @./geometries.usd@</Geometries/chassis__glass__Crew_crewed>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "glass" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/glass>
+            )
+            {
+            }
+        }
+
+        over "chassis__glass__Crew_crewed" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/chassis__glass__Crew_crewed/VisualMaterials/glass>
+        }
+    }
+
+    def Xform "chassis__anodised_dark__Crew_crewed" (
+        prepend references = @./geometries.usd@</Geometries/chassis__anodised_dark__Crew_crewed>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_dark" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_dark>
+            )
+            {
+            }
+        }
+
+        over "chassis__anodised_dark__Crew_crewed" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/chassis__anodised_dark__Crew_crewed/VisualMaterials/anodised_dark>
+        }
+    }
+
     def Xform "chassis__grating__Crew_crewed" (
         prepend references = @./geometries.usd@</Geometries/chassis__grating__Crew_crewed>
     )
@@ -139,6 +183,94 @@ def Scope "Instances"
         )
         {
             rel material:binding = </Instances/chassis__grating__Crew_crewed/VisualMaterials/grating>
+        }
+    }
+
+    def Xform "chassis__anodised_dark" (
+        prepend references = @./geometries.usd@</Geometries/chassis__anodised_dark>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_dark" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_dark>
+            )
+            {
+            }
+        }
+
+        over "chassis__anodised_dark" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/chassis__anodised_dark/VisualMaterials/anodised_dark>
+        }
+    }
+
+    def Xform "chassis__mli_gold__Crew_cargo" (
+        prepend references = @./geometries.usd@</Geometries/chassis__mli_gold__Crew_cargo>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "mli_gold" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/mli_gold>
+            )
+            {
+            }
+        }
+
+        over "chassis__mli_gold__Crew_cargo" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/chassis__mli_gold__Crew_cargo/VisualMaterials/mli_gold>
+        }
+    }
+
+    def Xform "chassis__panel_bronze" (
+        prepend references = @./geometries.usd@</Geometries/chassis__panel_bronze>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "panel_bronze" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/panel_bronze>
+            )
+            {
+            }
+        }
+
+        over "chassis__panel_bronze" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/chassis__panel_bronze/VisualMaterials/panel_bronze>
+        }
+    }
+
+    def Xform "chassis__frame_white__Crew_crewed" (
+        prepend references = @./geometries.usd@</Geometries/chassis__frame_white__Crew_crewed>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "frame_white" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/frame_white>
+            )
+            {
+            }
+        }
+
+        over "chassis__frame_white__Crew_crewed" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/chassis__frame_white__Crew_crewed/VisualMaterials/frame_white>
         }
     }
 
@@ -186,6 +318,28 @@ def Scope "Instances"
         }
     }
 
+    def Xform "chassis__aluminium__Crew_crewed" (
+        prepend references = @./geometries.usd@</Geometries/chassis__aluminium__Crew_crewed>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "aluminium" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/aluminium>
+            )
+            {
+            }
+        }
+
+        over "chassis__aluminium__Crew_crewed" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/chassis__aluminium__Crew_crewed/VisualMaterials/aluminium>
+        }
+    }
+
     def Xform "chassis__anodised_dark__Crew_cargo" (
         prepend references = @./geometries.usd@</Geometries/chassis__anodised_dark__Crew_cargo>
     )
@@ -205,138 +359,6 @@ def Scope "Instances"
         )
         {
             rel material:binding = </Instances/chassis__anodised_dark__Crew_cargo/VisualMaterials/anodised_dark>
-        }
-    }
-
-    def Xform "chassis__lamp_amber" (
-        prepend references = @./geometries.usd@</Geometries/chassis__lamp_amber>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "lamp_amber" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/lamp_amber>
-            )
-            {
-            }
-        }
-
-        over "chassis__lamp_amber" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/chassis__lamp_amber/VisualMaterials/lamp_amber>
-        }
-    }
-
-    def Xform "chassis__mli_gold" (
-        prepend references = @./geometries.usd@</Geometries/chassis__mli_gold>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "mli_gold" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/mli_gold>
-            )
-            {
-            }
-        }
-
-        over "chassis__mli_gold" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/chassis__mli_gold/VisualMaterials/mli_gold>
-        }
-    }
-
-    def Xform "chassis__panel_bronze" (
-        prepend references = @./geometries.usd@</Geometries/chassis__panel_bronze>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "panel_bronze" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/panel_bronze>
-            )
-            {
-            }
-        }
-
-        over "chassis__panel_bronze" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/chassis__panel_bronze/VisualMaterials/panel_bronze>
-        }
-    }
-
-    def Xform "chassis__aluminium" (
-        prepend references = @./geometries.usd@</Geometries/chassis__aluminium>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "aluminium" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/aluminium>
-            )
-            {
-            }
-        }
-
-        over "chassis__aluminium" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/chassis__aluminium/VisualMaterials/aluminium>
-        }
-    }
-
-    def Xform "chassis__anodised_dark__Crew_crewed" (
-        prepend references = @./geometries.usd@</Geometries/chassis__anodised_dark__Crew_crewed>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_dark" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_dark>
-            )
-            {
-            }
-        }
-
-        over "chassis__anodised_dark__Crew_crewed" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/chassis__anodised_dark__Crew_crewed/VisualMaterials/anodised_dark>
-        }
-    }
-
-    def Xform "chassis__mli_gold__Crew_cargo" (
-        prepend references = @./geometries.usd@</Geometries/chassis__mli_gold__Crew_cargo>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "mli_gold" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/mli_gold>
-            )
-            {
-            }
-        }
-
-        over "chassis__mli_gold__Crew_cargo" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/chassis__mli_gold__Crew_cargo/VisualMaterials/mli_gold>
         }
     }
 
@@ -362,25 +384,91 @@ def Scope "Instances"
         }
     }
 
-    def Xform "chassis__anodised_dark" (
-        prepend references = @./geometries.usd@</Geometries/chassis__anodised_dark>
+    def Xform "chassis__mli_gold" (
+        prepend references = @./geometries.usd@</Geometries/chassis__mli_gold>
     )
     {
         def Scope "VisualMaterials"
         {
-            def Material "anodised_dark" (
+            def Material "mli_gold" (
                 instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_dark>
+                prepend references = @./materials.usda@</Materials/mli_gold>
             )
             {
             }
         }
 
-        over "chassis__anodised_dark" (
+        over "chassis__mli_gold" (
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Instances/chassis__anodised_dark/VisualMaterials/anodised_dark>
+            rel material:binding = </Instances/chassis__mli_gold/VisualMaterials/mli_gold>
+        }
+    }
+
+    def Xform "chassis__frame_white" (
+        prepend references = @./geometries.usd@</Geometries/chassis__frame_white>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "frame_white" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/frame_white>
+            )
+            {
+            }
+        }
+
+        over "chassis__frame_white" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/chassis__frame_white/VisualMaterials/frame_white>
+        }
+    }
+
+    def Xform "chassis__anodised_grey" (
+        prepend references = @./geometries.usd@</Geometries/chassis__anodised_grey>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_grey" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_grey>
+            )
+            {
+            }
+        }
+
+        over "chassis__anodised_grey" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/chassis__anodised_grey/VisualMaterials/anodised_grey>
+        }
+    }
+
+    def Xform "chassis__lamp_amber" (
+        prepend references = @./geometries.usd@</Geometries/chassis__lamp_amber>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "lamp_amber" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/lamp_amber>
+            )
+            {
+            }
+        }
+
+        over "chassis__lamp_amber" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/chassis__lamp_amber/VisualMaterials/lamp_amber>
         }
     }
 
@@ -406,25 +494,91 @@ def Scope "Instances"
         }
     }
 
-    def Xform "chassis__glass__Crew_crewed" (
-        prepend references = @./geometries.usd@</Geometries/chassis__glass__Crew_crewed>
+    def Xform "fr_wheel__tread" (
+        prepend references = @./geometries.usd@</Geometries/fr_wheel__tread>
     )
     {
         def Scope "VisualMaterials"
         {
-            def Material "glass" (
+            def Material "tread" (
                 instanceable = true
-                prepend references = @./materials.usda@</Materials/glass>
+                prepend references = @./materials.usda@</Materials/tread>
             )
             {
             }
         }
 
-        over "chassis__glass__Crew_crewed" (
+        over "fr_wheel__tread" (
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Instances/chassis__glass__Crew_crewed/VisualMaterials/glass>
+            rel material:binding = </Instances/fr_wheel__tread/VisualMaterials/tread>
+        }
+    }
+
+    def Xform "fr_wheel__aluminium" (
+        prepend references = @./geometries.usd@</Geometries/fr_wheel__aluminium>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "aluminium" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/aluminium>
+            )
+            {
+            }
+        }
+
+        over "fr_wheel__aluminium" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/fr_wheel__aluminium/VisualMaterials/aluminium>
+        }
+    }
+
+    def Xform "fr_wheel__anodised_dark" (
+        prepend references = @./geometries.usd@</Geometries/fr_wheel__anodised_dark>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_dark" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_dark>
+            )
+            {
+            }
+        }
+
+        over "fr_wheel__anodised_dark" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/fr_wheel__anodised_dark/VisualMaterials/anodised_dark>
+        }
+    }
+
+    def Xform "arm_wrist_pitch__anodised_dark" (
+        prepend references = @./geometries.usd@</Geometries/arm_wrist_pitch__anodised_dark>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_dark" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_dark>
+            )
+            {
+            }
+        }
+
+        over "arm_wrist_pitch__anodised_dark" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/arm_wrist_pitch__anodised_dark/VisualMaterials/anodised_dark>
         }
     }
 
@@ -494,30 +648,8 @@ def Scope "Instances"
         }
     }
 
-    def Xform "fl_wheel__tread" (
-        prepend references = @./geometries.usd@</Geometries/fl_wheel__tread>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "tread" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/tread>
-            )
-            {
-            }
-        }
-
-        over "fl_wheel__tread" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/fl_wheel__tread/VisualMaterials/tread>
-        }
-    }
-
-    def Xform "fl_wheel__anodised_dark" (
-        prepend references = @./geometries.usd@</Geometries/fl_wheel__anodised_dark>
+    def Xform "fr_arm__anodised_dark" (
+        prepend references = @./geometries.usd@</Geometries/fr_arm__anodised_dark>
     )
     {
         def Scope "VisualMaterials"
@@ -530,16 +662,82 @@ def Scope "Instances"
             }
         }
 
-        over "fl_wheel__anodised_dark" (
+        over "fr_arm__anodised_dark" (
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Instances/fl_wheel__anodised_dark/VisualMaterials/anodised_dark>
+            rel material:binding = </Instances/fr_arm__anodised_dark/VisualMaterials/anodised_dark>
         }
     }
 
-    def Xform "fl_wheel__aluminium" (
-        prepend references = @./geometries.usd@</Geometries/fl_wheel__aluminium>
+    def Xform "fr_arm__titanium" (
+        prepend references = @./geometries.usd@</Geometries/fr_arm__titanium>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "titanium" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/titanium>
+            )
+            {
+            }
+        }
+
+        over "fr_arm__titanium" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/fr_arm__titanium/VisualMaterials/titanium>
+        }
+    }
+
+    def Xform "rr_wheel__tread" (
+        prepend references = @./geometries.usd@</Geometries/rr_wheel__tread>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "tread" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/tread>
+            )
+            {
+            }
+        }
+
+        over "rr_wheel__tread" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/rr_wheel__tread/VisualMaterials/tread>
+        }
+    }
+
+    def Xform "rr_wheel__anodised_dark" (
+        prepend references = @./geometries.usd@</Geometries/rr_wheel__anodised_dark>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_dark" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_dark>
+            )
+            {
+            }
+        }
+
+        over "rr_wheel__anodised_dark" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/rr_wheel__anodised_dark/VisualMaterials/anodised_dark>
+        }
+    }
+
+    def Xform "rr_wheel__aluminium" (
+        prepend references = @./geometries.usd@</Geometries/rr_wheel__aluminium>
     )
     {
         def Scope "VisualMaterials"
@@ -552,11 +750,253 @@ def Scope "Instances"
             }
         }
 
-        over "fl_wheel__aluminium" (
+        over "rr_wheel__aluminium" (
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Instances/fl_wheel__aluminium/VisualMaterials/aluminium>
+            rel material:binding = </Instances/rr_wheel__aluminium/VisualMaterials/aluminium>
+        }
+    }
+
+    def Xform "arm_shoulder__white_panel" (
+        prepend references = @./geometries.usd@</Geometries/arm_shoulder__white_panel>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "white_panel" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/white_panel>
+            )
+            {
+            }
+        }
+
+        over "arm_shoulder__white_panel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/arm_shoulder__white_panel/VisualMaterials/white_panel>
+        }
+    }
+
+    def Xform "arm_shoulder__anodised_dark" (
+        prepend references = @./geometries.usd@</Geometries/arm_shoulder__anodised_dark>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_dark" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_dark>
+            )
+            {
+            }
+        }
+
+        over "arm_shoulder__anodised_dark" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/arm_shoulder__anodised_dark/VisualMaterials/anodised_dark>
+        }
+    }
+
+    def Xform "rr_steer__anodised_dark" (
+        prepend references = @./geometries.usd@</Geometries/rr_steer__anodised_dark>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_dark" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_dark>
+            )
+            {
+            }
+        }
+
+        over "rr_steer__anodised_dark" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/rr_steer__anodised_dark/VisualMaterials/anodised_dark>
+        }
+    }
+
+    def Xform "rr_steer__aluminium" (
+        prepend references = @./geometries.usd@</Geometries/rr_steer__aluminium>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "aluminium" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/aluminium>
+            )
+            {
+            }
+        }
+
+        over "rr_steer__aluminium" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/rr_steer__aluminium/VisualMaterials/aluminium>
+        }
+    }
+
+    def Xform "rr_steer__composite" (
+        prepend references = @./geometries.usd@</Geometries/rr_steer__composite>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "composite" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/composite>
+            )
+            {
+            }
+        }
+
+        over "rr_steer__composite" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/rr_steer__composite/VisualMaterials/composite>
+        }
+    }
+
+    def Xform "rr_steer__titanium" (
+        prepend references = @./geometries.usd@</Geometries/rr_steer__titanium>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "titanium" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/titanium>
+            )
+            {
+            }
+        }
+
+        over "rr_steer__titanium" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/rr_steer__titanium/VisualMaterials/titanium>
+        }
+    }
+
+    def Xform "nav_mast_pan__anodised_dark" (
+        prepend references = @./geometries.usd@</Geometries/nav_mast_pan__anodised_dark>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_dark" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_dark>
+            )
+            {
+            }
+        }
+
+        over "nav_mast_pan__anodised_dark" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/nav_mast_pan__anodised_dark/VisualMaterials/anodised_dark>
+        }
+    }
+
+    def Xform "rl_wheel__tread" (
+        prepend references = @./geometries.usd@</Geometries/rl_wheel__tread>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "tread" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/tread>
+            )
+            {
+            }
+        }
+
+        over "rl_wheel__tread" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/rl_wheel__tread/VisualMaterials/tread>
+        }
+    }
+
+    def Xform "rl_wheel__anodised_dark" (
+        prepend references = @./geometries.usd@</Geometries/rl_wheel__anodised_dark>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_dark" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_dark>
+            )
+            {
+            }
+        }
+
+        over "rl_wheel__anodised_dark" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/rl_wheel__anodised_dark/VisualMaterials/anodised_dark>
+        }
+    }
+
+    def Xform "rl_wheel__aluminium" (
+        prepend references = @./geometries.usd@</Geometries/rl_wheel__aluminium>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "aluminium" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/aluminium>
+            )
+            {
+            }
+        }
+
+        over "rl_wheel__aluminium" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/rl_wheel__aluminium/VisualMaterials/aluminium>
+        }
+    }
+
+    def Xform "arm_yaw__white_panel" (
+        prepend references = @./geometries.usd@</Geometries/arm_yaw__white_panel>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "white_panel" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/white_panel>
+            )
+            {
+            }
+        }
+
+        over "arm_yaw__white_panel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/arm_yaw__white_panel/VisualMaterials/white_panel>
         }
     }
 
@@ -648,6 +1088,380 @@ def Scope "Instances"
         }
     }
 
+    def Xform "rr_arm__anodised_dark" (
+        prepend references = @./geometries.usd@</Geometries/rr_arm__anodised_dark>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_dark" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_dark>
+            )
+            {
+            }
+        }
+
+        over "rr_arm__anodised_dark" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/rr_arm__anodised_dark/VisualMaterials/anodised_dark>
+        }
+    }
+
+    def Xform "rr_arm__titanium" (
+        prepend references = @./geometries.usd@</Geometries/rr_arm__titanium>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "titanium" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/titanium>
+            )
+            {
+            }
+        }
+
+        over "rr_arm__titanium" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/rr_arm__titanium/VisualMaterials/titanium>
+        }
+    }
+
+    def Xform "rl_arm__anodised_dark" (
+        prepend references = @./geometries.usd@</Geometries/rl_arm__anodised_dark>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_dark" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_dark>
+            )
+            {
+            }
+        }
+
+        over "rl_arm__anodised_dark" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/rl_arm__anodised_dark/VisualMaterials/anodised_dark>
+        }
+    }
+
+    def Xform "rl_arm__titanium" (
+        prepend references = @./geometries.usd@</Geometries/rl_arm__titanium>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "titanium" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/titanium>
+            )
+            {
+            }
+        }
+
+        over "rl_arm__titanium" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/rl_arm__titanium/VisualMaterials/titanium>
+        }
+    }
+
+    def Xform "fl_steer__anodised_dark" (
+        prepend references = @./geometries.usd@</Geometries/fl_steer__anodised_dark>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_dark" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_dark>
+            )
+            {
+            }
+        }
+
+        over "fl_steer__anodised_dark" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/fl_steer__anodised_dark/VisualMaterials/anodised_dark>
+        }
+    }
+
+    def Xform "fl_steer__composite" (
+        prepend references = @./geometries.usd@</Geometries/fl_steer__composite>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "composite" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/composite>
+            )
+            {
+            }
+        }
+
+        over "fl_steer__composite" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/fl_steer__composite/VisualMaterials/composite>
+        }
+    }
+
+    def Xform "fl_steer__aluminium" (
+        prepend references = @./geometries.usd@</Geometries/fl_steer__aluminium>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "aluminium" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/aluminium>
+            )
+            {
+            }
+        }
+
+        over "fl_steer__aluminium" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/fl_steer__aluminium/VisualMaterials/aluminium>
+        }
+    }
+
+    def Xform "fl_steer__titanium" (
+        prepend references = @./geometries.usd@</Geometries/fl_steer__titanium>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "titanium" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/titanium>
+            )
+            {
+            }
+        }
+
+        over "fl_steer__titanium" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/fl_steer__titanium/VisualMaterials/titanium>
+        }
+    }
+
+    def Xform "arm_elbow__anodised_dark" (
+        prepend references = @./geometries.usd@</Geometries/arm_elbow__anodised_dark>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_dark" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_dark>
+            )
+            {
+            }
+        }
+
+        over "arm_elbow__anodised_dark" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/arm_elbow__anodised_dark/VisualMaterials/anodised_dark>
+        }
+    }
+
+    def Xform "arm_elbow__white_panel" (
+        prepend references = @./geometries.usd@</Geometries/arm_elbow__white_panel>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "white_panel" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/white_panel>
+            )
+            {
+            }
+        }
+
+        over "arm_elbow__white_panel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/arm_elbow__white_panel/VisualMaterials/white_panel>
+        }
+    }
+
+    def Xform "arm_wrist_roll__anodised_grey" (
+        prepend references = @./geometries.usd@</Geometries/arm_wrist_roll__anodised_grey>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_grey" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_grey>
+            )
+            {
+            }
+        }
+
+        over "arm_wrist_roll__anodised_grey" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/arm_wrist_roll__anodised_grey/VisualMaterials/anodised_grey>
+        }
+    }
+
+    def Xform "arm_wrist_roll__aluminium" (
+        prepend references = @./geometries.usd@</Geometries/arm_wrist_roll__aluminium>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "aluminium" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/aluminium>
+            )
+            {
+            }
+        }
+
+        over "arm_wrist_roll__aluminium" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/arm_wrist_roll__aluminium/VisualMaterials/aluminium>
+        }
+    }
+
+    def Xform "solar_array__titanium" (
+        prepend references = @./geometries.usd@</Geometries/solar_array__titanium>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "titanium" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/titanium>
+            )
+            {
+            }
+        }
+
+        over "solar_array__titanium" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/solar_array__titanium/VisualMaterials/titanium>
+        }
+    }
+
+    def Xform "solar_array__solar_cells" (
+        prepend references = @./geometries.usd@</Geometries/solar_array__solar_cells>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "solar_cells" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/solar_cells>
+            )
+            {
+            }
+        }
+
+        over "solar_array__solar_cells" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/solar_array__solar_cells/VisualMaterials/solar_cells>
+        }
+    }
+
+    def Xform "solar_array__white_panel" (
+        prepend references = @./geometries.usd@</Geometries/solar_array__white_panel>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "white_panel" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/white_panel>
+            )
+            {
+            }
+        }
+
+        over "solar_array__white_panel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/solar_array__white_panel/VisualMaterials/white_panel>
+        }
+    }
+
+    def Xform "fl_arm__anodised_dark" (
+        prepend references = @./geometries.usd@</Geometries/fl_arm__anodised_dark>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_dark" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_dark>
+            )
+            {
+            }
+        }
+
+        over "fl_arm__anodised_dark" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/fl_arm__anodised_dark/VisualMaterials/anodised_dark>
+        }
+    }
+
+    def Xform "fl_arm__titanium" (
+        prepend references = @./geometries.usd@</Geometries/fl_arm__titanium>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "titanium" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/titanium>
+            )
+            {
+            }
+        }
+
+        over "fl_arm__titanium" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/fl_arm__titanium/VisualMaterials/titanium>
+        }
+    }
+
     def Xform "rl_steer__anodised_dark" (
         prepend references = @./geometries.usd@</Geometries/rl_steer__anodised_dark>
     )
@@ -733,820 +1547,6 @@ def Scope "Instances"
         )
         {
             rel material:binding = </Instances/rl_steer__aluminium/VisualMaterials/aluminium>
-        }
-    }
-
-    def Xform "arm_shoulder__white_panel" (
-        prepend references = @./geometries.usd@</Geometries/arm_shoulder__white_panel>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "white_panel" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/white_panel>
-            )
-            {
-            }
-        }
-
-        over "arm_shoulder__white_panel" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/arm_shoulder__white_panel/VisualMaterials/white_panel>
-        }
-    }
-
-    def Xform "arm_shoulder__anodised_dark" (
-        prepend references = @./geometries.usd@</Geometries/arm_shoulder__anodised_dark>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_dark" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_dark>
-            )
-            {
-            }
-        }
-
-        over "arm_shoulder__anodised_dark" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/arm_shoulder__anodised_dark/VisualMaterials/anodised_dark>
-        }
-    }
-
-    def Xform "rr_wheel__tread" (
-        prepend references = @./geometries.usd@</Geometries/rr_wheel__tread>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "tread" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/tread>
-            )
-            {
-            }
-        }
-
-        over "rr_wheel__tread" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/rr_wheel__tread/VisualMaterials/tread>
-        }
-    }
-
-    def Xform "rr_wheel__anodised_dark" (
-        prepend references = @./geometries.usd@</Geometries/rr_wheel__anodised_dark>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_dark" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_dark>
-            )
-            {
-            }
-        }
-
-        over "rr_wheel__anodised_dark" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/rr_wheel__anodised_dark/VisualMaterials/anodised_dark>
-        }
-    }
-
-    def Xform "rr_wheel__aluminium" (
-        prepend references = @./geometries.usd@</Geometries/rr_wheel__aluminium>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "aluminium" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/aluminium>
-            )
-            {
-            }
-        }
-
-        over "rr_wheel__aluminium" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/rr_wheel__aluminium/VisualMaterials/aluminium>
-        }
-    }
-
-    def Xform "arm_yaw__white_panel" (
-        prepend references = @./geometries.usd@</Geometries/arm_yaw__white_panel>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "white_panel" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/white_panel>
-            )
-            {
-            }
-        }
-
-        over "arm_yaw__white_panel" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/arm_yaw__white_panel/VisualMaterials/white_panel>
-        }
-    }
-
-    def Xform "arm_wrist_roll__anodised_grey" (
-        prepend references = @./geometries.usd@</Geometries/arm_wrist_roll__anodised_grey>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_grey" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_grey>
-            )
-            {
-            }
-        }
-
-        over "arm_wrist_roll__anodised_grey" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/arm_wrist_roll__anodised_grey/VisualMaterials/anodised_grey>
-        }
-    }
-
-    def Xform "arm_wrist_roll__aluminium" (
-        prepend references = @./geometries.usd@</Geometries/arm_wrist_roll__aluminium>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "aluminium" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/aluminium>
-            )
-            {
-            }
-        }
-
-        over "arm_wrist_roll__aluminium" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/arm_wrist_roll__aluminium/VisualMaterials/aluminium>
-        }
-    }
-
-    def Xform "nav_mast_pan__anodised_dark" (
-        prepend references = @./geometries.usd@</Geometries/nav_mast_pan__anodised_dark>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_dark" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_dark>
-            )
-            {
-            }
-        }
-
-        over "nav_mast_pan__anodised_dark" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/nav_mast_pan__anodised_dark/VisualMaterials/anodised_dark>
-        }
-    }
-
-    def Xform "fr_wheel__tread" (
-        prepend references = @./geometries.usd@</Geometries/fr_wheel__tread>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "tread" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/tread>
-            )
-            {
-            }
-        }
-
-        over "fr_wheel__tread" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/fr_wheel__tread/VisualMaterials/tread>
-        }
-    }
-
-    def Xform "fr_wheel__anodised_dark" (
-        prepend references = @./geometries.usd@</Geometries/fr_wheel__anodised_dark>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_dark" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_dark>
-            )
-            {
-            }
-        }
-
-        over "fr_wheel__anodised_dark" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/fr_wheel__anodised_dark/VisualMaterials/anodised_dark>
-        }
-    }
-
-    def Xform "fr_wheel__aluminium" (
-        prepend references = @./geometries.usd@</Geometries/fr_wheel__aluminium>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "aluminium" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/aluminium>
-            )
-            {
-            }
-        }
-
-        over "fr_wheel__aluminium" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/fr_wheel__aluminium/VisualMaterials/aluminium>
-        }
-    }
-
-    def Xform "arm_wrist_pitch__anodised_dark" (
-        prepend references = @./geometries.usd@</Geometries/arm_wrist_pitch__anodised_dark>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_dark" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_dark>
-            )
-            {
-            }
-        }
-
-        over "arm_wrist_pitch__anodised_dark" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/arm_wrist_pitch__anodised_dark/VisualMaterials/anodised_dark>
-        }
-    }
-
-    def Xform "fr_arm__anodised_dark" (
-        prepend references = @./geometries.usd@</Geometries/fr_arm__anodised_dark>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_dark" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_dark>
-            )
-            {
-            }
-        }
-
-        over "fr_arm__anodised_dark" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/fr_arm__anodised_dark/VisualMaterials/anodised_dark>
-        }
-    }
-
-    def Xform "fr_arm__titanium" (
-        prepend references = @./geometries.usd@</Geometries/fr_arm__titanium>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "titanium" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/titanium>
-            )
-            {
-            }
-        }
-
-        over "fr_arm__titanium" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/fr_arm__titanium/VisualMaterials/titanium>
-        }
-    }
-
-    def Xform "solar_array__titanium" (
-        prepend references = @./geometries.usd@</Geometries/solar_array__titanium>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "titanium" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/titanium>
-            )
-            {
-            }
-        }
-
-        over "solar_array__titanium" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/solar_array__titanium/VisualMaterials/titanium>
-        }
-    }
-
-    def Xform "solar_array__white_panel" (
-        prepend references = @./geometries.usd@</Geometries/solar_array__white_panel>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "white_panel" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/white_panel>
-            )
-            {
-            }
-        }
-
-        over "solar_array__white_panel" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/solar_array__white_panel/VisualMaterials/white_panel>
-        }
-    }
-
-    def Xform "solar_array__solar_cells" (
-        prepend references = @./geometries.usd@</Geometries/solar_array__solar_cells>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "solar_cells" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/solar_cells>
-            )
-            {
-            }
-        }
-
-        over "solar_array__solar_cells" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/solar_array__solar_cells/VisualMaterials/solar_cells>
-        }
-    }
-
-    def Xform "fl_steer__anodised_dark" (
-        prepend references = @./geometries.usd@</Geometries/fl_steer__anodised_dark>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_dark" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_dark>
-            )
-            {
-            }
-        }
-
-        over "fl_steer__anodised_dark" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/fl_steer__anodised_dark/VisualMaterials/anodised_dark>
-        }
-    }
-
-    def Xform "fl_steer__aluminium" (
-        prepend references = @./geometries.usd@</Geometries/fl_steer__aluminium>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "aluminium" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/aluminium>
-            )
-            {
-            }
-        }
-
-        over "fl_steer__aluminium" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/fl_steer__aluminium/VisualMaterials/aluminium>
-        }
-    }
-
-    def Xform "fl_steer__composite" (
-        prepend references = @./geometries.usd@</Geometries/fl_steer__composite>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "composite" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/composite>
-            )
-            {
-            }
-        }
-
-        over "fl_steer__composite" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/fl_steer__composite/VisualMaterials/composite>
-        }
-    }
-
-    def Xform "fl_steer__titanium" (
-        prepend references = @./geometries.usd@</Geometries/fl_steer__titanium>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "titanium" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/titanium>
-            )
-            {
-            }
-        }
-
-        over "fl_steer__titanium" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/fl_steer__titanium/VisualMaterials/titanium>
-        }
-    }
-
-    def Xform "rl_wheel__tread" (
-        prepend references = @./geometries.usd@</Geometries/rl_wheel__tread>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "tread" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/tread>
-            )
-            {
-            }
-        }
-
-        over "rl_wheel__tread" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/rl_wheel__tread/VisualMaterials/tread>
-        }
-    }
-
-    def Xform "rl_wheel__aluminium" (
-        prepend references = @./geometries.usd@</Geometries/rl_wheel__aluminium>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "aluminium" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/aluminium>
-            )
-            {
-            }
-        }
-
-        over "rl_wheel__aluminium" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/rl_wheel__aluminium/VisualMaterials/aluminium>
-        }
-    }
-
-    def Xform "rl_wheel__anodised_dark" (
-        prepend references = @./geometries.usd@</Geometries/rl_wheel__anodised_dark>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_dark" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_dark>
-            )
-            {
-            }
-        }
-
-        over "rl_wheel__anodised_dark" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/rl_wheel__anodised_dark/VisualMaterials/anodised_dark>
-        }
-    }
-
-    def Xform "arm_elbow__anodised_dark" (
-        prepend references = @./geometries.usd@</Geometries/arm_elbow__anodised_dark>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_dark" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_dark>
-            )
-            {
-            }
-        }
-
-        over "arm_elbow__anodised_dark" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/arm_elbow__anodised_dark/VisualMaterials/anodised_dark>
-        }
-    }
-
-    def Xform "arm_elbow__white_panel" (
-        prepend references = @./geometries.usd@</Geometries/arm_elbow__white_panel>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "white_panel" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/white_panel>
-            )
-            {
-            }
-        }
-
-        over "arm_elbow__white_panel" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/arm_elbow__white_panel/VisualMaterials/white_panel>
-        }
-    }
-
-    def Xform "rr_arm__anodised_dark" (
-        prepend references = @./geometries.usd@</Geometries/rr_arm__anodised_dark>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_dark" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_dark>
-            )
-            {
-            }
-        }
-
-        over "rr_arm__anodised_dark" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/rr_arm__anodised_dark/VisualMaterials/anodised_dark>
-        }
-    }
-
-    def Xform "rr_arm__titanium" (
-        prepend references = @./geometries.usd@</Geometries/rr_arm__titanium>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "titanium" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/titanium>
-            )
-            {
-            }
-        }
-
-        over "rr_arm__titanium" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/rr_arm__titanium/VisualMaterials/titanium>
-        }
-    }
-
-    def Xform "rr_steer__anodised_dark" (
-        prepend references = @./geometries.usd@</Geometries/rr_steer__anodised_dark>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_dark" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_dark>
-            )
-            {
-            }
-        }
-
-        over "rr_steer__anodised_dark" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/rr_steer__anodised_dark/VisualMaterials/anodised_dark>
-        }
-    }
-
-    def Xform "rr_steer__composite" (
-        prepend references = @./geometries.usd@</Geometries/rr_steer__composite>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "composite" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/composite>
-            )
-            {
-            }
-        }
-
-        over "rr_steer__composite" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/rr_steer__composite/VisualMaterials/composite>
-        }
-    }
-
-    def Xform "rr_steer__aluminium" (
-        prepend references = @./geometries.usd@</Geometries/rr_steer__aluminium>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "aluminium" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/aluminium>
-            )
-            {
-            }
-        }
-
-        over "rr_steer__aluminium" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/rr_steer__aluminium/VisualMaterials/aluminium>
-        }
-    }
-
-    def Xform "rr_steer__titanium" (
-        prepend references = @./geometries.usd@</Geometries/rr_steer__titanium>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "titanium" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/titanium>
-            )
-            {
-            }
-        }
-
-        over "rr_steer__titanium" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/rr_steer__titanium/VisualMaterials/titanium>
-        }
-    }
-
-    def Xform "fl_arm__anodised_dark" (
-        prepend references = @./geometries.usd@</Geometries/fl_arm__anodised_dark>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_dark" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_dark>
-            )
-            {
-            }
-        }
-
-        over "fl_arm__anodised_dark" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/fl_arm__anodised_dark/VisualMaterials/anodised_dark>
-        }
-    }
-
-    def Xform "fl_arm__titanium" (
-        prepend references = @./geometries.usd@</Geometries/fl_arm__titanium>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "titanium" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/titanium>
-            )
-            {
-            }
-        }
-
-        over "fl_arm__titanium" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/fl_arm__titanium/VisualMaterials/titanium>
-        }
-    }
-
-    def Xform "rl_arm__anodised_dark" (
-        prepend references = @./geometries.usd@</Geometries/rl_arm__anodised_dark>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_dark" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_dark>
-            )
-            {
-            }
-        }
-
-        over "rl_arm__anodised_dark" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/rl_arm__anodised_dark/VisualMaterials/anodised_dark>
-        }
-    }
-
-    def Xform "rl_arm__titanium" (
-        prepend references = @./geometries.usd@</Geometries/rl_arm__titanium>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "titanium" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/titanium>
-            )
-            {
-            }
-        }
-
-        over "rl_arm__titanium" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/rl_arm__titanium/VisualMaterials/titanium>
         }
     }
 

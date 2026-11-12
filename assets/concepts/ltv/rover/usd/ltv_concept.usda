@@ -2,7 +2,7 @@
 (
     customLayerData = {
         dictionary SimReady_Metadata = {
-            float3 asset_extents = (3.8834, 2.7680001, 2.3625073)
+            float3 asset_extents = (3.9057999, 2.7680001, 2.3625073)
             string asset_license = "CC0-1.0"
             string asset_name = "ltv_concept"
             string asset_type = "robot"
@@ -11,14 +11,14 @@
             double mass = 1100
             int rigid_body_count = 39
             string source_file = "build/ltv_concept/ltv_concept.blend (scripts/build.py)"
-            string usd_date_generated = "2026-11-08"
+            string usd_date_generated = "2026-11-11"
             string usd_version = "0.26.8"
         }
         string asset_name = "ltv_concept"
         string asset_type = "robot"
         string asset_version = "0.3.0"
         string creator = "lunar-surface-mobility-assets pipeline"
-        string usd_date_generated = "2026-11-08"
+        string usd_date_generated = "2026-11-11"
     }
     defaultPrim = "ltv_concept"
     kilogramsPerUnit = 1
@@ -32,11 +32,13 @@ def Xform "ltv_concept" (
         string Articulation = "articulated"
         string Crew = "crewed"
         string Fidelity = "full"
+        string FrontTool = "none"
         string Lights = "on"
         string Payload = "unloaded"
         string Physics = "physx"
+        string RearTool = "none"
     }
-    prepend variantSets = ["Articulation", "Payload", "Crew", "Lights", "Fidelity", "Physics"]
+    prepend variantSets = ["Articulation", "Payload", "Crew", "Lights", "FrontTool", "RearTool", "Fidelity", "Physics"]
 )
 {
     variantSet "Articulation" = {
@@ -91,6 +93,61 @@ def Xform "ltv_concept" (
         }
         "on" (
             prepend payload = @./payloads/Lights/on.usda@
+        ) {
+
+        }
+    }
+    variantSet "FrontTool" = {
+        "dozer_blade" (
+            prepend payload = @./payloads/FrontTool/dozer_blade.usda@
+        ) {
+
+        }
+        "drum_excavator" (
+            prepend payload = @./payloads/FrontTool/drum_excavator.usda@
+        ) {
+
+        }
+        "loader_bucket" (
+            prepend payload = @./payloads/FrontTool/loader_bucket.usda@
+        ) {
+
+        }
+        "none" {
+
+        }
+        "rock_rake" (
+            prepend payload = @./payloads/FrontTool/rock_rake.usda@
+        ) {
+
+        }
+        "v_blade" (
+            prepend payload = @./payloads/FrontTool/v_blade.usda@
+        ) {
+
+        }
+    }
+    variantSet "RearTool" = {
+        "box_blade" (
+            prepend payload = @./payloads/RearTool/box_blade.usda@
+        ) {
+
+        }
+        "dump_trailer" (
+            prepend payload = @./payloads/RearTool/dump_trailer.usda@
+        ) {
+
+        }
+        "none" {
+
+        }
+        "ripper" (
+            prepend payload = @./payloads/RearTool/ripper.usda@
+        ) {
+
+        }
+        "roller_compactor" (
+            prepend payload = @./payloads/RearTool/roller_compactor.usda@
         ) {
 
         }

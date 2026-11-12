@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+<robot name="box_blade">
+  <link name="base_link"/>
+  <joint name="base_link_to_base" type="fixed">
+    <parent link="base_link"/>
+    <child link="base"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="base">
+    <inertial>
+      <origin xyz="-0.163455 0 0.0344305" rpy="0 0 0"/>
+      <mass value="15"/>
+      <inertia ixx="0.908739" ixy="0" ixz="0" iyy="0.362814" iyz="0" izz="0.922497"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/base.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="box_lift">
+    <inertial>
+      <origin xyz="-0.5731 -0.000199974 -0.228083" rpy="0 0 0"/>
+      <mass value="90"/>
+      <inertia ixx="48.7395" ixy="0" ixz="0" iyy="13.5966" iyz="0" izz="57.0536"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/box_lift.obj"/>
+      </geometry>
+    </visual>
+    <collision name="box_lift_box_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/box_lift_box_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="box_lift" type="revolute">
+    <parent link="base"/>
+    <child link="box_lift"/>
+    <origin xyz="-0.1 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="8000" velocity="6.28319" lower="-0.35" upper="0.4"/>
+    <dynamics damping="5000" friction="0"/>
+  </joint>
+  <link name="scarifier">
+    <inertial>
+      <origin xyz="-0.0185455 0 -0.12188" rpy="0 0 0"/>
+      <mass value="15"/>
+      <inertia ixx="5.15693" ixy="0" ixz="0" iyy="0.134466" iyz="0" izz="5.04966"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/scarifier.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="scarifier" type="prismatic">
+    <parent link="box_lift"/>
+    <child link="scarifier"/>
+    <origin xyz="-0.71 0 -0.2" rpy="0 0 0"/>
+    <axis xyz="0 0 -1"/>
+    <limit effort="3000" velocity="0.5" lower="0" upper="0.16"/>
+    <dynamics damping="2000" friction="0"/>
+  </joint>
+</robot>

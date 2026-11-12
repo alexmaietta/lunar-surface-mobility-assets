@@ -1,0 +1,75 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "dozer_blade"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "dozer_blade"
+{
+    over "Geometry"
+    {
+        over "base"
+        {
+            over "blade_lift" (
+                delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                over "blade_angle" (
+                    delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    over "blade_tilt" (
+                        delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                    }
+                }
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "blade_lift" (
+            active = false
+        )
+        {
+        }
+
+        over "blade_lift_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "blade_angle" (
+            active = false
+        )
+        {
+        }
+
+        over "blade_angle_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "blade_tilt" (
+            active = false
+        )
+        {
+        }
+
+        over "blade_tilt_actuator" (
+            active = false
+        )
+        {
+        }
+    }
+}
+

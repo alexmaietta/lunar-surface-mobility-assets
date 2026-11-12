@@ -1,0 +1,335 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "v_blade"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./robot.usda@
+    ]
+    upAxis = "Z"
+)
+
+def Xform "v_blade" (
+    prepend apiSchemas = ["IsaacRobotAPI", "GeomModelAPI", "SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @./v_blade.usda@
+        string name = "v_blade"
+        string version = "0.3.0"
+    }
+    doc = "Front-mounted hinged V-blade for Lunar Terrain Vehicle-class rovers, after terrestrial V-plows. Two 1.45 m curved composite wings pivot independently on a steel nose post at the end of a lifting push frame, so the blade works as a V (splits regolith to both sides, opens a track or trench line), straight (dozing), scoop or inverted V (carries a load), or angled left or right (casts a windrow to one side when building a berm line). The wings are modelled in a 25 degree V; each wing joint runs from a 25 degree scoop through straight to a 35 degree V."
+    kind = "component"
+)
+{
+    float3[] extentsHint = [(-0.0306, -1.3942819, -0.5428), (1.0728, 1.399082, 0.19921061), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (0.071008794, -1.3942819, -0.52830815), (1.0159347, 1.399082, 0.108876914)]
+    token[] semantics:labels:class = ["construction_tool", "v_blade", "plow"]
+
+    def Scope "Geometry"
+    {
+        def Xform "base"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Xform "base__anodised_grey" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/base__anodised_grey>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "base__steel" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/base__steel>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "base__white_panel" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/base__white_panel>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "base__anodised_dark" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/base__anodised_dark>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "blade_lift"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.10000000149011612, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "blade_lift__white_panel" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/blade_lift__white_panel>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "blade_lift__steel" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/blade_lift__steel>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "blade_lift__wear_steel" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/blade_lift__wear_steel>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "blade_lift__anodised_grey" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/blade_lift__anodised_grey>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "blade_lift_push_frame_col" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/blade_lift_push_frame_col>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "wing_l"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0.8800000175833702, 0, -0.2800000011920929)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "wing_l__composite" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/wing_l__composite>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "wing_l__white_panel" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/wing_l__white_panel>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "wing_l__wear_steel" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/wing_l__wear_steel>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "wing_l__steel" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/wing_l__steel>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "wing_l_wing_col" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/wing_l_wing_col>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "wing_l_edge"
+                    {
+                        custom double site:bulk_density_kg_m3 = 1500
+                        custom double site:capacity_m3 = 0.22
+                        custom string site:description = "Left wing cutting edge centre (+Z = wing face normal); the wing spans width_m along it"
+                        custom double site:height_m = 0.62
+                        custom token site:kind = "tool_edge"
+                        custom string site:tool = "blade"
+                        custom double site:width_m = 1.45
+                        quatd xformOp:orient = (0.7071068286895752, -0.29883623123168945, 0.6408563852310181, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (-0.28221378257069585, 0.7235194480404387, -0.23999999880790712)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+                }
+
+                def Xform "wing_r"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0.8800000175833702, 0, -0.2800000011920929)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "wing_r__composite" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/wing_r__composite>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "wing_r__steel" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/wing_r__steel>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "wing_r__white_panel" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/wing_r__white_panel>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "wing_r__wear_steel" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/wing_r__wear_steel>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "wing_r_wing_col" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/wing_r_wing_col>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "wing_r_edge"
+                    {
+                        custom double site:bulk_density_kg_m3 = 1500
+                        custom double site:capacity_m3 = 0.22
+                        custom string site:description = "Right wing cutting edge centre (+Z = wing face normal); the wing spans width_m along it"
+                        custom double site:height_m = 0.62
+                        custom token site:kind = "tool_edge"
+                        custom string site:tool = "blade"
+                        custom double site:width_m = 1.45
+                        quatd xformOp:orient = (0.7071068286895752, 0.29883623123168945, 0.6408563852310181, -0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (-0.28221378257069585, -0.7235194480404387, -0.23999999880790712)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+                }
+
+                def Xform "nose_point"
+                {
+                    custom string site:description = "V nose at the cutting edge"
+                    custom token site:kind = "reference"
+                    quatd xformOp:orient = (0.7071068286895752, 0, 0.7071067690849304, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0.9299999985098839, 0, -0.52)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "mount"
+            {
+                custom string site:description = "Quick-attach coupler: mates with a rover's tool_front or tool_rear site"
+                custom token site:kind = "mount"
+                quatd xformOp:orient = (0.7071068286895752, 0, -0.7071067690849304, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+    }
+
+    def Scope "Physics"
+    {
+    }
+
+    def Scope "Materials"
+    {
+    }
+
+    def Scope "VisualMaterials"
+    {
+    }
+}
+

@@ -1,0 +1,99 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "drum_excavator"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "drum_excavator"
+{
+    over "Geometry"
+    {
+        over "base" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI"]
+        )
+        {
+            bool newton:selfCollisionEnabled = 0
+            point3f physics:centerOfMass = (0.16171703, -0.00039999187, 0.04240308)
+            float3 physics:diagonalInertia = (1.3789511, 0.37156636, 1.377243)
+            float physics:mass = 15
+            quatf physics:principalAxes = (1, 0, 0, 0)
+
+            over "drum_arm" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0.47100002, -0.00020000339, -0.17331192)
+                float3 physics:diagonalInertia = (8.236897, 3.5123816, 10.637453)
+                float physics:mass = 35
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "drums" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (-0.00022339821, 0, -0.000023409724)
+                    float3 physics:diagonalInertia = (8.594201, 2.7302716, 8.585151)
+                    float physics:mass = 45
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+                }
+            }
+        }
+    }
+
+    def "Physics"
+    {
+        def PhysicsRevoluteJoint "drum_arm" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 69.81317
+            float drive:angular:physics:maxForce = 6000
+            float drive:angular:physics:stiffness = 698.1317
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "tool"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </drum_excavator/Geometry/base>
+            rel physics:body1 = </drum_excavator/Geometry/base/drum_arm>
+            point3f physics:localPos0 = (0.1, 0, 0.05)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, -0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, -0.70710677)
+            float physics:lowerLimit = -25.7831
+            float physics:upperLimit = 48.701412
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "drums" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 6.981317
+            float drive:angular:physics:maxForce = 900
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "velocity"
+            custom uniform token joint:role = "excavate"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </drum_excavator/Geometry/base/drum_arm>
+            rel physics:body1 = </drum_excavator/Geometry/base/drum_arm/drums>
+            point3f physics:localPos0 = (0.88, 0, -0.3)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, 0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, 0.70710677)
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+    }
+}
+

@@ -1,0 +1,358 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "dump_trailer"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./robot.usda@
+    ]
+    upAxis = "Z"
+)
+
+def Xform "dump_trailer" (
+    prepend apiSchemas = ["IsaacRobotAPI", "GeomModelAPI", "SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @./dump_trailer.usda@
+        string name = "dump_trailer"
+        string version = "0.3.0"
+    }
+    doc = "Two-wheel tipping dump trailer for Lunar Terrain Vehicle-class rovers, the hauler in a dig-haul-dump cycle (loader bucket or drum excavator fills it, the rover tows it to the berm or pad, the bed tips to dump). A passive yaw-and-pitch hitch and drawbar pull an axle frame on two free-rolling 0.70 m spring-mesh wheels. The 1.6 x 1.4 m bed holds about 0.8 m3 (1.2 t of loose regolith) and tips up to 55 degrees about its rear hinge on an electric ram."
+    kind = "component"
+)
+{
+    float3[] extentsHint = [(-2.6582, -0.99520004, -0.60160005), (0.0306, 0.99480003, 0.5544), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-2.6582, -0.99520004, -0.60160005), (-0.14720717, 0.99480003, 0.4112)]
+    token[] semantics:labels:class = ["construction_tool", "trailer", "dump_trailer"]
+
+    def Scope "Geometry"
+    {
+        def Xform "base"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Xform "base__anodised_grey" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/base__anodised_grey>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "base__anodised_dark" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/base__anodised_dark>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "base__steel" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/base__steel>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "hitch_yaw"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.11999999731779099, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "hitch_yaw__steel" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/hitch_yaw__steel>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "hitch_pitch"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "hitch_pitch__steel" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/hitch_pitch__steel>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "hitch_pitch__anodised_grey" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/hitch_pitch__anodised_grey>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "hitch_pitch__white_panel" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/hitch_pitch__white_panel>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "hitch_pitch_frame_col" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/hitch_pitch_frame_col>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "bed"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (-2.4599999263882637, 0, -0.07000000029802322)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "bed__steel" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/bed__steel>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "bed__white_panel" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/bed__white_panel>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "bed__anodised_grey" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/bed__anodised_grey>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "bed__grating" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/bed__grating>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "bed_bed_col" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/bed_bed_col>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "bed_volume"
+                        {
+                            custom double site:bulk_density_kg_m3 = 1500
+                            custom double site:capacity_kg = 1200
+                            custom string site:description = "Bed load centroid (struck capacity)"
+                            custom token site:kind = "payload"
+                            custom double site:length_m = 1.6
+                            custom double site:volume_m3 = 0.8
+                            custom double site:width_m = 1.4
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0.7599999237060546, 0, 0.24000000029802324)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "dump_lip"
+                        {
+                            custom string site:description = "Rear dump lip (spoil leaves the bed here)"
+                            custom token site:kind = "reference"
+                            quatd xformOp:orient = (0.7071068286895752, 0, -0.7071067690849304, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (-0.04000007629394542, 0, 0.040000000298023225)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+                    }
+
+                    def Xform "trailer_l_wheel"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (-1.8300000503659248, 0.8500000238418579, -0.25)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "trailer_l_wheel__tyre_mesh" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/trailer_l_wheel__tyre_mesh>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "trailer_l_wheel__anodised_dark" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/trailer_l_wheel__anodised_dark>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "trailer_l_wheel__aluminium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/trailer_l_wheel__aluminium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "trailer_l_wheel_tyre_col" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/trailer_l_wheel_tyre_col>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+                    }
+
+                    def Xform "trailer_r_wheel"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (-1.8300000503659248, -0.8500000238418579, -0.25)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "trailer_r_wheel__tyre_mesh" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/trailer_r_wheel__tyre_mesh>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "trailer_r_wheel__anodised_dark" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/trailer_r_wheel__anodised_dark>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "trailer_r_wheel__aluminium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/trailer_r_wheel__aluminium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "trailer_r_wheel_tyre_col" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/trailer_r_wheel_tyre_col>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+                    }
+                }
+            }
+
+            def Xform "mount"
+            {
+                custom string site:description = "Quick-attach coupler: mates with a rover's tool_front or tool_rear site"
+                custom token site:kind = "mount"
+                quatd xformOp:orient = (0.7071068286895752, 0, 0.7071067690849304, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+    }
+
+    def Scope "Physics"
+    {
+    }
+
+    def Scope "Materials"
+    {
+    }
+
+    def Scope "VisualMaterials"
+    {
+    }
+}
+

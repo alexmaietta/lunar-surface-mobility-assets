@@ -1,0 +1,58 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "loader_bucket"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./physics.usda@
+    ]
+    upAxis = "Z"
+)
+
+over "loader_bucket"
+{
+    over "Physics"
+    {
+        over "loader_lift" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "loader_lift_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -60000, -6000, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 9000
+            uniform double mjc:forceRange:min = -9000
+            uniform double[] mjc:gainPrm = [60000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </loader_bucket/Physics/loader_lift>
+        }
+
+        over "bucket" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "bucket_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -30000, -3000, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 5000
+            uniform double mjc:forceRange:min = -5000
+            uniform double[] mjc:gainPrm = [30000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </loader_bucket/Physics/bucket>
+        }
+    }
+}
+

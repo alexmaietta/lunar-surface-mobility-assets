@@ -1,0 +1,41 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "ripper"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "ripper"
+{
+    over "Geometry"
+    {
+        over "base"
+        {
+            over "ripper_lift" (
+                delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "ripper_lift" (
+            active = false
+        )
+        {
+        }
+
+        over "ripper_lift_actuator" (
+            active = false
+        )
+        {
+        }
+    }
+}
+

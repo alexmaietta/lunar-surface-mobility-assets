@@ -1,0 +1,58 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "drum_excavator"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "drum_excavator"
+{
+    over "Geometry"
+    {
+        over "base"
+        {
+            over "drum_arm" (
+                delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                over "drums" (
+                    delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                }
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "drum_arm" (
+            active = false
+        )
+        {
+        }
+
+        over "drum_arm_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "drums" (
+            active = false
+        )
+        {
+        }
+
+        over "drums_actuator" (
+            active = false
+        )
+        {
+        }
+    }
+}
+

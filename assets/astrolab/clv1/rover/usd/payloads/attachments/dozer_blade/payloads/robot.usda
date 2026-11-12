@@ -1,0 +1,108 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "dozer_blade"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "dozer_blade" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    string isaac:description = "Power-angle-tilt dozer blade (concept rover attachment)"
+    token isaac:license = "Other"
+    string isaac:namespace = "dozer_blade"
+    prepend rel isaac:physics:robotJoints = [
+        </dozer_blade/Physics/blade_lift>,
+        </dozer_blade/Physics/blade_angle>,
+        </dozer_blade/Physics/blade_tilt>,
+    ]
+    prepend rel isaac:physics:robotLinks = [
+        </dozer_blade/Geometry/base>,
+        </dozer_blade/Geometry/base/mount>,
+        </dozer_blade/Geometry/base/blade_lift>,
+        </dozer_blade/Geometry/base/blade_lift/blade_angle>,
+        </dozer_blade/Geometry/base/blade_lift/blade_angle/blade_tilt>,
+        </dozer_blade/Geometry/base/blade_lift/blade_angle/blade_tilt/blade_edge>,
+        </dozer_blade/Geometry/base/blade_lift/blade_angle/blade_tilt/blade_top>,
+    ]
+    token isaac:robotType = "Manipulator"
+    string isaac:source = "lunar-surface-mobility-assets pipeline"
+    string isaac:version = "0.3.0"
+
+    over "Geometry"
+    {
+        over "base" (
+            prepend apiSchemas = ["IsaacLinkAPI"]
+        )
+        {
+            over "blade_lift" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "blade_angle" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "blade_tilt" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "blade_edge" (
+                            prepend apiSchemas = ["IsaacSiteAPI"]
+                        )
+                        {
+                            string isaac:Description = "Cutting edge centre (+Z = cutting direction); the moldboard spans width_m across it"
+                            uniform token isaac:forwardAxis = "Z"
+                        }
+
+                        over "blade_top" (
+                            prepend apiSchemas = ["IsaacSiteAPI"]
+                        )
+                        {
+                            string isaac:Description = "Top of the moldboard (spill-over height)"
+                            uniform token isaac:forwardAxis = "Z"
+                        }
+                    }
+                }
+            }
+
+            over "mount" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Quick-attach coupler: mates with a rover's tool_front or tool_rear site"
+                uniform token isaac:forwardAxis = "Z"
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "blade_lift" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "blade_angle" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "blade_tilt" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+    }
+}
+

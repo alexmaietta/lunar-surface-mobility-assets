@@ -1,0 +1,315 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "drum_excavator"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./robot.usda@
+    ]
+    upAxis = "Z"
+)
+
+def Xform "drum_excavator" (
+    prepend apiSchemas = ["IsaacRobotAPI", "GeomModelAPI", "SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @./drum_excavator.usda@
+        string name = "drum_excavator"
+        string version = "0.3.0"
+    }
+    doc = "Front bucket-drum excavator for Lunar Terrain Vehicle-class rovers, after NASA's RASSOR and IPEx drums and the drum-excavator attachments shown on Astrolab FLEX by Astroport and Interlune. A pitching arm on the quick-attach coupler carries a pair of 0.54 m diameter, 0.62 m wide hollow drums on one powered shaft. Staggered scoops fill the drums when they turn one way at a shallow cut, so excavation forces stay low for a light vehicle, and reversing the drums dumps the load (about 0.10 m3, 150 kg)."
+    kind = "component"
+)
+{
+    float3[] extentsHint = [(-0.0306, -0.8116001, -0.5522001), (1.2809533, 0.8112001, 0.23560616), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (0.0691728, -0.752, -0.52840006), (1.2584001, 0.7512, 0.09497617)]
+    token[] semantics:labels:class = ["construction_tool", "excavator", "bucket_drum"]
+
+    def Scope "Geometry"
+    {
+        def Xform "base"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Xform "base__anodised_grey" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/base__anodised_grey>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "base__anodised_dark" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/base__anodised_dark>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "base__steel" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/base__steel>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "base__white_panel" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/base__white_panel>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "drum_arm"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.10000000149011612, 0, 0.05000000074505806)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "drum_arm__anodised_dark" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/drum_arm__anodised_dark>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "drum_arm__white_panel" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/drum_arm__white_panel>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "drum_arm__steel" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/drum_arm__steel>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "drum_arm_arm_col" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/drum_arm_arm_col>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "drums"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0.8800000175833702, 0, -0.30000000074505806)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "drums__white_panel" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/drums__white_panel>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "drums__wear_steel" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/drums__wear_steel>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "drums__anodised_grey" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/drums__anodised_grey>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "drums__steel" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/drums__steel>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "drums__anodised_dark" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/drums__anodised_dark>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "drums_drum_000_col" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/drums_drum_000_col>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "drums_drum_001_col" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/drums_drum_001_col>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "drums_drum_002_col" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/drums_drum_002_col>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "drums_drum_003_col" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/drums_drum_003_col>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "drums_drum_004_col" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/drums_drum_004_col>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "drums_drum_005_col" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/drums_drum_005_col>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "drum_volume"
+                    {
+                        custom double site:bulk_density_kg_m3 = 1500
+                        custom double site:capacity_kg = 150
+                        custom string site:description = "Drum pair regolith store"
+                        custom token site:kind = "payload"
+                        custom double site:volume_m3 = 0.1
+                        quatd xformOp:orient = (0.7071068286895752, -0.7071067690849304, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (-1.907348634588857e-8, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+                }
+
+                def Xform "drum_cut"
+                {
+                    custom double site:bulk_density_kg_m3 = 1500
+                    custom double site:capacity_m3 = 0.1
+                    custom string site:description = "Lowest scoop lip of the drum pair (cutting line when digging, +Z = cutting direction)"
+                    custom token site:kind = "tool_edge"
+                    custom double site:radius_m = 0.27
+                    custom string site:tool = "drum"
+                    custom double site:width_m = 1.32
+                    quatd xformOp:orient = (0.7071068286895752, 0, 0.7071067690849304, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0.8799999985098839, 0, -0.5700000007450581)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "mount"
+            {
+                custom string site:description = "Quick-attach coupler: mates with a rover's tool_front or tool_rear site"
+                custom token site:kind = "mount"
+                quatd xformOp:orient = (0.7071068286895752, 0, -0.7071067690849304, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+    }
+
+    def Scope "Physics"
+    {
+    }
+
+    def Scope "Materials"
+    {
+    }
+
+    def Scope "VisualMaterials"
+    {
+    }
+}
+

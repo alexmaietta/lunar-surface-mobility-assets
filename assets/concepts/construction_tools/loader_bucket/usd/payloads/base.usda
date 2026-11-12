@@ -1,0 +1,238 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "loader_bucket"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./robot.usda@
+    ]
+    upAxis = "Z"
+)
+
+def Xform "loader_bucket" (
+    prepend apiSchemas = ["IsaacRobotAPI", "GeomModelAPI", "SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @./loader_bucket.usda@
+        string name = "loader_bucket"
+        string version = "0.3.0"
+    }
+    doc = "Front loader for Lunar Terrain Vehicle-class rovers: two lift arms on the quick-attach coupler raise a 1.6 m general-purpose bucket (about 0.18 m3 struck, roughly 270 kg of loose regolith) high enough to dump into the dump trailer, and a curl joint rolls the bucket back to carry or forward to dump. Sized so a 1 t rover stays stable in lunar gravity with a full bucket."
+    kind = "component"
+)
+{
+    float3[] extentsHint = [(-0.0306, -0.8168, -0.538), (1.512, 0.8164, 0.2824), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (0.04737583, -0.8168, -0.538), (1.512, 0.8164, 0.26995498)]
+    token[] semantics:labels:class = ["construction_tool", "loader_bucket"]
+
+    def Scope "Geometry"
+    {
+        def Xform "base"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Xform "base__anodised_grey" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/base__anodised_grey>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "base__anodised_dark" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/base__anodised_dark>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "base__white_panel" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/base__white_panel>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "base__steel" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/base__steel>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "loader_lift"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.07999999821186066, 0, 0.2199999988079071)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "loader_lift__white_panel" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/loader_lift__white_panel>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "loader_lift__steel" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/loader_lift__steel>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "loader_lift_arms_col" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/loader_lift_arms_col>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "bucket"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0.830000028014183, 0, -0.5800000429153442)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "bucket__wear_steel" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/bucket__wear_steel>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "bucket__steel" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/bucket__steel>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "bucket__grating" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/bucket__grating>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "bucket__white_panel" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/bucket__white_panel>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "bucket_bucket_col" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/bucket_bucket_col>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "bucket_edge"
+                    {
+                        custom double site:bulk_density_kg_m3 = 1500
+                        custom double site:capacity_m3 = 0.18
+                        custom string site:description = "Bucket cutting edge centre (+Z = cutting direction)"
+                        custom double site:height_m = 0.52
+                        custom token site:kind = "tool_edge"
+                        custom string site:tool = "bucket"
+                        custom double site:width_m = 1.6
+                        quatd xformOp:orient = (0.7071068286895752, 0, 0.7071067690849304, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0.5899999737739563, 0, -0.15999995589256288)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "bucket_volume"
+                    {
+                        custom double site:bulk_density_kg_m3 = 1500
+                        custom double site:capacity_kg = 270
+                        custom string site:description = "Bucket load centroid (struck capacity)"
+                        custom token site:kind = "payload"
+                        custom double site:volume_m3 = 0.18
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0.26999997377395624, 0, 0.04000004410743713)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+                }
+            }
+
+            def Xform "mount"
+            {
+                custom string site:description = "Quick-attach coupler: mates with a rover's tool_front or tool_rear site"
+                custom token site:kind = "mount"
+                quatd xformOp:orient = (0.7071068286895752, 0, -0.7071067690849304, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+    }
+
+    def Scope "Physics"
+    {
+    }
+
+    def Scope "Materials"
+    {
+    }
+
+    def Scope "VisualMaterials"
+    {
+    }
+}
+

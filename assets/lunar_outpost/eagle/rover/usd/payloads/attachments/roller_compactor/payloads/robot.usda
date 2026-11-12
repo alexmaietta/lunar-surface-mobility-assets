@@ -1,0 +1,109 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "roller_compactor"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "roller_compactor" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    string isaac:description = "Towed vibratory roller compactor (concept rover attachment)"
+    token isaac:license = "Other"
+    string isaac:namespace = "roller_compactor"
+    prepend rel isaac:physics:robotJoints = [
+        </roller_compactor/Physics/hitch_yaw>,
+        </roller_compactor/Physics/hitch_pitch>,
+        </roller_compactor/Physics/roller>,
+    ]
+    prepend rel isaac:physics:robotLinks = [
+        </roller_compactor/Geometry/base>,
+        </roller_compactor/Geometry/base/mount>,
+        </roller_compactor/Geometry/base/hitch_yaw>,
+        </roller_compactor/Geometry/base/hitch_yaw/hitch_pitch>,
+        </roller_compactor/Geometry/base/hitch_yaw/hitch_pitch/roller_contact>,
+        </roller_compactor/Geometry/base/hitch_yaw/hitch_pitch/ballast_hopper>,
+        </roller_compactor/Geometry/base/hitch_yaw/hitch_pitch/roller>,
+    ]
+    token isaac:robotType = "Manipulator"
+    string isaac:source = "lunar-surface-mobility-assets pipeline"
+    string isaac:version = "0.3.0"
+
+    over "Geometry"
+    {
+        over "base" (
+            prepend apiSchemas = ["IsaacLinkAPI"]
+        )
+        {
+            over "hitch_yaw" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "hitch_pitch" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "roller" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                    }
+
+                    over "roller_contact" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "Drum contact line centre (+Z = into the ground); compacts width_m per pass"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+
+                    over "ballast_hopper" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "Regolith ballast hopper (fill to add drum load)"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+                }
+            }
+
+            over "mount" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Quick-attach coupler: mates with a rover's tool_front or tool_rear site"
+                uniform token isaac:forwardAxis = "Z"
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "hitch_yaw" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "hitch_pitch" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "roller" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+    }
+}
+

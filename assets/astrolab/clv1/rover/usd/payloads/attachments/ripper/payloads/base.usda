@@ -1,0 +1,208 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "ripper"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./robot.usda@
+    ]
+    upAxis = "Z"
+)
+
+def Xform "ripper" (
+    prepend apiSchemas = ["IsaacRobotAPI", "GeomModelAPI", "SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @./ripper.usda@
+        string name = "ripper"
+        string version = "0.3.0"
+    }
+    doc = "Rear-mounted ripper for Lunar Terrain Vehicle-class rovers. Lunar regolith densifies quickly below the loose top few centimetres (about 1.3 g/cm3 at the surface to 1.85 g/cm3 by 30-60 cm), so a ripper loosens the dense layer before a blade, bucket or drum digs it. Three curved steel shanks with replaceable tips hang from a toolbar on a lifting frame and reach about 0.35 m below grade at full depth."
+    kind = "component"
+)
+{
+    float3[] extentsHint = [(-1.0216054, -0.8536, -0.52243793), (0.0306, 0.8536, 0.22127888), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-1.0216054, -0.8536, -0.52243793), (-0.0688, 0.8536, 0.1017751)]
+    token[] semantics:labels:class = ["construction_tool", "ripper"]
+
+    def Scope "Geometry"
+    {
+        def Xform "base"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Xform "base__anodised_grey" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/base__anodised_grey>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "base__white_panel" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/base__white_panel>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "base__anodised_dark" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/base__anodised_dark>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "base__steel" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/base__steel>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "ripper_lift"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.10000000149011612, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "ripper_lift__white_panel" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/ripper_lift__white_panel>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "ripper_lift__steel" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/ripper_lift__steel>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "ripper_lift__wear_steel" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/ripper_lift__wear_steel>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "ripper_lift__anodised_grey" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/ripper_lift__anodised_grey>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "ripper_lift_ripper_col" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/ripper_lift_ripper_col>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "shank_0_tip"
+                {
+                    custom string site:description = "Ripper tip (+Z = towing direction); loosens a narrow strip of dense regolith"
+                    custom token site:kind = "tool_edge"
+                    custom double site:loosen_width_m = 0.35
+                    custom string site:tool = "ripper"
+                    custom double site:width_m = 0.06
+                    quatd xformOp:orient = (0.7071068286895752, 0, 0.7071067690849304, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-0.8599999985098838, -0.6, -0.48000000000000004)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "shank_1_tip"
+                {
+                    custom string site:description = "Ripper tip (+Z = towing direction); loosens a narrow strip of dense regolith"
+                    custom token site:kind = "tool_edge"
+                    custom double site:loosen_width_m = 0.35
+                    custom string site:tool = "ripper"
+                    custom double site:width_m = 0.06
+                    quatd xformOp:orient = (0.7071068286895752, 0, 0.7071067690849304, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-0.8599999985098838, 0, -0.48000000000000004)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "shank_2_tip"
+                {
+                    custom string site:description = "Ripper tip (+Z = towing direction); loosens a narrow strip of dense regolith"
+                    custom token site:kind = "tool_edge"
+                    custom double site:loosen_width_m = 0.35
+                    custom string site:tool = "ripper"
+                    custom double site:width_m = 0.06
+                    quatd xformOp:orient = (0.7071068286895752, 0, 0.7071067690849304, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-0.8599999985098838, 0.6, -0.48000000000000004)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "mount"
+            {
+                custom string site:description = "Quick-attach coupler: mates with a rover's tool_front or tool_rear site"
+                custom token site:kind = "mount"
+                quatd xformOp:orient = (0.7071068286895752, 0, 0.7071067690849304, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+    }
+
+    def Scope "Physics"
+    {
+    }
+
+    def Scope "Materials"
+    {
+    }
+
+    def Scope "VisualMaterials"
+    {
+    }
+}
+

@@ -1,0 +1,76 @@
+<?xml version="1.0" ?>
+<robot name="loader_bucket">
+  <link name="base_link"/>
+  <joint name="base_link_to_base" type="fixed">
+    <parent link="base_link"/>
+    <child link="base"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="base">
+    <inertial>
+      <origin xyz="0.149054 -0.000400007 0.0631211" rpy="0 0 0"/>
+      <mass value="20"/>
+      <inertia ixx="1.16179" ixy="0" ixz="0" iyy="0.535725" iyz="0" izz="1.05641"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/base.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="loader_lift">
+    <inertial>
+      <origin xyz="0.418637 0 -0.284016" rpy="0 0 0"/>
+      <mass value="45"/>
+      <inertia ixx="6.46482" ixy="0" ixz="0" iyy="4.7276" iyz="0" izz="7.84631"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/loader_lift.obj"/>
+      </geometry>
+    </visual>
+    <collision name="loader_lift_arms_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/loader_lift_arms_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="loader_lift" type="revolute">
+    <parent link="base"/>
+    <child link="loader_lift"/>
+    <origin xyz="0.08 0 0.22" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+    <limit effort="9000" velocity="6.28319" lower="-0.15" upper="1.15"/>
+    <dynamics damping="6000" friction="0"/>
+  </joint>
+  <link name="bucket">
+    <inertial>
+      <origin xyz="0.210264 -0.000200003 0.1536" rpy="0 0 0"/>
+      <mass value="55"/>
+      <inertia ixx="14.2412" ixy="0" ixz="0" iyy="4.82928" iyz="0" izz="15.0387"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/bucket.obj"/>
+      </geometry>
+    </visual>
+    <collision name="bucket_bucket_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/bucket_bucket_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="bucket" type="revolute">
+    <parent link="loader_lift"/>
+    <child link="bucket"/>
+    <origin xyz="0.83 0 -0.58" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+    <limit effort="5000" velocity="6.28319" lower="-1" upper="0.85"/>
+    <dynamics damping="3000" friction="0"/>
+  </joint>
+</robot>

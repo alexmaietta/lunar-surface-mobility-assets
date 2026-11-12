@@ -1,0 +1,54 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "ltv_concept"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "ltv_concept"
+{
+    def "Geometry"
+    {
+        def "chassis"
+        {
+            def Xform "ripper" (
+                delete apiSchemas = ["IsaacRobotAPI"]
+                kind = "subcomponent"
+                prepend references = @../attachments/ripper/ripper.usda@
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.98, 0, 0.6)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                over "Geometry"
+                {
+                    over "base" (
+                        delete apiSchemas = ["PhysicsArticulationRootAPI", "NewtonArticulationRootAPI", "PhysxArticulationAPI"]
+                    )
+                    {
+                    }
+                }
+            }
+        }
+    }
+
+    def "Physics"
+    {
+        def PhysicsFixedJoint "ripper_mount"
+        {
+            rel physics:body0 = </ltv_concept/Geometry/chassis>
+            rel physics:body1 = </ltv_concept/Geometry/chassis/ripper/Geometry/base>
+            point3f physics:localPos0 = (-1.98, 0, 0.6)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+    }
+}
+

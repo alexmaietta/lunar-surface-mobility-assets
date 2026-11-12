@@ -1,0 +1,54 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "eagle"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "eagle"
+{
+    def "Geometry"
+    {
+        def "chassis"
+        {
+            def Xform "loader_bucket" (
+                delete apiSchemas = ["IsaacRobotAPI"]
+                kind = "subcomponent"
+                prepend references = @../attachments/loader_bucket/loader_bucket.usda@
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (2.02, 0, 0.6)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                over "Geometry"
+                {
+                    over "base" (
+                        delete apiSchemas = ["PhysicsArticulationRootAPI", "NewtonArticulationRootAPI", "PhysxArticulationAPI"]
+                    )
+                    {
+                    }
+                }
+            }
+        }
+    }
+
+    def "Physics"
+    {
+        def PhysicsFixedJoint "loader_bucket_mount"
+        {
+            rel physics:body0 = </eagle/Geometry/chassis>
+            rel physics:body1 = </eagle/Geometry/chassis/loader_bucket/Geometry/base>
+            point3f physics:localPos0 = (2.02, 0, 0.6)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+    }
+}
+

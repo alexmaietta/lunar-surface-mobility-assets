@@ -1,0 +1,106 @@
+<?xml version="1.0" ?>
+<robot name="drum_excavator">
+  <link name="base_link"/>
+  <joint name="base_link_to_base" type="fixed">
+    <parent link="base_link"/>
+    <child link="base"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="base">
+    <inertial>
+      <origin xyz="0.161717 -0.000399992 0.0424031" rpy="0 0 0"/>
+      <mass value="15"/>
+      <inertia ixx="1.37895" ixy="0" ixz="0" iyy="0.371566" iyz="0" izz="1.37724"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/base.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="drum_arm">
+    <inertial>
+      <origin xyz="0.471 -0.000200003 -0.173312" rpy="0 0 0"/>
+      <mass value="35"/>
+      <inertia ixx="8.2369" ixy="0" ixz="0" iyy="3.51238" iyz="0" izz="10.6375"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/drum_arm.obj"/>
+      </geometry>
+    </visual>
+    <collision name="drum_arm_arm_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/drum_arm_arm_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="drum_arm" type="revolute">
+    <parent link="base"/>
+    <child link="drum_arm"/>
+    <origin xyz="0.1 0 0.05" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+    <limit effort="6000" velocity="6.28319" lower="-0.45" upper="0.85"/>
+    <dynamics damping="4000" friction="0"/>
+  </joint>
+  <link name="drums">
+    <inertial>
+      <origin xyz="-0.000223398 0 -2.34097e-05" rpy="0 0 0"/>
+      <mass value="45"/>
+      <inertia ixx="8.5942" ixy="0" ixz="0" iyy="2.73027" iyz="0" izz="8.58515"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/drums.obj"/>
+      </geometry>
+    </visual>
+    <collision name="drums_drum_000_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/drums_drum_000_col.obj"/>
+      </geometry>
+    </collision>
+    <collision name="drums_drum_001_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/drums_drum_001_col.obj"/>
+      </geometry>
+    </collision>
+    <collision name="drums_drum_002_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/drums_drum_002_col.obj"/>
+      </geometry>
+    </collision>
+    <collision name="drums_drum_003_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/drums_drum_003_col.obj"/>
+      </geometry>
+    </collision>
+    <collision name="drums_drum_004_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/drums_drum_004_col.obj"/>
+      </geometry>
+    </collision>
+    <collision name="drums_drum_005_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/drums_drum_005_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="drums" type="continuous">
+    <parent link="drum_arm"/>
+    <child link="drums"/>
+    <origin xyz="0.88 0 -0.3" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="900" velocity="6.28319"/>
+    <dynamics damping="400" friction="0"/>
+  </joint>
+</robot>

@@ -1,0 +1,54 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "clv1"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "clv1"
+{
+    def "Geometry"
+    {
+        def "chassis"
+        {
+            def Xform "ripper" (
+                delete apiSchemas = ["IsaacRobotAPI"]
+                kind = "subcomponent"
+                prepend references = @../attachments/ripper/ripper.usda@
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.66, 0, 0.62)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                over "Geometry"
+                {
+                    over "base" (
+                        delete apiSchemas = ["PhysicsArticulationRootAPI", "NewtonArticulationRootAPI", "PhysxArticulationAPI"]
+                    )
+                    {
+                    }
+                }
+            }
+        }
+    }
+
+    def "Physics"
+    {
+        def PhysicsFixedJoint "ripper_mount"
+        {
+            rel physics:body0 = </clv1/Geometry/chassis>
+            rel physics:body1 = </clv1/Geometry/chassis/ripper/Geometry/base>
+            point3f physics:localPos0 = (-1.66, 0, 0.62)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+    }
+}
+

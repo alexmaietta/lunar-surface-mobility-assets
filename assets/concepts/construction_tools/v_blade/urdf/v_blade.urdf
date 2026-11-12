@@ -1,0 +1,103 @@
+<?xml version="1.0" ?>
+<robot name="v_blade">
+  <link name="base_link"/>
+  <joint name="base_link_to_base" type="fixed">
+    <parent link="base_link"/>
+    <child link="base"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="base">
+    <inertial>
+      <origin xyz="0.143327 0 0.0234053" rpy="0 0 0"/>
+      <mass value="15"/>
+      <inertia ixx="0.888749" ixy="0" ixz="0" iyy="0.305791" iyz="0" izz="0.885464"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/base.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="blade_lift">
+    <inertial>
+      <origin xyz="0.4708 -0.000200003 -0.1754" rpy="0 0 0"/>
+      <mass value="45"/>
+      <inertia ixx="5.61437" ixy="0" ixz="0" iyy="5.8048" iyz="0" izz="7.36969"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/blade_lift.obj"/>
+      </geometry>
+    </visual>
+    <collision name="blade_lift_push_frame_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/blade_lift_push_frame_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="blade_lift" type="revolute">
+    <parent link="base"/>
+    <child link="blade_lift"/>
+    <origin xyz="0.1 0 0" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+    <limit effort="6000" velocity="6.28319" lower="-0.3" upper="0.45"/>
+    <dynamics damping="4000" friction="0"/>
+  </joint>
+  <link name="wing_l">
+    <inertial>
+      <origin xyz="-0.363336 0.689327 0.0702844" rpy="0 0 0"/>
+      <mass value="40"/>
+      <inertia ixx="8.06665" ixy="0" ixz="0" iyy="3.47125" iyz="0" izz="8.838"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/wing_l.obj"/>
+      </geometry>
+    </visual>
+    <collision name="wing_l_wing_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/wing_l_wing_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wing_l" type="revolute">
+    <parent link="blade_lift"/>
+    <child link="wing_l"/>
+    <origin xyz="0.88 0 -0.28" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="3000" velocity="6.28319" lower="-0.872665" upper="0.174533"/>
+    <dynamics damping="2000" friction="0"/>
+  </joint>
+  <link name="wing_r">
+    <inertial>
+      <origin xyz="-0.363336 -0.686727 0.0702844" rpy="0 0 0"/>
+      <mass value="40"/>
+      <inertia ixx="8.02847" ixy="0" ixz="0" iyy="3.47891" iyz="0" izz="8.80068"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/wing_r.obj"/>
+      </geometry>
+    </visual>
+    <collision name="wing_r_wing_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/wing_r_wing_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wing_r" type="revolute">
+    <parent link="blade_lift"/>
+    <child link="wing_r"/>
+    <origin xyz="0.88 0 -0.28" rpy="0 0 0"/>
+    <axis xyz="0 0 -1"/>
+    <limit effort="3000" velocity="6.28319" lower="-0.872665" upper="0.174533"/>
+    <dynamics damping="2000" friction="0"/>
+  </joint>
+</robot>

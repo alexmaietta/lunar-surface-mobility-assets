@@ -1,0 +1,69 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "rock_rake"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "rock_rake" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    string isaac:description = "Rock rake (concept rover attachment)"
+    token isaac:license = "Other"
+    string isaac:namespace = "rock_rake"
+    prepend rel isaac:physics:robotJoints = </rock_rake/Physics/rake_lift>
+    prepend rel isaac:physics:robotLinks = [
+        </rock_rake/Geometry/base>,
+        </rock_rake/Geometry/base/mount>,
+        </rock_rake/Geometry/base/rake_lift>,
+        </rock_rake/Geometry/base/rake_lift/rake_edge>,
+    ]
+    token isaac:robotType = "Manipulator"
+    string isaac:source = "lunar-surface-mobility-assets pipeline"
+    string isaac:version = "0.3.0"
+
+    over "Geometry"
+    {
+        over "base" (
+            prepend apiSchemas = ["IsaacLinkAPI"]
+        )
+        {
+            over "rake_lift" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "rake_edge" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Tine tip line centre (+Z = raking direction); fines pass between tines, rocks are carried"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "mount" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Quick-attach coupler: mates with a rover's tool_front or tool_rear site"
+                uniform token isaac:forwardAxis = "Z"
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "rake_lift" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+    }
+}
+

@@ -1,0 +1,58 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "loader_bucket"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "loader_bucket"
+{
+    over "Geometry"
+    {
+        over "base"
+        {
+            over "loader_lift" (
+                delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                over "bucket" (
+                    delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                }
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "loader_lift" (
+            active = false
+        )
+        {
+        }
+
+        over "loader_lift_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "bucket" (
+            active = false
+        )
+        {
+        }
+
+        over "bucket_actuator" (
+            active = false
+        )
+        {
+        }
+    }
+}
+

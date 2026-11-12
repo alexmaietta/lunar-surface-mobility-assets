@@ -1,0 +1,97 @@
+<?xml version="1.0" ?>
+<robot name="roller_compactor">
+  <link name="base_link"/>
+  <joint name="base_link_to_base" type="fixed">
+    <parent link="base_link"/>
+    <child link="base"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="base">
+    <inertial>
+      <origin xyz="-0.0455 0 0.0012" rpy="0 0 0"/>
+      <mass value="10"/>
+      <inertia ixx="0.218053" ixy="0" ixz="0" iyy="0.0991808" iyz="0" izz="0.157481"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/base.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="hitch_yaw">
+    <inertial>
+      <origin xyz="1.86265e-09 0 0" rpy="0 0 0"/>
+      <mass value="4"/>
+      <inertia ixx="0.00985771" ixy="0" ixz="0" iyy="0.00985771" iyz="0" izz="0.00985771"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/hitch_yaw.obj"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="hitch_yaw" type="revolute">
+    <parent link="base"/>
+    <child link="hitch_yaw"/>
+    <origin xyz="-0.12 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="1000" velocity="6.28319" lower="-1.309" upper="1.309"/>
+    <dynamics damping="5" friction="0"/>
+  </joint>
+  <link name="hitch_pitch">
+    <inertial>
+      <origin xyz="-0.9516 -0.1 -0.0079" rpy="0 0 0"/>
+      <mass value="80"/>
+      <inertia ixx="38.2086" ixy="0" ixz="0" iyy="29.8262" iyz="0" izz="58.8539"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/hitch_pitch.obj"/>
+      </geometry>
+    </visual>
+    <collision name="hitch_pitch_yoke_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/hitch_pitch_yoke_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="hitch_pitch" type="revolute">
+    <parent link="hitch_yaw"/>
+    <child link="hitch_pitch"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="1000" velocity="6.28319" lower="-0.523599" upper="0.523599"/>
+    <dynamics damping="5" friction="0"/>
+  </joint>
+  <link name="roller">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="120"/>
+      <inertia ixx="41.6001" ixy="0" ixz="0" iyy="8.73313" iyz="0" izz="41.6001"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/visual/roller.obj"/>
+      </geometry>
+    </visual>
+    <collision name="roller_drum_col">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/roller_drum_col.obj"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="roller" type="continuous">
+    <parent link="hitch_pitch"/>
+    <child link="roller"/>
+    <origin xyz="-1.43 0 -0.27" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="1000" velocity="6.28319"/>
+    <dynamics damping="2" friction="0"/>
+  </joint>
+</robot>
