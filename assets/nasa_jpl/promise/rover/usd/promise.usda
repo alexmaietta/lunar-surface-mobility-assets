@@ -1,0 +1,129 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary SimReady_Metadata = {
+            float3 asset_extents = (2.9848614, 2.7754002, 2.1681755)
+            string asset_license = "CC0-1.0"
+            string asset_name = "promise"
+            string asset_type = "robot"
+            string asset_version = "0.3.0"
+            string category = "spacecraft"
+            double mass = 1000
+            int rigid_body_count = 27
+            string source_file = "build/promise/promise.blend (scripts/build.py)"
+            string usd_date_generated = "2026-11-14"
+            string usd_version = "0.26.8"
+        }
+        string asset_name = "promise"
+        string asset_type = "robot"
+        string asset_version = "0.3.0"
+        string creator = "lunar-surface-mobility-assets pipeline"
+        string usd_date_generated = "2026-11-14"
+    }
+    defaultPrim = "promise"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "promise" (
+    prepend references = @./payloads/base.usda@
+    variants = {
+        string Articulation = "articulated"
+        string Fidelity = "full"
+        string LightModel = "spectral"
+        string Lights = "on"
+        string Payload = "roving"
+        string Physics = "physx"
+    }
+    prepend variantSets = ["Articulation", "Payload", "Lights", "LightModel", "Fidelity", "Physics"]
+)
+{
+    variantSet "Articulation" = {
+        "articulated" (
+            prepend payload = @./payloads/Articulation/articulated.usda@
+        ) {
+
+        }
+        "rigid" (
+            prepend payload = @./payloads/Articulation/rigid.usda@
+        ) {
+
+        }
+    }
+    variantSet "Payload" = {
+        "none" {
+
+        }
+        "roving" (
+            prepend payload = @./payloads/Propellant/roving.usda@
+        ) {
+
+        }
+    }
+    variantSet "Lights" = {
+        "off" (
+            prepend payload = @./payloads/Lights/off.usda@
+        ) {
+
+        }
+        "on" (
+            prepend payload = @./payloads/Lights/on.usda@
+        ) {
+
+        }
+    }
+    variantSet "LightModel" = {
+        "rgb" (
+            prepend payload = @./payloads/LightModel/rgb.usda@
+        ) {
+
+        }
+        "spectral" (
+            prepend payload = @./payloads/LightModel/spectral.usda@
+        ) {
+
+        }
+    }
+    variantSet "Fidelity" = {
+        "full" (
+            prepend payload = @./payloads/Fidelity/full.usda@
+        ) {
+
+        }
+        "none" {
+
+        }
+        "proxy" (
+            prepend payload = @./payloads/Fidelity/proxy.usd@
+        ) {
+
+        }
+        "simple" (
+            prepend payload = @./payloads/Fidelity/simple.usd@
+        ) {
+
+        }
+    }
+    variantSet "Physics" = {
+        "mujoco" (
+            prepend payload = @./payloads/Physics/mujoco.usda@
+        ) {
+
+        }
+        "none" {
+
+        }
+        "physics" (
+            prepend payload = @./payloads/Physics/physics.usda@
+        ) {
+
+        }
+        "physx" (
+            prepend payload = @./payloads/Physics/physx.usda@
+        ) {
+
+        }
+    }
+}
+

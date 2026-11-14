@@ -1,0 +1,406 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "promise"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./physics.usda@
+    ]
+    upAxis = "Z"
+)
+
+over "promise"
+{
+    over "Physics"
+    {
+        over "diff_bar" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        over "hga_azimuth" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "hga_azimuth_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -40, -4, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 30
+            uniform double mjc:forceRange:min = -30
+            uniform double[] mjc:gainPrm = [40, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </promise/Physics/hga_azimuth>
+        }
+
+        over "hga_elevation" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "hga_elevation_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -40, -4, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 30
+            uniform double mjc:forceRange:min = -30
+            uniform double[] mjc:gainPrm = [40, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </promise/Physics/hga_elevation>
+        }
+
+        over "rocker_l" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        over "bogie_l" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        over "ml_wheel" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "ml_wheel_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -1000, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 81.24999999999999
+            uniform double mjc:forceRange:min = -81.24999999999999
+            uniform double[] mjc:gainPrm = [1000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </promise/Physics/ml_wheel>
+        }
+
+        over "rl_steer" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "rl_steer_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -6666.666666666667, -666.6666666666666, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 500
+            uniform double mjc:forceRange:min = -500
+            uniform double[] mjc:gainPrm = [6666.666666666667, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </promise/Physics/rl_steer>
+        }
+
+        over "rl_wheel" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "rl_wheel_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -1000, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 81.24999999999999
+            uniform double mjc:forceRange:min = -81.24999999999999
+            uniform double[] mjc:gainPrm = [1000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </promise/Physics/rl_wheel>
+        }
+
+        over "diff_rod_l_yaw" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        over "diff_rod_l" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        over "fl_steer" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "fl_steer_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -6666.666666666667, -666.6666666666666, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 500
+            uniform double mjc:forceRange:min = -500
+            uniform double[] mjc:gainPrm = [6666.666666666667, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </promise/Physics/fl_steer>
+        }
+
+        over "fl_wheel" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "fl_wheel_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -1000, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 81.24999999999999
+            uniform double mjc:forceRange:min = -81.24999999999999
+            uniform double[] mjc:gainPrm = [1000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </promise/Physics/fl_wheel>
+        }
+
+        over "rocker_r" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        over "bogie_r" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        over "mr_wheel" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "mr_wheel_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -1000, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 81.24999999999999
+            uniform double mjc:forceRange:min = -81.24999999999999
+            uniform double[] mjc:gainPrm = [1000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </promise/Physics/mr_wheel>
+        }
+
+        over "rr_steer" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "rr_steer_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -6666.666666666667, -666.6666666666666, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 500
+            uniform double mjc:forceRange:min = -500
+            uniform double[] mjc:gainPrm = [6666.666666666667, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </promise/Physics/rr_steer>
+        }
+
+        over "rr_wheel" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "rr_wheel_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -1000, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 81.24999999999999
+            uniform double mjc:forceRange:min = -81.24999999999999
+            uniform double[] mjc:gainPrm = [1000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </promise/Physics/rr_wheel>
+        }
+
+        over "diff_rod_r_yaw" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        over "diff_rod_r" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular", "MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        over "fr_steer" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "fr_steer_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -6666.666666666667, -666.6666666666666, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 500
+            uniform double mjc:forceRange:min = -500
+            uniform double[] mjc:gainPrm = [6666.666666666667, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </promise/Physics/fr_steer>
+        }
+
+        over "fr_wheel" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "fr_wheel_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -1000, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 81.24999999999999
+            uniform double mjc:forceRange:min = -81.24999999999999
+            uniform double[] mjc:gainPrm = [1000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </promise/Physics/fr_wheel>
+        }
+
+        over "rsm_pan" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "rsm_pan_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -30, -3, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 20
+            uniform double mjc:forceRange:min = -20
+            uniform double[] mjc:gainPrm = [30, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </promise/Physics/rsm_pan>
+        }
+
+        over "rsm_tilt" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "rsm_tilt_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -30, -3, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 20
+            uniform double mjc:forceRange:min = -20
+            uniform double[] mjc:gainPrm = [30, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </promise/Physics/rsm_tilt>
+        }
+
+        over "trident_deploy" (
+            delete apiSchemas = ["PhysicsDriveAPI:linear", "PhysicsJointStateAPI:linear"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "trident_deploy_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -4000, -400, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 800
+            uniform double mjc:forceRange:min = -800
+            uniform double[] mjc:gainPrm = [4000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </promise/Physics/trident_deploy>
+        }
+
+        over "trident_feed" (
+            delete apiSchemas = ["PhysicsDriveAPI:linear", "PhysicsJointStateAPI:linear"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "trident_feed_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -3000, -300, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 500
+            uniform double mjc:forceRange:min = -500
+            uniform double[] mjc:gainPrm = [3000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </promise/Physics/trident_feed>
+        }
+
+        over "trident_auger" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "trident_auger_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -20, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 60
+            uniform double mjc:forceRange:min = -60
+            uniform double[] mjc:gainPrm = [20, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </promise/Physics/trident_auger>
+        }
+    }
+}
+

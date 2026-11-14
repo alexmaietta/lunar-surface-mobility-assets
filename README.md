@@ -30,6 +30,7 @@ Each one is built procedurally in Blender from public references and gets genera
 | NASA | [VIPER](assets/nasa/viper/rover) | [`viper`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/viper-usd.zip) |
 | NASA | [IPEx](assets/nasa/ipex/rover) regolith excavator (TRL 5/6) | [`ipex`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/ipex-usd.zip) |
 | NASA / JPL | [CADRE](assets/nasa_jpl/cadre/rover) rover (IM-3) | [`cadre`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/cadre-usd.zip) |
+| NASA / JPL | [PROMISE](assets/nasa_jpl/promise/rover) nuclear rover on Curiosity's rocker-bogie (2026 announcement) | [`promise`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/promise-usd.zip) |
 | Astrolab | [FLEX](assets/astrolab/flex/rover) prototype | [`flex`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/flex-usd.zip) |
 | Astrolab | [CLV-1](assets/astrolab/clv1/rover) LTV (NASA task order 2026) | [`clv1`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/clv1-usd.zip) |
 | Astrolab | [FLIP](assets/astrolab/flip/rover) (Griffin-1) | [`flip`](https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/flip-usd.zip) |
@@ -105,6 +106,7 @@ git lfs pull
 | ![Lunar Outpost MAPP front three-quarter](docs/images/lunar_outpost/mapp/rover/front_three_quarter.jpg) | ![Lunar Outpost MAPP rear three-quarter](docs/images/lunar_outpost/mapp/rover/rear_three_quarter.jpg) | ![Lunar Outpost MAPP at night](docs/images/lunar_outpost/mapp/rover/night.jpg) |
 | ![NASA IPEx front three-quarter](docs/images/nasa/ipex/rover/front_three_quarter.jpg) | ![NASA IPEx rear three-quarter](docs/images/nasa/ipex/rover/rear_three_quarter.jpg) | ![NASA IPEx at night](docs/images/nasa/ipex/rover/night.jpg) |
 | ![NASA JPL CADRE front three-quarter](docs/images/nasa_jpl/cadre/rover/front_three_quarter.jpg) | ![NASA JPL CADRE rear three-quarter](docs/images/nasa_jpl/cadre/rover/rear_three_quarter.jpg) | ![NASA JPL CADRE at night](docs/images/nasa_jpl/cadre/rover/night.jpg) |
+| ![NASA JPL PROMISE front three-quarter](docs/images/nasa_jpl/promise/rover/front_three_quarter.jpg) | ![NASA JPL PROMISE rear three-quarter, MMRTG and heat exchangers](docs/images/nasa_jpl/promise/rover/rear_three_quarter.jpg) | ![NASA JPL PROMISE at night under its LED HazLights](docs/images/nasa_jpl/promise/rover/night.jpg) |
 
 | | | |
 |---|---|---|
@@ -135,7 +137,7 @@ git lfs pull
 Build the models and serve the site locally:
 
 ```bash
-./pipeline.sh web # assets/ -> web/models/ (preview.glb, full.glb, manifest.json per asset; git-ignored)
+./pipeline.sh web [asset ...] # assets/ -> web/models/, only the named assets are re-exported if any are given (preview.glb, full.glb, manifest.json per asset; git-ignored)
 ./pipeline.sh serve # http://localhost:8000 (PORT=8080 to change)
 ```
 

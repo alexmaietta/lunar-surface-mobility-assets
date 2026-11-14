@@ -12,6 +12,9 @@ usage() {
   cat <<EOF
 usage: ./pipeline.sh <asset> [step ...]   steps: textures build export thumb package blend mesh simple urdf assets gallery sim (default: all)
        ./pipeline.sh <command>            commands: update hero release list scene web serve
+       ./pipeline.sh web [asset ...]      re-export only these assets for the viewer, reuse the rest from web/models
+       ./pipeline.sh hero [asset ...] [--samples N --res WxH --crop ...]
+                                          rebuild only these blends (missing ones are always built), reuse the rest
        ./pipeline.sh bump <x.y.z>         set VERSION and restamp the committed assets without rebuilding
 assets: $(order | tr '\n' ' ')
 EOF
@@ -65,18 +68,34 @@ sim()      { $PY scripts/sim_newton.py --asset "$asset"; }
 all()      { textures; build; export_; thumb; package; assets; }
 
 update()  { for asset in $(order); do blend=build/$asset/$asset.blend; all; done; }
-hero()    { $BLENDER -b --factory-startup -P scripts/hero.py -- --out docs/images/hero.jpg; }
+split_args() { names=() opts=()
+               while [ $# -gt 0 ]; do
+                 case $1 in
+                   --crop) opts+=("$1") ;;
+                   --*) opts+=("$1" "${2:?$1 needs a value}"); shift ;;
+                   *) [ -f "configs/$1.py" ] || { echo "unknown asset: $1"; usage; }; names+=("$1") ;;
+                 esac
+                 shift
+               done; }
+hero()    { split_args "$@"
+            for asset in $(order); do
+              blend=build/$asset/$asset.blend
+              if [[ " ${names[*]} " == *" $asset "* ]] || [ ! -f "$blend" ]; then echo "hero: building $asset"; textures; build; fi
+            done
+            $BLENDER -b --factory-startup -P scripts/hero.py -- --out docs/images/hero.jpg "${opts[@]}"; }
 release() { update; $PY scripts/make_release.py; v=$(cat VERSION)
             echo "next: git add -A assets VERSION && git commit -m \"Release v$v\" && git tag v$v && git push origin main v$v"; }
 list()    { order; }
 bump()    { [ -n "${1:-}" ] || usage; $PY scripts/bump_version.py "$1"; }
 scene()   { $PY scripts/scene.py; }
-web()     { $PY scripts/web_export.py; }
+web()     { split_args "$@"
+            $PY scripts/web_export.py ${names[0]:+--only "$(IFS=,; echo "${names[*]}")"} "${opts[@]}"; }
 serve()   { echo "web viewer: http://localhost:${PORT:-8000}"; $PY -m http.server -d web "${PORT:-8000}"; }
 
 [ $# -ge 1 ] || usage
 case $1 in
-  update|hero|release|list|scene|web|serve) $1; exit ;;
+  update|release|list|scene|serve) $1; exit ;;
+  hero|web) cmd=$1; shift; $cmd "$@"; exit ;;
   bump) bump "${2:-}"; exit ;;
 esac
 [ -f "configs/$1.py" ] || usage

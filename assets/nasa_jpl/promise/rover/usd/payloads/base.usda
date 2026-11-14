@@ -1,0 +1,1868 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "promise"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./robot.usda@
+    ]
+    upAxis = "Z"
+)
+
+def Xform "promise" (
+    prepend apiSchemas = ["IsaacRobotAPI", "GeomModelAPI", "SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @./promise.usda@
+        string name = "promise"
+        string version = "0.3.0"
+    }
+    doc = "NASA / JPL PROMISE (Polar Rover for Observation, Mapping, and In-Situ Exploration), November 2026 announcement: the Curiosity vehicle-system test bed reflown to the lunar south pole on Blue Moon MK1, about 1,000 kg. A white warm-electronics box on Curiosity's six-wheel rocker-bogie with a deck differential bar, four steering corner wheels and 50 cm aluminium chevron-grouser wheels with curved titanium spokes. No arm: the VIPER-heritage TRIDENT 1 m drill rides a tower on the front-left corner. A flight-spare MMRTG sits at the rear between two heat exchangers with gold tubing, the remote-sensing mast carries the Lunar Dashcam stereo pairs, and blue LED panels light the body. Suspension pivots follow the JPL Mars 2020 kinematic layout (the shared Curiosity mobility design); deck equipment, comms and instrument placement are estimated from NASA's render."
+    kind = "component"
+)
+{
+    float3[] extentsHint = [(-1.5424862, -1.3897, -0.00737527), (1.4423752, 1.3857, 2.1608), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-1.3315753, -1.3897, -0.00737527), (1.4423752, 1.3857, 1.3119999)]
+    token[] semantics:labels:class = ["lunar_rover", "vehicle"]
+
+    def Scope "Geometry"
+    {
+        def Xform "chassis"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Xform "chassis__anodised_grey" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/chassis__anodised_grey>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "chassis__lens" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/chassis__lens>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "chassis__aluminium" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/chassis__aluminium>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "chassis__titanium" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/chassis__titanium>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "chassis__anodised_dark" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/chassis__anodised_dark>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "chassis__rocker_black" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/chassis__rocker_black>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "chassis__rtg_fin" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/chassis__rtg_fin>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "chassis__hrs_white" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/chassis__hrs_white>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "chassis__promise_white" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/chassis__promise_white>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "chassis__kapton" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/chassis__kapton>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "chassis__copper" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/chassis__copper>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "chassis__gold_foil" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/chassis__gold_foil>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "chassis__lamp_window" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/chassis__lamp_window>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "chassis_hull_col" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/chassis_hull_col>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "rocker_l"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.30399999022483826, 0.800000011920929, 0.8930000066757202)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "rocker_l__titanium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/rocker_l__titanium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "rocker_l__rocker_black" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/rocker_l__rocker_black>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "bogie_l"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-0.7539999485015869, 0.12000000476837158, -0.23000001907348633)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "bogie_l__titanium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/bogie_l__titanium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "bogie_l__rocker_black" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/bogie_l__rocker_black>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "ml_wheel"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0.44999995827674866, 0.2644999623298645, -0.4129999876022339)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "ml_wheel__wheel_alu" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/ml_wheel__wheel_alu>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "ml_wheel__titanium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/ml_wheel__titanium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "ml_wheel__aluminium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/ml_wheel__aluminium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "ml_wheel__rocker_black" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/ml_wheel__rocker_black>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "ml_wheel_tyre_col" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/ml_wheel_tyre_col>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "ml_contact"
+                        {
+                            custom string site:description = "Nominal tyre contact point"
+                            custom token site:kind = "contact"
+                            quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, -0.25)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "ml_hub"
+                        {
+                            custom string site:description = "Wheel centre; +Z = outboard axle"
+                            custom token site:kind = "reference"
+                            quatd xformOp:orient = (0.7071068286895752, -0.7071067690849304, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+                    }
+
+                    def Xform "rl_steer"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (-0.6250000894069672, 0.14249998331069946, -0.4129999876022339)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "rl_steer__rocker_black" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/rl_steer__rocker_black>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "rl_steer__titanium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/rl_steer__titanium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "rl_steer__aluminium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/rl_steer__aluminium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "rl_steer__anodised_dark" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/rl_steer__anodised_dark>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "rl_wheel"
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Xform "rl_wheel__wheel_alu" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/rl_wheel__wheel_alu>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "rl_wheel__aluminium" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/rl_wheel__aluminium>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "rl_wheel__rocker_black" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/rl_wheel__rocker_black>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "rl_wheel__titanium" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/rl_wheel__titanium>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "rl_wheel_tyre_col" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/rl_wheel_tyre_col>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "rl_contact"
+                            {
+                                custom string site:description = "Nominal tyre contact point"
+                                custom token site:kind = "contact"
+                                quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, -0.25)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "rl_hub"
+                            {
+                                custom string site:description = "Wheel centre; +Z = outboard axle"
+                                custom token site:kind = "reference"
+                                quatd xformOp:orient = (0.7071068286895752, -0.7071067690849304, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+                        }
+                    }
+                }
+
+                def Xform "diff_rod_l_yaw"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0.27699995040893555)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "diff_rod_l"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "diff_rod_l__titanium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/diff_rod_l__titanium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+                    }
+                }
+
+                def Xform "fl_steer"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0.8809999525547028, 0.26249998807907104, -0.6430000066757202)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "fl_steer__rocker_black" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/fl_steer__rocker_black>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "fl_steer__anodised_dark" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/fl_steer__anodised_dark>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "fl_steer__aluminium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/fl_steer__aluminium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "fl_steer__titanium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/fl_steer__titanium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "fl_wheel"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "fl_wheel__wheel_alu" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/fl_wheel__wheel_alu>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "fl_wheel__aluminium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/fl_wheel__aluminium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "fl_wheel__rocker_black" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/fl_wheel__rocker_black>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "fl_wheel__titanium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/fl_wheel__titanium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "fl_wheel_tyre_col" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/fl_wheel_tyre_col>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "fl_contact"
+                        {
+                            custom string site:description = "Nominal tyre contact point"
+                            custom token site:kind = "contact"
+                            quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, -0.25)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "fl_hub"
+                        {
+                            custom string site:description = "Wheel centre; +Z = outboard axle"
+                            custom token site:kind = "reference"
+                            quatd xformOp:orient = (0.7071068286895752, -0.7071067690849304, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+                    }
+                }
+            }
+
+            def Xform "rocker_r"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.30399999022483826, -0.800000011920929, 0.8930000066757202)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "rocker_r__titanium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/rocker_r__titanium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "rocker_r__rocker_black" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/rocker_r__rocker_black>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "bogie_r"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-0.7539999485015869, -0.12000000476837158, -0.23000001907348633)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "bogie_r__titanium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/bogie_r__titanium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "bogie_r__rocker_black" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/bogie_r__rocker_black>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "mr_wheel"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0.44999995827674866, -0.2644999623298645, -0.4129999876022339)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "mr_wheel__wheel_alu" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/mr_wheel__wheel_alu>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "mr_wheel__aluminium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/mr_wheel__aluminium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "mr_wheel__titanium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/mr_wheel__titanium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "mr_wheel__rocker_black" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/mr_wheel__rocker_black>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "mr_wheel_tyre_col" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/mr_wheel_tyre_col>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "mr_contact"
+                        {
+                            custom string site:description = "Nominal tyre contact point"
+                            custom token site:kind = "contact"
+                            quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, -0.25)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "mr_hub"
+                        {
+                            custom string site:description = "Wheel centre; +Z = outboard axle"
+                            custom token site:kind = "reference"
+                            quatd xformOp:orient = (0.7071068286895752, 0.7071067690849304, 0, -0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+                    }
+
+                    def Xform "rr_steer"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (-0.6250000894069672, -0.14249998331069946, -0.4129999876022339)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "rr_steer__rocker_black" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/rr_steer__rocker_black>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "rr_steer__aluminium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/rr_steer__aluminium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "rr_steer__titanium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/rr_steer__titanium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "rr_steer__anodised_dark" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/rr_steer__anodised_dark>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "rr_wheel"
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Xform "rr_wheel__wheel_alu" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/rr_wheel__wheel_alu>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "rr_wheel__rocker_black" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/rr_wheel__rocker_black>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "rr_wheel__aluminium" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/rr_wheel__aluminium>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "rr_wheel__titanium" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/rr_wheel__titanium>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "rr_wheel_tyre_col" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/rr_wheel_tyre_col>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "rr_contact"
+                            {
+                                custom string site:description = "Nominal tyre contact point"
+                                custom token site:kind = "contact"
+                                quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, -0.25)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "rr_hub"
+                            {
+                                custom string site:description = "Wheel centre; +Z = outboard axle"
+                                custom token site:kind = "reference"
+                                quatd xformOp:orient = (0.7071068286895752, 0.7071067690849304, 0, -0)
+                                double3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+                        }
+                    }
+                }
+
+                def Xform "diff_rod_r_yaw"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0.27699995040893555)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "diff_rod_r"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "diff_rod_r__titanium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/diff_rod_r__titanium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+                    }
+                }
+
+                def Xform "fr_steer"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0.8809999525547028, -0.26249998807907104, -0.6430000066757202)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "fr_steer__rocker_black" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/fr_steer__rocker_black>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "fr_steer__aluminium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/fr_steer__aluminium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "fr_steer__titanium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/fr_steer__titanium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "fr_steer__anodised_dark" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/fr_steer__anodised_dark>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "fr_wheel"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "fr_wheel__wheel_alu" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/fr_wheel__wheel_alu>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "fr_wheel__titanium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/fr_wheel__titanium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "fr_wheel__aluminium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/fr_wheel__aluminium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "fr_wheel__rocker_black" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/fr_wheel__rocker_black>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "fr_wheel_tyre_col" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/fr_wheel_tyre_col>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "fr_contact"
+                        {
+                            custom string site:description = "Nominal tyre contact point"
+                            custom token site:kind = "contact"
+                            quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, -0.25)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "fr_hub"
+                        {
+                            custom string site:description = "Wheel centre; +Z = outboard axle"
+                            custom token site:kind = "reference"
+                            quatd xformOp:orient = (0.7071068286895752, 0.7071067690849304, 0, -0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+                    }
+                }
+            }
+
+            def Xform "diff_bar"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.052000001072883606, 0, 1.1699999570846558)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "diff_bar__rocker_black" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/diff_bar__rocker_black>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "diff_bar__titanium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/diff_bar__titanium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "hga_azimuth"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.30000001192092896, 0.41999998688697815, 1.340000033378601)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "hga_azimuth__anodised_dark" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/hga_azimuth__anodised_dark>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "hga_azimuth__aluminium" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/hga_azimuth__aluminium>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "hga_elevation"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0.1325000524520874)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "hga_elevation__promise_white" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/hga_elevation__promise_white>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "hga_elevation__mli_silver" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/hga_elevation__mli_silver>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "hga_elevation__aluminium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/hga_elevation__aluminium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "hga_boresight"
+                    {
+                        custom string site:band = "X"
+                        custom string site:description = "High-gain antenna boresight (+Z), 2-axis gimbal"
+                        custom token site:kind = "antenna"
+                        quatd xformOp:orient = (0.9894003868103027, 0, -0.14521315693855286, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (-0.020114362239837646, 0, 0.0670478343963623)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+                }
+            }
+
+            def Xform "rsm_pan"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.699999988079071, -0.5, 1.9500000476837158)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "rsm_pan__anodised_dark" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/rsm_pan__anodised_dark>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "rsm_tilt"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0.1400001049041748)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "rsm_tilt__promise_white" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/rsm_tilt__promise_white>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "rsm_tilt__lens" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/rsm_tilt__lens>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Camera "rsm_cam_0"
+                    {
+                        float2 clippingRange = (0.05, 500)
+                        float focalLength = 12
+                        float fStop = 4
+                        float horizontalAperture = 7.2
+                        custom int2 sensor:resolution = (2048, 1536)
+                        custom string sensor:source = "Lunar Dashcam stereo suite on the remote-sensing mast (optics estimated)"
+                        float verticalAperture = 5.4
+                        quatd xformOp:orient = (-0.5000000000000002, -0.5, 0.5, 0.5)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0.10999995470046997, -0.19999998807907104, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Camera "rsm_cam_1"
+                    {
+                        float2 clippingRange = (0.05, 500)
+                        float focalLength = 12
+                        float fStop = 4
+                        float horizontalAperture = 7.2
+                        custom int2 sensor:resolution = (2048, 1536)
+                        custom string sensor:source = "Lunar Dashcam stereo suite on the remote-sensing mast (optics estimated)"
+                        float verticalAperture = 5.4
+                        quatd xformOp:orient = (-0.5000000000000002, -0.5, 0.5, 0.5)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0.10999995470046997, -0.12000000476837158, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Camera "rsm_cam_2"
+                    {
+                        float2 clippingRange = (0.05, 500)
+                        float focalLength = 12
+                        float fStop = 4
+                        float horizontalAperture = 7.2
+                        custom int2 sensor:resolution = (2048, 1536)
+                        custom string sensor:source = "Lunar Dashcam stereo suite on the remote-sensing mast (optics estimated)"
+                        float verticalAperture = 5.4
+                        quatd xformOp:orient = (-0.5000000000000002, -0.5, 0.5, 0.5)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0.10999995470046997, 0.12000000476837158, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Camera "rsm_cam_3"
+                    {
+                        float2 clippingRange = (0.05, 500)
+                        float focalLength = 12
+                        float fStop = 4
+                        float horizontalAperture = 7.2
+                        custom int2 sensor:resolution = (2048, 1536)
+                        custom string sensor:source = "Lunar Dashcam stereo suite on the remote-sensing mast (optics estimated)"
+                        float verticalAperture = 5.4
+                        quatd xformOp:orient = (-0.5000000000000002, -0.5, 0.5, 0.5)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0.10999995470046997, 0.19999998807907104, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+                }
+            }
+
+            def Xform "trident_deploy"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (1, 0.6000000238418579, 1.7000000476837158)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "trident_deploy__anodised_grey" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/trident_deploy__anodised_grey>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "trident_deploy__rocker_black" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/trident_deploy__rocker_black>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "trident_feed"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, -0.040000081062316895)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "trident_auger"
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, -0.6599999666213989)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "trident_auger__rocker_black" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/trident_auger__rocker_black>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "trident_auger__titanium" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/trident_auger__titanium>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+                    }
+
+                    def Xform "trident_bit"
+                    {
+                        custom string site:description = "TRIDENT 25.4 mm bit (1 m max depth)"
+                        custom token site:kind = "tool"
+                        quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, -2.384185793236071e-8, -1.3399999666213989)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+                }
+            }
+
+            def Xform "haz_light_front_l"
+            {
+                custom double site:beam_shape = 4
+                custom double site:cone_deg = 80
+                custom double site:cone_softness = 0.3
+                custom string site:description = "Front-corner LED HazLight"
+                custom double site:fwhm_h_deg = 110
+                custom double site:fwhm_nm = 22
+                custom double site:fwhm_v_deg = 90
+                custom string site:group = "haz"
+                custom double site:height_m = 0.08
+                custom string site:ies_name = "hazlight"
+                custom token site:kind = "light"
+                custom double site:max_duty = 0.5
+                custom double site:max_on_s = 10
+                custom double site:peak_nm = 457
+                custom double site:radiant_w = 32
+                custom string site:shape = "rect"
+                custom string site:source = "VIPER HazLight heritage assumed (LPSC 2022 #2466); positions read from NASA's PROMISE render"
+                custom double site:width_m = 0.08
+                quatd xformOp:orient = (0.07981313019990921, -0.8265549540519714, -0.12131251394748688, -0.5438015460968018)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.908518373966217, 0.5210555195808411, 0.858416736125946)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def RectLight "emitter" (
+                    prepend apiSchemas = ["ShapingAPI", "LightAPI", "PhotometricAreaLightAPI", "PhysicalLightIlluminantAPI"]
+                )
+                {
+                    color3f inputs:color = (0.02543, 0, 1)
+                    bool inputs:enableColorTemperature = 0
+                    float inputs:exposure = 0
+                    float inputs:height = 0.08
+                    float inputs:intensity = 788762.7
+                    bool inputs:normalize = 0
+                    float inputs:shaping:cone:angle = 80
+                    float inputs:shaping:cone:softness = 0.3
+                    float inputs:shaping:focus = 0
+                    asset inputs:shaping:ies:file = @./Lights/ies/hazlight.ies@
+                    bool inputs:shaping:ies:normalize = 1
+                    float inputs:width = 0.08
+                    custom token light:group = "haz"
+                    float photometric:illuminance = 0
+                    float photometric:illuminance:distance = 0
+                    float photometric:power = 1230.7449
+                    float2[] physical:customIlluminant = [(419, 0), (420, 0.000393), (421, 0.000597), (422, 0.000896), (423, 0.001331), (424, 0.001953), (425, 0.002834), (426, 0.004066), (427, 0.005767), (428, 0.008086), (429, 0.011208), (430, 0.015359), (431, 0.020807), (432, 0.027867), (433, 0.036898), (434, 0.048298), (435, 0.0625), (436, 0.079957), (437, 0.101125), (438, 0.12644), (439, 0.156292), (440, 0.19099), (441, 0.230733), (442, 0.275571), (443, 0.325373), (444, 0.379798), (445, 0.438278), (446, 0.5), (447, 0.563917), (448, 0.628759), (449, 0.693071), (450, 0.755258), (451, 0.813649), (452, 0.86657), (453, 0.912419), (454, 0.94975), (455, 0.977347), (456, 0.994288), (457, 1), (458, 0.994288), (459, 0.977347), (460, 0.94975), (461, 0.912419), (462, 0.86657), (463, 0.813649), (464, 0.755258), (465, 0.693071), (466, 0.628759), (467, 0.563917), (468, 0.5), (469, 0.438278), (470, 0.379798), (471, 0.325373), (472, 0.275571), (473, 0.230733), (474, 0.19099), (475, 0.156292), (476, 0.12644), (477, 0.101125), (478, 0.079957), (479, 0.0625), (480, 0.048298), (481, 0.036898), (482, 0.027867), (483, 0.020807), (484, 0.015359), (485, 0.011208), (486, 0.008086), (487, 0.005767), (488, 0.004066), (489, 0.002834), (490, 0.001953), (491, 0.001331), (492, 0.000896), (493, 0.000597), (494, 0.000393), (495, 0)]
+                    uniform token physical:illuminant = "custom"
+                    quatd xformOp:orient = (0, 1, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0.004)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "haz_light_side_l"
+            {
+                custom double site:beam_shape = 4
+                custom double site:cone_deg = 80
+                custom double site:cone_softness = 0.3
+                custom string site:description = "Side LED HazLight"
+                custom double site:fwhm_h_deg = 110
+                custom double site:fwhm_nm = 22
+                custom double site:fwhm_v_deg = 90
+                custom string site:group = "haz"
+                custom double site:height_m = 0.08
+                custom string site:ies_name = "hazlight"
+                custom token site:kind = "light"
+                custom double site:max_duty = 0.5
+                custom double site:max_on_s = 10
+                custom double site:peak_nm = 457
+                custom double site:radiant_w = 32
+                custom string site:shape = "rect"
+                custom string site:source = "VIPER HazLight heritage assumed (LPSC 2022 #2466); positions read from NASA's PROMISE render"
+                custom double site:width_m = 0.08
+                quatd xformOp:orient = (0.31813254952430725, -0.6788588762283325, -0.5050918459892273, -0.42757993936538696)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.45103663206100464, 0.6934554576873779, 0.7982722520828247)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def RectLight "emitter" (
+                    prepend apiSchemas = ["ShapingAPI", "LightAPI", "PhotometricAreaLightAPI", "PhysicalLightIlluminantAPI"]
+                )
+                {
+                    color3f inputs:color = (0.02543, 0, 1)
+                    bool inputs:enableColorTemperature = 0
+                    float inputs:exposure = 0
+                    float inputs:height = 0.08
+                    float inputs:intensity = 788762.7
+                    bool inputs:normalize = 0
+                    float inputs:shaping:cone:angle = 80
+                    float inputs:shaping:cone:softness = 0.3
+                    float inputs:shaping:focus = 0
+                    asset inputs:shaping:ies:file = @./Lights/ies/hazlight.ies@
+                    bool inputs:shaping:ies:normalize = 1
+                    float inputs:width = 0.08
+                    custom token light:group = "haz"
+                    float photometric:illuminance = 0
+                    float photometric:illuminance:distance = 0
+                    float photometric:power = 1230.7449
+                    float2[] physical:customIlluminant = [(419, 0), (420, 0.000393), (421, 0.000597), (422, 0.000896), (423, 0.001331), (424, 0.001953), (425, 0.002834), (426, 0.004066), (427, 0.005767), (428, 0.008086), (429, 0.011208), (430, 0.015359), (431, 0.020807), (432, 0.027867), (433, 0.036898), (434, 0.048298), (435, 0.0625), (436, 0.079957), (437, 0.101125), (438, 0.12644), (439, 0.156292), (440, 0.19099), (441, 0.230733), (442, 0.275571), (443, 0.325373), (444, 0.379798), (445, 0.438278), (446, 0.5), (447, 0.563917), (448, 0.628759), (449, 0.693071), (450, 0.755258), (451, 0.813649), (452, 0.86657), (453, 0.912419), (454, 0.94975), (455, 0.977347), (456, 0.994288), (457, 1), (458, 0.994288), (459, 0.977347), (460, 0.94975), (461, 0.912419), (462, 0.86657), (463, 0.813649), (464, 0.755258), (465, 0.693071), (466, 0.628759), (467, 0.563917), (468, 0.5), (469, 0.438278), (470, 0.379798), (471, 0.325373), (472, 0.275571), (473, 0.230733), (474, 0.19099), (475, 0.156292), (476, 0.12644), (477, 0.101125), (478, 0.079957), (479, 0.0625), (480, 0.048298), (481, 0.036898), (482, 0.027867), (483, 0.020807), (484, 0.015359), (485, 0.011208), (486, 0.008086), (487, 0.005767), (488, 0.004066), (489, 0.002834), (490, 0.001953), (491, 0.001331), (492, 0.000896), (493, 0.000597), (494, 0.000393), (495, 0)]
+                    uniform token physical:illuminant = "custom"
+                    quatd xformOp:orient = (0, 1, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0.004)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "haz_light_rear_l"
+            {
+                custom double site:beam_shape = 4
+                custom double site:cone_deg = 80
+                custom double site:cone_softness = 0.3
+                custom string site:description = "Rear-side LED HazLight"
+                custom double site:fwhm_h_deg = 110
+                custom double site:fwhm_nm = 22
+                custom double site:fwhm_v_deg = 90
+                custom string site:group = "haz"
+                custom double site:height_m = 0.08
+                custom string site:ies_name = "hazlight"
+                custom token site:kind = "light"
+                custom double site:max_duty = 0.5
+                custom double site:max_on_s = 10
+                custom double site:peak_nm = 457
+                custom double site:radiant_w = 32
+                custom string site:shape = "rect"
+                custom string site:source = "VIPER HazLight heritage assumed (LPSC 2022 #2466); positions read from NASA's PROMISE render"
+                custom double site:width_m = 0.08
+                quatd xformOp:orient = (0.42757993936538696, -0.5050918459892273, -0.6788588762283325, -0.31813254952430725)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.5510366559028625, 0.6934554576873779, 0.7982722520828247)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def RectLight "emitter" (
+                    prepend apiSchemas = ["ShapingAPI", "LightAPI", "PhotometricAreaLightAPI", "PhysicalLightIlluminantAPI"]
+                )
+                {
+                    color3f inputs:color = (0.02543, 0, 1)
+                    bool inputs:enableColorTemperature = 0
+                    float inputs:exposure = 0
+                    float inputs:height = 0.08
+                    float inputs:intensity = 788762.7
+                    bool inputs:normalize = 0
+                    float inputs:shaping:cone:angle = 80
+                    float inputs:shaping:cone:softness = 0.3
+                    float inputs:shaping:focus = 0
+                    asset inputs:shaping:ies:file = @./Lights/ies/hazlight.ies@
+                    bool inputs:shaping:ies:normalize = 1
+                    float inputs:width = 0.08
+                    custom token light:group = "haz"
+                    float photometric:illuminance = 0
+                    float photometric:illuminance:distance = 0
+                    float photometric:power = 1230.7449
+                    float2[] physical:customIlluminant = [(419, 0), (420, 0.000393), (421, 0.000597), (422, 0.000896), (423, 0.001331), (424, 0.001953), (425, 0.002834), (426, 0.004066), (427, 0.005767), (428, 0.008086), (429, 0.011208), (430, 0.015359), (431, 0.020807), (432, 0.027867), (433, 0.036898), (434, 0.048298), (435, 0.0625), (436, 0.079957), (437, 0.101125), (438, 0.12644), (439, 0.156292), (440, 0.19099), (441, 0.230733), (442, 0.275571), (443, 0.325373), (444, 0.379798), (445, 0.438278), (446, 0.5), (447, 0.563917), (448, 0.628759), (449, 0.693071), (450, 0.755258), (451, 0.813649), (452, 0.86657), (453, 0.912419), (454, 0.94975), (455, 0.977347), (456, 0.994288), (457, 1), (458, 0.994288), (459, 0.977347), (460, 0.94975), (461, 0.912419), (462, 0.86657), (463, 0.813649), (464, 0.755258), (465, 0.693071), (466, 0.628759), (467, 0.563917), (468, 0.5), (469, 0.438278), (470, 0.379798), (471, 0.325373), (472, 0.275571), (473, 0.230733), (474, 0.19099), (475, 0.156292), (476, 0.12644), (477, 0.101125), (478, 0.079957), (479, 0.0625), (480, 0.048298), (481, 0.036898), (482, 0.027867), (483, 0.020807), (484, 0.015359), (485, 0.011208), (486, 0.008086), (487, 0.005767), (488, 0.004066), (489, 0.002834), (490, 0.001953), (491, 0.001331), (492, 0.000896), (493, 0.000597), (494, 0.000393), (495, 0)]
+                    uniform token physical:illuminant = "custom"
+                    quatd xformOp:orient = (0, 1, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0.004)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "haz_light_front_r"
+            {
+                custom double site:beam_shape = 4
+                custom double site:cone_deg = 80
+                custom double site:cone_softness = 0.3
+                custom string site:description = "Front-corner LED HazLight"
+                custom double site:fwhm_h_deg = 110
+                custom double site:fwhm_nm = 22
+                custom double site:fwhm_v_deg = 90
+                custom string site:group = "haz"
+                custom double site:height_m = 0.08
+                custom string site:ies_name = "hazlight"
+                custom token site:kind = "light"
+                custom double site:max_duty = 0.5
+                custom double site:max_on_s = 10
+                custom double site:peak_nm = 457
+                custom double site:radiant_w = 32
+                custom string site:shape = "rect"
+                custom string site:source = "VIPER HazLight heritage assumed (LPSC 2022 #2466); positions read from NASA's PROMISE render"
+                custom double site:width_m = 0.08
+                quatd xformOp:orient = (0.07981313019990921, 0.8265549540519714, -0.12131251394748688, 0.5438015460968018)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.908518373966217, -0.5210555195808411, 0.858416736125946)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def RectLight "emitter" (
+                    prepend apiSchemas = ["ShapingAPI", "LightAPI", "PhotometricAreaLightAPI", "PhysicalLightIlluminantAPI"]
+                )
+                {
+                    color3f inputs:color = (0.02543, 0, 1)
+                    bool inputs:enableColorTemperature = 0
+                    float inputs:exposure = 0
+                    float inputs:height = 0.08
+                    float inputs:intensity = 788762.7
+                    bool inputs:normalize = 0
+                    float inputs:shaping:cone:angle = 80
+                    float inputs:shaping:cone:softness = 0.3
+                    float inputs:shaping:focus = 0
+                    asset inputs:shaping:ies:file = @./Lights/ies/hazlight.ies@
+                    bool inputs:shaping:ies:normalize = 1
+                    float inputs:width = 0.08
+                    custom token light:group = "haz"
+                    float photometric:illuminance = 0
+                    float photometric:illuminance:distance = 0
+                    float photometric:power = 1230.7449
+                    float2[] physical:customIlluminant = [(419, 0), (420, 0.000393), (421, 0.000597), (422, 0.000896), (423, 0.001331), (424, 0.001953), (425, 0.002834), (426, 0.004066), (427, 0.005767), (428, 0.008086), (429, 0.011208), (430, 0.015359), (431, 0.020807), (432, 0.027867), (433, 0.036898), (434, 0.048298), (435, 0.0625), (436, 0.079957), (437, 0.101125), (438, 0.12644), (439, 0.156292), (440, 0.19099), (441, 0.230733), (442, 0.275571), (443, 0.325373), (444, 0.379798), (445, 0.438278), (446, 0.5), (447, 0.563917), (448, 0.628759), (449, 0.693071), (450, 0.755258), (451, 0.813649), (452, 0.86657), (453, 0.912419), (454, 0.94975), (455, 0.977347), (456, 0.994288), (457, 1), (458, 0.994288), (459, 0.977347), (460, 0.94975), (461, 0.912419), (462, 0.86657), (463, 0.813649), (464, 0.755258), (465, 0.693071), (466, 0.628759), (467, 0.563917), (468, 0.5), (469, 0.438278), (470, 0.379798), (471, 0.325373), (472, 0.275571), (473, 0.230733), (474, 0.19099), (475, 0.156292), (476, 0.12644), (477, 0.101125), (478, 0.079957), (479, 0.0625), (480, 0.048298), (481, 0.036898), (482, 0.027867), (483, 0.020807), (484, 0.015359), (485, 0.011208), (486, 0.008086), (487, 0.005767), (488, 0.004066), (489, 0.002834), (490, 0.001953), (491, 0.001331), (492, 0.000896), (493, 0.000597), (494, 0.000393), (495, 0)]
+                    uniform token physical:illuminant = "custom"
+                    quatd xformOp:orient = (0, 1, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0.004)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "haz_light_side_r"
+            {
+                custom double site:beam_shape = 4
+                custom double site:cone_deg = 80
+                custom double site:cone_softness = 0.3
+                custom string site:description = "Side LED HazLight"
+                custom double site:fwhm_h_deg = 110
+                custom double site:fwhm_nm = 22
+                custom double site:fwhm_v_deg = 90
+                custom string site:group = "haz"
+                custom double site:height_m = 0.08
+                custom string site:ies_name = "hazlight"
+                custom token site:kind = "light"
+                custom double site:max_duty = 0.5
+                custom double site:max_on_s = 10
+                custom double site:peak_nm = 457
+                custom double site:radiant_w = 32
+                custom string site:shape = "rect"
+                custom string site:source = "VIPER HazLight heritage assumed (LPSC 2022 #2466); positions read from NASA's PROMISE render"
+                custom double site:width_m = 0.08
+                quatd xformOp:orient = (0.31813254952430725, 0.6788588762283325, -0.5050918459892273, 0.42757993936538696)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.45103663206100464, -0.6934554576873779, 0.7982722520828247)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def RectLight "emitter" (
+                    prepend apiSchemas = ["ShapingAPI", "LightAPI", "PhotometricAreaLightAPI", "PhysicalLightIlluminantAPI"]
+                )
+                {
+                    color3f inputs:color = (0.02543, 0, 1)
+                    bool inputs:enableColorTemperature = 0
+                    float inputs:exposure = 0
+                    float inputs:height = 0.08
+                    float inputs:intensity = 788762.7
+                    bool inputs:normalize = 0
+                    float inputs:shaping:cone:angle = 80
+                    float inputs:shaping:cone:softness = 0.3
+                    float inputs:shaping:focus = 0
+                    asset inputs:shaping:ies:file = @./Lights/ies/hazlight.ies@
+                    bool inputs:shaping:ies:normalize = 1
+                    float inputs:width = 0.08
+                    custom token light:group = "haz"
+                    float photometric:illuminance = 0
+                    float photometric:illuminance:distance = 0
+                    float photometric:power = 1230.7449
+                    float2[] physical:customIlluminant = [(419, 0), (420, 0.000393), (421, 0.000597), (422, 0.000896), (423, 0.001331), (424, 0.001953), (425, 0.002834), (426, 0.004066), (427, 0.005767), (428, 0.008086), (429, 0.011208), (430, 0.015359), (431, 0.020807), (432, 0.027867), (433, 0.036898), (434, 0.048298), (435, 0.0625), (436, 0.079957), (437, 0.101125), (438, 0.12644), (439, 0.156292), (440, 0.19099), (441, 0.230733), (442, 0.275571), (443, 0.325373), (444, 0.379798), (445, 0.438278), (446, 0.5), (447, 0.563917), (448, 0.628759), (449, 0.693071), (450, 0.755258), (451, 0.813649), (452, 0.86657), (453, 0.912419), (454, 0.94975), (455, 0.977347), (456, 0.994288), (457, 1), (458, 0.994288), (459, 0.977347), (460, 0.94975), (461, 0.912419), (462, 0.86657), (463, 0.813649), (464, 0.755258), (465, 0.693071), (466, 0.628759), (467, 0.563917), (468, 0.5), (469, 0.438278), (470, 0.379798), (471, 0.325373), (472, 0.275571), (473, 0.230733), (474, 0.19099), (475, 0.156292), (476, 0.12644), (477, 0.101125), (478, 0.079957), (479, 0.0625), (480, 0.048298), (481, 0.036898), (482, 0.027867), (483, 0.020807), (484, 0.015359), (485, 0.011208), (486, 0.008086), (487, 0.005767), (488, 0.004066), (489, 0.002834), (490, 0.001953), (491, 0.001331), (492, 0.000896), (493, 0.000597), (494, 0.000393), (495, 0)]
+                    uniform token physical:illuminant = "custom"
+                    quatd xformOp:orient = (0, 1, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0.004)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "haz_light_rear_r"
+            {
+                custom double site:beam_shape = 4
+                custom double site:cone_deg = 80
+                custom double site:cone_softness = 0.3
+                custom string site:description = "Rear-side LED HazLight"
+                custom double site:fwhm_h_deg = 110
+                custom double site:fwhm_nm = 22
+                custom double site:fwhm_v_deg = 90
+                custom string site:group = "haz"
+                custom double site:height_m = 0.08
+                custom string site:ies_name = "hazlight"
+                custom token site:kind = "light"
+                custom double site:max_duty = 0.5
+                custom double site:max_on_s = 10
+                custom double site:peak_nm = 457
+                custom double site:radiant_w = 32
+                custom string site:shape = "rect"
+                custom string site:source = "VIPER HazLight heritage assumed (LPSC 2022 #2466); positions read from NASA's PROMISE render"
+                custom double site:width_m = 0.08
+                quatd xformOp:orient = (0.42757993936538696, 0.5050918459892273, -0.6788588762283325, 0.31813254952430725)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.5510366559028625, -0.6934554576873779, 0.7982722520828247)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def RectLight "emitter" (
+                    prepend apiSchemas = ["ShapingAPI", "LightAPI", "PhotometricAreaLightAPI", "PhysicalLightIlluminantAPI"]
+                )
+                {
+                    color3f inputs:color = (0.02543, 0, 1)
+                    bool inputs:enableColorTemperature = 0
+                    float inputs:exposure = 0
+                    float inputs:height = 0.08
+                    float inputs:intensity = 788762.7
+                    bool inputs:normalize = 0
+                    float inputs:shaping:cone:angle = 80
+                    float inputs:shaping:cone:softness = 0.3
+                    float inputs:shaping:focus = 0
+                    asset inputs:shaping:ies:file = @./Lights/ies/hazlight.ies@
+                    bool inputs:shaping:ies:normalize = 1
+                    float inputs:width = 0.08
+                    custom token light:group = "haz"
+                    float photometric:illuminance = 0
+                    float photometric:illuminance:distance = 0
+                    float photometric:power = 1230.7449
+                    float2[] physical:customIlluminant = [(419, 0), (420, 0.000393), (421, 0.000597), (422, 0.000896), (423, 0.001331), (424, 0.001953), (425, 0.002834), (426, 0.004066), (427, 0.005767), (428, 0.008086), (429, 0.011208), (430, 0.015359), (431, 0.020807), (432, 0.027867), (433, 0.036898), (434, 0.048298), (435, 0.0625), (436, 0.079957), (437, 0.101125), (438, 0.12644), (439, 0.156292), (440, 0.19099), (441, 0.230733), (442, 0.275571), (443, 0.325373), (444, 0.379798), (445, 0.438278), (446, 0.5), (447, 0.563917), (448, 0.628759), (449, 0.693071), (450, 0.755258), (451, 0.813649), (452, 0.86657), (453, 0.912419), (454, 0.94975), (455, 0.977347), (456, 0.994288), (457, 1), (458, 0.994288), (459, 0.977347), (460, 0.94975), (461, 0.912419), (462, 0.86657), (463, 0.813649), (464, 0.755258), (465, 0.693071), (466, 0.628759), (467, 0.563917), (468, 0.5), (469, 0.438278), (470, 0.379798), (471, 0.325373), (472, 0.275571), (473, 0.230733), (474, 0.19099), (475, 0.156292), (476, 0.12644), (477, 0.101125), (478, 0.079957), (479, 0.0625), (480, 0.048298), (481, 0.036898), (482, 0.027867), (483, 0.020807), (484, 0.015359), (485, 0.011208), (486, 0.008086), (487, 0.005767), (488, 0.004066), (489, 0.002834), (490, 0.001953), (491, 0.001331), (492, 0.000896), (493, 0.000597), (494, 0.000393), (495, 0)]
+                    uniform token physical:illuminant = "custom"
+                    quatd xformOp:orient = (0, 1, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0.004)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "mmrtg"
+            {
+                custom string site:description = "Flight-spare MMRTG, about 110 W(e) at fuelling; +Z = cylinder axis"
+                custom token site:kind = "power"
+                custom double site:power_w = 110
+                quatd xformOp:orient = (0.9404890537261963, 0, -0.33982402086257935, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-1.12, 0, 1)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "lra"
+            {
+                custom string site:description = "Laser retroreflector array"
+                custom token site:kind = "reference"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.2, 0.5, 1.135)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "scan3d_lidar"
+            {
+                custom string site:description = "SCAN-3D lidar technology demo (placement estimated)"
+                custom token site:kind = "sensor"
+                quatd xformOp:orient = (0.6339889168739319, -0, 0.7733421325683594, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.83, -0.12, 1.1700000000000002)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "laforge"
+            {
+                custom string site:description = "LAFORGE infrared radiometer (placement estimated)"
+                custom token site:kind = "sensor"
+                quatd xformOp:orient = (0.49269869923591614, -0, 0.870199978351593, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.9, 0.1, 1.1800000000000002)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "nss"
+            {
+                custom string site:description = "Neutron spectrometer (placement estimated)"
+                custom token site:kind = "sensor"
+                quatd xformOp:orient = (0.7071068286895752, 0.7071067690849304, 0, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.7, -0.75, 0.74)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "nirvss"
+            {
+                custom string site:description = "NIRVSS near-infrared spectrometer (placement estimated)"
+                custom token site:kind = "sensor"
+                quatd xformOp:orient = (-4.371138828673793e-8, 0.7071067690849304, 0.7071067690849304, -0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.55, 0.3, 0.54)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "lift_point"
+            {
+                custom string site:description = "Deck lift point (estimated)"
+                custom token site:kind = "handling"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 1.12)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "vehicle_origin"
+            {
+                custom string site:description = "Ground point under the chassis centre at nominal ride height"
+                custom token site:kind = "reference"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "imu"
+            {
+                custom string site:description = "IMU / navigation reference (estimated)"
+                custom token site:kind = "sensor"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0.85)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Camera "front_haz_cam_left"
+            {
+                float2 clippingRange = (0.05, 500)
+                float focalLength = 3.94
+                float focusDistance = 1.5
+                float fStop = 0
+                float horizontalAperture = 11.264
+                custom float sensor:fNumber = 6.7
+                custom int2 sensor:resolution = (2048, 2048)
+                custom string sensor:source = "Front HazCam stereo pair, 32 cm baseline (estimated); optics estimated from VIPER VIS heritage"
+                float verticalAperture = 11.264
+                quatd xformOp:orient = (-0.6153242587129683, -0.34839066765439664, 0.34839066204689456, 0.6153242608000975)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.91, 0.16, 0.7)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Camera "rear_haz_cam_left"
+            {
+                float2 clippingRange = (0.05, 500)
+                float focalLength = 3.94
+                float focusDistance = 1.5
+                float fStop = 0
+                float horizontalAperture = 11.264
+                custom float sensor:fNumber = 6.7
+                custom int2 sensor:resolution = (2048, 2048)
+                custom string sensor:source = "Rear HazCam stereo pair, 32 cm baseline (estimated); optics estimated from VIPER VIS heritage"
+                float verticalAperture = 11.264
+                quatd xformOp:orient = (0.6153242587129681, 0.3483906676543967, 0.3483906620468946, 0.6153242608000976)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.81, 0.16, 0.7)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Camera "front_haz_cam_right"
+            {
+                float2 clippingRange = (0.05, 500)
+                float focalLength = 3.94
+                float focusDistance = 1.5
+                float fStop = 0
+                float horizontalAperture = 11.264
+                custom float sensor:fNumber = 6.7
+                custom int2 sensor:resolution = (2048, 2048)
+                custom string sensor:source = "Front HazCam stereo pair, 32 cm baseline (estimated); optics estimated from VIPER VIS heritage"
+                float verticalAperture = 11.264
+                quatd xformOp:orient = (-0.6153242587129683, -0.34839066765439664, 0.34839066204689456, 0.6153242608000975)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.91, -0.16, 0.7)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Camera "rear_haz_cam_right"
+            {
+                float2 clippingRange = (0.05, 500)
+                float focalLength = 3.94
+                float focusDistance = 1.5
+                float fStop = 0
+                float horizontalAperture = 11.264
+                custom float sensor:fNumber = 6.7
+                custom int2 sensor:resolution = (2048, 2048)
+                custom string sensor:source = "Rear HazCam stereo pair, 32 cm baseline (estimated); optics estimated from VIPER VIS heritage"
+                float verticalAperture = 11.264
+                quatd xformOp:orient = (0.6153242587129681, 0.3483906676543967, 0.3483906620468946, 0.6153242608000976)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.81, -0.16, 0.7)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+    }
+
+    def Scope "Physics"
+    {
+    }
+
+    def Scope "Materials"
+    {
+    }
+
+    def Scope "VisualMaterials"
+    {
+    }
+}
+

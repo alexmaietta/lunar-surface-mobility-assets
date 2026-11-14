@@ -293,13 +293,13 @@ def _wheel_module(w, R, total, m):
     steer_lim = w.get("steer")
     parent = carrier
     if steer_lim:
-        parent = G.link(f"{n}_steer", (wc.x, ky, wc.z), carrier, mass=mm["steer"],
+        parent = G.link(f"{n}_steer", (wc.x, wc.y - side * S.get("steer_off", ko), wc.z), carrier, mass=mm["steer"],
                         joint={"type": "revolute", "axis": (0, 0, 1), "limit": tuple(steer_lim), "role": "steer",
                                "drive": _drive("position", stiffness=S.get("steer_k", 40.0 * total / nw),
                                                damping=S.get("steer_c", 4.0 * total / nw),
                                                max_force=S.get("steer_tau", 3.0 * total / nw))})
         LINKS[f"{n}_steer"] = parent
-    _knuckle(n, parent, wc, ky, side, r, width, up_dz, S, m, steer=bool(steer_lim))
+    _knuckle(n, parent, wc, ky, side, r, width, up_dz, S, m, steer=bool(steer_lim), sy=wc.y - side * S.get("steer_off", ko))
     if R.get("fenders"):
         F = R["fenders"]
         G.add_mesh_uv(f"{n}_fender", arc_shell_geo(Vector((wc.x, wc.y, wc.z)), r + F.get("gap", 0.05), width + 2 * F.get("overhang", 0.03),
@@ -419,13 +419,18 @@ def _trailing(n, w, S, wc, ky, side, up_dz, mm, total, nw, m):
     return link
 
 
-def _knuckle(n, link, wc, ky, side, r, width, up_dz, S, m, steer):
+def _knuckle(n, link, wc, ky, side, r, width, up_dz, S, m, steer, sy=None):
     mat = m(S.get("knuckle_mat", "anodised_grey"))
     t = S.get("knuckle_t", 0.05 + 0.06 * r)
     top = Vector((wc.x, ky, wc.z + up_dz))
     low = Vector((wc.x, ky, wc.z - 0.15 * r))
     v, f = G.box_beam_geo(top, low, t, t * 1.3)
     G.add_mesh(f"{n}_knuckle", v, f, mat, link)
+    if steer and sy is not None and abs(sy - ky) > 1e-6:
+        axis_top = Vector((wc.x, sy, top.z))
+        v, f = G.box_beam_geo(top, axis_top, t, t * 1.3)
+        G.add_mesh(f"{n}_steer_arm", v, f, mat, link)
+        top = axis_top
     if steer:
         G.add_mesh_uv(f"{n}_steer_motor", G.tube_uv(top, top + Vector((0, 0, 0.12 * r + 0.04)), t * 1.0, 20), m("anodised_dark"), link)
         G.add_mesh_uv(f"{n}_steer_cap", G.tube_uv(top + Vector((0, 0, 0.12 * r + 0.04)), top + Vector((0, 0, 0.12 * r + 0.06)),
@@ -473,7 +478,7 @@ def _wheel_geo(n, link, wc, W, side, m):
         cc = c0 + d * (r - gh / 2)
         if W.get("chevron", style in ("spring", "airless", "mesh")):
             for s in (-1, 1):
-                ang = math.radians(28)
+                ang = math.radians(W.get("chevron_deg", 28))
                 ax = (tdir * math.sin(ang) + Vector((0, s, 0)) * math.cos(ang)).normalized()
                 geos.append(obox_geo(cc + Vector((0, s * w / 4, 0)) + tdir * 0.0, ax, d, (w / 2 / math.cos(ang) * 0.95, gh, 0.018 + 0.02 * r)))
         elif W.get("bands", 1) > 1:
