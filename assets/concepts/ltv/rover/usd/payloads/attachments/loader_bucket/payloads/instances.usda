@@ -32,25 +32,25 @@ def Scope "Instances"
         }
     }
 
-    def Xform "base__white_panel" (
-        prepend references = @./geometries.usd@</Geometries/base__white_panel>
+    def Xform "base__steel" (
+        prepend references = @./geometries.usd@</Geometries/base__steel>
     )
     {
         def Scope "VisualMaterials"
         {
-            def Material "white_panel" (
+            def Material "steel" (
                 instanceable = true
-                prepend references = @./materials.usda@</Materials/white_panel>
+                prepend references = @./materials.usda@</Materials/steel>
             )
             {
             }
         }
 
-        over "base__white_panel" (
+        over "base__steel" (
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Instances/base__white_panel/VisualMaterials/white_panel>
+            rel material:binding = </Instances/base__steel/VisualMaterials/steel>
         }
     }
 
@@ -76,30 +76,8 @@ def Scope "Instances"
         }
     }
 
-    def Xform "base__steel" (
-        prepend references = @./geometries.usd@</Geometries/base__steel>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "steel" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/steel>
-            )
-            {
-            }
-        }
-
-        over "base__steel" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/base__steel/VisualMaterials/steel>
-        }
-    }
-
-    def Xform "loader_lift__white_panel" (
-        prepend references = @./geometries.usd@</Geometries/loader_lift__white_panel>
+    def Xform "base__white_panel" (
+        prepend references = @./geometries.usd@</Geometries/base__white_panel>
     )
     {
         def Scope "VisualMaterials"
@@ -112,33 +90,11 @@ def Scope "Instances"
             }
         }
 
-        over "loader_lift__white_panel" (
+        over "base__white_panel" (
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Instances/loader_lift__white_panel/VisualMaterials/white_panel>
-        }
-    }
-
-    def Xform "loader_lift__steel" (
-        prepend references = @./geometries.usd@</Geometries/loader_lift__steel>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "steel" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/steel>
-            )
-            {
-            }
-        }
-
-        over "loader_lift__steel" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/loader_lift__steel/VisualMaterials/steel>
+            rel material:binding = </Instances/base__white_panel/VisualMaterials/white_panel>
         }
     }
 
@@ -227,6 +183,50 @@ def Scope "Instances"
         )
         {
             rel material:binding = </Instances/bucket__grating/VisualMaterials/grating>
+        }
+    }
+
+    def Xform "loader_lift__white_panel" (
+        prepend references = @./geometries.usd@</Geometries/loader_lift__white_panel>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "white_panel" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/white_panel>
+            )
+            {
+            }
+        }
+
+        over "loader_lift__white_panel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/loader_lift__white_panel/VisualMaterials/white_panel>
+        }
+    }
+
+    def Xform "loader_lift__steel" (
+        prepend references = @./geometries.usd@</Geometries/loader_lift__steel>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "steel" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/steel>
+            )
+            {
+            }
+        }
+
+        over "loader_lift__steel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/loader_lift__steel/VisualMaterials/steel>
         }
     }
 

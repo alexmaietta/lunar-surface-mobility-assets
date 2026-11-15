@@ -76,28 +76,6 @@ def Scope "Instances"
         }
     }
 
-    def Xform "crane_hoist__housing" (
-        prepend references = @./geometries.usd@</Geometries/crane_hoist__housing>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "housing" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/housing>
-            )
-            {
-            }
-        }
-
-        over "crane_hoist__housing" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/crane_hoist__housing/VisualMaterials/housing>
-        }
-    }
-
     def Xform "crane_hoist__truss" (
         prepend references = @./geometries.usd@</Geometries/crane_hoist__truss>
     )
@@ -117,6 +95,28 @@ def Scope "Instances"
         )
         {
             rel material:binding = </Instances/crane_hoist__truss/VisualMaterials/truss>
+        }
+    }
+
+    def Xform "crane_hoist__housing" (
+        prepend references = @./geometries.usd@</Geometries/crane_hoist__housing>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "housing" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/housing>
+            )
+            {
+            }
+        }
+
+        over "crane_hoist__housing" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/crane_hoist__housing/VisualMaterials/housing>
         }
     }
 

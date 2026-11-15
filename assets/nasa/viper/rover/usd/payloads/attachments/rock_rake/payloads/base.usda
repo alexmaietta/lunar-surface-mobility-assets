@@ -17,7 +17,7 @@ def Xform "rock_rake" (
     assetInfo = {
         asset identifier = @./rock_rake.usda@
         string name = "rock_rake"
-        string version = "0.3.0"
+        string version = "0.4.0"
     }
     doc = "Front rock rake for Lunar Terrain Vehicle-class rovers, after the rock and regolith grader on the Colorado School of Mines / Lunar Outpost ASPECT rover and the rock clearing done with NASA's LANCE blade. Seventeen curved steel tines on a 2.5 m toolbar sift cobbles and boulders out of the top layer and roll them into a windrow while fine regolith passes between the tines, clearing a landing-pad or road site before grading."
     kind = "component"
@@ -57,9 +57,9 @@ def Xform "rock_rake" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "base__white_panel" (
+            def Xform "base__steel" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/base__white_panel>
+                prepend references = @./instances.usda@</Instances/base__steel>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -68,9 +68,9 @@ def Xform "rock_rake" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "base__steel" (
+            def Xform "base__white_panel" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/base__steel>
+                prepend references = @./instances.usda@</Instances/base__white_panel>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)

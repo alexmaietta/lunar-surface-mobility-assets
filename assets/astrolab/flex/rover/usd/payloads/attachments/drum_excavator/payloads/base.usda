@@ -17,7 +17,7 @@ def Xform "drum_excavator" (
     assetInfo = {
         asset identifier = @./drum_excavator.usda@
         string name = "drum_excavator"
-        string version = "0.3.0"
+        string version = "0.4.0"
     }
     doc = "Front bucket-drum excavator for Lunar Terrain Vehicle-class rovers, after NASA's RASSOR and IPEx drums and the drum-excavator attachments shown on Astrolab FLEX by Astroport and Interlune. A pitching arm on the quick-attach coupler carries a pair of 0.54 m diameter, 0.62 m wide hollow drums on one powered shaft. Staggered scoops fill the drums when they turn one way at a shallow cut, so excavation forces stay low for a light vehicle, and reversing the drums dumps the load (about 0.10 m3, 150 kg)."
     kind = "component"
@@ -57,9 +57,9 @@ def Xform "drum_excavator" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "base__steel" (
+            def Xform "base__white_panel" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/base__steel>
+                prepend references = @./instances.usda@</Instances/base__white_panel>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -68,9 +68,9 @@ def Xform "drum_excavator" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "base__white_panel" (
+            def Xform "base__steel" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/base__white_panel>
+                prepend references = @./instances.usda@</Instances/base__steel>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -148,17 +148,6 @@ def Xform "drum_excavator" (
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                     }
 
-                    def Xform "drums__steel" (
-                        instanceable = true
-                        prepend references = @./instances.usda@</Instances/drums__steel>
-                    )
-                    {
-                        quatd xformOp:orient = (1, 0, 0, 0)
-                        double3 xformOp:scale = (1, 1, 1)
-                        double3 xformOp:translate = (0, 0, 0)
-                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-                    }
-
                     def Xform "drums__anodised_dark" (
                         instanceable = true
                         prepend references = @./instances.usda@</Instances/drums__anodised_dark>
@@ -184,6 +173,17 @@ def Xform "drum_excavator" (
                     def Xform "drums__white_panel" (
                         instanceable = true
                         prepend references = @./instances.usda@</Instances/drums__white_panel>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "drums__steel" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/drums__steel>
                     )
                     {
                         quatd xformOp:orient = (1, 0, 0, 0)

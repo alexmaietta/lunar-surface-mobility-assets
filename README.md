@@ -15,6 +15,8 @@ These are simulation-ready models of lunar landers, rovers and their friends.
 
 They're designed for quick prototyping and fun visuals. For deeper simulation work, these assets may be a good starting point but we provide no guarentee on the accuracy of the models.
 
+For vehicles back on Earth, the sibling repo [terrestrial-mobility-assets](https://github.com/alexmaietta/terrestrial-mobility-assets) has photoreal off-road, military and construction vehicles built with the same pipeline and shipped in the same formats.
+
 Each one is agentically built and is procedurally generated in Blender from public references and gets generated, high-resolution, tileable PBR textures. It ships as an Isaac Sim / SimReady-style **USD** asset with physics, joints, colliders and named sites for engines, RCS thrusters, sensors and antennas. The rovers add drive, steering and suspension joints, working hatches, stairs and arms, and real lights and cameras. Every asset is also a **URDF** robot description with per-link mass and inertia, colliders, joint limits and closed suspension linkages, and comes as **glTF**, **OBJ** and **Blender** assets too.
 
 **[Explore every model in 3D](https://alexmaietta.github.io/lunar-surface-mobility-assets/)** We also provide an interactive viewer to orbit around the assets, select any vehicle for its specs, and drive its moving parts, such as antennas, arms, hatches, stairs, steering and wheels.
@@ -134,8 +136,6 @@ We also provide some basic [examples](./examples/) simulation scripts to interac
 
 ### Construction tools
 
-Nine quick-attach tools fit the front and rear couplers of the LTV concept, FLEX, CLV-1, Pegasus, Eagle and VIPER. Front tools are the dozer blade, V-blade, loader bucket, drum excavator and rock rake. Rear tools are the ripper, box blade, roller compactor and dump trailer.
-
 | | | |
 |---|---|---|
 | ![Dozer blade](docs/images/concepts/construction_tools/dozer_blade/front_three_quarter.jpg) | ![V-blade](docs/images/concepts/construction_tools/v_blade/front_three_quarter.jpg) | ![Loader bucket](docs/images/concepts/construction_tools/loader_bucket/front_three_quarter.jpg) |
@@ -153,23 +153,6 @@ Nine quick-attach tools fit the front and rear couplers of the LTV concept, FLEX
 |---|---|---|
 | ![MPH front three-quarter, solar blankets raised](docs/images/asi_thales/mph/habitat/front_three_quarter.jpg) | ![MPH docking end and rear three-quarter](docs/images/asi_thales/mph/habitat/rear_three_quarter.jpg) | ![MPH stowed for driving](docs/images/asi_thales/mph/habitat/stowed_for_driving.jpg) |
 | ![MPH EVA door open above the porch and ladder](docs/images/asi_thales/mph/habitat/eva_door_open.jpg) | ![MPH EVA end at night under its own lights](docs/images/asi_thales/mph/habitat/eva_end_night.jpg) | ![MPH wheels and bogies](docs/images/asi_thales/mph/habitat/wheel.jpg) |
-
-## Web viewer
-
-`web/` is a static, interactive 3D viewer of every asset.
-
-- **Fast first load.** It loads the simple version of every asset (11 MB for all of them) in the same line-up as the hero render, with a 1.8 m human for scale.
-- **Detailed models.** Once the previews are up, every web-optimised model loads in the background, smallest first, and replaces its preview (85 MB in total; 0.8–5.9 MB each: the full glTF with textures resized to 1024 px and re-encoded as WebP via `EXT_texture_webp`). Clicking a vehicle, choosing it in the panel, or opening `#<asset id>` moves it to the front of the queue and flies the camera to it. Add `?lite` to the URL to load detailed models only on demand.
-- **Specs.** Height, footprint, mass states, main engines, thruster counts, joints, plus links to the source files and release downloads.
-- **Moving parts.** A slider for every controllable joint, grouped by role: engine gimbals, steering, antennas, cameras, robotic arms, cranes, hatches, latches, stairs, solar arrays and deployables. Wheels have a spin control, and Animate sweeps every joint through its range. Joint axes and limits come from the USD physics layer. Passive joints (landing gear, suspension and loop-closed linkages) are left to simulation.
-- **Attachments.** These can be toggled per host, for example the MK1 offloader crane.
-
-Build the models and serve the site locally:
-
-```bash
-./pipeline.sh web [asset ...] # assets/ -> web/models/, only the named assets are re-exported if any are given (preview.glb, full.glb, manifest.json per asset; git-ignored)
-./pipeline.sh serve # http://localhost:8000 (PORT=8080 to change)
-```
 
 ## License
 

@@ -17,7 +17,7 @@ def Xform "peregrine" (
     assetInfo = {
         asset identifier = @./peregrine.usda@
         string name = "peregrine"
-        string version = "0.3.0"
+        string version = "0.4.0"
     }
     doc = "Astrobotic Peregrine lunar lander (Peregrine Mission One, January 2024): a 1.9 m tall bus in silver MLI around four propellant tanks and a central helium tank, with two white-radiator avionics enclosures, two open payload decks, a single top-mounted solar panel, five pulsed main engines inside the launch-adapter cone, twelve ACS thrusters and four gold-Kapton legs on a 2.5 m face-on footprint."
     kind = "component"
@@ -38,17 +38,6 @@ def Xform "peregrine" (
             def Xform "body__frame_dark" (
                 instanceable = true
                 prepend references = @./instances.usda@</Instances/body__frame_dark>
-            )
-            {
-                quatd xformOp:orient = (1, 0, 0, 0)
-                double3 xformOp:scale = (1, 1, 1)
-                double3 xformOp:translate = (0, 0, 0)
-                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-            }
-
-            def Xform "body__nozzle_int" (
-                instanceable = true
-                prepend references = @./instances.usda@</Instances/body__nozzle_int>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -79,17 +68,6 @@ def Xform "peregrine" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "body__radiator" (
-                instanceable = true
-                prepend references = @./instances.usda@</Instances/body__radiator>
-            )
-            {
-                quatd xformOp:orient = (1, 0, 0, 0)
-                double3 xformOp:scale = (1, 1, 1)
-                double3 xformOp:translate = (0, 0, 0)
-                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-            }
-
             def Xform "body__leg_kapton" (
                 instanceable = true
                 prepend references = @./instances.usda@</Instances/body__leg_kapton>
@@ -101,9 +79,9 @@ def Xform "peregrine" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "body__lens" (
+            def Xform "body__nozzle_ext" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/body__lens>
+                prepend references = @./instances.usda@</Instances/body__nozzle_ext>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -112,9 +90,20 @@ def Xform "peregrine" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "body__deck_box" (
+            def Xform "body__solar_cells" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/body__deck_box>
+                prepend references = @./instances.usda@</Instances/body__solar_cells>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__aluminium" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__aluminium>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -134,9 +123,9 @@ def Xform "peregrine" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "body__mli_silver" (
+            def Xform "body__leg_band" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/body__mli_silver>
+                prepend references = @./instances.usda@</Instances/body__leg_band>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -145,9 +134,9 @@ def Xform "peregrine" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "body__leg_band" (
+            def Xform "body__mli_silver" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/body__leg_band>
+                prepend references = @./instances.usda@</Instances/body__mli_silver>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -178,9 +167,9 @@ def Xform "peregrine" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "body__solar_cells" (
+            def Xform "body__deck_box" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/body__solar_cells>
+                prepend references = @./instances.usda@</Instances/body__deck_box>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -189,9 +178,9 @@ def Xform "peregrine" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "body__nozzle_ext" (
+            def Xform "body__nozzle_int" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/body__nozzle_ext>
+                prepend references = @./instances.usda@</Instances/body__nozzle_int>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -200,9 +189,20 @@ def Xform "peregrine" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "body__aluminium" (
+            def Xform "body__lens" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/body__aluminium>
+                prepend references = @./instances.usda@</Instances/body__lens>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__radiator" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__radiator>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -240,9 +240,9 @@ def Xform "peregrine" (
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                 }
 
-                def Xform "leg_0_piston__leg_band" (
+                def Xform "leg_0_piston__footpad" (
                     instanceable = true
-                    prepend references = @./instances.usda@</Instances/leg_0_piston__leg_band>
+                    prepend references = @./instances.usda@</Instances/leg_0_piston__footpad>
                 )
                 {
                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -251,9 +251,9 @@ def Xform "peregrine" (
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                 }
 
-                def Xform "leg_0_piston__footpad" (
+                def Xform "leg_0_piston__leg_band" (
                     instanceable = true
-                    prepend references = @./instances.usda@</Instances/leg_0_piston__footpad>
+                    prepend references = @./instances.usda@</Instances/leg_0_piston__leg_band>
                 )
                 {
                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -312,9 +312,9 @@ def Xform "peregrine" (
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                 }
 
-                def Xform "leg_1_piston__leg_band" (
+                def Xform "leg_1_piston__footpad" (
                     instanceable = true
-                    prepend references = @./instances.usda@</Instances/leg_1_piston__leg_band>
+                    prepend references = @./instances.usda@</Instances/leg_1_piston__footpad>
                 )
                 {
                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -323,9 +323,9 @@ def Xform "peregrine" (
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                 }
 
-                def Xform "leg_1_piston__footpad" (
+                def Xform "leg_1_piston__leg_band" (
                     instanceable = true
-                    prepend references = @./instances.usda@</Instances/leg_1_piston__footpad>
+                    prepend references = @./instances.usda@</Instances/leg_1_piston__leg_band>
                 )
                 {
                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -456,9 +456,9 @@ def Xform "peregrine" (
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                 }
 
-                def Xform "leg_3_piston__leg_band" (
+                def Xform "leg_3_piston__footpad" (
                     instanceable = true
-                    prepend references = @./instances.usda@</Instances/leg_3_piston__leg_band>
+                    prepend references = @./instances.usda@</Instances/leg_3_piston__footpad>
                 )
                 {
                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -467,9 +467,9 @@ def Xform "peregrine" (
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                 }
 
-                def Xform "leg_3_piston__footpad" (
+                def Xform "leg_3_piston__leg_band" (
                     instanceable = true
-                    prepend references = @./instances.usda@</Instances/leg_3_piston__footpad>
+                    prepend references = @./instances.usda@</Instances/leg_3_piston__leg_band>
                 )
                 {
                     quatd xformOp:orient = (1, 0, 0, 0)

@@ -17,7 +17,7 @@ def Xform "mk1_offloader" (
     assetInfo = {
         asset identifier = @./mk1_offloader.usda@
         string name = "mk1_offloader"
-        string version = "0.3.0"
+        string version = "0.4.0"
     }
     doc = "Deck-mounted payload offloader for the Blue Origin Blue Moon MK1 lander: a slewing turret, a perforated mast and a luffing twin-boom jib with a sheave head, hoist line and spreader for lowering rovers to the surface."
     kind = "component"
@@ -188,9 +188,9 @@ def Xform "mk1_offloader" (
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                         }
 
-                        def Xform "crane_hoist__housing" (
+                        def Xform "crane_hoist__truss" (
                             instanceable = true
-                            prepend references = @./instances.usda@</Instances/crane_hoist__housing>
+                            prepend references = @./instances.usda@</Instances/crane_hoist__truss>
                         )
                         {
                             quatd xformOp:orient = (1, 0, 0, 0)
@@ -199,9 +199,9 @@ def Xform "mk1_offloader" (
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                         }
 
-                        def Xform "crane_hoist__truss" (
+                        def Xform "crane_hoist__housing" (
                             instanceable = true
-                            prepend references = @./instances.usda@</Instances/crane_hoist__truss>
+                            prepend references = @./instances.usda@</Instances/crane_hoist__housing>
                         )
                         {
                             quatd xformOp:orient = (1, 0, 0, 0)

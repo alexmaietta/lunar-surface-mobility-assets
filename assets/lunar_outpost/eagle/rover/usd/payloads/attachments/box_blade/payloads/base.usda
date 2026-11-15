@@ -17,7 +17,7 @@ def Xform "box_blade" (
     assetInfo = {
         asset identifier = @./box_blade.usda@
         string name = "box_blade"
-        string version = "0.3.0"
+        string version = "0.4.0"
     }
     doc = "Rear-mounted box blade for Lunar Terrain Vehicle-class rovers, the finishing tool for landing-pad foundations and roads. Towed forward, the main blade cuts high spots and carries the spoil inside the box, dropping it into low spots so repeated passes level a pad to grade. A row of scarifier teeth on a prismatic slide drops ahead of the blade to break up a crust. The 2.4 m width covers the rover's track so each pass grades the wheel ruts."
     kind = "component"
@@ -97,17 +97,6 @@ def Xform "box_blade" (
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                 }
 
-                def Xform "box_lift__anodised_grey" (
-                    instanceable = true
-                    prepend references = @./instances.usda@</Instances/box_lift__anodised_grey>
-                )
-                {
-                    quatd xformOp:orient = (1, 0, 0, 0)
-                    double3 xformOp:scale = (1, 1, 1)
-                    double3 xformOp:translate = (0, 0, 0)
-                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-                }
-
                 def Xform "box_lift__steel" (
                     instanceable = true
                     prepend references = @./instances.usda@</Instances/box_lift__steel>
@@ -133,6 +122,17 @@ def Xform "box_blade" (
                 def Xform "box_lift__composite" (
                     instanceable = true
                     prepend references = @./instances.usda@</Instances/box_lift__composite>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "box_lift__anodised_grey" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/box_lift__anodised_grey>
                 )
                 {
                     quatd xformOp:orient = (1, 0, 0, 0)

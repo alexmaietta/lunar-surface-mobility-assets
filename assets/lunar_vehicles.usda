@@ -1,0 +1,256 @@
+#usda 1.0
+(
+    customLayerData = {
+        string asset_version = "0.4.0"
+        string assets = "apollo_lm,blue_ghost,cadre,clv1,eagle,flex,flip,ipex,ltv_concept,lunar_cruiser,mapp,mk1,mk2,moon_racer,mph,nova_c,pegasus,peregrine,pr_concept,promise,sev,viper"
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "World"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+    def PhysicsScene "PhysicsScene"
+    {
+        vector3f physics:gravityDirection = (0, 0, -1)
+        float physics:gravityMagnitude = 1.625
+    }
+
+    def Cube "Ground" (
+        prepend apiSchemas = ["PhysicsCollisionAPI"]
+    )
+    {
+        color3f[] primvars:displayColor = [(0.42, 0.41, 0.39)]
+        double size = 1
+        float3 xformOp:scale = (400, 400, 0.1)
+        double3 xformOp:translate = (0, 0, -0.05)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Scope "Vehicles"
+    {
+        def Xform "apollo_lm" (
+            doc = "Apollo Lunar Module"
+            kind = "component"
+            prepend references = @grumman/apollo_lm/lander/usd/apollo_lm.usda@
+        )
+        {
+            double3 xformOp:translate = (4.72659969329834, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "blue_ghost" (
+            doc = "Firefly Blue Ghost"
+            kind = "component"
+            prepend references = @firefly/blue_ghost/lander/usd/blue_ghost.usda@
+        )
+        {
+            double3 xformOp:translate = (14.025747179985046, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "cadre" (
+            doc = "NASA JPL CADRE rover"
+            kind = "component"
+            prepend references = @nasa_jpl/cadre/rover/usd/cadre.usda@
+        )
+        {
+            double3 xformOp:translate = (18.87797474861145, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "clv1" (
+            doc = "Astrolab CLV-1"
+            kind = "component"
+            prepend references = @astrolab/clv1/rover/usd/clv1.usda@
+        )
+        {
+            double3 xformOp:translate = (24.148854732513428, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "eagle" (
+            doc = "Lunar Outpost Eagle"
+            kind = "component"
+            prepend references = @lunar_outpost/eagle/rover/usd/eagle.usda@
+        )
+        {
+            double3 xformOp:translate = (31.13565480709076, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "flex" (
+            doc = "Astrolab FLEX"
+            kind = "component"
+            prepend references = @astrolab/flex/rover/usd/flex.usda@
+        )
+        {
+            double3 xformOp:translate = (37.883272647857666, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "flip" (
+            doc = "Astrolab FLIP"
+            kind = "component"
+            prepend references = @astrolab/flip/rover/usd/flip.usda@
+        )
+        {
+            double3 xformOp:translate = (43.75237596035004, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "ipex" (
+            doc = "NASA IPEx excavator"
+            kind = "component"
+            prepend references = @nasa/ipex/rover/usd/ipex.usda@
+        )
+        {
+            double3 xformOp:translate = (48.589767038822174, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "ltv_concept" (
+            doc = "Generic Lunar Terrain Vehicle (concept)"
+            kind = "component"
+            prepend references = @concepts/ltv/rover/usd/ltv_concept.usda@
+        )
+        {
+            double3 xformOp:translate = (54.24215817451477, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "lunar_cruiser" (
+            doc = "JAXA / Toyota Lunar Cruiser"
+            kind = "component"
+            prepend references = @toyota_jaxa/lunar_cruiser/rover/usd/lunar_cruiser.usda@
+        )
+        {
+            double3 xformOp:translate = (64.2018973827362, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mapp" (
+            doc = "Lunar Outpost MAPP"
+            kind = "component"
+            prepend references = @lunar_outpost/mapp/rover/usd/mapp.usda@
+        )
+        {
+            double3 xformOp:translate = (70.34529738128185, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mk1" (
+            doc = "Blue Moon MK1"
+            kind = "component"
+            prepend references = @blue_origin/mk1/lander/usd/mk1.usda@
+        )
+        {
+            double3 xformOp:translate = (75.91913309693336, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mk2" (
+            doc = "Blue Moon MK2"
+            kind = "component"
+            prepend references = @blue_origin/mk2/lander/usd/mk2.usda@
+        )
+        {
+            double3 xformOp:translate = (86.88260880112648, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "moon_racer" (
+            doc = "Intuitive Machines Moon RACER"
+            kind = "component"
+            prepend references = @intuitive_machines/moon_racer/rover/usd/moon_racer.usda@
+        )
+        {
+            double3 xformOp:translate = (97.58860841393471, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mph" (
+            doc = "ASI / Thales Alenia Space Multi-Purpose Habitation (MPH)"
+            kind = "component"
+            prepend references = @asi_thales/mph/habitat/usd/mph.usda@
+        )
+        {
+            double3 xformOp:translate = (106.69580855965614, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "nova_c" (
+            doc = "Intuitive Machines Nova-C"
+            kind = "component"
+            prepend references = @intuitive_machines/nova_c/lander/usd/nova_c.usda@
+        )
+        {
+            double3 xformOp:translate = (116.4962674677372, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "pegasus" (
+            doc = "Lunar Outpost Pegasus"
+            kind = "component"
+            prepend references = @lunar_outpost/pegasus/rover/usd/pegasus.usda@
+        )
+        {
+            double3 xformOp:translate = (123.3685260117054, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "peregrine" (
+            doc = "Astrobotic Peregrine"
+            kind = "component"
+            prepend references = @astrobotic/peregrine/lander/usd/peregrine.usda@
+        )
+        {
+            double3 xformOp:translate = (129.7002024948597, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "pr_concept" (
+            doc = "Generic Pressurised Rover (concept)"
+            kind = "component"
+            prepend references = @concepts/pressurized/rover/usd/pr_concept.usda@
+        )
+        {
+            double3 xformOp:translate = (138.1364394724369, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "promise" (
+            doc = "NASA / JPL PROMISE"
+            kind = "component"
+            prepend references = @nasa_jpl/promise/rover/usd/promise.usda@
+        )
+        {
+            double3 xformOp:translate = (146.23372569680214, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "sev" (
+            doc = "NASA Space Exploration Vehicle (SEV)"
+            kind = "component"
+            prepend references = @nasa/sev/rover/usd/sev.usda@
+        )
+        {
+            double3 xformOp:translate = (153.1497007906437, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "viper" (
+            doc = "NASA VIPER"
+            kind = "component"
+            prepend references = @nasa/viper/rover/usd/viper.usda@
+        )
+        {
+            double3 xformOp:translate = (159.76410087943077, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

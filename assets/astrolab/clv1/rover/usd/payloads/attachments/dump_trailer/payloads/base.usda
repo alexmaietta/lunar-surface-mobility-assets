@@ -17,7 +17,7 @@ def Xform "dump_trailer" (
     assetInfo = {
         asset identifier = @./dump_trailer.usda@
         string name = "dump_trailer"
-        string version = "0.3.0"
+        string version = "0.4.0"
     }
     doc = "Two-wheel tipping dump trailer for Lunar Terrain Vehicle-class rovers, the hauler in a dig-haul-dump cycle (loader bucket or drum excavator fills it, the rover tows it to the berm or pad, the bed tips to dump). A passive yaw-and-pitch hitch and drawbar pull an axle frame on two free-rolling 0.70 m spring-mesh wheels. The 1.6 x 1.4 m bed holds about 0.8 m3 (1.2 t of loose regolith) and tips up to 55 degrees about its rear hinge on an electric ram."
     kind = "component"
@@ -46,9 +46,9 @@ def Xform "dump_trailer" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "base__steel" (
+            def Xform "base__anodised_dark" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/base__steel>
+                prepend references = @./instances.usda@</Instances/base__anodised_dark>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -57,9 +57,9 @@ def Xform "dump_trailer" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "base__anodised_dark" (
+            def Xform "base__steel" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/base__anodised_dark>
+                prepend references = @./instances.usda@</Instances/base__steel>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -104,9 +104,9 @@ def Xform "dump_trailer" (
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                     }
 
-                    def Xform "hitch_pitch__white_panel" (
+                    def Xform "hitch_pitch__anodised_grey" (
                         instanceable = true
-                        prepend references = @./instances.usda@</Instances/hitch_pitch__white_panel>
+                        prepend references = @./instances.usda@</Instances/hitch_pitch__anodised_grey>
                     )
                     {
                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -115,9 +115,9 @@ def Xform "dump_trailer" (
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                     }
 
-                    def Xform "hitch_pitch__anodised_grey" (
+                    def Xform "hitch_pitch__white_panel" (
                         instanceable = true
-                        prepend references = @./instances.usda@</Instances/hitch_pitch__anodised_grey>
+                        prepend references = @./instances.usda@</Instances/hitch_pitch__white_panel>
                     )
                     {
                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -155,17 +155,6 @@ def Xform "dump_trailer" (
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                         }
 
-                        def Xform "bed__anodised_grey" (
-                            instanceable = true
-                            prepend references = @./instances.usda@</Instances/bed__anodised_grey>
-                        )
-                        {
-                            quatd xformOp:orient = (1, 0, 0, 0)
-                            double3 xformOp:scale = (1, 1, 1)
-                            double3 xformOp:translate = (0, 0, 0)
-                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-                        }
-
                         def Xform "bed__white_panel" (
                             instanceable = true
                             prepend references = @./instances.usda@</Instances/bed__white_panel>
@@ -180,6 +169,17 @@ def Xform "dump_trailer" (
                         def Xform "bed__grating" (
                             instanceable = true
                             prepend references = @./instances.usda@</Instances/bed__grating>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "bed__anodised_grey" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/bed__anodised_grey>
                         )
                         {
                             quatd xformOp:orient = (1, 0, 0, 0)

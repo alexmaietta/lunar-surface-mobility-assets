@@ -17,7 +17,7 @@ def Xform "nova_c" (
     assetInfo = {
         asset identifier = @./nova_c.usda@
         string name = "nova_c"
-        string version = "0.3.0"
+        string version = "0.4.0"
     }
     doc = "Intuitive Machines Nova-C lunar lander (IM-1 Odysseus / IM-2 Athena class): a 4.3 m tall hexagonal prism, 1.57 m across flats, with two stacked composite LOX/LCH4 tanks, copper-wrapped helium tanks, a gimballed VR900 main engine under a heat-shield skirt, six crush-core tripod legs on a 4.6 m footprint, a top-deck hex array and two body-mounted side arrays, helium cold-gas RCS on corner booms and a fixed S-band high-gain dish."
     kind = "component"
@@ -79,9 +79,9 @@ def Xform "nova_c" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "body__mli_silver" (
+            def Xform "body__frame_yellow" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/body__mli_silver>
+                prepend references = @./instances.usda@</Instances/body__frame_yellow>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -156,6 +156,17 @@ def Xform "nova_c" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
+            def Xform "body__radome" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__radome>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
             def Xform "body__mli_gold" (
                 instanceable = true
                 prepend references = @./instances.usda@</Instances/body__mli_gold>
@@ -167,20 +178,9 @@ def Xform "nova_c" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "body__frame_yellow" (
+            def Xform "body__mli_silver" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/body__frame_yellow>
-            )
-            {
-                quatd xformOp:orient = (1, 0, 0, 0)
-                double3 xformOp:scale = (1, 1, 1)
-                double3 xformOp:translate = (0, 0, 0)
-                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-            }
-
-            def Xform "body__radome" (
-                instanceable = true
-                prepend references = @./instances.usda@</Instances/body__radome>
+                prepend references = @./instances.usda@</Instances/body__mli_silver>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)

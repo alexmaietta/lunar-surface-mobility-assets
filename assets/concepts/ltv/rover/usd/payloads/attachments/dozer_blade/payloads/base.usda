@@ -17,7 +17,7 @@ def Xform "dozer_blade" (
     assetInfo = {
         asset identifier = @./dozer_blade.usda@
         string name = "dozer_blade"
-        string version = "0.3.0"
+        string version = "0.4.0"
     }
     doc = "Front-mounted six-way dozer blade for Lunar Terrain Vehicle-class rovers, sized after NASA's LANCE blade on Chariot (composite moldboard on a light aluminium frame, about 70 % lighter than a steel blade). A quick-attach coupler carries an A-frame push arm on a lift pivot, and a C-frame on the arm nose gives power angle (yaw) and tilt (roll). The 2.7 m curved composite moldboard has a replaceable steel cutting edge and end bits. Use for clearing, grading, dozing and building berms and ramps."
     kind = "component"
@@ -177,17 +177,6 @@ def Xform "dozer_blade" (
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                         }
 
-                        def Xform "blade_tilt__steel" (
-                            instanceable = true
-                            prepend references = @./instances.usda@</Instances/blade_tilt__steel>
-                        )
-                        {
-                            quatd xformOp:orient = (1, 0, 0, 0)
-                            double3 xformOp:scale = (1, 1, 1)
-                            double3 xformOp:translate = (0, 0, 0)
-                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-                        }
-
                         def Xform "blade_tilt__wear_steel" (
                             instanceable = true
                             prepend references = @./instances.usda@</Instances/blade_tilt__wear_steel>
@@ -202,6 +191,17 @@ def Xform "dozer_blade" (
                         def Xform "blade_tilt__white_panel" (
                             instanceable = true
                             prepend references = @./instances.usda@</Instances/blade_tilt__white_panel>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "blade_tilt__steel" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/blade_tilt__steel>
                         )
                         {
                             quatd xformOp:orient = (1, 0, 0, 0)

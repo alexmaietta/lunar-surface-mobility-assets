@@ -17,7 +17,7 @@ def Xform "v_blade" (
     assetInfo = {
         asset identifier = @./v_blade.usda@
         string name = "v_blade"
-        string version = "0.3.0"
+        string version = "0.4.0"
     }
     doc = "Front-mounted hinged V-blade for Lunar Terrain Vehicle-class rovers, after terrestrial V-plows. Two 1.45 m curved composite wings pivot independently on a steel nose post at the end of a lifting push frame, so the blade works as a V (splits regolith to both sides, opens a track or trench line), straight (dozing), scoop or inverted V (carries a load), or angled left or right (casts a windrow to one side when building a berm line). The wings are modelled in a 25 degree V; each wing joint runs from a 25 degree scoop through straight to a 35 degree V."
     kind = "component"
@@ -159,17 +159,6 @@ def Xform "v_blade" (
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                     }
 
-                    def Xform "wing_l__steel" (
-                        instanceable = true
-                        prepend references = @./instances.usda@</Instances/wing_l__steel>
-                    )
-                    {
-                        quatd xformOp:orient = (1, 0, 0, 0)
-                        double3 xformOp:scale = (1, 1, 1)
-                        double3 xformOp:translate = (0, 0, 0)
-                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-                    }
-
                     def Xform "wing_l__white_panel" (
                         instanceable = true
                         prepend references = @./instances.usda@</Instances/wing_l__white_panel>
@@ -184,6 +173,17 @@ def Xform "v_blade" (
                     def Xform "wing_l__wear_steel" (
                         instanceable = true
                         prepend references = @./instances.usda@</Instances/wing_l__wear_steel>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "wing_l__steel" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/wing_l__steel>
                     )
                     {
                         quatd xformOp:orient = (1, 0, 0, 0)

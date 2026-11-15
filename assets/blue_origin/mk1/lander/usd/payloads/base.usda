@@ -17,7 +17,7 @@ def Xform "mk1" (
     assetInfo = {
         asset identifier = @./mk1.usda@
         string name = "mk1"
-        string version = "0.3.0"
+        string version = "0.4.0"
     }
     doc = "Blue Origin Blue Moon Mark 1 lunar lander: a single-stage uncrewed cargo lander about 8 m tall with an octagonal avionics ring, an MLI-wrapped LH2 tank, four capsule propellant tanks around one gimballed BE-7 LOX/LH2 engine, four legs with stroking pistons, corner RCS pods, a steerable high-gain antenna and a deck mount for an optional payload offloader."
     kind = "component"
@@ -35,9 +35,9 @@ def Xform "mk1" (
             double3 xformOp:translate = (0, 0, 0)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
-            def Xform "body__ring_panel" (
+            def Xform "body__mli_amber" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/body__ring_panel>
+                prepend references = @./instances.usda@</Instances/body__mli_amber>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -46,9 +46,31 @@ def Xform "mk1" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "body__mli_amber" (
+            def Xform "body__osr" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/body__mli_amber>
+                prepend references = @./instances.usda@</Instances/body__osr>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__leg_lattice" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__leg_lattice>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__radome" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__radome>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -68,9 +90,53 @@ def Xform "mk1" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
+            def Xform "body__mli_gold" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__mli_gold>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
             def Xform "body__lens" (
                 instanceable = true
                 prepend references = @./instances.usda@</Instances/body__lens>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__anodised_dark" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__anodised_dark>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__ring_panel" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__ring_panel>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "body__deck_panel" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/body__deck_panel>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -93,72 +159,6 @@ def Xform "mk1" (
             def Xform "body__aluminium" (
                 instanceable = true
                 prepend references = @./instances.usda@</Instances/body__aluminium>
-            )
-            {
-                quatd xformOp:orient = (1, 0, 0, 0)
-                double3 xformOp:scale = (1, 1, 1)
-                double3 xformOp:translate = (0, 0, 0)
-                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-            }
-
-            def Xform "body__leg_lattice" (
-                instanceable = true
-                prepend references = @./instances.usda@</Instances/body__leg_lattice>
-            )
-            {
-                quatd xformOp:orient = (1, 0, 0, 0)
-                double3 xformOp:scale = (1, 1, 1)
-                double3 xformOp:translate = (0, 0, 0)
-                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-            }
-
-            def Xform "body__mli_gold" (
-                instanceable = true
-                prepend references = @./instances.usda@</Instances/body__mli_gold>
-            )
-            {
-                quatd xformOp:orient = (1, 0, 0, 0)
-                double3 xformOp:scale = (1, 1, 1)
-                double3 xformOp:translate = (0, 0, 0)
-                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-            }
-
-            def Xform "body__radome" (
-                instanceable = true
-                prepend references = @./instances.usda@</Instances/body__radome>
-            )
-            {
-                quatd xformOp:orient = (1, 0, 0, 0)
-                double3 xformOp:scale = (1, 1, 1)
-                double3 xformOp:translate = (0, 0, 0)
-                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-            }
-
-            def Xform "body__osr" (
-                instanceable = true
-                prepend references = @./instances.usda@</Instances/body__osr>
-            )
-            {
-                quatd xformOp:orient = (1, 0, 0, 0)
-                double3 xformOp:scale = (1, 1, 1)
-                double3 xformOp:translate = (0, 0, 0)
-                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-            }
-
-            def Xform "body__deck_panel" (
-                instanceable = true
-                prepend references = @./instances.usda@</Instances/body__deck_panel>
-            )
-            {
-                quatd xformOp:orient = (1, 0, 0, 0)
-                double3 xformOp:scale = (1, 1, 1)
-                double3 xformOp:translate = (0, 0, 0)
-                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-            }
-
-            def Xform "body__anodised_dark" (
-                instanceable = true
-                prepend references = @./instances.usda@</Instances/body__anodised_dark>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -214,6 +214,17 @@ def Xform "mk1" (
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                     }
 
+                    def Xform "be7__aluminium" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/be7__aluminium>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
                     def Xform "be7__engine_metal" (
                         instanceable = true
                         prepend references = @./instances.usda@</Instances/be7__engine_metal>
@@ -228,17 +239,6 @@ def Xform "mk1" (
                     def Xform "be7__nozzle_int" (
                         instanceable = true
                         prepend references = @./instances.usda@</Instances/be7__nozzle_int>
-                    )
-                    {
-                        quatd xformOp:orient = (1, 0, 0, 0)
-                        double3 xformOp:scale = (1, 1, 1)
-                        double3 xformOp:translate = (0, 0, 0)
-                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-                    }
-
-                    def Xform "be7__aluminium" (
-                        instanceable = true
-                        prepend references = @./instances.usda@</Instances/be7__aluminium>
                     )
                     {
                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -328,9 +328,9 @@ def Xform "mk1" (
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                     }
 
-                    def Xform "hga_elevation__aluminium" (
+                    def Xform "hga_elevation__ring_panel" (
                         instanceable = true
-                        prepend references = @./instances.usda@</Instances/hga_elevation__aluminium>
+                        prepend references = @./instances.usda@</Instances/hga_elevation__ring_panel>
                     )
                     {
                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -339,9 +339,9 @@ def Xform "mk1" (
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                     }
 
-                    def Xform "hga_elevation__ring_panel" (
+                    def Xform "hga_elevation__aluminium" (
                         instanceable = true
-                        prepend references = @./instances.usda@</Instances/hga_elevation__ring_panel>
+                        prepend references = @./instances.usda@</Instances/hga_elevation__aluminium>
                     )
                     {
                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -625,9 +625,9 @@ def Xform "mk1" (
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                 }
 
-                def Xform "solar_array_0__aluminium" (
+                def Xform "solar_array_0__beta_white" (
                     instanceable = true
-                    prepend references = @./instances.usda@</Instances/solar_array_0__aluminium>
+                    prepend references = @./instances.usda@</Instances/solar_array_0__beta_white>
                 )
                 {
                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -636,9 +636,9 @@ def Xform "mk1" (
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                 }
 
-                def Xform "solar_array_0__beta_white" (
+                def Xform "solar_array_0__aluminium" (
                     instanceable = true
-                    prepend references = @./instances.usda@</Instances/solar_array_0__beta_white>
+                    prepend references = @./instances.usda@</Instances/solar_array_0__aluminium>
                 )
                 {
                     quatd xformOp:orient = (1, 0, 0, 0)

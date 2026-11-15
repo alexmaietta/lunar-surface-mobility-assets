@@ -17,7 +17,7 @@ def Xform "loader_bucket" (
     assetInfo = {
         asset identifier = @./loader_bucket.usda@
         string name = "loader_bucket"
-        string version = "0.3.0"
+        string version = "0.4.0"
     }
     doc = "Front loader for Lunar Terrain Vehicle-class rovers: two lift arms on the quick-attach coupler raise a 1.6 m general-purpose bucket (about 0.18 m3 struck, roughly 270 kg of loose regolith) high enough to dump into the dump trailer, and a curl joint rolls the bucket back to carry or forward to dump. Sized so a 1 t rover stays stable in lunar gravity with a full bucket."
     kind = "component"
@@ -46,9 +46,9 @@ def Xform "loader_bucket" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "base__white_panel" (
+            def Xform "base__steel" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/base__white_panel>
+                prepend references = @./instances.usda@</Instances/base__steel>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -68,9 +68,9 @@ def Xform "loader_bucket" (
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Xform "base__steel" (
+            def Xform "base__white_panel" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/base__steel>
+                prepend references = @./instances.usda@</Instances/base__white_panel>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)

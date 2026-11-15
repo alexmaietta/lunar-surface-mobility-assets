@@ -230,28 +230,6 @@ def Scope "Instances"
         }
     }
 
-    def Xform "blade_tilt__steel" (
-        prepend references = @./geometries.usd@</Geometries/blade_tilt__steel>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "steel" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/steel>
-            )
-            {
-            }
-        }
-
-        over "blade_tilt__steel" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/blade_tilt__steel/VisualMaterials/steel>
-        }
-    }
-
     def Xform "blade_tilt__wear_steel" (
         prepend references = @./geometries.usd@</Geometries/blade_tilt__wear_steel>
     )
@@ -293,6 +271,28 @@ def Scope "Instances"
         )
         {
             rel material:binding = </Instances/blade_tilt__white_panel/VisualMaterials/white_panel>
+        }
+    }
+
+    def Xform "blade_tilt__steel" (
+        prepend references = @./geometries.usd@</Geometries/blade_tilt__steel>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "steel" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/steel>
+            )
+            {
+            }
+        }
+
+        over "blade_tilt__steel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/blade_tilt__steel/VisualMaterials/steel>
         }
     }
 

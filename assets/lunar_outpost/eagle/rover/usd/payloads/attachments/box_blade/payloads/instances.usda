@@ -120,28 +120,6 @@ def Scope "Instances"
         }
     }
 
-    def Xform "box_lift__anodised_grey" (
-        prepend references = @./geometries.usd@</Geometries/box_lift__anodised_grey>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "anodised_grey" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/anodised_grey>
-            )
-            {
-            }
-        }
-
-        over "box_lift__anodised_grey" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/box_lift__anodised_grey/VisualMaterials/anodised_grey>
-        }
-    }
-
     def Xform "box_lift__steel" (
         prepend references = @./geometries.usd@</Geometries/box_lift__steel>
     )
@@ -205,6 +183,28 @@ def Scope "Instances"
         )
         {
             rel material:binding = </Instances/box_lift__composite/VisualMaterials/composite>
+        }
+    }
+
+    def Xform "box_lift__anodised_grey" (
+        prepend references = @./geometries.usd@</Geometries/box_lift__anodised_grey>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "anodised_grey" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/anodised_grey>
+            )
+            {
+            }
+        }
+
+        over "box_lift__anodised_grey" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/box_lift__anodised_grey/VisualMaterials/anodised_grey>
         }
     }
 

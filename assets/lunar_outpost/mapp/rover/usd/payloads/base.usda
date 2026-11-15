@@ -17,7 +17,7 @@ def Xform "mapp" (
     assetInfo = {
         asset identifier = @./mapp.usda@
         string name = "mapp"
-        string version = "0.3.0"
+        string version = "0.4.0"
     }
     doc = "Lunar Outpost MAPP (Mobile Autonomous Prospecting Platform), the CLPS-class small rover flown on IM-2: about 45 x 38 x 40 cm and 10 kg, a hexagonal-section aluminium body with solar cells on both sides and a three-lens camera bracket on the front, a tube truss carrying a top rail with camera and antenna brackets, and four gold paddle wheels with inboard hub motors on articulated rocker suspension with skid steering."
     kind = "component"
@@ -34,6 +34,50 @@ def Xform "mapp" (
             double3 xformOp:scale = (1, 1, 1)
             double3 xformOp:translate = (0, 0, 0)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Xform "chassis__solar_cells" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/chassis__solar_cells>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "chassis__aluminium" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/chassis__aluminium>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "chassis__white_panel" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/chassis__white_panel>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "chassis__lens" (
+                instanceable = true
+                prepend references = @./instances.usda@</Instances/chassis__lens>
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
 
             def Xform "chassis__brushed_panel" (
                 instanceable = true
@@ -60,50 +104,6 @@ def Xform "mapp" (
             def Xform "chassis__anodised_grey" (
                 instanceable = true
                 prepend references = @./instances.usda@</Instances/chassis__anodised_grey>
-            )
-            {
-                quatd xformOp:orient = (1, 0, 0, 0)
-                double3 xformOp:scale = (1, 1, 1)
-                double3 xformOp:translate = (0, 0, 0)
-                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-            }
-
-            def Xform "chassis__aluminium" (
-                instanceable = true
-                prepend references = @./instances.usda@</Instances/chassis__aluminium>
-            )
-            {
-                quatd xformOp:orient = (1, 0, 0, 0)
-                double3 xformOp:scale = (1, 1, 1)
-                double3 xformOp:translate = (0, 0, 0)
-                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-            }
-
-            def Xform "chassis__solar_cells" (
-                instanceable = true
-                prepend references = @./instances.usda@</Instances/chassis__solar_cells>
-            )
-            {
-                quatd xformOp:orient = (1, 0, 0, 0)
-                double3 xformOp:scale = (1, 1, 1)
-                double3 xformOp:translate = (0, 0, 0)
-                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-            }
-
-            def Xform "chassis__white_panel" (
-                instanceable = true
-                prepend references = @./instances.usda@</Instances/chassis__white_panel>
-            )
-            {
-                quatd xformOp:orient = (1, 0, 0, 0)
-                double3 xformOp:scale = (1, 1, 1)
-                double3 xformOp:translate = (0, 0, 0)
-                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-            }
-
-            def Xform "chassis__lens" (
-                instanceable = true
-                prepend references = @./instances.usda@</Instances/chassis__lens>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -170,9 +170,9 @@ def Xform "mapp" (
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                     }
 
-                    def Xform "fl_wheel__aluminium" (
+                    def Xform "fl_wheel__anodised_grey" (
                         instanceable = true
-                        prepend references = @./instances.usda@</Instances/fl_wheel__aluminium>
+                        prepend references = @./instances.usda@</Instances/fl_wheel__anodised_grey>
                     )
                     {
                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -181,9 +181,9 @@ def Xform "mapp" (
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                     }
 
-                    def Xform "fl_wheel__anodised_grey" (
+                    def Xform "fl_wheel__aluminium" (
                         instanceable = true
-                        prepend references = @./instances.usda@</Instances/fl_wheel__anodised_grey>
+                        prepend references = @./instances.usda@</Instances/fl_wheel__aluminium>
                     )
                     {
                         quatd xformOp:orient = (1, 0, 0, 0)

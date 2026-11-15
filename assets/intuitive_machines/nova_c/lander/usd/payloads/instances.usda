@@ -98,25 +98,25 @@ def Scope "Instances"
         }
     }
 
-    def Xform "body__mli_silver" (
-        prepend references = @./geometries.usd@</Geometries/body__mli_silver>
+    def Xform "body__frame_yellow" (
+        prepend references = @./geometries.usd@</Geometries/body__frame_yellow>
     )
     {
         def Scope "VisualMaterials"
         {
-            def Material "mli_silver" (
+            def Material "frame_yellow" (
                 instanceable = true
-                prepend references = @./materials.usda@</Materials/mli_silver>
+                prepend references = @./materials.usda@</Materials/frame_yellow>
             )
             {
             }
         }
 
-        over "body__mli_silver" (
+        over "body__frame_yellow" (
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Instances/body__mli_silver/VisualMaterials/mli_silver>
+            rel material:binding = </Instances/body__frame_yellow/VisualMaterials/frame_yellow>
         }
     }
 
@@ -252,6 +252,28 @@ def Scope "Instances"
         }
     }
 
+    def Xform "body__radome" (
+        prepend references = @./geometries.usd@</Geometries/body__radome>
+    )
+    {
+        def Scope "VisualMaterials"
+        {
+            def Material "radome" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/radome>
+            )
+            {
+            }
+        }
+
+        over "body__radome" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Instances/body__radome/VisualMaterials/radome>
+        }
+    }
+
     def Xform "body__mli_gold" (
         prepend references = @./geometries.usd@</Geometries/body__mli_gold>
     )
@@ -274,47 +296,25 @@ def Scope "Instances"
         }
     }
 
-    def Xform "body__frame_yellow" (
-        prepend references = @./geometries.usd@</Geometries/body__frame_yellow>
+    def Xform "body__mli_silver" (
+        prepend references = @./geometries.usd@</Geometries/body__mli_silver>
     )
     {
         def Scope "VisualMaterials"
         {
-            def Material "frame_yellow" (
+            def Material "mli_silver" (
                 instanceable = true
-                prepend references = @./materials.usda@</Materials/frame_yellow>
+                prepend references = @./materials.usda@</Materials/mli_silver>
             )
             {
             }
         }
 
-        over "body__frame_yellow" (
+        over "body__mli_silver" (
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Instances/body__frame_yellow/VisualMaterials/frame_yellow>
-        }
-    }
-
-    def Xform "body__radome" (
-        prepend references = @./geometries.usd@</Geometries/body__radome>
-    )
-    {
-        def Scope "VisualMaterials"
-        {
-            def Material "radome" (
-                instanceable = true
-                prepend references = @./materials.usda@</Materials/radome>
-            )
-            {
-            }
-        }
-
-        over "body__radome" (
-            prepend apiSchemas = ["MaterialBindingAPI"]
-        )
-        {
-            rel material:binding = </Instances/body__radome/VisualMaterials/radome>
+            rel material:binding = </Instances/body__mli_silver/VisualMaterials/mli_silver>
         }
     }
 
