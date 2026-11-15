@@ -13,7 +13,9 @@
 
 These are simulation-ready models of lunar landers, rovers and their friends. 
 
-Each one is built procedurally in Blender from public references and gets generated, high-resolution, tileable PBR textures. It ships as an Isaac Sim / SimReady-style **USD** asset with physics, joints, colliders and named sites for engines, RCS thrusters, sensors and antennas. The rovers add drive, steering and suspension joints, working hatches, stairs and arms, and real lights. Every asset is also a **URDF** robot description with per-link mass and inertia, colliders, joint limits and closed suspension linkages, and comes as **glTF**, **OBJ** and **Blender** too.
+They're designed for quick prototyping and fun visuals. For deeper simulation work, these assets may be a good starting point but we provide no guarentee on the accuracy of the models.
+
+Each one is agentically built and is procedurally generated in Blender from public references and gets generated, high-resolution, tileable PBR textures. It ships as an Isaac Sim / SimReady-style **USD** asset with physics, joints, colliders and named sites for engines, RCS thrusters, sensors and antennas. The rovers add drive, steering and suspension joints, working hatches, stairs and arms, and real lights and cameras. Every asset is also a **URDF** robot description with per-link mass and inertia, colliders, joint limits and closed suspension linkages, and comes as **glTF**, **OBJ** and **Blender** assets too.
 
 **[Explore every model in 3D](https://alexmaietta.github.io/lunar-surface-mobility-assets/)** We also provide an interactive viewer to orbit around the assets, select any vehicle for its specs, and drive its moving parts, such as antennas, arms, hatches, stairs, steering and wheels.
 
@@ -50,21 +52,35 @@ Each asset is released as `<asset>-usd.zip`, `<asset>-urdf.zip`, `<asset>-gltf.z
 For small downloads, `<asset>-simple-usd.zip`, `<asset>-simple-gltf.zip` and `<asset>-simple-obj.zip` hold a single simplified mesh of a few hundred kB (see [Simple versions](#simple-versions)). To pin a version, use `download/v0.1.0` instead of `latest/download`; each release includes `SHA256SUMS`.
 
 ```sh
+# OpenUSD
 curl -LO https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/mk1-usd.zip
 unzip mk1-usd.zip # -> mk1/mk1.usda
+
+# URDF
 curl -LO https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/eagle-urdf.zip
 unzip eagle-urdf.zip # -> eagle/urdf/eagle.urdf (+ meshes, eagle/obj textures)
+
+# Simple glTF/glb
 curl -LO https://github.com/alexmaietta/lunar-surface-mobility-assets/releases/latest/download/mk1-simple-gltf.zip
 unzip mk1-simple-gltf.zip # -> mk1_simple/mk1_simple.glb
 ```
 
-Or clone the repo. The same assets are in `assets/`, stored with Git LFS (set `GIT_LFS_SKIP_SMUDGE=1` to skip them):
+Or clone the repo. The same assets are stored with Git LFS in `assets/` (set `GIT_LFS_SKIP_SMUDGE=1` to skip them):
 
 ```sh
 git clone git@github.com:alexmaietta/lunar-surface-mobility-assets.git
 cd lunar-surface-mobility-assets
+
+# Pulls all LFS files
 git lfs pull
+
+# Or pull a specific directory
+git lfs pull -I assets/blue_origin
 ```
+
+## Examples
+
+We also provide some basic [examples](./examples/) simulation scripts to interact with the assets and also test to make sure they are rigged correctly and can be articulated properly.
 
 ## Gallery
 
@@ -110,7 +126,6 @@ git lfs pull
 
 | | | |
 |---|---|---|
-| ![NASA VIPER driving at night under its NavLights](docs/images/nasa/viper/rover/night_drive.jpg) | ![VIPER left NavCam view, RTX spectral](docs/images/nasa/viper/rover/nav_cam_left_spectral.jpg) | ![VIPER front-left HazCam view, RTX spectral](docs/images/nasa/viper/rover/haz_cam_fl_spectral.jpg) |
 | ![NASA VIPER mast head, NavCams, NavLights and HGA](docs/images/nasa/viper/rover/mast.jpg) | ![NASA VIPER wheel module](docs/images/nasa/viper/rover/wheel.jpg) | |
 
 | | |
