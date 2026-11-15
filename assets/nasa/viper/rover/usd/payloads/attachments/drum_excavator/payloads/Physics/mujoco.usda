@@ -1,0 +1,58 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "drum_excavator"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./physics.usda@
+    ]
+    upAxis = "Z"
+)
+
+over "drum_excavator"
+{
+    over "Physics"
+    {
+        over "drum_arm" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "drum_arm_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -40000, -4000, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 6000
+            uniform double mjc:forceRange:min = -6000
+            uniform double[] mjc:gainPrm = [40000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </drum_excavator/Physics/drum_arm>
+        }
+
+        over "drums" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "drums_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -400, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 900
+            uniform double mjc:forceRange:min = -900
+            uniform double[] mjc:gainPrm = [400, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </drum_excavator/Physics/drums>
+        }
+    }
+}
+

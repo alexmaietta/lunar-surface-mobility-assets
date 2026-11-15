@@ -1,0 +1,138 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "dump_trailer"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "dump_trailer" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    string isaac:description = "Tipping dump trailer (concept rover attachment)"
+    token isaac:license = "Other"
+    string isaac:namespace = "dump_trailer"
+    prepend rel isaac:physics:robotJoints = [
+        </dump_trailer/Physics/hitch_yaw>,
+        </dump_trailer/Physics/hitch_pitch>,
+        </dump_trailer/Physics/bed>,
+        </dump_trailer/Physics/trailer_l_wheel>,
+        </dump_trailer/Physics/trailer_r_wheel>,
+    ]
+    prepend rel isaac:physics:robotLinks = [
+        </dump_trailer/Geometry/base>,
+        </dump_trailer/Geometry/base/mount>,
+        </dump_trailer/Geometry/base/hitch_yaw>,
+        </dump_trailer/Geometry/base/hitch_yaw/hitch_pitch>,
+        </dump_trailer/Geometry/base/hitch_yaw/hitch_pitch/bed>,
+        </dump_trailer/Geometry/base/hitch_yaw/hitch_pitch/bed/bed_volume>,
+        </dump_trailer/Geometry/base/hitch_yaw/hitch_pitch/bed/dump_lip>,
+        </dump_trailer/Geometry/base/hitch_yaw/hitch_pitch/trailer_l_wheel>,
+        </dump_trailer/Geometry/base/hitch_yaw/hitch_pitch/trailer_r_wheel>,
+    ]
+    token isaac:robotType = "Manipulator"
+    string isaac:source = "lunar-surface-mobility-assets pipeline"
+    string isaac:version = "0.3.0"
+
+    over "Geometry"
+    {
+        over "base" (
+            prepend apiSchemas = ["IsaacLinkAPI"]
+        )
+        {
+            over "hitch_yaw" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "hitch_pitch" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "bed" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "bed_volume" (
+                            prepend apiSchemas = ["IsaacSiteAPI"]
+                        )
+                        {
+                            string isaac:Description = "Bed load centroid (struck capacity)"
+                            uniform token isaac:forwardAxis = "Z"
+                        }
+
+                        over "dump_lip" (
+                            prepend apiSchemas = ["IsaacSiteAPI"]
+                        )
+                        {
+                            string isaac:Description = "Rear dump lip (spoil leaves the bed here)"
+                            uniform token isaac:forwardAxis = "Z"
+                        }
+                    }
+
+                    over "trailer_l_wheel" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                    }
+
+                    over "trailer_r_wheel" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                    }
+                }
+            }
+
+            over "mount" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Quick-attach coupler: mates with a rover's tool_front or tool_rear site"
+                uniform token isaac:forwardAxis = "Z"
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "hitch_yaw" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "hitch_pitch" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "bed" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "trailer_l_wheel" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "trailer_r_wheel" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+    }
+}
+

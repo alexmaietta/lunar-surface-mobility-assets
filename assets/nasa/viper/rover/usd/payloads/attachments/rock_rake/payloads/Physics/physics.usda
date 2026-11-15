@@ -1,0 +1,66 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "rock_rake"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "rock_rake"
+{
+    over "Geometry"
+    {
+        over "base" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI"]
+        )
+        {
+            bool newton:selfCollisionEnabled = 0
+            point3f physics:centerOfMass = (0.1315217, 0.0013999939, 0.0194)
+            float3 physics:diagonalInertia = (0.87643236, 0.27899346, 0.8602734)
+            float physics:mass = 15
+            quatf physics:principalAxes = (1, 0, 0, 0)
+
+            over "rake_lift" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0.47478002, 0, -0.24469079)
+                float3 physics:diagonalInertia = (30.305069, 6.2576046, 33.464417)
+                float physics:mass = 55
+                quatf physics:principalAxes = (1, 0, 0, 0)
+            }
+        }
+    }
+
+    def "Physics"
+    {
+        def PhysicsRevoluteJoint "rake_lift" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 52.35988
+            float drive:angular:physics:maxForce = 4000
+            float drive:angular:physics:stiffness = 523.59875
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "tool"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </rock_rake/Geometry/base>
+            rel physics:body1 = </rock_rake/Geometry/base/rake_lift>
+            point3f physics:localPos0 = (0.1, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, -0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, -0.70710677)
+            float physics:lowerLimit = -17.188734
+            float physics:upperLimit = 25.7831
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+    }
+}
+

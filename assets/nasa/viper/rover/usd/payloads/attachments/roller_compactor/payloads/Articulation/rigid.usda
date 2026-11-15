@@ -1,0 +1,75 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "roller_compactor"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "roller_compactor"
+{
+    over "Geometry"
+    {
+        over "base"
+        {
+            over "hitch_yaw" (
+                delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                over "hitch_pitch" (
+                    delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    over "roller" (
+                        delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                    }
+                }
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "hitch_yaw" (
+            active = false
+        )
+        {
+        }
+
+        over "hitch_yaw_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "hitch_pitch" (
+            active = false
+        )
+        {
+        }
+
+        over "hitch_pitch_actuator" (
+            active = false
+        )
+        {
+        }
+
+        over "roller" (
+            active = false
+        )
+        {
+        }
+
+        over "roller_actuator" (
+            active = false
+        )
+        {
+        }
+    }
+}
+

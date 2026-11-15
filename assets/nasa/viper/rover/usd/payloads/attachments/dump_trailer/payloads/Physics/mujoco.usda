@@ -1,0 +1,115 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "dump_trailer"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./physics.usda@
+    ]
+    upAxis = "Z"
+)
+
+over "dump_trailer"
+{
+    over "Physics"
+    {
+        over "hitch_yaw" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "hitch_yaw_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -5, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 1000
+            uniform double mjc:forceRange:min = -1000
+            uniform double[] mjc:gainPrm = [5, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </dump_trailer/Physics/hitch_yaw>
+        }
+
+        over "hitch_pitch" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "hitch_pitch_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -5, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 1000
+            uniform double mjc:forceRange:min = -1000
+            uniform double[] mjc:gainPrm = [5, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </dump_trailer/Physics/hitch_pitch>
+        }
+
+        over "bed" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "bed_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -30000, -3000, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 9000
+            uniform double mjc:forceRange:min = -9000
+            uniform double[] mjc:gainPrm = [30000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </dump_trailer/Physics/bed>
+        }
+
+        over "trailer_l_wheel" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "trailer_l_wheel_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -0.5, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 1000
+            uniform double mjc:forceRange:min = -1000
+            uniform double[] mjc:gainPrm = [0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </dump_trailer/Physics/trailer_l_wheel>
+        }
+
+        over "trailer_r_wheel" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "trailer_r_wheel_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -0.5, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 1000
+            uniform double mjc:forceRange:min = -1000
+            uniform double[] mjc:gainPrm = [0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </dump_trailer/Physics/trailer_r_wheel>
+        }
+    }
+}
+

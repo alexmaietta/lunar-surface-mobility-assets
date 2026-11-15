@@ -1,6 +1,7 @@
 import math
 
 import rover_kit as K
+import tool_kit as TK
 
 ASSET_ID = "viper"
 ASSET_PATH = "nasa/viper/rover"
@@ -328,6 +329,11 @@ ROVER = {
               ("lift_point", "chassis", (0, 0, DECK_PEAK), (0, 0, 1), "handling", "Deck lift point")],
     "imu": (0, 0, 0.6),
 }
+
+TOOL_FRONT, TOOL_REAR = (0.92, 0.0, 0.60), (-0.92, 0.0, 0.60)
+ROVER["parts"] += TK.mount_brackets(0.77, TOOL_FRONT, 1, z=0.62) + TK.mount_brackets(-0.68, TOOL_REAR, -1, z=0.66)
+ROVER["sites"] += TK.mount_sites(TOOL_FRONT, TOOL_REAR)
+ATTACHMENTS = TK.attachments()
 
 MASS = {"roving": {"mass": 447.0, "com_z": 0.62, "source": "NASA: 447 kg roving"},
         "launch": {"mass": 490.0, "com_z": 0.62, "source": "NASA: 490 kg at launch"}}

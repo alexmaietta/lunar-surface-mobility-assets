@@ -1,0 +1,94 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "loader_bucket"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "loader_bucket" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    string isaac:description = "Front loader bucket (concept rover attachment)"
+    token isaac:license = "Other"
+    string isaac:namespace = "loader_bucket"
+    prepend rel isaac:physics:robotJoints = [
+        </loader_bucket/Physics/loader_lift>,
+        </loader_bucket/Physics/bucket>,
+    ]
+    prepend rel isaac:physics:robotLinks = [
+        </loader_bucket/Geometry/base>,
+        </loader_bucket/Geometry/base/mount>,
+        </loader_bucket/Geometry/base/loader_lift>,
+        </loader_bucket/Geometry/base/loader_lift/bucket>,
+        </loader_bucket/Geometry/base/loader_lift/bucket/bucket_edge>,
+        </loader_bucket/Geometry/base/loader_lift/bucket/bucket_volume>,
+    ]
+    token isaac:robotType = "Manipulator"
+    string isaac:source = "lunar-surface-mobility-assets pipeline"
+    string isaac:version = "0.3.0"
+
+    over "Geometry"
+    {
+        over "base" (
+            prepend apiSchemas = ["IsaacLinkAPI"]
+        )
+        {
+            over "loader_lift" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "bucket" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "bucket_edge" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "Bucket cutting edge centre (+Z = cutting direction)"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+
+                    over "bucket_volume" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "Bucket load centroid (struck capacity)"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+                }
+            }
+
+            over "mount" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Quick-attach coupler: mates with a rover's tool_front or tool_rear site"
+                uniform token isaac:forwardAxis = "Z"
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "loader_lift" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "bucket" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+    }
+}
+

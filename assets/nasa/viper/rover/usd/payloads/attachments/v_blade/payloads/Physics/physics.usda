@@ -1,0 +1,136 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "v_blade"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "v_blade"
+{
+    over "Geometry"
+    {
+        over "base" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI"]
+        )
+        {
+            bool newton:selfCollisionEnabled = 0
+            point3f physics:centerOfMass = (0.14332709, 0, 0.023405306)
+            float3 physics:diagonalInertia = (0.8887487, 0.3057907, 0.8854643)
+            float physics:mass = 15
+            quatf physics:principalAxes = (1, 0, 0, 0)
+
+            over "blade_lift" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0.4708, -0.00020000339, -0.1754)
+                float3 physics:diagonalInertia = (5.614373, 5.8048015, 7.369692)
+                float physics:mass = 45
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "wing_l" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (-0.36333552, 0.6893267, 0.070284374)
+                    float3 physics:diagonalInertia = (8.066653, 3.4712524, 8.837999)
+                    float physics:mass = 40
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+                }
+
+                over "wing_r" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (-0.36333552, -0.6867267, 0.07028437)
+                    float3 physics:diagonalInertia = (8.028474, 3.4789054, 8.800681)
+                    float physics:mass = 40
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+                }
+            }
+        }
+    }
+
+    def "Physics"
+    {
+        def PhysicsRevoluteJoint "blade_lift" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 69.81317
+            float drive:angular:physics:maxForce = 6000
+            float drive:angular:physics:stiffness = 698.1317
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "tool"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </v_blade/Geometry/base>
+            rel physics:body1 = </v_blade/Geometry/base/blade_lift>
+            point3f physics:localPos0 = (0.1, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, -0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, -0.70710677)
+            float physics:lowerLimit = -17.188734
+            float physics:upperLimit = 25.7831
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "wing_l" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 34.906586
+            float drive:angular:physics:maxForce = 3000
+            float drive:angular:physics:stiffness = 349.06586
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "tool"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </v_blade/Geometry/base/blade_lift>
+            rel physics:body1 = </v_blade/Geometry/base/blade_lift/wing_l>
+            point3f physics:localPos0 = (0.88, 0, -0.28)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, -0.70710677, 0)
+            quatf physics:localRot1 = (0.70710677, 0, -0.70710677, 0)
+            float physics:lowerLimit = -50
+            float physics:upperLimit = 10
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "wing_r" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 34.906586
+            float drive:angular:physics:maxForce = 3000
+            float drive:angular:physics:stiffness = 349.06586
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "tool"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </v_blade/Geometry/base/blade_lift>
+            rel physics:body1 = </v_blade/Geometry/base/blade_lift/wing_r>
+            point3f physics:localPos0 = (0.88, 0, -0.28)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, -0, 0.70710677, 0)
+            quatf physics:localRot1 = (0.70710677, -0, 0.70710677, 0)
+            float physics:lowerLimit = -50
+            float physics:upperLimit = 10
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+    }
+}
+

@@ -1,0 +1,87 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "ripper"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "ripper" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    string isaac:description = "Three-shank ripper (concept rover attachment)"
+    token isaac:license = "Other"
+    string isaac:namespace = "ripper"
+    prepend rel isaac:physics:robotJoints = </ripper/Physics/ripper_lift>
+    prepend rel isaac:physics:robotLinks = [
+        </ripper/Geometry/base>,
+        </ripper/Geometry/base/mount>,
+        </ripper/Geometry/base/ripper_lift>,
+        </ripper/Geometry/base/ripper_lift/shank_0_tip>,
+        </ripper/Geometry/base/ripper_lift/shank_1_tip>,
+        </ripper/Geometry/base/ripper_lift/shank_2_tip>,
+    ]
+    token isaac:robotType = "Manipulator"
+    string isaac:source = "lunar-surface-mobility-assets pipeline"
+    string isaac:version = "0.3.0"
+
+    over "Geometry"
+    {
+        over "base" (
+            prepend apiSchemas = ["IsaacLinkAPI"]
+        )
+        {
+            over "ripper_lift" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "shank_0_tip" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Ripper tip (+Z = towing direction); loosens a narrow strip of dense regolith"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+
+                over "shank_1_tip" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Ripper tip (+Z = towing direction); loosens a narrow strip of dense regolith"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+
+                over "shank_2_tip" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Ripper tip (+Z = towing direction); loosens a narrow strip of dense regolith"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "mount" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Quick-attach coupler: mates with a rover's tool_front or tool_rear site"
+                uniform token isaac:forwardAxis = "Z"
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "ripper_lift" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+    }
+}
+

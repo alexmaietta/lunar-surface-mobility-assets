@@ -11,6 +11,18 @@ import geo as G
 from export import bake_uv_tiling
 
 
+def unclip_alpha():
+    for m in bpy.data.materials:
+        if not m.node_tree:
+            continue
+        nt = m.node_tree
+        for n in [n for n in nt.nodes if n.type == "MATH" and n.operation == "ROUND" and n.inputs[0].links]:
+            src = n.inputs[0].links[0].from_socket
+            for l in list(n.outputs[0].links):
+                nt.links.new(src, l.to_socket)
+            nt.nodes.remove(n)
+
+
 def main():
     argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
     asset = assetcfg.arg(argv, "--asset", bpy.context.scene.get("asset_id"))
@@ -31,6 +43,7 @@ def main():
     bpy.ops.export_scene.gltf(filepath=assetcfg.asset_dir(cfg, "gltf", f"{asset}.glb"), export_format="GLB",
                               export_cameras=False, export_lights=False, export_yup=True, export_apply=True,
                               export_extras=False)
+    unclip_alpha()
     bpy.ops.wm.obj_export(filepath=assetcfg.asset_dir(cfg, "obj", f"{asset}.obj"), export_materials=True,
                           path_mode="COPY", forward_axis="NEGATIVE_Z", up_axis="Y", export_uv=True,
                           export_normals=True, apply_modifiers=True, export_eval_mode="DAG_EVAL_RENDER")

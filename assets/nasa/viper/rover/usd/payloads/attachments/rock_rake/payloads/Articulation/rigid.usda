@@ -1,0 +1,41 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "rock_rake"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "rock_rake"
+{
+    over "Geometry"
+    {
+        over "base"
+        {
+            over "rake_lift" (
+                delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "rake_lift" (
+            active = false
+        )
+        {
+        }
+
+        over "rake_lift_actuator" (
+            active = false
+        )
+        {
+        }
+    }
+}
+

@@ -1,0 +1,94 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "box_blade"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "box_blade" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    string isaac:description = "Box blade with scarifier (concept rover attachment)"
+    token isaac:license = "Other"
+    string isaac:namespace = "box_blade"
+    prepend rel isaac:physics:robotJoints = [
+        </box_blade/Physics/box_lift>,
+        </box_blade/Physics/scarifier>,
+    ]
+    prepend rel isaac:physics:robotLinks = [
+        </box_blade/Geometry/base>,
+        </box_blade/Geometry/base/mount>,
+        </box_blade/Geometry/base/box_lift>,
+        </box_blade/Geometry/base/box_lift/box_blade_edge>,
+        </box_blade/Geometry/base/box_lift/scarifier>,
+        </box_blade/Geometry/base/box_lift/scarifier/scarifier_tips>,
+    ]
+    token isaac:robotType = "Manipulator"
+    string isaac:source = "lunar-surface-mobility-assets pipeline"
+    string isaac:version = "0.3.0"
+
+    over "Geometry"
+    {
+        over "base" (
+            prepend apiSchemas = ["IsaacLinkAPI"]
+        )
+        {
+            over "box_lift" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "scarifier" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "scarifier_tips" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "Scarifier tooth tip line centre"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+                }
+
+                over "box_blade_edge" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Main blade cutting edge centre (+Z = towing direction); spoil is carried inside the box"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "mount" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Quick-attach coupler: mates with a rover's tool_front or tool_rear site"
+                uniform token isaac:forwardAxis = "Z"
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "box_lift" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "scarifier" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+    }
+}
+

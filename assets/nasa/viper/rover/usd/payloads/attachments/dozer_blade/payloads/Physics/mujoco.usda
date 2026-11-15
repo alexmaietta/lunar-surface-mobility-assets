@@ -1,0 +1,77 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "dozer_blade"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./physics.usda@
+    ]
+    upAxis = "Z"
+)
+
+over "dozer_blade"
+{
+    over "Physics"
+    {
+        over "blade_lift" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "blade_lift_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -40000, -4000, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 6000
+            uniform double mjc:forceRange:min = -6000
+            uniform double[] mjc:gainPrm = [40000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </dozer_blade/Physics/blade_lift>
+        }
+
+        over "blade_angle" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "blade_angle_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -20000, -2000, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 3000
+            uniform double mjc:forceRange:min = -3000
+            uniform double[] mjc:gainPrm = [20000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </dozer_blade/Physics/blade_angle>
+        }
+
+        over "blade_tilt" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "blade_tilt_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -20000, -2000, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 3000
+            uniform double mjc:forceRange:min = -3000
+            uniform double[] mjc:gainPrm = [20000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </dozer_blade/Physics/blade_tilt>
+        }
+    }
+}
+

@@ -1,0 +1,94 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "drum_excavator"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "drum_excavator" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    string isaac:description = "Bucket-drum excavator (concept rover attachment)"
+    token isaac:license = "Other"
+    string isaac:namespace = "drum_excavator"
+    prepend rel isaac:physics:robotJoints = [
+        </drum_excavator/Physics/drum_arm>,
+        </drum_excavator/Physics/drums>,
+    ]
+    prepend rel isaac:physics:robotLinks = [
+        </drum_excavator/Geometry/base>,
+        </drum_excavator/Geometry/base/mount>,
+        </drum_excavator/Geometry/base/drum_arm>,
+        </drum_excavator/Geometry/base/drum_arm/drum_cut>,
+        </drum_excavator/Geometry/base/drum_arm/drums>,
+        </drum_excavator/Geometry/base/drum_arm/drums/drum_volume>,
+    ]
+    token isaac:robotType = "Manipulator"
+    string isaac:source = "lunar-surface-mobility-assets pipeline"
+    string isaac:version = "0.3.0"
+
+    over "Geometry"
+    {
+        over "base" (
+            prepend apiSchemas = ["IsaacLinkAPI"]
+        )
+        {
+            over "drum_arm" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "drums" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "drum_volume" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "Drum pair regolith store"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+                }
+
+                over "drum_cut" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "Lowest scoop lip of the drum pair (cutting line when digging, +Z = cutting direction)"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "mount" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Quick-attach coupler: mates with a rover's tool_front or tool_rear site"
+                uniform token isaac:forwardAxis = "Z"
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "drum_arm" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "drums" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+    }
+}
+

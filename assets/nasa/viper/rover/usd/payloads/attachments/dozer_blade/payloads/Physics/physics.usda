@@ -1,0 +1,136 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "dozer_blade"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "dozer_blade"
+{
+    over "Geometry"
+    {
+        over "base" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI"]
+        )
+        {
+            bool newton:selfCollisionEnabled = 0
+            point3f physics:centerOfMass = (0.13504401, -0.00039999187, 0.021040998)
+            float3 physics:diagonalInertia = (0.8879836, 0.29249415, 0.8698689)
+            float physics:mass = 15
+            quatf physics:principalAxes = (1, 0, 0, 0)
+
+            over "blade_lift" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0.32279998, -0.00039999187, -0.16407108)
+                float3 physics:diagonalInertia = (2.7537825, 2.278678, 3.8928108)
+                float physics:mass = 40
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "blade_angle" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (-0.08153947, 0, 0.069051564)
+                    float3 physics:diagonalInertia = (1.3240505, 0.13928825, 1.2599404)
+                    float physics:mass = 12
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+
+                    over "blade_tilt" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0.0667, -0.00019997358, 0.1380105)
+                        float3 physics:diagonalInertia = (45.82375, 3.757231, 43.10953)
+                        float physics:mass = 70
+                        quatf physics:principalAxes = (1, 0, 0, 0)
+                    }
+                }
+            }
+        }
+    }
+
+    def "Physics"
+    {
+        def PhysicsRevoluteJoint "blade_lift" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 69.81317
+            float drive:angular:physics:maxForce = 6000
+            float drive:angular:physics:stiffness = 698.1317
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "tool"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </dozer_blade/Geometry/base>
+            rel physics:body1 = </dozer_blade/Geometry/base/blade_lift>
+            point3f physics:localPos0 = (0.1, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, -0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, -0.70710677)
+            float physics:lowerLimit = -17.188734
+            float physics:upperLimit = 25.7831
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "blade_angle" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 34.906586
+            float drive:angular:physics:maxForce = 3000
+            float drive:angular:physics:stiffness = 349.06586
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "tool"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </dozer_blade/Geometry/base/blade_lift>
+            rel physics:body1 = </dozer_blade/Geometry/base/blade_lift/blade_angle>
+            point3f physics:localPos0 = (0.71999997, 0, -0.3)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, -0.70710677, 0)
+            quatf physics:localRot1 = (0.70710677, 0, -0.70710677, 0)
+            float physics:lowerLimit = -30
+            float physics:upperLimit = 30
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "blade_tilt" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 34.906586
+            float drive:angular:physics:maxForce = 3000
+            float drive:angular:physics:stiffness = 349.06586
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "tool"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </dozer_blade/Geometry/base/blade_lift/blade_angle>
+            rel physics:body1 = </dozer_blade/Geometry/base/blade_lift/blade_angle/blade_tilt>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -8
+            float physics:upperLimit = 8
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+    }
+}
+

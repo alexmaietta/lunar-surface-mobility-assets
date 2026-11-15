@@ -1,0 +1,39 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "ripper"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./physics.usda@
+    ]
+    upAxis = "Z"
+)
+
+over "ripper"
+{
+    over "Physics"
+    {
+        over "ripper_lift" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+            uniform double mjc:armature = 0.01
+        }
+
+        def MjcActuator "ripper_lift_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -50000, -5000, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform token mjc:forceLimited = "true"
+            uniform double mjc:forceRange:max = 8000
+            uniform double mjc:forceRange:min = -8000
+            uniform double[] mjc:gainPrm = [50000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </ripper/Physics/ripper_lift>
+        }
+    }
+}
+

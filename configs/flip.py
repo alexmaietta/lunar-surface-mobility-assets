@@ -12,7 +12,9 @@ DOC = ("Astrolab FLIP (FLEX Lunar Innovation Platform), flying on Astrobotic Gri
        "and four 0.93 m Venturi hyper-deformable cable-spoke wheels on active corner swing arms with all-wheel "
        "steering. Geometry is measured from renders (no official dimensions).")
 
-TEXTURE_SETS, MATERIALS = K.materials()
+TEXTURE_SETS, MATERIALS = K.materials(
+    overrides={"mli_silver": {"set": "mli_silver", "normal": 0.35}},
+    textures={"mli_silver": ("mli", dict(colour=(0.80, 0.81, 0.83), tile_m=0.5, gloss=0.28, tape=False, crinkle=0.4))})
 
 R_W, W_W, WB, TRACK = 0.465, 0.32, 1.40, 1.58
 CL, CW, BELLY, CTOP = 1.60, 0.70, 0.28, 0.68
@@ -59,9 +61,9 @@ def _wheel_faces():
     out = []
     for n, side in (("fl", 1), ("fr", -1), ("rl", 1), ("rr", -1)):
         x = WB / 2 if n[0] == "f" else -WB / 2
-        y = side * (TRACK / 2 + W_W / 2 + 0.004)
+        y = side * (TRACK / 2 + W_W / 2 + 0.010)
         out.append({"kind": "lathe", "name": f"{n}_side_ring", "link": f"{n}_wheel", "c": (x, y, R_W), "n": (0, side, 0),
-                    "profile": [(0.33, 0.0), (0.42, 0.0)], "sides": 48, "mat": "aluminium"})
+                    "profile": [(0.42, 0.0), (0.33, 0.0)], "sides": 48, "mat": "aluminium"})
     return out
 
 

@@ -67,7 +67,10 @@ def _textured(name, spec):
     nt.links.new(_image(nt, set_name, "normal", vec).outputs["Color"], nm.inputs["Color"])
     nt.links.new(nm.outputs["Normal"], bsdf.inputs["Normal"])
     if spec.get("alpha") and "opacity" in meta["maps"]:
-        nt.links.new(_image(nt, set_name, "opacity", vec).outputs["Color"], bsdf.inputs["Alpha"])
+        clip = nt.nodes.new("ShaderNodeMath")
+        clip.operation = "ROUND"
+        nt.links.new(_image(nt, set_name, "opacity", vec).outputs["Color"], clip.inputs[0])
+        nt.links.new(clip.outputs["Value"], bsdf.inputs["Alpha"])
         _cutout(m)
     m.diffuse_color = (*spec.get("preview", (0.6, 0.6, 0.6)), 1.0)
     return m

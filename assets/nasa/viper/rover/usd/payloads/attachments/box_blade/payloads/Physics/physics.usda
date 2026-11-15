@@ -1,0 +1,101 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "box_blade"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "box_blade"
+{
+    over "Geometry"
+    {
+        over "base" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI"]
+        )
+        {
+            bool newton:selfCollisionEnabled = 0
+            point3f physics:centerOfMass = (-0.16345464, 0, 0.034430467)
+            float3 physics:diagonalInertia = (0.90873927, 0.36281413, 0.92249715)
+            float physics:mass = 15
+            quatf physics:principalAxes = (1, 0, 0, 0)
+
+            over "box_lift" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (-0.5731, -0.00019997358, -0.22808325)
+                float3 physics:diagonalInertia = (48.73947, 13.59658, 57.0536)
+                float physics:mass = 90
+                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                over "scarifier" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (-0.018545523, 0, -0.121879816)
+                    float3 physics:diagonalInertia = (5.1569347, 0.13446566, 5.0496607)
+                    float physics:mass = 15
+                    quatf physics:principalAxes = (1, 0, 0, 0)
+                }
+            }
+        }
+    }
+
+    def "Physics"
+    {
+        def PhysicsRevoluteJoint "box_lift" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 87.266464
+            float drive:angular:physics:maxForce = 8000
+            float drive:angular:physics:stiffness = 872.6646
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            uniform token drive:angular:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "tool"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </box_blade/Geometry/base>
+            rel physics:body1 = </box_blade/Geometry/base/box_lift>
+            point3f physics:localPos0 = (-0.1, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, 0.70710677)
+            quatf physics:localRot1 = (0.70710677, 0, 0, 0.70710677)
+            float physics:lowerLimit = -20.053522
+            float physics:upperLimit = 22.918312
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsPrismaticJoint "scarifier" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysicsDriveAPI:linear"]
+        )
+        {
+            float drive:linear:physics:damping = 2000
+            float drive:linear:physics:maxForce = 3000
+            float drive:linear:physics:stiffness = 20000
+            float drive:linear:physics:targetPosition = 0
+            float drive:linear:physics:targetVelocity = 0
+            uniform token drive:linear:physics:type = "force"
+            custom uniform token joint:driveKind = "position"
+            custom uniform token joint:role = "tool"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </box_blade/Geometry/base/box_lift>
+            rel physics:body1 = </box_blade/Geometry/base/box_lift/scarifier>
+            point3f physics:localPos0 = (-0.71, 0, -0.2)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, -0, 0.70710677, 0)
+            quatf physics:localRot1 = (0.70710677, -0, 0.70710677, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 0.16
+            float state:linear:physics:position = 0
+            float state:linear:physics:velocity = 0
+        }
+    }
+}
+

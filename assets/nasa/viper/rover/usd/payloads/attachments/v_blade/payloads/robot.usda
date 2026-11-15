@@ -1,0 +1,117 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "lunar-surface-mobility-assets pipeline"
+    }
+    defaultPrim = "v_blade"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "v_blade" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    string isaac:description = "Hinged V-blade plow (concept rover attachment)"
+    token isaac:license = "Other"
+    string isaac:namespace = "v_blade"
+    prepend rel isaac:physics:robotJoints = [
+        </v_blade/Physics/blade_lift>,
+        </v_blade/Physics/wing_l>,
+        </v_blade/Physics/wing_r>,
+    ]
+    prepend rel isaac:physics:robotLinks = [
+        </v_blade/Geometry/base>,
+        </v_blade/Geometry/base/mount>,
+        </v_blade/Geometry/base/blade_lift>,
+        </v_blade/Geometry/base/blade_lift/nose_point>,
+        </v_blade/Geometry/base/blade_lift/wing_l>,
+        </v_blade/Geometry/base/blade_lift/wing_l/wing_l_edge>,
+        </v_blade/Geometry/base/blade_lift/wing_r>,
+        </v_blade/Geometry/base/blade_lift/wing_r/wing_r_edge>,
+    ]
+    token isaac:robotType = "Manipulator"
+    string isaac:source = "lunar-surface-mobility-assets pipeline"
+    string isaac:version = "0.3.0"
+
+    over "Geometry"
+    {
+        over "base" (
+            prepend apiSchemas = ["IsaacLinkAPI"]
+        )
+        {
+            over "blade_lift" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "wing_l" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "wing_l_edge" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "Left wing cutting edge centre (+Z = wing face normal); the wing spans width_m along it"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+                }
+
+                over "wing_r" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "wing_r_edge" (
+                        prepend apiSchemas = ["IsaacSiteAPI"]
+                    )
+                    {
+                        string isaac:Description = "Right wing cutting edge centre (+Z = wing face normal); the wing spans width_m along it"
+                        uniform token isaac:forwardAxis = "Z"
+                    }
+                }
+
+                over "nose_point" (
+                    prepend apiSchemas = ["IsaacSiteAPI"]
+                )
+                {
+                    string isaac:Description = "V nose at the cutting edge"
+                    uniform token isaac:forwardAxis = "Z"
+                }
+            }
+
+            over "mount" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "Quick-attach coupler: mates with a rover's tool_front or tool_rear site"
+                uniform token isaac:forwardAxis = "Z"
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "blade_lift" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "wing_l" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+
+        over "wing_r" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+            bool[] isaac:actuator = [1]
+        }
+    }
+}
+

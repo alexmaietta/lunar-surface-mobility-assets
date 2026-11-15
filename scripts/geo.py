@@ -166,9 +166,9 @@ def box_beam_geo(p0, p1, w, h, verts=None, faces=None):
             verts.append(p + side * (sw * w / 2) + up * (sh * h / 2))
     for i in range(4):
         j = (i + 1) % 4
-        faces.append((base + i, base + j, base + 4 + j, base + 4 + i))
-    faces.append((base + 3, base + 2, base + 1, base + 0))
-    faces.append((base + 4, base + 5, base + 6, base + 7))
+        faces.append((base + 4 + i, base + 4 + j, base + j, base + i))
+    faces.append((base + 0, base + 1, base + 2, base + 3))
+    faces.append((base + 7, base + 6, base + 5, base + 4))
     return verts, faces
 
 

@@ -132,6 +132,21 @@ We also provide some basic [examples](./examples/) simulation scripts to interac
 |---|---|
 | ![NASA IPEx digging with the radiator cover open](docs/images/nasa/ipex/rover/digging.jpg) | ![NASA IPEx wheels and bucket drums](docs/images/nasa/ipex/rover/wheel.jpg) |
 
+### Construction tools
+
+Nine quick-attach tools fit the front and rear couplers of the LTV concept, FLEX, CLV-1, Pegasus, Eagle and VIPER. Front tools are the dozer blade, V-blade, loader bucket, drum excavator and rock rake. Rear tools are the ripper, box blade, roller compactor and dump trailer.
+
+| | | |
+|---|---|---|
+| ![Dozer blade](docs/images/concepts/construction_tools/dozer_blade/front_three_quarter.jpg) | ![V-blade](docs/images/concepts/construction_tools/v_blade/front_three_quarter.jpg) | ![Loader bucket](docs/images/concepts/construction_tools/loader_bucket/front_three_quarter.jpg) |
+| ![Drum excavator](docs/images/concepts/construction_tools/drum_excavator/front_three_quarter.jpg) | ![Rock rake](docs/images/concepts/construction_tools/rock_rake/front_three_quarter.jpg) | ![Ripper](docs/images/concepts/construction_tools/ripper/front_three_quarter.jpg) |
+| ![Box blade](docs/images/concepts/construction_tools/box_blade/front_three_quarter.jpg) | ![Roller compactor](docs/images/concepts/construction_tools/roller_compactor/front_three_quarter.jpg) | ![Dump trailer](docs/images/concepts/construction_tools/dump_trailer/front_three_quarter.jpg) |
+
+| | | |
+|---|---|---|
+| ![Lunar Outpost Pegasus with the dozer blade and dump trailer](docs/images/lunar_outpost/pegasus/rover/tools/dozer_blade_dump_trailer.jpg) | ![Lunar Outpost Eagle with the loader bucket and ripper](docs/images/lunar_outpost/eagle/rover/tools/loader_bucket_ripper.jpg) | ![Astrolab CLV-1 with the drum excavator and roller compactor](docs/images/astrolab/clv1/rover/tools/drum_excavator_roller_compactor.jpg) |
+| ![Astrolab FLEX with the V-blade and box blade](docs/images/astrolab/flex/rover/tools/v_blade_box_blade.jpg) | ![LTV concept with the rock rake and dump trailer](docs/images/concepts/ltv/rover/tools/rock_rake_dump_trailer.jpg) | ![NASA VIPER with the loader bucket and roller compactor](docs/images/nasa/viper/rover/tools/loader_bucket_roller_compactor.jpg) |
+
 ### Habitats
 
 | | | |
