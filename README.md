@@ -15,11 +15,17 @@ These are simulation-ready models of lunar landers, rovers and their friends.
 
 They're designed for quick prototyping and fun visuals. For deeper simulation work, these assets may be a good starting point but we provide no guarentee on the accuracy of the models.
 
-For vehicles back on Earth, the sibling repo [terrestrial-mobility-assets](https://github.com/alexmaietta/terrestrial-mobility-assets) has photoreal off-road, military and construction vehicles built with the same pipeline and shipped in the same formats.
-
 Each one is agentically built and is procedurally generated in Blender from public references and gets generated, high-resolution, tileable PBR textures. It ships as an Isaac Sim / SimReady-style **USD** asset with physics, joints, colliders and named sites for engines, RCS thrusters, sensors and antennas. The rovers add drive, steering and suspension joints, working hatches, stairs and arms, and real lights and cameras. Every asset is also a **URDF** robot description with per-link mass and inertia, colliders, joint limits and closed suspension linkages, and comes as **glTF**, **OBJ** and **Blender** assets too.
 
 **[Explore every model in 3D](https://alexmaietta.github.io/lunar-surface-mobility-assets/)** We also provide an interactive viewer to orbit around the assets, select any vehicle for its specs, and drive its moving parts, such as antennas, arms, hatches, stairs, steering and wheels.
+
+## Related repos
+
+- [terrestrial-mobility-assets](https://github.com/alexmaietta/terrestrial-mobility-assets) has photoreal off-road, military and construction vehicles back on Earth, built with the same pipeline and shipped in the same formats.
+- [apollo-lrv-asset](https://github.com/alexmaietta/apollo-lrv-asset) is a simulation-ready Apollo 17 Lunar Roving Vehicle in OpenUSD, URDF, MJCF and Blender, with articulated joints, photo-matched PBR materials and mission variants.
+- [apollo-astronaut-asset](https://github.com/alexmaietta/apollo-astronaut-asset) is a rigged Apollo 11 A7L astronaut in OpenUSD and Blender, with OpenXR joints, physics hands, full-body IK and Newton examples.
+
+## Assets
 
 | Vendor | Vehicle | Asset |
 |---|---|---|
